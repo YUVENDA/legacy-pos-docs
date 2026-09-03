@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Systemvoraussetzungen | Betrieb &amp; Administration</title>
+<meta name="description" content="Welche Hardware und welches Betriebssystem eine Installation braucht. Die Werte sind Mindestwerte — der tatsächliche Bedarf hängt vom Einsatz ab. Was den Bedarf treibt Anzahl der Artikel und Belege je">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/stil.css?v=fb73fdc0">
+</head>
+<body>
+<header class="kopf">
+  <div class="kopf-innen">
+    <a class="kopf-logo" href="../index.html"><img src="../assets/logo.png" alt="IT Relations"></a>
+    <div class="kopf-suche">
+      <input type="search" id="suchfeld" placeholder="Alle Inhalte durchsuchen" autocomplete="off"
+             aria-label="Suchen" data-auf="../">
+      <div id="suchergebnis" hidden></div>
+    </div>
+    <a class="sprung" href="#navigation">Zur Navigation</a>
+    <span class="kopf-firma">IT Relations GmbH</span>
+  </div>
+</header>
+<div class="rahmen">
+  <aside class="spalte-links" id="navigation"><nav class="nav" aria-label="Inhalt"><a class="nav-wurzel" href="../index.html">ITR Partner Service</a><details class="nav-buch"><summary>Schnellstart</summary><a class="nav-seite nav-uebersicht" href="../schnellstart/index.html">&Uuml;bersicht</a><a class="nav-seite" href="../schnellstart/glossar-und-abkurzungen.html">Glossar und Abkürzungen</a></details><details class="nav-buch"><summary>Produkte</summary><a class="nav-seite nav-uebersicht" href="../produkte/index.html">&Uuml;bersicht</a><details class="nav-kapitel"><summary>POS Gastro App</summary><a class="nav-seite nav-uebersicht" href="../produkte/pos-gastro-app/index.html">&Uuml;bersicht</a><a class="nav-seite" href="../produkte/pos-gastro-app/funktionsweise.html">Funktionsweise</a><a class="nav-seite" href="../produkte/pos-gastro-app/in-betrieb-nehmen.html">In Betrieb nehmen</a><a class="nav-seite" href="../produkte/pos-gastro-app/im-alltag-arbeiten.html">Im Alltag arbeiten</a><a class="nav-seite" href="../produkte/pos-gastro-app/storungen-beheben.html">Störungen beheben</a></details></details><details class="nav-buch" open><summary>Betrieb &amp; Administration</summary><a class="nav-seite nav-uebersicht" href="../betrieb-administration/index.html">&Uuml;bersicht</a><a class="nav-seite aktuell" href="../betrieb-administration/systemvoraussetzungen.html">Systemvoraussetzungen</a></details></nav></aside>
+  <main class="spalte-mitte" id="inhalt"><div class="seitenkopf"><nav class="brotkrumen-nav" aria-label="Sie sind hier"><ol class="brotkrumen"><li><a href="../betrieb-administration/index.html">Betrieb &amp; Administration</a></li><li><span aria-current="page">Systemvoraussetzungen</span></li></ol></nav><h1>Systemvoraussetzungen</h1><p class="seitenmeta">Letzte &Auml;nderung 29.08.2026 &middot; Version 1 &middot; Seiten-ID 716</p></div><div class="inhalt"><p id="bkmrk-welche-hardware-und-">Welche Hardware und welches Betriebssystem eine Installation braucht. Die Werte sind Mindestwerte — der tatsächliche Bedarf hängt vom Einsatz ab.</p>
+<h2 id="bkmrk-was-den-bedarf-treib">Was den Bedarf treibt</h2>
+<ul id="bkmrk-anzahl-der-artikel-u">
+<li>Anzahl der Artikel und Belege je Tag</li>
+<li>Anzahl der verbundenen Kassen mit Netzwerk- und Clouddiensten</li>
+<li>Komplexität der abgebildeten Geschäftsprozesse</li>
+<li>Umfang der verarbeiteten und gespeicherten Daten</li>
+<li>Genutzte Zusatzmodule</li>
+</ul>
+<p id="bkmrk-bei-intensiver-nutzu">Bei intensiver Nutzung oder größeren Filialumgebungen liegen die Anforderungen über den Mindestwerten. Für Dauerbetrieb ist eine stabile Hardware mit zuverlässiger Kühlung und Stromversorgung Voraussetzung.</p>
+<h2 id="bkmrk-kassensysteme">Kassensysteme</h2>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-szenario-cpu-ram-ssd">
+<thead>
+<tr>
+<th>Szenario</th>
+<th>CPU</th>
+<th>RAM</th>
+<th>SSD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Einzelkasse (Standalone)</td>
+<td>Intel Celeron J1900 oder gleichwertig</td>
+<td>4 GB</td>
+<td>ab 80 GB</td>
+</tr>
+<tr>
+<td>Kassenverbund</td>
+<td>Intel ab 6. Generation (Skylake)</td>
+<td>8 GB</td>
+<td>120 GB</td>
+</tr>
+<tr>
+<td>Optimale Leistung</td>
+<td>aktuelle Intel-Generation</td>
+<td>8 GB</td>
+<td>120 GB</td>
+</tr>
+</tbody>
+</table></div>
+<p id="bkmrk-der-celeron-j1900-re">Der Celeron J1900 reicht für einfache Einzelkassen mit wenigen Belegen je Tag, ohne Zusatzfunktionen — er ist veraltet und <strong>nicht Windows-11-fähig</strong>. Auch Prozessoren der 6. Generation sind nicht Windows-11-fähig.</p>
+<h2 id="bkmrk-centralpoint-mit-dat">CentralPoint mit Datenbank</h2>
+<p id="bkmrk-der-centralpoint-ver">Der CentralPoint verwaltet Kassendaten, Stammdaten, Lizenzen, Echtzeitkommunikation und Berichte. Es gibt Installationen mit einer einzigen Kasse ebenso wie Systeme mit <strong>über 500 Kassen</strong> und Datenbanken im Terabyte-Bereich.</p>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-szenario-cpu-ram-ssd-1">
+<thead>
+<tr>
+<th>Szenario</th>
+<th>CPU</th>
+<th>RAM</th>
+<th>SSD</th>
+<th>Netzwerk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Klein, unter 5 Kassen</td>
+<td>Intel Core i3 ab 6. Generation</td>
+<td>ab 8 GB</td>
+<td>ab 120 GB</td>
+<td>ab 100 Mbit/s</td>
+</tr>
+<tr>
+<td>Standard, 5 bis 50 Kassen</td>
+<td>aktueller Core i5 oder i7</td>
+<td>ab 16 GB</td>
+<td>ab 180 GB</td>
+<td>1 Gbit/s empfohlen</td>
+</tr>
+<tr>
+<td>Groß, über 50 Kassen</td>
+<td>Intel Xeon oder Core i7 aufwärts</td>
+<td>ab 32 GB</td>
+<td>ab 250 GB</td>
+<td>1 Gbit/s mit Monitoring</td>
+</tr>
+</tbody>
+</table></div>
+<p id="bkmrk-die-datenbank-kann-i">Die Datenbank kann im Rechenzentrum liegen. Je nach Latenz verlangsamt das die Arbeit im CentralPoint.</p>
+<p id="bkmrk-virtualisierung-ist-"><strong>Virtualisierung</strong> ist unterstützt, etwa Microsoft Hyper-V und VMware ESX. Dabei zu beachten: CPU und RAM dediziert zuweisen, hohe IOPS für Festplattenzugriffe, Ressourcenauslastung überwachen, Lastspitzen und Wachstum von Anfang an einplanen.</p>
+<h2 id="bkmrk-betriebssysteme">Betriebssysteme</h2>
+<p class="callout warning" id="bkmrk-unterst%C3%BCtzt-werden-n">Unterstützt werden nur Windows-Versionen, für die Microsoft noch Sicherheitsupdates liefert. Windows 8 und älter werden nicht unterstützt — auch nicht durch den technischen Support.</p>
+<p id="bkmrk-kassen"><strong>Kassen</strong></p>
+<ul id="bkmrk-windows-10-iot-enter">
+<li><strong>Windows 10 IoT Enterprise</strong> — voll kompatibel. Ohne aktive Extended Security Updates lässt sich die Finanzkonformität ab Oktober 2025 nicht mehr zusichern.</li>
+<li><strong>Windows 11 IoT</strong> — empfohlen. Die aktuelle Softwaregeneration ist darauf optimiert.</li>
+</ul>
+<p id="bkmrk-centralpoint"><strong>CentralPoint</strong></p>
+<ul id="bkmrk-windows-10%2C-windows-">
+<li>Windows 10, Windows 11 oder Windows Server 2019 beziehungsweise eine andere aktuelle unterstützte Serverversion.</li>
+<li>Ältere Versionen sind technisch nicht gesperrt, werden aber nicht unterstützt. Für eine TSE-konforme Umgebung muss das Betriebssystem Herstellerupdates erhalten.</li>
+</ul>
+<h2 id="bkmrk-mariadb-f%C3%BCr-den-cent">MariaDB für den CentralPoint</h2>
+<p class="callout warning" id="bkmrk-die-software-bringt-">Die Software bringt <strong>keinen eigenen Datenbankserver</strong> mit. MariaDB muss vorab installiert und betriebsbereit konfiguriert sein — Bereitstellung und Konfiguration liegen beim Betreiber beziehungsweise beim Partner.</p>
+<ul id="bkmrk-mindestens-mariadb-1">
+<li>Mindestens <strong>MariaDB 10.11.4</strong> oder die jeweils aktuellste Build-Version.</li>
+<li><strong>Version 11.8 LTE ist noch in der Testphase</strong> und nicht für den produktiven Einsatz freigegeben.</li>
+</ul>
+<h2 id="bkmrk-usb">USB</h2>
+<p id="bkmrk-f%C3%BCr-klassische-perip">Für klassische Peripherie — Drucker, Scanner, Displays, Waagen — genügt in der Regel USB 2.0.</p>
+<p id="bkmrk-zertifizierte-usb-ts">Zertifizierte USB-TSE-Modelle: <strong>Swissbit USB TSE</strong> und <strong>Cryptovision USB TSE</strong>. Die TSE muss vor der Inbetriebnahme initialisiert und registriert sein; ein Betrieb ohne aktive TSE ist nicht zulässig. Siehe <span class="verweis-inaktiv">ITR Partner Service → Fiskalisierung → TSE Hardware (Swissbit) in Betrieb nehmen</span>.</p>
+<h2 id="bkmrk-peripherie-mit-einsc">Peripherie mit Einschränkungen</h2>
+<p id="bkmrk-eine-allgemeine-komp">Eine allgemeine Kompatibilitätsliste gibt es nicht. Für zwei Gerätegruppen ist die Freigabe auf bestimmte Modelle beschränkt:</p>
+<p id="bkmrk-waagen-%E2%80%94-kompatibel%2C"><strong>Waagen</strong> — kompatibel, sofern sie mit dem Protokoll <strong>Dialog-6</strong> oder <strong>VCODisp</strong> arbeiten:</p>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-hersteller-modelle-d">
+<thead>
+<tr>
+<th>Hersteller</th>
+<th>Modelle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Digi</td>
+<td>DS-983, DS-982, DS-782</td>
+</tr>
+<tr>
+<td>Mettler Toledo</td>
+<td>Ariva</td>
+</tr>
+</tbody>
+</table></div>
+<p id="bkmrk-kassen-mit-integrier">Kassen mit integrierter Waage sind eichpflichtige Messgeräte. Vor der ersten Inbetriebnahme ist eine Konformitätsbewertung (Ersteichung) zwingend, und ein vollständiges Typenschild mit Min, Max, Eichwert <code>e</code> und Teilung <code>d</code> ist erforderlich.</p>
+<p id="bkmrk-cash-recycling-syste"><strong>Cash-Recycling-Systeme</strong></p>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-hersteller-modelle-c">
+<thead>
+<tr>
+<th>Hersteller</th>
+<th>Modelle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cashlogy by Azkoyen</td>
+<td>POS1000 (v1.11.6.80), POS1500 (v1.11.6.80)</td>
+</tr>
+<tr>
+<td>Glory</td>
+<td>CI-10, CI-10X im Kompatibilitätsmodus (mit Einschränkungen)</td>
+</tr>
+</tbody>
+</table></div>
+<p id="bkmrk-bei-beiden-gilt%3A-die">Bei beiden gilt: Die individuelle Maschinenkonfiguration beeinflusst die Kassenintegration unmittelbar. Notenhandling und Schnittstellen-Timeouts vor dem produktiven Einsatz prüfen.</p>
+<h2 id="bkmrk-weitere-informatione">Weitere Informationen</h2>
+<ul id="bkmrk-itr-partner-service-">
+<li><span class="verweis-inaktiv">ITR Partner Service → Betrieb &amp; Administration → Netzwerk und Ports</span></li>
+<li><span class="verweis-inaktiv">ITR Partner Service → Betrieb &amp; Administration → Updates einspielen</span></li>
+</ul>
+</div></main>
+  <aside class="spalte-rechts"><div class="seiteninhalt"><h2>Seiteninhalt</h2><ul><li class="e2"><a href="#bkmrk-was-den-bedarf-treib">Was den Bedarf treibt</a></li><li class="e2"><a href="#bkmrk-kassensysteme">Kassensysteme</a></li><li class="e2"><a href="#bkmrk-centralpoint-mit-dat">CentralPoint mit Datenbank</a></li><li class="e2"><a href="#bkmrk-betriebssysteme">Betriebssysteme</a></li><li class="e2"><a href="#bkmrk-mariadb-f%C3%BCr-den-cent">MariaDB für den CentralPoint</a></li><li class="e2"><a href="#bkmrk-usb">USB</a></li><li class="e2"><a href="#bkmrk-peripherie-mit-einsc">Peripherie mit Einschränkungen</a></li><li class="e2"><a href="#bkmrk-weitere-informatione">Weitere Informationen</a></li></ul></div></aside>
+</div>
+<footer class="fuss">
+  <span>ITR Partner Service</span>
+  <span class="fuss-rechts">
+    <a href="https://itrelations.de/de/impressum" target="_blank" rel="noopener">Impressum</a>
+    <span>Stand 03.09.2026</span>
+  </span>
+</footer>
+<script src="../assets/suche.js?v=d4fed229"></script>
+</body>
+</html>
