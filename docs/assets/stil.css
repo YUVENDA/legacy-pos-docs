@@ -357,6 +357,26 @@ h1 { font-size: 32px; font-weight: 600; line-height: 1.15; margin: 0 0 10px;
 .verweis-inaktiv::before { content: '\00BB\00A0'; }
 
 /* --------------------------------------------------------------- Tabellen */
+/* ------------------------------------------------------------------ Bilder */
+/*
+ * HOECHSTBREITE, damit kein Bild die Spalte sprengt - dasselbe Muster, das
+ * vorher schon die Tabellen aufgerissen hatte. BookStack liefert oft eine
+ * feste Breitenangabe im Markup mit; die bleibt als Wunschgroesse erhalten,
+ * wird aber nie ueberschritten. Die Hoehenangabe entfernt der Generator,
+ * sonst verzerrt das Bild auf schmalen Fenstern.
+ */
+.inhalt img {
+  max-width: 100%; height: auto; display: block;
+  margin: 14px 0; border-radius: var(--rund-klein); border: 1px solid var(--line);
+}
+/* Bild im Wiki vorhanden, Datei aber nicht gefunden: statt eines leeren
+   Rahmens der Alternativtext - der sagt dem Leser wenigstens, was fehlt. */
+.bild-fehlt {
+  display: inline-block; font-size: 13.5px; color: var(--ink-soft);
+  background: #f2f2f5; border: 1px dashed var(--line);
+  border-radius: var(--rund-klein); padding: 3px 8px;
+}
+
 /*
  * TABELLEN. Das Scrollen macht der umgebende .tabellenrahmen, nicht die
  * Tabelle selbst.
