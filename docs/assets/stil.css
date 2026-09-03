@@ -365,10 +365,32 @@ h1 { font-size: 32px; font-weight: 600; line-height: 1.15; margin: 0 0 10px;
  * wird aber nie ueberschritten. Die Hoehenangabe entfernt der Generator,
  * sonst verzerrt das Bild auf schmalen Fenstern.
  */
+/*
+ * BILD AUF EINER PLATTE, nicht an die Textkante geklebt.
+ *
+ * Linksbuendig ist richtig - der Text hat eine feste linke Kante, und ein
+ * zentriertes 300-px-Bild in einer 660-px-Spalte schwimmt in der Mitte und
+ * liest sich als Dekoration statt als Beweisstueck. Nur "display: block"
+ * allein sah aber angeklatscht aus (03.09.2026 bemerkt): ein
+ * Bildschirmfoto mit weisser Oberflaeche geht auf hellem Grund ohne Fassung
+ * ins Nichts ueber.
+ *
+ * Deshalb eine helle Platte mit Innenabstand: das Bild sitzt sichtbar AUF
+ * etwas, behaelt seine linke Kante und bekommt Luft nach oben und unten.
+ */
+.bild-absatz { margin: 22px 0 0; }
 .inhalt img {
   max-width: 100%; height: auto; display: block;
-  margin: 14px 0; border-radius: var(--rund-klein); border: 1px solid var(--line);
+  padding: 10px; background: #fff;
+  border: 1px solid var(--line); border-radius: var(--rund);
+  box-shadow: 0 1px 3px rgba(40,40,40,.06);
 }
+/* Bildunterschrift gehoert zum Bild, nicht daneben: klein, grau, dicht
+   darunter - und mit derselben linken Kante. */
+.bild-unterschrift {
+  margin: 8px 0 22px; font-size: 13.5px; color: var(--ink-soft); max-width: 570px;
+}
+.bild-unterschrift em, .bild-unterschrift i { font-style: normal; }
 /* Bild im Wiki vorhanden, Datei aber nicht gefunden: statt eines leeren
    Rahmens der Alternativtext - der sagt dem Leser wenigstens, was fehlt. */
 .bild-fehlt {
