@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Störungen beheben | Produkte</title>
+<meta name="description" content="Die häufigsten Meldungen der POS Gastro App und wie Sie sie eingrenzen. Erste Prüfung bei jedem Verbindungsproblem Rufen Sie auf dem Mobilgerät im Browser http://[IP-Adresse der Kasse]:8080 auf. Antwo">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/stil.css?v=af7d1bb8">
+</head>
+<body>
+<header class="kopf">
+  <div class="kopf-innen">
+    <a class="kopf-logo" href="../../index.html"><img src="../../assets/logo.png" alt="IT Relations"></a>
+    <div class="kopf-suche">
+      <input type="search" id="suchfeld" placeholder="Alle Inhalte durchsuchen" autocomplete="off"
+             aria-label="Suchen" data-auf="../../">
+      <div id="suchergebnis" hidden></div>
+    </div>
+    <a class="sprung" href="#navigation">Zur Navigation</a>
+    <span class="kopf-firma">IT Relations GmbH</span>
+  </div>
+</header>
+<div class="rahmen">
+  <aside class="spalte-links" id="navigation"><nav class="nav" aria-label="Inhalt"><a class="nav-wurzel" href="../../index.html">ITR Partner Service</a><details class="nav-buch" open><summary><a href="../../produkte/index.html">Produkte</a></summary><details class="nav-kapitel" open><summary><a href="../../produkte/pos-gastro-app/index.html">POS Gastro App</a></summary><a class="nav-seite" href="../../produkte/pos-gastro-app/funktionsweise.html">Funktionsweise</a><a class="nav-seite" href="../../produkte/pos-gastro-app/in-betrieb-nehmen.html">In Betrieb nehmen</a><a class="nav-seite" href="../../produkte/pos-gastro-app/im-alltag-arbeiten.html">Im Alltag arbeiten</a><a class="nav-seite aktuell" href="../../produkte/pos-gastro-app/storungen-beheben.html">Störungen beheben</a></details></details></nav></aside>
+  <main class="spalte-mitte" id="inhalt"><div class="seitenkopf"><nav class="brotkrumen-nav" aria-label="Sie sind hier"><ol class="brotkrumen"><li><a href="../../produkte/index.html">Produkte</a></li><li><a href="../../produkte/pos-gastro-app/index.html">POS Gastro App</a></li><li><span aria-current="page">Störungen beheben</span></li></ol></nav><h1>Störungen beheben</h1><p class="seitenmeta">Letzte &Auml;nderung 28.08.2026 &middot; Version 5 &middot; Seiten-ID 693</p></div><div class="inhalt"><p id="bkmrk-die-h%C3%A4ufigsten-meldu">Die häufigsten Meldungen der POS Gastro App und wie Sie sie eingrenzen.</p>
+<h2 id="bkmrk-erste-pr%C3%BCfung-bei-je">Erste Prüfung bei jedem Verbindungsproblem</h2>
+<p id="bkmrk-rufen-sie-auf-dem-mo">Rufen Sie auf dem Mobilgerät im Browser <code>http://[IP-Adresse der Kasse]:8080</code> auf. Antwortet die Adresse nicht, ist das Problem im Netzwerk, in der Firewall oder beim ERP-Syncer — nicht in der App.</p>
+<h2 id="bkmrk-%E2%80%9Eunter-der-ip-adress">„Unter der IP-Adresse konnte keine Kasse erreicht werden"</h2>
+<p id="bkmrk-die-app-erreicht-den">Die App erreicht den ERP-Syncer der Kasse nicht.</p>
+<ol id="bkmrk-pr%C3%BCfen%2C-ob-das-mobil">
+<li>Prüfen, ob das Mobilgerät im richtigen WLAN ist.</li>
+<li>Prüfen, ob Kasse und ERP-Syncer gestartet sind.</li>
+<li>Freigabe für <code>TCP 8080</code> in der Firewall des Kassenrechners prüfen.</li>
+<li>Erreichbarkeit der IP-Adresse vom Mobilgerät prüfen (siehe erste Prüfung oben).</li>
+</ol>
+<h2 id="bkmrk-%E2%80%9Eder-verbindungscode">„Der Verbindungscode ist ungültig oder abgelaufen"</h2>
+<p id="bkmrk-die-pr%C3%BCfung-der-verb">Die Prüfung der Verbindung ist fehlgeschlagen.</p>
+<ol id="bkmrk-an-der-kasse-einen-n">
+<li>An der Kasse einen neuen Code über <strong>Order-App verbinden</strong> erzeugen.</li>
+<li>Prüfen, ob die Kasse eingeschaltet und der ERP-Syncer aktiv ist.</li>
+<li>Prüfen, ob der Bediener korrekt angelegt und an der Kasse angemeldet ist.</li>
+</ol>
+<h2 id="bkmrk-%E2%80%9Ekeine-verbindung-zu">„Keine Verbindung zum Server möglich"</h2>
+<p id="bkmrk-allgemeiner-verbindu">Allgemeiner Verbindungsfehler zwischen App und ERP-Syncer.</p>
+<ol id="bkmrk-netzwerkverbindung-d">
+<li>Netzwerkverbindung des Mobilgeräts prüfen.</li>
+<li>ERP-Syncer neu starten.</li>
+<li>Wenn der ERP-Syncer die Kasse nicht erreicht: Kasse neu starten.</li>
+</ol>
+<h2 id="bkmrk-%E2%80%9Eqr-code-hat-nicht-d">„QR-Code hat nicht das richtige Format"</h2>
+<p id="bkmrk-der-gescannte-code-e">Der gescannte Code enthält nicht die erwarteten Daten.</p>
+<ol id="bkmrk-pr%C3%BCfen%2C-ob-der-code-">
+<li>Prüfen, ob der Code über die Kassenfunktion <strong>Order-App verbinden</strong> erzeugt wurde. Andere QR-Codes funktionieren nicht.</li>
+<li>Der Code muss IP-Adresse, Bediener-ID und Verbindungscode enthalten.</li>
+</ol>
+<h2 id="bkmrk-app-bleibt-im-ladebi">App bleibt im Ladebildschirm</h2>
+<p id="bkmrk-die-stammdaten-lasse">Die Stammdaten lassen sich nicht vollständig laden.</p>
+<ol id="bkmrk-netzwerkverbindung-p">
+<li>Netzwerkverbindung prüfen.</li>
+<li>Prüfen, ob überhaupt Artikel mit dem Tag <code>#GASTRO</code> vorhanden sind.</li>
+<li>Protokolldateien des ERP-Syncers auf Fehlermeldungen prüfen.</li>
+<li>Versionsstände von Kasse und App abgleichen.</li>
+</ol>
+<h2 id="bkmrk-tisch-l%C3%A4sst-sich-an-">Tisch lässt sich an der Kasse nicht öffnen</h2>
+<p id="bkmrk-der-tisch-ist-von-ei">Der Tisch ist von einem Mobilgerät gesperrt. Er wird frei, sobald das Gerät den Tisch verlässt, oder automatisch fünf Minuten nach einem Verbindungsabbruch. Die Zeit ist nicht einstellbar.</p>
+<h2 id="bkmrk-informationen-f%C3%BCr-de">Informationen für den Support</h2>
+<p id="bkmrk-halten-sie-f%C3%BCr-eine-">Halten Sie für eine Supportanfrage bereit:</p>
+<ul id="bkmrk-nachvollziehbare-feh">
+<li>nachvollziehbare Fehlerbeschreibung</li>
+<li>Version der ITR Kasse und Version der App</li>
+<li>betroffener Bediener</li>
+<li>betroffener Tisch beziehungsweise Bon</li>
+<li>Zeitpunkt des Fehlers</li>
+<li><code>spring.log</code> der Kasse vom betroffenen Tag</li>
+</ul>
+<p id="bkmrk-supportanfragen-an-s">Supportanfragen an <code>service@alvara.de</code>. Fernwartung erfolgt über TeamViewer.</p>
+</div></main>
+  <aside class="spalte-rechts"><div class="seiteninhalt"><h2>Seiteninhalt</h2><ul><li class="e2"><a href="#bkmrk-erste-pr%C3%BCfung-bei-je">Erste Prüfung bei jedem Verbindungsproblem</a></li><li class="e2"><a href="#bkmrk-%E2%80%9Eunter-der-ip-adress">„Unter der IP-Adresse konnte keine Kasse erreicht werden&quot;</a></li><li class="e2"><a href="#bkmrk-%E2%80%9Eder-verbindungscode">„Der Verbindungscode ist ungültig oder abgelaufen&quot;</a></li><li class="e2"><a href="#bkmrk-%E2%80%9Ekeine-verbindung-zu">„Keine Verbindung zum Server möglich&quot;</a></li><li class="e2"><a href="#bkmrk-%E2%80%9Eqr-code-hat-nicht-d">„QR-Code hat nicht das richtige Format&quot;</a></li><li class="e2"><a href="#bkmrk-app-bleibt-im-ladebi">App bleibt im Ladebildschirm</a></li><li class="e2"><a href="#bkmrk-tisch-l%C3%A4sst-sich-an-">Tisch lässt sich an der Kasse nicht öffnen</a></li><li class="e2"><a href="#bkmrk-informationen-f%C3%BCr-de">Informationen für den Support</a></li></ul></div></aside>
+</div>
+<footer class="fuss">
+  <span>ITR Partner Service</span>
+  <span class="fuss-rechts">
+    <a href="https://itrelations.de/de/impressum" target="_blank" rel="noopener">Impressum</a>
+    <span>Stand 03.09.2026</span>
+  </span>
+</footer>
+<script src="../../assets/suche.js?v=d4fed229"></script>
+</body>
+</html>

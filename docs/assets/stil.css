@@ -416,28 +416,28 @@ h1 { font-size: 32px; font-weight: 600; line-height: 1.15; margin: 0 0 10px;
 /*
  * CODEFELD: dunkler Grund, Sprachkennung, Kopierknopf.
  *
- * Der Grund ist NEUTRALES Dunkelgrau, kein Marineton. Zuerst stand hier das
- * Marine der Kopfleiste, damit das Feld "zur Seite gehoert" - der Blaustich
- * legte sich aber ueber die Syntaxfarben und machte die blauen
- * Schluesselwoerter matt. Neutral laesst jede Marke fuer sich wirken; die
- * Zugehoerigkeit stellt Mint bei Funktionen und Variablen her.
+ * HELLER Grund, in zwei Schritten dorthin gekommen: zuerst marine (zu
+ * blaustichig, das Blau legte sich ueber die blauen Schluesselwoerter), dann
+ * neutral dunkel (stoerte im hellen Satz - ein grosses dunkles Rechteck
+ * mitten im Text zieht den Blick weg vom Gelesenen). Jetzt ein leicht
+ * abgesetztes Hellgrau: der Block bleibt ein Einschub, ohne die Seite zu
+ * zerschneiden.
  *
- * Dunkel und nicht hell, weil Quelltext auf hellem Grund in dieser Menge
- * (bis zu 9 Bloecke je Seite, einer davon 40 Zeilen SQL) den Text ringsum
- * erdrueckt: ein grosses helles Rechteck mit Festbreitenschrift liest sich
- * wie eine zweite Textspalte. Dunkel tritt es als Einschub zurueck.
+ * DIE MARKENFARBEN SIND NEU GEWAEHLT, nicht umgerechnet. Die Toene fuer
+ * dunklen Grund (helles Mint, helles Blau) waeren hier unlesbar; jede Farbe
+ * unten liegt bei mindestens 4,5:1 auf #f6f6f8.
  */
 .codefeld {
   margin: 16px 0 22px; border-radius: var(--rund); overflow: hidden;
-  background: #1b1b1d; border: 1px solid #303035;
+  background: #f6f6f8; border: 1px solid #e2e2e7;
 }
 .codefeld-kopf {
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
-  padding: 7px 10px 7px 14px; background: #242427; border-bottom: 1px solid #303035;
+  padding: 7px 10px 7px 14px; background: #eeeef1; border-bottom: 1px solid #e2e2e7;
 }
 .codefeld-sprache {
   font-size: 11.5px; letter-spacing: .07em; text-transform: uppercase;
-  color: #9a9aa2; font-weight: 600;
+  color: #6a6a74; font-weight: 600;
 }
 /* Ohne JavaScript kann der Knopf nichts - dann bleibt er weg, statt als
    tote Schaltflaeche dazustehen. suche.js macht ihn sichtbar. */
@@ -446,15 +446,15 @@ h1 { font-size: 32px; font-weight: 600; line-height: 1.15; margin: 0 0 10px;
   display: inline-block; cursor: pointer;
   font: inherit; font-size: 12px; line-height: 1;
   padding: 5px 9px; border-radius: var(--rund-klein);
-  background: transparent; border: 1px solid #3a3a41; color: #b4b4bc;
+  background: transparent; border: 1px solid #cfcfd6; color: #55555f;
 }
-.codefeld-kopieren.kann:hover { background: #303035; color: #e8e8ee; }
-.codefeld-kopieren.kann:focus-visible { outline: 2px solid var(--mint); outline-offset: 2px; }
-.codefeld-kopieren.fertig { border-color: var(--ok); color: #7fe0b8; }
+.codefeld-kopieren.kann:hover { background: #e2e2e7; color: var(--ink); }
+.codefeld-kopieren.kann:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.codefeld-kopieren.fertig { border-color: var(--ok); color: #0f7a55; }
 
 .codefeld pre {
   margin: 0; padding: 13px 14px; overflow-x: auto;
-  font-size: 13.5px; line-height: 1.55; color: #dcdce0;
+  font-size: 13.5px; line-height: 1.55; color: #26262c;
   /* Zeilen NICHT umbrechen: in SQL und XML traegt der Umbruch Bedeutung.
      Der Block scrollt stattdessen seitlich - so wie die Tabellen. */
   white-space: pre;
@@ -464,27 +464,27 @@ h1 { font-size: 32px; font-weight: 600; line-height: 1.15; margin: 0 0 10px;
   font-family: Consolas, 'Courier New', monospace;
 }
 /* Die Bildlaufleiste im Codefeld passend zum dunklen Grund. */
-.codefeld pre { scrollbar-width: thin; scrollbar-color: #3a3a41 transparent; }
+.codefeld pre { scrollbar-width: thin; scrollbar-color: var(--leiste) transparent; }
 .codefeld pre::-webkit-scrollbar { height: 9px; }
 .codefeld pre::-webkit-scrollbar-track { background: transparent; }
 .codefeld pre::-webkit-scrollbar-thumb {
-  background: #3a3a41; border-radius: 4px; border: 2px solid transparent; background-clip: content-box;
+  background: var(--leiste); border-radius: 4px; border: 2px solid transparent; background-clip: content-box;
 }
 
 /* ------------------------------------------------------- Farben der Marken */
-/* Auf #1b1b1d geprueft. Mint kommt bei Funktionen und Variablen vor - das ist
-   die Markenfarbe und bindet das Feld an den Rest der Seite. */
-.tk-kommentar   { color: #8b8b93; font-style: italic; }
-.tk-text        { color: #e3b981; }   /* Zeichenketten und Werte */
-.tk-zahl        { color: #e0899f; }
-.tk-schluessel  { color: #8fa6ff; font-weight: 600; }
-.tk-funktion    { color: #9fe7d3; }
-.tk-variable    { color: #bfeee2; }
-.tk-schalter    { color: #c7b0ee; }   /* PowerShell-Parameter, -Recurse */
-.tk-marke       { color: #8fa6ff; }   /* XML-Tags, Batch-Sprungmarken */
-.tk-eigenschaft { color: #9fe7d3; }   /* Attribute, Schluessel in JSON/INI */
-.tk-abschnitt   { color: #c7b0ee; font-weight: 600; }
-.tk-anweisung   { color: #8b8b93; }
+/* Auf #f6f6f8 geprueft, jede Farbe mindestens 4,5:1. Mint kommt bei Funktionen und Variablen vor - das ist
+   die Markenfarbe, hier als dunkles Petrol. */
+.tk-kommentar   { color: #5f6773; font-style: italic; }
+.tk-text        { color: #9a5000; }   /* Zeichenketten und Werte */
+.tk-zahl        { color: #a3195b; }
+.tk-schluessel  { color: var(--blue-text); font-weight: 600; }
+.tk-funktion    { color: #0d6e63; }
+.tk-variable    { color: #0b6a7a; }
+.tk-schalter    { color: #6b28c9; }   /* PowerShell-Parameter, -Recurse */
+.tk-marke       { color: var(--blue-text); }   /* XML-Tags, Batch-Sprungmarken */
+.tk-eigenschaft { color: #0d6e63; }   /* Attribute, Schluessel in JSON/INI */
+.tk-abschnitt   { color: #6b28c9; font-weight: 600; }
+.tk-anweisung   { color: #5f6773; }
 
 /* --------------------------------------------------------- Hinweiskaesten */
 .inhalt .callout {
