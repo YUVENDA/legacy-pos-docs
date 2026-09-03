@@ -7,27 +7,29 @@
 <title>Funktionsweise | Produkte</title>
 <meta name="description" content="Die POS Gastro App ist ein mobiles Eingabegerät der ITR Kasse. Sie erfasst Bestellungen an Tischen und überträgt sie an die Kasse. Sie ist keine eigenständige Kasse. Funktionsweise Die App verbindet s">
 <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../../assets/stil.css?v=c018b390">
+<link rel="stylesheet" href="../../assets/stil.css?v=681ac81a">
 </head>
 <body>
 <header class="kopf">
-  <a class="kopf-logo" href="../../index.html"><img src="../../assets/logo.png" alt="IT Relations"></a>
-  <div class="kopf-suche">
-    <input type="search" id="suchfeld" placeholder="Alle Inhalte durchsuchen" autocomplete="off"
-           aria-label="Suchen" data-auf="../../">
-    <div id="suchergebnis" hidden></div>
+  <div class="kopf-innen">
+    <a class="kopf-logo" href="../../index.html"><img src="../../assets/logo.png" alt="IT Relations"></a>
+    <div class="kopf-suche">
+      <input type="search" id="suchfeld" placeholder="Alle Inhalte durchsuchen" autocomplete="off"
+             aria-label="Suchen" data-auf="../../">
+      <div id="suchergebnis" hidden></div>
+    </div>
+    <a class="sprung" href="#navigation">Zur Navigation</a>
+    <span class="kopf-firma">IT Relations GmbH</span>
   </div>
-  <a class="sprung" href="#navigation">Zur Navigation</a>
-  <span class="kopf-firma">IT Relations GmbH</span>
 </header>
 <div class="rahmen">
-  <aside class="spalte-links" id="navigation"><nav class="nav" aria-label="Inhalt"><a class="nav-wurzel" href="../../index.html">ITR Partner Service</a><details class="nav-buch" open><summary><a href="../../produkte/index.html">Produkte</a></summary><details class="nav-kapitel" open><summary>POS Gastro App</summary><a class="nav-seite aktuell" href="../../produkte/pos-gastro-app/funktionsweise.html">Funktionsweise</a></details></details></nav></aside>
-  <main class="spalte-mitte" id="inhalt"><p class="brotkrumen">Produkte &rsaquo; POS Gastro App</p><h1>Funktionsweise</h1><p class="seitenmeta">Letzte &Auml;nderung 02.09.2026 &middot; Version 11 &middot; Seiten-ID 684</p><div class="inhalt"><p id="bkmrk-die-pos-gastro-app-i">Die POS Gastro App ist ein mobiles Eingabegerät der ITR Kasse. Sie erfasst Bestellungen an Tischen und überträgt sie an die Kasse. Sie ist keine eigenständige Kasse.</p>
+  <aside class="spalte-links" id="navigation"><nav class="nav" aria-label="Inhalt"><a class="nav-wurzel" href="../../index.html">ITR Partner Service</a><details class="nav-buch" open><summary><a href="../../produkte/index.html">Produkte</a></summary><details class="nav-kapitel" open><summary><a href="../../produkte/pos-gastro-app/index.html">POS Gastro App</a></summary><a class="nav-seite aktuell" href="../../produkte/pos-gastro-app/funktionsweise.html">Funktionsweise</a></details></details></nav></aside>
+  <main class="spalte-mitte" id="inhalt"><div class="seitenkopf"><nav class="brotkrumen-nav" aria-label="Sie sind hier"><ol class="brotkrumen"><li><a href="../../produkte/index.html">Produkte</a></li><li><a href="../../produkte/pos-gastro-app/index.html">POS Gastro App</a></li><li><span aria-current="page">Funktionsweise</span></li></ol></nav><h1>Funktionsweise</h1><p class="seitenmeta">Letzte &Auml;nderung 02.09.2026 &middot; Version 11 &middot; Seiten-ID 684</p></div><div class="inhalt"><p id="bkmrk-die-pos-gastro-app-i">Die POS Gastro App ist ein mobiles Eingabegerät der ITR Kasse. Sie erfasst Bestellungen an Tischen und überträgt sie an die Kasse. Sie ist keine eigenständige Kasse.</p>
 <h2 id="bkmrk-funktionsweise">Funktionsweise</h2>
 <p id="bkmrk-die-app-verbindet-si">Die App verbindet sich über das Netzwerk mit der Kasse und arbeitet mit dem Bediener, der an der Kasse angemeldet ist. Alle Preise, Rabatte, Rundungen, Steuern und Zahlbeträge berechnet ausschließlich die Kasse. Die App zeigt nur, was die Kasse zurückmeldet.</p>
 <p id="bkmrk-bestellungen-bleiben">Bestellungen bleiben zunächst auf dem Mobilgerät. Erst beim Verlassen des Tisches werden alle bis dahin gebuchten Positionen gemeinsam als eine Bestellung an die Kasse und den Küchenmonitor übertragen.</p>
 <h2 id="bkmrk-beteiligte-komponent">Beteiligte Komponenten</h2>
-<table id="bkmrk-komponente-rolle-itr">
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-komponente-rolle-itr">
 <thead>
 <tr>
 <th>Komponente</th>
@@ -52,7 +54,7 @@
 <td>Ausdruck der Bestellung über einen eingerichteten Druckpfad</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p id="bkmrk-die-kommunikation-l%C3%A4">Die App verbindet sich über <code>TCP-Port 8080</code> mit der ITR Kasse.</p>
 <h2 id="bkmrk-was-die-app-leistet">Was die App leistet</h2>
 <ul id="bkmrk-tischbons-%C3%B6ffnen%2C-ar">
@@ -63,7 +65,7 @@
 </ul>
 <h2 id="bkmrk-grenzen-der-app">Grenzen der App</h2>
 <p id="bkmrk-kl%C3%A4ren-sie-diese-pun">Klären Sie diese Punkte vor der Inbetriebnahme beim Endkunden.</p>
-<table id="bkmrk-grenze-folge-f%C3%BCr-den">
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-grenze-folge-f%C3%BCr-den">
 <thead>
 <tr>
 <th>Grenze</th>
@@ -104,7 +106,7 @@
 <td>Siehe Fiskalisierung, mit dem Endkunden klären</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p id="bkmrk-getestet-wurde-der-b">In der aktuellen Beta empfehlen wir <strong>bis zu 5 gleichzeitig</strong> an einer Kasse betriebene Mobilgeräte. Eine feste Obergrenze gibt es nicht – mehr Geräte (z. B. 9) sind grundsätzlich möglich. Wie viele Geräte sinnvoll sind, hängt vom Bonierverhalten ab: Jede Bestellung wird sofort an die Kasse geschrieben und fiskalisiert. Viele gleichzeitige Bonierungen, häufiges Nachbonieren sowie ein ausgelastetes oder instabiles WLAN erhöhen die Last und lassen die Antwortzeiten steigen; wenige, über die Zeit verteilte Bestellungen erlauben entsprechend mehr Geräte. In kommenden Versionen sind Live-Bezahldienste vorgesehen; diese werden die genannten Kennzahlen voraussichtlich verändern.</p>
 <h2 id="bkmrk-weitere-informatione">Weitere Informationen</h2>
 <ul id="bkmrk-itr-partner-service-">
@@ -116,8 +118,11 @@
 </div>
 <footer class="fuss">
   <span>ITR Partner Service</span>
-  <span>Stand 03.09.2026</span>
+  <span class="fuss-rechts">
+    <a href="https://itrelations.de/de/impressum" target="_blank" rel="noopener">Impressum</a>
+    <span>Stand 03.09.2026</span>
+  </span>
 </footer>
-<script src="../../assets/suche.js?v=5ba6b751"></script>
+<script src="../../assets/suche.js?v=d4fed229"></script>
 </body>
 </html>

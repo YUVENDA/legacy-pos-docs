@@ -137,3 +137,113 @@
     if (!kasten.contains(ev.target) && ev.target !== feld) { kasten.hidden = true; }
   });
 })();
+
+/*
+  AKTUELLEN ABSCHNITT IN DER RECHTEN SPALTE MARKIEREN.
+
+  Die Ueberschriftenliste stand vorher unbeweglich da: man scrollte durch eine
+  Referenzseite und sah nicht, wo man ist. Jetzt wandert die Markierung mit,
+  und die Liste scrollt den markierten Eintrag in ihren sichtbaren Bereich.
+
+  WARUM KEIN IntersectionObserver: der erste Versuch beobachtete ein Band von
+  der Kopfleiste bis 30 % Fensterhoehe. Auf Referenzseiten liegen die
+  Ueberschriften weit auseinander - meist war KEINE im Band, und weil ein
+  Observer nur bei Uebergaengen meldet, blieb die Liste unmarkiert.
+  Stattdessen die einfache, immer eindeutige Regel: markiert wird die LETZTE
+  Ueberschrift oberhalb der Lesekante. Das ergibt an jeder Scrollposition genau
+  einen Treffer, auch ganz oben und ganz unten.
+
+  WARUM KEIN decodeURIComponent auf der Kennung: BookStack legt Anker wie
+  "bkmrk-artikel%2C-warengruppe" an - das Prozentzeichen ist TEIL der Kennung,
+  nicht ihre Kodierung. Dekodieren machte daraus "bkmrk-artikel,-warengruppe",
+  und getElementById fand nichts mehr (03.09.2026: 2 von 5 Proben tot).
+*/
+(function () {
+  var liste = document.querySelector('.seiteninhalt');
+  if (!liste) { return; }
+
+  var paare = [];
+  Array.prototype.forEach.call(liste.querySelectorAll('a[href^="#"]'), function (a) {
+    var roh = a.getAttribute('href').slice(1);
+    // erst wie geschrieben, dann dekodiert - in dieser Reihenfolge
+    var kopf = document.getElementById(roh);
+    if (!kopf) {
+      try { kopf = document.getElementById(decodeURIComponent(roh)); } catch (e) { kopf = null; }
+    }
+    if (kopf) { paare.push({ a: a, kopf: kopf }); }
+  });
+  if (!paare.length) { return; }
+
+  var LESEKANTE = 110;   // etwas unter der klebenden Kopfleiste
+  var aktiv = null;
+  var geplant = false;
+
+  function pruefen() {
+    geplant = false;
+    var treffer = paare[0];
+    for (var i = 0; i < paare.length; i++) {
+      if (paare[i].kopf.getBoundingClientRect().top <= LESEKANTE) { treffer = paare[i]; }
+      else { break; }
+    }
+    if (treffer === aktiv) { return; }
+    if (aktiv) { aktiv.a.classList.remove('aktuell'); }
+    aktiv = treffer;
+    aktiv.a.classList.add('aktuell');
+    // Nur nachziehen, wenn der Eintrag ausserhalb des Sichtfensters der Liste
+    // liegt - sonst ruckelt sie bei jedem Abschnitt.
+    var lr = liste.parentElement.getBoundingClientRect();
+    var ar = aktiv.a.getBoundingClientRect();
+    if (ar.top < lr.top || ar.bottom > lr.bottom) {
+      aktiv.a.scrollIntoView({ block: 'nearest' });
+    }
+  }
+
+  function anstossen() {
+    if (geplant) { return; }
+    geplant = true;
+    window.requestAnimationFrame(pruefen);
+  }
+
+  window.addEventListener('scroll', anstossen, { passive: true });
+  window.addEventListener('resize', anstossen);
+  pruefen();
+})();
+
+/*
+  KOPIERKNOPF AM CODEFELD.
+
+  Der Knopf steht im HTML, ist per CSS aber verborgen und wird hier
+  freigeschaltet ("kann"). So sieht niemand eine Schaltflaeche, die ohne
+  JavaScript nichts tun wuerde - und wer JS abgeschaltet hat, sieht den Code
+  trotzdem vollstaendig und eingefaerbt, weil die Farben beim Erzeugen
+  entstehen und nicht hier.
+
+  navigator.clipboard braucht einen sicheren Kontext (https oder localhost).
+  Auf GitHub Pages ist das gegeben; wo nicht, bleibt der Knopf weg, statt beim
+  Klicken ins Leere zu laufen.
+*/
+(function () {
+  if (!navigator.clipboard || !window.isSecureContext) { return; }
+
+  Array.prototype.forEach.call(document.querySelectorAll('.codefeld'), function (feld) {
+    var knopf = feld.querySelector('.codefeld-kopieren');
+    var code = feld.querySelector('pre code');
+    if (!knopf || !code) { return; }
+    knopf.classList.add('kann');
+
+    knopf.addEventListener('click', function () {
+      navigator.clipboard.writeText(code.textContent).then(function () {
+        var vorher = knopf.textContent;
+        knopf.textContent = 'Kopiert';
+        knopf.classList.add('fertig');
+        window.setTimeout(function () {
+          knopf.textContent = vorher;
+          knopf.classList.remove('fertig');
+        }, 1600);
+      }).catch(function () {
+        knopf.textContent = 'Ging nicht';
+        window.setTimeout(function () { knopf.textContent = 'Kopieren'; }, 1600);
+      });
+    });
+  });
+})();
