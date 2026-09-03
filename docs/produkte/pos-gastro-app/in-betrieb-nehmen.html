@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>In Betrieb nehmen | Produkte</title>
+<meta name="description" content="Von der leeren Kasse bis zur verbundenen App: Voraussetzungen prüfen, Artikel freigeben, verbinden, Zahlwege aktivieren. Voraussetzungen Kasse Betriebsbereite ITR Kasse mit eingerichteter technischer ">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/stil.css?v=af7d1bb8">
+</head>
+<body>
+<header class="kopf">
+  <div class="kopf-innen">
+    <a class="kopf-logo" href="../../index.html"><img src="../../assets/logo.png" alt="IT Relations"></a>
+    <div class="kopf-suche">
+      <input type="search" id="suchfeld" placeholder="Alle Inhalte durchsuchen" autocomplete="off"
+             aria-label="Suchen" data-auf="../../">
+      <div id="suchergebnis" hidden></div>
+    </div>
+    <a class="sprung" href="#navigation">Zur Navigation</a>
+    <span class="kopf-firma">IT Relations GmbH</span>
+  </div>
+</header>
+<div class="rahmen">
+  <aside class="spalte-links" id="navigation"><nav class="nav" aria-label="Inhalt"><a class="nav-wurzel" href="../../index.html">ITR Partner Service</a><details class="nav-buch" open><summary><a href="../../produkte/index.html">Produkte</a></summary><details class="nav-kapitel" open><summary><a href="../../produkte/pos-gastro-app/index.html">POS Gastro App</a></summary><a class="nav-seite" href="../../produkte/pos-gastro-app/funktionsweise.html">Funktionsweise</a><a class="nav-seite aktuell" href="../../produkte/pos-gastro-app/in-betrieb-nehmen.html">In Betrieb nehmen</a><a class="nav-seite" href="../../produkte/pos-gastro-app/im-alltag-arbeiten.html">Im Alltag arbeiten</a><a class="nav-seite" href="../../produkte/pos-gastro-app/storungen-beheben.html">Störungen beheben</a></details></details></nav></aside>
+  <main class="spalte-mitte" id="inhalt"><div class="seitenkopf"><nav class="brotkrumen-nav" aria-label="Sie sind hier"><ol class="brotkrumen"><li><a href="../../produkte/index.html">Produkte</a></li><li><a href="../../produkte/pos-gastro-app/index.html">POS Gastro App</a></li><li><span aria-current="page">In Betrieb nehmen</span></li></ol></nav><h1>In Betrieb nehmen</h1><p class="seitenmeta">Letzte &Auml;nderung 03.09.2026 &middot; Version 6 &middot; Seiten-ID 685</p></div><div class="inhalt"><p id="bkmrk-von-der-leeren-kasse">Von der leeren Kasse bis zur verbundenen App: Voraussetzungen prüfen, Artikel freigeben, verbinden, Zahlwege aktivieren.</p>
+<h2 id="bkmrk-voraussetzungen">Voraussetzungen</h2>
+<p id="bkmrk-kasse"><strong>Kasse</strong></p>
+<ul id="bkmrk-betriebsbereite-itr-">
+<li>Betriebsbereite ITR Kasse mit eingerichteter technischer Sicherheitseinrichtung (TSE)</li>
+<li>Lizenz für POS Gastro</li>
+<li>Eine Schaltfläche in der Kassenmaske mit der Aktion <strong>Order-App verbinden</strong>. Sie erzeugt den Verbindungscode.</li>
+</ul>
+<p id="bkmrk-versionen"><strong>Versionen</strong></p>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-itr-kasse-app-stand-">
+<thead>
+<tr>
+<th>ITR Kasse</th>
+<th>App</th>
+<th>Stand</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ab 5.51</td>
+<td>ab 1.1</td>
+<td>Beta ohne Bezahlfunktion</td>
+</tr>
+<tr>
+<td>ab 5.54</td>
+<td>ab 1.2</td>
+<td>Beta mit Bezahlfunktion</td>
+</tr>
+</tbody>
+</table></div>
+<p id="bkmrk-f%C3%BCr-ios-und-android-">Für iOS und Android wird dieselbe App-Version bereitgestellt, über den Apple App Store und den Google Play Store. Eine neuere App lässt sich in der Regel auch mit einer älteren Kasse betreiben; halten Sie beide trotzdem auf einem zusammengehörigen Stand.</p>
+<p class="callout warning" id="bkmrk-die-app-blendet-funk">Die App blendet Funktionen nicht aus, die die verbundene Kasse nicht unterstützt. Ist die Kasse zu alt für das Bezahlen, bietet die App es an, die Kasse führt es aber nicht aus. Fehlt eine Funktion oder bleibt sie ohne Wirkung, prüfen Sie zuerst die Kassenversion.</p>
+<p id="bkmrk-bediener"><strong>Bediener</strong></p>
+<p id="bkmrk-der-bediener%2C-der-mi">Der Bediener, der mit der App arbeiten soll, muss an der Kasse angemeldet sein. Der Verbindungscode gilt für genau diesen Bediener.</p>
+<p id="bkmrk-netzwerk"><strong>Netzwerk</strong></p>
+<ul id="bkmrk-stabile-ipv4-verbind">
+<li>Stabile IPv4-Verbindung zwischen Kasse und Mobilgerät</li>
+<li><code>TCP 8080</code> muss vom Mobilgerät auf dem Kassenrechner erreichbar sein</li>
+</ul>
+<p id="bkmrk-nicht-gleichzeitig-b"><strong>Nicht gleichzeitig betreiben</strong></p>
+<p id="bkmrk-floating-und-die-pos">Floating und die POS Gastro App lassen sich derzeit nicht parallel betreiben. Auf einer Kasse mit App muss Floating deaktiviert sein, sonst kommt es zu Tisch- und Bonkonflikten.</p>
+<p id="bkmrk-optional"><strong>Optional</strong></p>
+<p id="bkmrk-orderbon-%C3%BCber-einen-">Orderbon über einen eingerichteten Druckpfad, Küchenmonitor Version 2026.</p>
+<h2 id="bkmrk-schritt-1%3A-artikel-f">Schritt 1: Artikel freigeben</h2>
+<p id="bkmrk-die-app-zeigt-nur-ar">Die App zeigt nur Artikel, die in den Stammdaten das Stichwort <code>#GASTRO</code> tragen.</p>
+<ol id="bkmrk-%C3%96ffnen-sie-die-artik">
+<li>Öffnen Sie die Artikelstammdaten des Artikels.</li>
+<li>Wechseln Sie zu den <strong>Stichworten</strong>.</li>
+<li>Tragen Sie <code>#GASTRO</code> ein — exakt in Großbuchstaben mit vorangestelltem Doppelkreuz.</li>
+<li>Speichern Sie den Artikel und wiederholen Sie das für alle bestellbaren Artikel.</li>
+</ol>
+<p class="callout warning" id="bkmrk-das-stichwort-unters">Das Stichwort unterscheidet Groß- und Kleinschreibung. Kleingeschrieben wirkt es nicht, der Artikel bleibt in der App unsichtbar.</p>
+<p id="bkmrk-standalone-kasse%3A-di"><strong>Standalone-Kasse:</strong> Die Stichworte werden direkt an der Kasse gepflegt und wirken sofort nach dem Speichern.</p>
+<p id="bkmrk-betrieb-mit-centralp"><strong>Betrieb mit CentralPoint:</strong> Pflegen Sie die Stichworte im CentralPoint und lassen Sie die Stammdaten an die Kasse übertragen. Erst danach kennt die Kasse das Stichwort und meldet den Artikel an die App.</p>
+<p id="bkmrk-artikel-ohne-warengr">Artikel ohne Warengruppe erscheinen nicht — die App gruppiert die Anzeige nach Warengruppe.</p>
+<h2 id="bkmrk-schritt-2%3A-app-mit-d">Schritt 2: App mit der Kasse verbinden</h2>
+<ol id="bkmrk-melden-sie-den-bedie">
+<li>Melden Sie den Bediener an der Kasse an.</li>
+<li>Führen Sie in den Gastro-Funktionen der Kasse die Aktion <strong>Order-App verbinden</strong> aus. Die Kasse zeigt einen QR-Code und einen sechsstelligen Verbindungscode.</li>
+<li>Öffnen Sie die App. Sie startet im Verbindungsmodus.</li>
+<li>Tippen Sie auf den QR-Code-Bereich und erlauben Sie den Zugriff auf die Kamera.</li>
+<li>Scannen Sie den QR-Code auf dem Kassendisplay.</li>
+<li>Tippen Sie auf <strong>Weiter als [Bedienername]</strong>.</li>
+<li>Die App lädt Artikel und Tischinformationen und zeigt die Hauptansicht.</li>
+</ol>
+<p id="bkmrk-"><span class="verweis-inaktiv"></span></p>
+<p id="bkmrk-verbindungsbildschir"><em>Verbindungsbildschirm der App: QR-Code scannen, Demo oder manuelle Eingabe.</em></p>
+<p id="bkmrk-der-qr-code-enth%C3%A4lt-">Der QR-Code enthält die IP-Adresse der Kasse, die Bediener-ID und den Verbindungscode.</p>
+<p id="bkmrk-ohne-kamera-oder-wen"><strong>Ohne Kamera oder wenn der Scan fehlschlägt:</strong> Tippen Sie auf <strong>Manuell</strong> und tragen Sie IP-Adresse des Kassenrechners, Bediener-ID und den sechsstelligen Code ein, dann <strong>Fortfahren als [Bedienername]</strong>.</p>
+<h2 id="bkmrk-schritt-3%3A-zahlwege-">Schritt 3: Zahlwege für die App freigeben</h2>
+<p id="bkmrk-ab-itr-kasse-5.54-mi">Ab ITR Kasse 5.54 mit App 1.2 kann in der App bezahlt werden.</p>
+<ol id="bkmrk-%C3%96ffnen-sie-an-der-ka">
+<li>Öffnen Sie an der Kasse die Einstellungen der Zahlwege.</li>
+<li>Aktivieren Sie am gewünschten Zahlweg <strong>Use for Mobile Devices</strong>.</li>
+<li>Wiederholen Sie das für jeden Zahlweg, der in der App verfügbar sein soll.</li>
+<li>Starten Sie die App neu.</li>
+</ol>
+<p id="bkmrk-zahlweg-0%2C-die-barza">Zahlweg 0, die Barzahlung, ist standardmäßig verfügbar. Kombinierte Zahlwege sind in der App nicht möglich — dafür muss der Bon oder Tisch vorher gesplittet werden.</p>
+<p class="callout warning" id="bkmrk-die-app-l%C3%A4dt-die-zah">Die App lädt die Zahlwege beim Start. Nach einer Änderung an der Kasse muss die App neu gestartet werden, sonst arbeitet sie mit dem alten Stand.</p>
+<h2 id="bkmrk-ergebnis-pr%C3%BCfen">Ergebnis prüfen</h2>
+<ol id="bkmrk-die-hauptansicht-der">
+<li>Die Hauptansicht der App ist erreichbar und zeigt den richtigen Bedienernamen.</li>
+<li>Ein Tisch lässt sich öffnen, die freigegebenen Artikel erscheinen in ihrer Warengruppe.</li>
+<li>Im Bezahlvorgang stehen die freigegebenen Zahlwege zur Auswahl.</li>
+</ol>
+<h2 id="bkmrk-ohne-kasse-vorf%C3%BChren">Ohne Kasse vorführen: Demo-Modus</h2>
+<p id="bkmrk-f%C3%BCr-vorf%C3%BChrungen-und">Für Vorführungen und Schulungen arbeitet die App mit lokalen Testdaten. Entweder über die Demo-Schaltfläche im Verbindungsbildschirm, oder über <strong>Manuell</strong> mit IP-Adresse <code>999.999.999.999</code>, Bediener-ID <code>999</code> und Code <code>999999</code>. Dieselben Werte funktionieren auch als QR-Code:</p>
+<div class="codefeld"><div class="codefeld-kopf"><span class="codefeld-sprache">JSON</span><button type="button" class="codefeld-kopieren">Kopieren</button></div><pre><code class="language-json">{
+  <span class="tk-eigenschaft">"address"</span>: <span class="tk-text">"999.999.999.999"</span>,
+  <span class="tk-eigenschaft">"operatorId"</span>: <span class="tk-text">"999"</span>,
+  <span class="tk-eigenschaft">"connectionCode"</span>: <span class="tk-text">"999999"</span>
+}
+</code></pre></div>
+<p id="bkmrk-im-demo-modus-bleibe">Im Demo-Modus bleiben alle Aktionen lokal, es gibt keine Verbindung zu einer Kasse. Beim Abmelden oder Beenden der App endet er.</p>
+<h2 id="bkmrk-wenn-es-nicht-funkti">Wenn es nicht funktioniert</h2>
+<ul id="bkmrk-rufen-sie-auf-dem-mo">
+<li>Rufen Sie auf dem Mobilgerät im Browser <code>http://[IP-Adresse der Kasse]:8080</code> auf. Antwortet die Adresse nicht, liegt es an Netzwerk, Firewall oder daran, dass der Dienst der Kasse nicht läuft.</li>
+<li>Erzeugen Sie an der Kasse einen neuen Verbindungscode.</li>
+<li>Alle Meldungen im Einzelnen: <a href="../../produkte/pos-gastro-app/storungen-beheben.html">ITR Partner Service → Produkte → POS Gastro App → Störungen beheben</a></li>
+</ul></div></main>
+  <aside class="spalte-rechts"><div class="seiteninhalt"><h2>Seiteninhalt</h2><ul><li class="e2"><a href="#bkmrk-voraussetzungen">Voraussetzungen</a></li><li class="e2"><a href="#bkmrk-schritt-1%3A-artikel-f">Schritt 1: Artikel freigeben</a></li><li class="e2"><a href="#bkmrk-schritt-2%3A-app-mit-d">Schritt 2: App mit der Kasse verbinden</a></li><li class="e2"><a href="#bkmrk-schritt-3%3A-zahlwege-">Schritt 3: Zahlwege für die App freigeben</a></li><li class="e2"><a href="#bkmrk-ergebnis-pr%C3%BCfen">Ergebnis prüfen</a></li><li class="e2"><a href="#bkmrk-ohne-kasse-vorf%C3%BChren">Ohne Kasse vorführen: Demo-Modus</a></li><li class="e2"><a href="#bkmrk-wenn-es-nicht-funkti">Wenn es nicht funktioniert</a></li></ul></div></aside>
+</div>
+<footer class="fuss">
+  <span>ITR Partner Service</span>
+  <span class="fuss-rechts">
+    <a href="https://itrelations.de/de/impressum" target="_blank" rel="noopener">Impressum</a>
+    <span>Stand 03.09.2026</span>
+  </span>
+</footer>
+<script src="../../assets/suche.js?v=d4fed229"></script>
+</body>
+</html>
