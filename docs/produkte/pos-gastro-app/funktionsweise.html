@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Funktionsweise | Produkte</title>
+<link rel="stylesheet" href="../../assets/stil.css">
+</head>
+<body>
+<header class="kopf">
+  <a class="kopf-logo" href="../../index.html"><img src="../../assets/logo.png" alt="IT Relations"></a>
+  <div class="kopf-suche">
+    <input type="search" id="suchfeld" placeholder="Alle Inhalte durchsuchen" autocomplete="off"
+           aria-label="Suchen" data-auf="../../">
+    <div id="suchergebnis" hidden></div>
+  </div>
+  <span class="kopf-firma">IT Relations GmbH</span>
+</header>
+<div class="rahmen">
+  <aside class="spalte-links"><nav class="nav" aria-label="Inhalt"><a class="nav-wurzel" href="../../index.html">ITR Partner Service</a><details class="nav-buch" open><summary><a href="../../produkte/index.html">Produkte</a></summary><details class="nav-kapitel" open><summary>POS Gastro App</summary><a class="nav-seite aktuell" href="../../produkte/pos-gastro-app/funktionsweise.html">Funktionsweise</a></details></details></nav></aside>
+  <main class="spalte-mitte"><p class="brotkrumen">Produkte &rsaquo; POS Gastro App</p><h1>Funktionsweise</h1><p class="seitenmeta">Letzte &Auml;nderung 02.09.2026 &middot; Version 11 &middot; Seiten-ID 684</p><div class="inhalt"><p id="bkmrk-die-pos-gastro-app-i">Die POS Gastro App ist ein mobiles Eingabegerät der ITR Kasse. Sie erfasst Bestellungen an Tischen und überträgt sie an die Kasse. Sie ist keine eigenständige Kasse.</p>
+<h2 id="bkmrk-funktionsweise">Funktionsweise</h2>
+<p id="bkmrk-die-app-verbindet-si">Die App verbindet sich über das Netzwerk mit der Kasse und arbeitet mit dem Bediener, der an der Kasse angemeldet ist. Alle Preise, Rabatte, Rundungen, Steuern und Zahlbeträge berechnet ausschließlich die Kasse. Die App zeigt nur, was die Kasse zurückmeldet.</p>
+<p id="bkmrk-bestellungen-bleiben">Bestellungen bleiben zunächst auf dem Mobilgerät. Erst beim Verlassen des Tisches werden alle bis dahin gebuchten Positionen gemeinsam als eine Bestellung an die Kasse und den Küchenmonitor übertragen.</p>
+<h2 id="bkmrk-beteiligte-komponent">Beteiligte Komponenten</h2>
+<table id="bkmrk-komponente-rolle-itr">
+<thead>
+<tr>
+<th>Komponente</th>
+<th>Rolle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ITR Kasse</td>
+<td>führt Bon und Tisch, berechnet alle Beträge, signiert den Kassenbeleg über die technische Sicherheitseinrichtung (TSE); nimmt über einen eigenen Dienst die Verbindung der App an</td>
+</tr>
+<tr>
+<td>POS Gastro App</td>
+<td>erfasst Tische, Artikel und Positionskommentare, überträgt Bestellungen</td>
+</tr>
+<tr>
+<td>Küchenmonitor (optional)</td>
+<td>zeigt die übertragenen Bestellungen in der Küche</td>
+</tr>
+<tr>
+<td>Orderbon (optional)</td>
+<td>Ausdruck der Bestellung über einen eingerichteten Druckpfad</td>
+</tr>
+</tbody>
+</table>
+<p id="bkmrk-die-kommunikation-l%C3%A4">Die App verbindet sich über <code>TCP-Port 8080</code> mit der ITR Kasse.</p>
+<h2 id="bkmrk-was-die-app-leistet">Was die App leistet</h2>
+<ul id="bkmrk-tischbons-%C3%B6ffnen%2C-ar">
+<li>Tischbons öffnen, Artikel buchen, Positionskommentare erfassen</li>
+<li>Bestellungen an Kasse und Küchenmonitor übertragen</li>
+<li>Tische umplatzieren, zusammenlegen und splitten</li>
+<li>Bezahlen in der App, ab ITR Kasse 5.54 mit App-Version 1.2</li>
+</ul>
+<h2 id="bkmrk-grenzen-der-app">Grenzen der App</h2>
+<p id="bkmrk-kl%C3%A4ren-sie-diese-pun">Klären Sie diese Punkte vor der Inbetriebnahme beim Endkunden.</p>
+<table id="bkmrk-grenze-folge-f%C3%BCr-den">
+<thead>
+<tr>
+<th>Grenze</th>
+<th>Folge für den Betrieb</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Floating und POS Gastro App nicht parallel betreibbar</td>
+<td>Auf Kassen mit App muss Floating deaktiviert sein, sonst Tisch- und Bonkonflikte</td>
+</tr>
+<tr>
+<td>Ein Bediener nur auf einem Mobilgerät</td>
+<td>Anmeldung an einem zweiten Gerät trennt das erste</td>
+</tr>
+<tr>
+<td>Ein Tisch nur von einem Gerät</td>
+<td>Der Tisch ist währenddessen auch für die Kasse gesperrt, Sperre läuft erst nach fünf Minuten ab</td>
+</tr>
+<tr>
+<td>Kunden- und bontypspezifische Modifier nicht unterstützt</td>
+<td>Betroffene Belege an der Kasse erfassen und abschließen</td>
+</tr>
+<tr>
+<td>Gesendete Bestellungen in der App nicht änderbar</td>
+<td>Korrekturen erfolgen an der Kasse</td>
+</tr>
+<tr>
+<td>Keine kombinierten Zahlwege</td>
+<td>Bon oder Tisch vorher splitten</td>
+</tr>
+<tr>
+<td>App blendet nicht unterstützte Funktionen nicht aus</td>
+<td>Bei fehlender Wirkung zuerst die Kassenversion prüfen</td>
+</tr>
+<tr>
+<td>Bestellungen werden derzeit nicht fiskalisiert</td>
+<td>Siehe Fiskalisierung, mit dem Endkunden klären</td>
+</tr>
+</tbody>
+</table>
+<p id="bkmrk-getestet-wurde-der-b">In der aktuellen Beta empfehlen wir <strong>bis zu 5 gleichzeitig</strong> an einer Kasse betriebene Mobilgeräte. Eine feste Obergrenze gibt es nicht – mehr Geräte (z. B. 9) sind grundsätzlich möglich. Wie viele Geräte sinnvoll sind, hängt vom Bonierverhalten ab: Jede Bestellung wird sofort an die Kasse geschrieben und fiskalisiert. Viele gleichzeitige Bonierungen, häufiges Nachbonieren sowie ein ausgelastetes oder instabiles WLAN erhöhen die Last und lassen die Antwortzeiten steigen; wenige, über die Zeit verteilte Bestellungen erlauben entsprechend mehr Geräte. In kommenden Versionen sind Live-Bezahldienste vorgesehen; diese werden die genannten Kennzahlen voraussichtlich verändern.</p>
+<h2 id="bkmrk-weitere-informatione">Weitere Informationen</h2>
+<ul id="bkmrk-itr-partner-service-">
+<li><a href="http://localhost/books/produkte/page/in-betrieb-nehmen" target="_blank" rel="noopener">ITR Partner Service → Produkte → POS Gastro App → In Betrieb nehmen</a></li>
+<li><a href="http://localhost/books/produkte/page/im-alltag-arbeiten" target="_blank" rel="noopener">ITR Partner Service → Produkte → POS Gastro App → Im Alltag arbeiten</a></li>
+<li><a href="http://localhost/books/fiskalisierung/page/fiskalisierung-von-bestellungen-und-zahlungen-der-pos-gastro-app" target="_blank" rel="noopener">ITR Partner Service → Fiskalisierung → Fiskalisierung von Bestellungen und Zahlungen der POS Gastro App</a></li>
+</ul></div></main>
+  <aside class="spalte-rechts"><div class="seiteninhalt"><h2>Seiteninhalt</h2><ul><li class="e2"><a href="#bkmrk-funktionsweise">Funktionsweise</a></li><li class="e2"><a href="#bkmrk-beteiligte-komponent">Beteiligte Komponenten</a></li><li class="e2"><a href="#bkmrk-was-die-app-leistet">Was die App leistet</a></li><li class="e2"><a href="#bkmrk-grenzen-der-app">Grenzen der App</a></li><li class="e2"><a href="#bkmrk-weitere-informatione">Weitere Informationen</a></li></ul></div></aside>
+</div>
+<footer class="fuss">
+  <span>ITR Partner Service</span>
+  <span>Stand 03.09.2026</span>
+</footer>
+<script src="../../assets/suche.js"></script>
+</body>
+</html>
