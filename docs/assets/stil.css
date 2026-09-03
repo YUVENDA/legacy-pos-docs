@@ -271,6 +271,13 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
 .nav-kapitel .nav-seite { margin-left: 21px; border-left-color: var(--line); }
 .nav-buch .nav-kapitel .nav-seite { padding-left: 12px; }
 .nav-seite:hover { background: var(--mint-pale); }
+/* "Uebersicht" fuehrt zur Buch- bzw. Kapitelseite. Sie steht hier, weil der
+   Klick auf die Zeile darueber jetzt nur auf- und zuklappt - ohne diesen
+   Eintrag waere die Seite aus der Navigation nicht mehr erreichbar. Leicht
+   zurueckgenommen, damit sie nicht mit den Inhaltsseiten konkurriert. */
+.nav-uebersicht { color: var(--ink-soft); font-size: 13.5px; }
+.nav-uebersicht:hover { color: var(--ink); }
+
 .nav-seite.aktuell {
   background: var(--mint-pale); border-left-color: var(--blue); font-weight: 600;
 }
@@ -357,6 +364,28 @@ h1 { font-size: 32px; font-weight: 600; line-height: 1.15; margin: 0 0 10px;
 .verweis-inaktiv::before { content: '\00BB\00A0'; }
 
 /* --------------------------------------------------------------- Tabellen */
+/* ------------------------------------------------- Sprungziele im Text */
+/*
+ * ABSTAND UNTER DIE KLEBENDE KOPFLEISTE.
+ *
+ * Ohne das landet ein Sprungziel (#ueberschrift) bei y = 0 und steckt
+ * vollstaendig hinter der 60 px hohen Kopfleiste - am 03.09.2026 gemessen,
+ * 61 px Fehlbetrag. Betroffen war JEDER solche Verweis: die Eintraege der
+ * Ueberschriftenspalte rechts, die Verweise innerhalb einer Seite und jede
+ * weitergegebene Adresse mit Raute.
+ *
+ * 76 px = Leiste (60) plus Luft, damit die Ueberschrift nicht an der Kante
+ * klebt. Gilt fuer ALLES mit einer Kennung im Inhalt, nicht nur fuer
+ * Ueberschriften - BookStack vergibt auch Absaetzen eine.
+ */
+.inhalt [id], .seitenkopf [id] { scroll-margin-top: 76px; }
+
+/* Sanft scrollen, wenn jemand in der Ueberschriftenspalte klickt - aber nur,
+   wenn keine Bewegungsreduzierung eingestellt ist. */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
 /* ------------------------------------------------------------------ Bilder */
 /*
  * HOECHSTBREITE, damit kein Bild die Spalte sprengt - dasselbe Muster, das
