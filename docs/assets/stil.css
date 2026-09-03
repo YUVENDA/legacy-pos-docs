@@ -1,0 +1,230 @@
+/* Statischer Partner-Export - Gestaltung nach dem ITR-Theme.
+   Palette und Schrift aus dem YUVENDA Style Guide:
+   Anthrazit #282828, Tech Blue #363FBF, Digital Mint #BFEEE2,
+   Off White #FCFCFC, Warnung #F55050, Erfolg #17AB75.
+   Hier gilt normales Web-CSS - die Beschraenkungen des PDF-Renderers
+   (keine Variablen, keine Pseudoelemente) betreffen diese Datei nicht. */
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal; font-weight: 400; font-display: swap;
+  src: url('Montserrat-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal; font-weight: 600; font-display: swap;
+  src: url('Montserrat-SemiBold.ttf') format('truetype');
+}
+
+:root {
+  --ink: #282828;
+  --ink-soft: #6b6b6b;
+  --blue: #363FBF;
+  --mint: #BFEEE2;
+  --mint-pale: #f1fbf7;
+  --paper: #FCFCFC;
+  --line: #e3e3e3;
+  --warn: #F55050;
+  --ok: #17AB75;
+  --kopf: #1a2340;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-size: 16px; line-height: 1.6;
+}
+
+/* ---------------------------------------------------------------- Kopfleiste */
+.kopf {
+  display: flex; align-items: center; gap: 24px;
+  background: var(--kopf); color: #c8d4e8;
+  padding: 10px 20px; position: sticky; top: 0; z-index: 20;
+}
+.kopf-logo img { height: 30px; width: auto; display: block; }
+.kopf-firma { margin-left: auto; font-size: 13px; white-space: nowrap; }
+.kopf-suche { position: relative; flex: 1 1 auto; max-width: 520px; }
+#suchfeld {
+  width: 100%; padding: 7px 12px; border: 1px solid #2f3c63; border-radius: 3px;
+  background: #141a2e; color: #e8edf7; font: inherit; font-size: 14px;
+}
+#suchfeld::placeholder { color: #7c89a8; }
+#suchfeld:focus { outline: 2px solid var(--mint); outline-offset: -1px; }
+#suchergebnis {
+  position: absolute; left: 0; right: 0; top: calc(100% + 6px);
+  background: #fff; color: var(--ink); border: 1px solid var(--line);
+  border-radius: 3px; box-shadow: 0 6px 20px rgba(0,0,0,.18);
+  max-height: 65vh; overflow-y: auto;
+}
+#suchergebnis a {
+  display: block; padding: 9px 12px; border-bottom: 1px solid #eee;
+  text-decoration: none; color: var(--ink);
+}
+#suchergebnis a:last-child { border-bottom: 0; }
+#suchergebnis a:hover, #suchergebnis a:focus { background: var(--mint-pale); }
+#suchergebnis .titel { font-weight: 600; }
+#suchergebnis .kap { font-size: 12px; color: var(--ink-soft); }
+#suchergebnis .aus { font-size: 13px; color: #4a4a4a; }
+#suchergebnis mark { background: var(--mint); color: var(--ink); }
+#suchergebnis .leer { padding: 10px 12px; color: var(--ink-soft); font-size: 14px; }
+
+/* ------------------------------------------------------------------- Rahmen */
+.rahmen {
+  display: grid; grid-template-columns: 288px minmax(0,1fr) 260px;
+  gap: 32px; max-width: 1560px; margin: 0 auto; padding: 24px 20px 40px;
+}
+.spalte-links, .spalte-rechts { align-self: start; position: sticky; top: 76px; }
+.spalte-links { max-height: calc(100vh - 100px); overflow-y: auto; }
+
+/* --------------------------------------------------------------- Navigation */
+.nav { font-size: 14px; }
+/* Wurzel der Navigation (Regal- bzw. Buchname) */
+.nav-wurzel {
+  display: block; font-weight: 600; color: var(--ink); text-decoration: none;
+  padding: 6px 8px; border-bottom: 2px solid var(--blue); margin-bottom: 8px;
+}
+.nav-wurzel:hover { background: var(--mint-pale); }
+
+/* Buchebene - nur das aktuelle Buch ist aufgeklappt, sonst waere die Leiste
+   bei ueber hundert Seiten unbenutzbar. */
+.nav-buch { border-bottom: 1px solid var(--line); }
+.nav-buch > summary {
+  cursor: pointer; padding: 7px 8px; font-weight: 600; list-style: none;
+}
+.nav-buch > summary::-webkit-details-marker { display: none; }
+.nav-buch > summary::before { content: '\25B8'; margin-right: 7px; color: var(--ink-soft); }
+.nav-buch[open] > summary::before { content: '\25BE'; }
+.nav-buch > summary:hover { background: var(--mint-pale); }
+.nav-buch > summary a { color: var(--ink); text-decoration: none; }
+.nav-buch > summary a:hover { text-decoration: underline; }
+/* Kapitel innerhalb eines Buchs eine Stufe einruecken */
+.nav-buch .nav-kapitel > summary { padding-left: 20px; font-weight: 400; }
+.nav-buch .nav-seite { padding-left: 38px; }
+.nav-kapitel { border-bottom: 1px solid var(--line); }
+.nav-kapitel > summary {
+  cursor: pointer; padding: 7px 8px; font-weight: 600; list-style: none;
+}
+.nav-kapitel > summary::-webkit-details-marker { display: none; }
+.nav-kapitel > summary::before { content: '\25B8'; margin-right: 7px; color: var(--ink-soft); }
+.nav-kapitel[open] > summary::before { content: '\25BE'; }
+.nav-kapitel > summary:hover { background: var(--mint-pale); }
+.nav-seite {
+  display: block; padding: 5px 8px 5px 24px; color: var(--ink);
+  text-decoration: none; border-left: 2px solid transparent;
+}
+.nav-seite:hover { background: var(--mint-pale); }
+.nav-seite.aktuell {
+  background: var(--mint-pale); border-left-color: var(--blue); font-weight: 600;
+}
+
+/* ------------------------------------------------------------------- Inhalt */
+.brotkrumen { font-size: 13px; color: var(--ink-soft); margin: 0 0 6px; }
+h1 { font-size: 30px; font-weight: 600; line-height: 1.2; margin: 0 0 14px;
+     padding-bottom: 8px; border-bottom: 2px solid var(--blue); }
+.seitenmeta { font-size: 12.5px; color: #4a4a4a; margin: 0 0 22px;
+              padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+.entwurf-band {
+  background: #fdeeee; border: 1px solid var(--warn); border-radius: 3px;
+  color: #8f1f1f; font-weight: 600; font-size: 14px; padding: 8px 12px; margin: 0 0 14px;
+}
+.inhalt h2 { font-size: 21px; font-weight: 600; line-height: 1.25; margin: 30px 0 8px; }
+.inhalt h3 { font-size: 17px; font-weight: 600; line-height: 1.3; margin: 22px 0 6px; }
+.inhalt p, .inhalt li { font-size: 16px; }
+.inhalt ul, .inhalt ol { padding-left: 22px; }
+.inhalt li { margin: 3px 0; }
+.inhalt a { color: var(--blue); text-decoration: underline; }
+.inhalt a:hover { color: #2830a0; }
+.verweis-inaktiv { color: var(--ink-soft); }
+.verweis-inaktiv::before { content: '\00BB\00A0'; }
+
+/* --------------------------------------------------------------- Tabellen */
+.inhalt table {
+  border-collapse: collapse; width: 100%; margin: 14px 0 20px; font-size: 15px;
+  display: block; overflow-x: auto;   /* breite Tabellen scrollen, statt zu sprengen */
+}
+.inhalt th {
+  background: var(--mint); color: var(--ink); font-weight: 600; text-align: left;
+  border-bottom: 2px solid var(--blue); padding: 7px 10px; vertical-align: top;
+}
+.inhalt td { border-bottom: 1px solid var(--line); padding: 7px 10px; vertical-align: top; }
+.inhalt tbody tr:nth-child(even) td { background: var(--mint-pale); }
+
+/* -------------------------------------------------------------------- Code */
+.inhalt code {
+  font-family: Consolas, 'Courier New', monospace; font-size: .9em;
+  background: #f4f4f4; border: 1px solid var(--line); border-radius: 2px; padding: 1px 4px;
+}
+.inhalt pre {
+  background: #f4f4f4; border: 1px solid var(--line); border-radius: 3px;
+  padding: 10px 12px; overflow-x: auto; font-size: 14px; line-height: 1.45;
+}
+.inhalt pre code { background: none; border: 0; padding: 0; font-size: inherit; }
+
+/* --------------------------------------------------------- Hinweiskaesten */
+.inhalt .callout {
+  padding: 10px 14px; margin: 14px 0; border: 1px solid var(--line);
+  border-left: 4px solid var(--blue); background: var(--mint-pale); font-size: 15px;
+}
+.inhalt .callout p:last-child { margin-bottom: 0; }
+.inhalt .callout.info    { border-left-color: var(--blue);  background: #f1f2fb; }
+.inhalt .callout.success { border-left-color: var(--ok);    background: #edf9f4; }
+.inhalt .callout.warning { border-left-color: var(--warn);  background: #fef2f2; }
+.inhalt .callout.danger  { border-left-color: var(--warn);  background: #fde9e9; }
+
+/* --------------------------------------------------------- Rechte Spalte */
+.seiteninhalt { font-size: 13.5px; border-left: 1px solid var(--line); padding-left: 14px; }
+.seiteninhalt h2 {
+  font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--ink-soft); margin: 0 0 8px;
+}
+.seiteninhalt ul { list-style: none; margin: 0; padding: 0; }
+.seiteninhalt li { margin: 3px 0; }
+.seiteninhalt li.e3 { padding-left: 14px; }
+.seiteninhalt a { color: var(--ink); text-decoration: none; }
+.seiteninhalt a:hover { color: var(--blue); text-decoration: underline; }
+
+/* ------------------------------------------------------------- Startseite */
+.kacheln { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
+.kachel { border: 1px solid var(--line); border-radius: 3px; padding: 14px 16px; background: #fff; }
+.kachel h2 { font-size: 17px; font-weight: 600; margin: 0 0 8px; }
+.kachel ul { list-style: none; margin: 0; padding: 0; font-size: 14.5px; }
+.kachel li { margin: 4px 0; }
+.kachel a { color: var(--blue); text-decoration: none; }
+.kachel a:hover { text-decoration: underline; }
+.kachel-buch h2 { font-size: 19px; }
+.kachel-text { font-size: 14px; color: var(--ink-soft); margin: 0 0 8px; }
+.kachel-zahl { font-size: 12.5px; color: var(--ink-soft); margin: 0; }
+.einstieg { font-size: 15px; color: var(--ink-soft); margin: 0 0 22px; }
+
+/* ---------------------------------------------------------------- Fusszeile */
+.fuss {
+  display: flex; justify-content: space-between; gap: 16px;
+  border-top: 1px solid var(--line); margin-top: 20px; padding: 14px 20px;
+  font-size: 12.5px; color: var(--ink-soft); max-width: 1560px; margin-inline: auto;
+}
+
+/* ------------------------------------------------------------ Schmale Fenster */
+@media (max-width: 1100px) {
+  .rahmen { grid-template-columns: 240px minmax(0,1fr); }
+  .spalte-rechts { display: none; }
+}
+@media (max-width: 760px) {
+  .rahmen { grid-template-columns: 1fr; gap: 18px; }
+  .spalte-links { position: static; max-height: none; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
+  .kopf { flex-wrap: wrap; gap: 10px; }
+  .kopf-firma { display: none; }
+}
+
+/* ------------------------------------------------------------------- Druck */
+@media print {
+  .kopf, .spalte-links, .spalte-rechts, .fuss { display: none !important; }
+  .rahmen { display: block; max-width: none; padding: 0; }
+  html, body { background: #fff; font-size: 11pt; }
+  .inhalt a { color: var(--ink); }
+  h1, .inhalt h2, .inhalt h3 { break-after: avoid; page-break-after: avoid; }
+  .inhalt table, .inhalt pre, .inhalt .callout { break-inside: avoid; page-break-inside: avoid; }
+}
