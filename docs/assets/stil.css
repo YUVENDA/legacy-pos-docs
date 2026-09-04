@@ -123,6 +123,30 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
 #suchergebnis .kap { font-size: 12px; color: var(--ink-soft); }
 #suchergebnis .aus { font-size: 13px; color: #4a4a4a; }
 #suchergebnis mark { background: var(--mint); color: var(--ink); }
+/* Trefferzahl und Buchgruppen im Suchergebnis. Bei einem haeufigen Wort wie
+   "gastro" ist die flache Liste unbrauchbar - die Zahl gibt Orientierung, die
+   Gruppen zeigen, wo der Schwerpunkt liegt. */
+#suchergebnis .suchzahl {
+  padding: 7px 12px; font-size: 12px; color: var(--ink-soft);
+  border-bottom: 1px solid var(--line); background: #fafafb;
+}
+#suchergebnis .suchgruppe {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
+  padding: 7px 12px 5px; font-size: 11.5px; font-weight: 600;
+  letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft);
+  background: #fafafb; border-bottom: 1px solid #f0f0f4;
+}
+/* Anzahl je Buch: damit man auf einen Blick sieht, wo der Schwerpunkt liegt,
+   ohne die Zeilen zu zaehlen. */
+#suchergebnis .suchgruppe-zahl {
+  font-weight: 400; letter-spacing: 0; color: var(--ink-soft);
+  background: #eeeef2; border-radius: 9px; padding: 1px 7px; font-size: 11px;
+}
+/* Auswahl per Pfeiltaste - deutlicher als das Zeigen mit der Maus, damit man
+   ohne Maus sieht, was Enter oeffnen wuerde. */
+#suchergebnis a.gewaehlt {
+  background: var(--mint-pale); box-shadow: inset 3px 0 0 var(--blue);
+}
 #suchergebnis .leer { padding: 10px 12px; color: var(--ink-soft); font-size: 14px; }
 
 /* ------------------------------------------------------------------- Rahmen */
@@ -271,13 +295,6 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
 .nav-kapitel .nav-seite { margin-left: 21px; border-left-color: var(--line); }
 .nav-buch .nav-kapitel .nav-seite { padding-left: 12px; }
 .nav-seite:hover { background: var(--mint-pale); }
-/* "Uebersicht" fuehrt zur Buch- bzw. Kapitelseite. Sie steht hier, weil der
-   Klick auf die Zeile darueber jetzt nur auf- und zuklappt - ohne diesen
-   Eintrag waere die Seite aus der Navigation nicht mehr erreichbar. Leicht
-   zurueckgenommen, damit sie nicht mit den Inhaltsseiten konkurriert. */
-.nav-uebersicht { color: var(--ink-soft); font-size: 13.5px; }
-.nav-uebersicht:hover { color: var(--ink); }
-
 .nav-seite.aktuell {
   background: var(--mint-pale); border-left-color: var(--blue); font-weight: 600;
 }

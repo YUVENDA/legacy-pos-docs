@@ -74,49 +74,143 @@
     return teil;
   }
 
+  /* Aktuell hervorgehobener Treffer fuer die Tastaturbedienung. */
+  var auswahl = -1;
+
+  function eintraege() {
+    return kasten.querySelectorAll('a');
+  }
+
+  function markieren(n) {
+    var a = eintraege();
+    if (!a.length) { return; }
+    if (n < 0) { n = a.length - 1; }
+    if (n >= a.length) { n = 0; }
+    for (var i = 0; i < a.length; i++) { a[i].classList.remove('gewaehlt'); }
+    auswahl = n;
+    a[n].classList.add('gewaehlt');
+    a[n].scrollIntoView({ block: 'nearest' });
+  }
+
+  /*
+    SUCHE. Drei Dinge ueber das einfache Filtern hinaus:
+
+    1. IST DIE EINGABE EINE REINE ZAHL, wird nur gegen die Seiten-ID gesucht.
+       Sie steht auf jeder Seite in der Herkunftszeile, und im Support nennt
+       ein Kunde meist genau die. Bei genau einem Treffer springt die Suche
+       direkt dorthin - tippen, Enter, da.
+
+    2. GRUPPIERT NACH BUCH. Bei einem haeufigen Wort wie "gastro" liegen die
+       Treffer ueber mehrere Buecher verstreut; die Zwischenzeile zeigt, wo der
+       Schwerpunkt liegt, statt eine flache Liste von zwanzig Zeilen zu geben.
+
+    3. TREFFERZAHL IMMER. Vorher stand sie erst ab dem 21. Treffer da
+       ("N weitere") - gerade bei wenigen Treffern ist sie aber die eigentliche
+       Antwort auf "gibt es dazu ueberhaupt etwas".
+  */
   function suchen() {
     var frage = feld.value.trim();
+    auswahl = -1;
     if (frage.length < 2) { kasten.hidden = true; kasten.innerHTML = ''; return; }
-    laden(function () {
-      var woerter = flach(frage).split(/\s+/).filter(function (w) { return w.length > 1; });
-      if (!woerter.length) { kasten.hidden = true; return; }
 
+    laden(function () {
+      var nurZahl = /^[0-9]+$/.test(frage);
       var treffer = [];
-      for (var i = 0; i < index.length; i++) {
-        var e = index[i];
-        var roh = (e.t || '') + ' ' + (e.k || '') + ' ' + (e.x || '');
-        var heu = flach(roh) + ' | ' + breit(roh);
-        var titel = flach(e.t || '') + ' | ' + breit(e.t || '');
-        var alle = true, punkte = 0;
-        for (var j = 0; j < woerter.length; j++) {
-          var w = woerter[j];
-          if (heu.indexOf(w) < 0 && heu.indexOf(breit(w)) < 0) { alle = false; break; }
-          // Treffer im Titel wiegen schwerer
-          if (titel.indexOf(w) >= 0 || titel.indexOf(breit(w)) >= 0) { punkte += 10; }
-          else { punkte += 1; }
+      var woerter = [];
+
+      if (nurZahl) {
+        var gesucht = parseInt(frage, 10);
+        for (var n = 0; n < index.length; n++) {
+          if (index[n].i === gesucht) { treffer.push({ e: index[n], p: 100 }); }
         }
-        if (alle) { treffer.push({ e: e, p: punkte }); }
+        // Genau eine Seite traegt diese ID - dann nicht anzeigen, sondern hin.
+        if (treffer.length === 1) {
+          window.location.href = auf + treffer[0].e.u;
+          return;
+        }
+      } else {
+        woerter = flach(frage).split(/\s+/).filter(function (w) { return w.length > 1; });
+        if (!woerter.length) { kasten.hidden = true; return; }
+
+        for (var i = 0; i < index.length; i++) {
+          var e = index[i];
+          var roh = (e.t || '') + ' ' + (e.k || '') + ' ' + (e.x || '');
+          var heu = flach(roh) + ' | ' + breit(roh);
+          var titel = flach(e.t || '') + ' | ' + breit(e.t || '');
+          var kap = flach(e.k || '') + ' | ' + breit(e.k || '');
+          var alle = true, punkte = 0;
+          for (var j = 0; j < woerter.length; j++) {
+            var w = woerter[j];
+            var wb = breit(w);
+            if (heu.indexOf(w) < 0 && heu.indexOf(wb) < 0) { alle = false; break; }
+            /* Feiner als vorher (Titel 10, sonst 1): ein Titel, der MIT dem
+               Wort beginnt, ist fast immer die gesuchte Seite; ein Treffer im
+               Buch- oder Kapitelnamen ist mehr wert als einer irgendwo im
+               Text. */
+            if (titel.indexOf(w) === 0 || titel.indexOf(wb) === 0) { punkte += 40; }
+            else if (titel.indexOf(w) >= 0 || titel.indexOf(wb) >= 0) { punkte += 20; }
+            else if (kap.indexOf(w) >= 0 || kap.indexOf(wb) >= 0) { punkte += 5; }
+            else { punkte += 1; }
+          }
+          if (alle) { treffer.push({ e: e, p: punkte }); }
+        }
       }
-      treffer.sort(function (a, b) { return b.p - a.p; });
 
       if (!treffer.length) {
-        kasten.innerHTML = '<div class="leer">Keine Treffer für „' + schuetzen(frage) + '"</div>';
+        kasten.innerHTML = '<div class="leer">'
+          + (nurZahl ? 'Keine Seite mit der ID ' + schuetzen(frage)
+                     : 'Keine Treffer fuer \u201E' + schuetzen(frage) + '\u201C')
+          + '</div>';
         kasten.hidden = false;
         return;
       }
 
-      var h = '';
-      treffer.slice(0, 20).forEach(function (t) {
-        var e = t.e;
-        h += '<a href="' + auf + e.u + '">'
-           + '<span class="titel">' + schuetzen(e.t) + '</span>'
-           + (e.k ? '<span class="kap"> · ' + schuetzen(e.k) + '</span>' : '')
-           + '<div class="aus">' + ausschnitt(e.x || '', woerter) + '</div>'
-           + '</a>';
+      treffer.sort(function (a, b) { return b.p - a.p; });
+      var gezeigt = treffer.slice(0, 20);
+
+      var h = '<div class="suchzahl">' + treffer.length + ' Treffer'
+            + (treffer.length > 20 ? ' \u2013 die 20 besten' : '') + '</div>';
+
+      /*
+        ECHT NACH BUCH GRUPPIEREN.
+
+        Der Buchname ist das Stueck vor dem ersten Trennzeichen in
+        "Buch > Kapitel". Jedes Buch erscheint GENAU EINMAL, und die Gruppen
+        stehen in der Reihenfolge ihres besten Treffers - nicht alphabetisch,
+        sonst stuende die wichtigste unten.
+
+        Der erste Versuch fasste nur aufeinanderfolgende Zeilen zusammen. Weil
+        die Liste nach Punkten sortiert ist, wechseln die Buecher dabei hin und
+        her: bei "gastro" erschienen "Loesungen" und "Produkte" je zweimal
+        (03.09.2026 gemessen). Damit war der Zweck der Gruppierung verfehlt -
+        sie soll ja zeigen, wo der Schwerpunkt liegt.
+      */
+      var gruppen = [];
+      var nachName = {};
+      gezeigt.forEach(function (t) {
+        var name = ((t.e.k || '').split('\u203A')[0] || '').trim() || '\u2013';
+        if (!nachName[name]) {
+          nachName[name] = { name: name, zeilen: [] };
+          gruppen.push(nachName[name]);   // Reihenfolge = bester Treffer zuerst
+        }
+        nachName[name].zeilen.push(t);
       });
-      if (treffer.length > 20) {
-        h += '<div class="leer">' + (treffer.length - 20) + ' weitere Treffer – Suche verfeinern</div>';
-      }
+
+      gruppen.forEach(function (g) {
+        h += '<div class="suchgruppe">' + schuetzen(g.name)
+           + '<span class="suchgruppe-zahl">' + g.zeilen.length + '</span></div>';
+        g.zeilen.forEach(function (t) {
+          var e = t.e;
+          var unter = (e.k || '').split('\u203A').slice(1).join('\u203A').trim();
+          h += '<a href="' + auf + e.u + '">'
+             + '<span class="titel">' + schuetzen(e.t) + '</span>'
+             + (unter ? '<span class="kap"> \u00B7 ' + schuetzen(unter) + '</span>' : '')
+             + (nurZahl ? '<span class="kap"> \u00B7 ID ' + e.i + '</span>' : '')
+             + (woerter.length ? '<div class="aus">' + ausschnitt(e.x || '', woerter) + '</div>' : '')
+             + '</a>';
+        });
+      });
+
       kasten.innerHTML = h;
       kasten.hidden = false;
     });
@@ -129,10 +223,44 @@
   });
   feld.addEventListener('focus', function () { if (feld.value.trim().length > 1) { suchen(); } });
 
-  // Escape schliesst, Klick daneben schliesst
+  /*
+    TASTATURBEDIENUNG. Vorher liess sich die Trefferliste nur mit der Maus
+    benutzen - Escape war die einzige Taste. Wer den ganzen Tag sucht, will
+    tippen, mit den Pfeiltasten waehlen und mit Enter oeffnen.
+  */
   feld.addEventListener('keydown', function (ev) {
-    if (ev.key === 'Escape') { kasten.hidden = true; feld.blur(); }
+    var offen = !kasten.hidden && eintraege().length > 0;
+
+    if (ev.key === 'Escape') { kasten.hidden = true; feld.blur(); return; }
+
+    if (ev.key === 'ArrowDown' && offen) {
+      ev.preventDefault();          // sonst springt der Textzeiger ans Ende
+      markieren(auswahl + 1);
+      return;
+    }
+    if (ev.key === 'ArrowUp' && offen) {
+      ev.preventDefault();
+      markieren(auswahl - 1);
+      return;
+    }
+    if (ev.key === 'Enter' && offen) {
+      var a = eintraege();
+      // Ohne Auswahl gilt der erste Treffer - das ist fast immer der gesuchte.
+      var ziel = a[auswahl >= 0 ? auswahl : 0];
+      if (ziel) { ev.preventDefault(); window.location.href = ziel.getAttribute('href'); }
+      return;
+    }
   });
+
+  /* Zeigen mit der Maus hebt die Tastaturauswahl auf, sonst saehen zwei
+     Zeilen gleichzeitig hervorgehoben aus. */
+  kasten.addEventListener('mousemove', function () {
+    if (auswahl < 0) { return; }
+    var a = eintraege();
+    for (var i = 0; i < a.length; i++) { a[i].classList.remove('gewaehlt'); }
+    auswahl = -1;
+  });
+
   document.addEventListener('click', function (ev) {
     if (!kasten.contains(ev.target) && ev.target !== feld) { kasten.hidden = true; }
   });
