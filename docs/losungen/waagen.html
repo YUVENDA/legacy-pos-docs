@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Waagen | Lösungen</title>
+<meta name="description" content="Sobald an einer Kasse eine Waage hängt, wird sie zum eichpflichtigen Messgerät. Damit gelten Anforderungen, die über die Technik hinausgehen — und für die der Partner geradesteht. Eine Kasse mit angeb">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/stil.css?v=4ec495f7">
+</head>
+<body>
+<header class="kopf">
+  <div class="kopf-innen">
+    <a class="kopf-logo" href="../index.html"><img src="../assets/logo.png" alt="IT Relations"></a>
+    <div class="kopf-suche">
+      <input type="search" id="suchfeld" placeholder="Alle Inhalte durchsuchen" autocomplete="off"
+             aria-label="Suchen" data-auf="../">
+      <div id="suchergebnis" hidden></div>
+    </div>
+    <a class="sprung" href="#navigation">Zur Navigation</a>
+    <span class="kopf-firma">IT Relations GmbH</span>
+  </div>
+</header>
+<div class="rahmen">
+  <aside class="spalte-links" id="navigation"><nav class="nav" aria-label="Inhalt"><a class="nav-wurzel" href="../index.html">ITR Partner Service</a><details class="nav-buch"><summary><a href="../schnellstart/index.html">Schnellstart</a></summary><a class="nav-seite" href="../schnellstart/glossar-und-abkurzungen.html">Glossar und Abkürzungen</a></details><details class="nav-buch"><summary><a href="../produkte/index.html">Produkte</a></summary><details class="nav-kapitel"><summary><a href="../produkte/pos-gastro-app/index.html">POS Gastro App</a></summary><a class="nav-seite" href="../produkte/pos-gastro-app/funktionsweise.html">Funktionsweise</a><a class="nav-seite" href="../produkte/pos-gastro-app/in-betrieb-nehmen.html">In Betrieb nehmen</a><a class="nav-seite" href="../produkte/pos-gastro-app/im-alltag-arbeiten.html">Im Alltag arbeiten</a><a class="nav-seite" href="../produkte/pos-gastro-app/storungen-beheben.html">Störungen beheben</a></details></details><details class="nav-buch" open><summary><a href="../losungen/index.html">Lösungen</a></summary><a class="nav-seite aktuell" href="../losungen/waagen.html">Waagen</a></details><details class="nav-buch"><summary><a href="../betrieb-administration/index.html">Betrieb &amp; Administration</a></summary><a class="nav-seite" href="../betrieb-administration/systemvoraussetzungen.html">Systemvoraussetzungen</a></details></nav></aside>
+  <main class="spalte-mitte" id="inhalt"><div class="seitenkopf"><nav class="brotkrumen-nav" aria-label="Sie sind hier"><ol class="brotkrumen"><li><a href="../losungen/index.html">Lösungen</a></li><li><span aria-current="page">Waagen</span></li></ol></nav><h1>Waagen</h1><p class="seitenmeta">Letzte &Auml;nderung 29.08.2026 &middot; Version 2 &middot; Seiten-ID 742</p></div><div class="inhalt"><p id="bkmrk-sobald-an-einer-kass">Sobald an einer Kasse eine Waage hängt, wird sie zum eichpflichtigen Messgerät. Damit gelten Anforderungen, die über die Technik hinausgehen — und für die der Partner geradesteht.</p>
+<p class="callout danger" id="bkmrk-eine-kasse-mit-angeb">Eine Kasse mit angebundener Waage darf erst in Betrieb gehen, wenn die Konformitätsbewertung — die Ersteichung — erfolgt ist. Das gilt für <strong>jedes einzelne System</strong>, auch wenn die Anbindung als solche zertifiziert ist. Den Eichbeamten rechtzeitig bestellen.</p>
+<h2 id="bkmrk-%C3%9Cberblick">Überblick</h2>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-beteiligt-rolle-was-">
+<thead>
+<tr>
+<th>Beteiligt</th>
+<th>Rolle</th>
+<th>Was dort eingerichtet wird</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Waage</td>
+<td>liefert Gewicht und Grundpreis</td>
+<td>COM-Parameter, eigene Hauptanzeige</td>
+</tr>
+<tr>
+<td>ITR Kasse</td>
+<td>bucht den Wiegeartikel, zeigt das Ergebnis</td>
+<td>Waagenmodul, Kundendisplay</td>
+</tr>
+<tr>
+<td>CentralPoint</td>
+<td>pflegt den Wiegeartikel</td>
+<td>Tara, Preisebene, Option „Wiegeartikel"</td>
+</tr>
+<tr>
+<td>Eichamt</td>
+<td>prüft und eicht das System</td>
+<td>Ersteichung, Kennzeichnungsschild</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="bkmrk-voraussetzungen">Voraussetzungen</h2>
+<ul id="bkmrk-eine-freigegebene-wa">
+<li>Eine freigegebene Waage mit dem Protokoll <strong>Dialog-6</strong> oder <strong>VCODisp</strong>:</li>
+</ul>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-hersteller-modelle-d">
+<thead>
+<tr>
+<th>Hersteller</th>
+<th>Modelle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Digi</td>
+<td>DS-983, DS-982, DS-782</td>
+</tr>
+<tr>
+<td>Mettler Toledo</td>
+<td>Ariva</td>
+</tr>
+</tbody>
+</table></div>
+<ul id="bkmrk-ein-vollst%C3%A4ndiges-ty">
+<li>Ein vollständiges Typenschild an der Waage mit <strong>Min</strong>, <strong>Max</strong>, Eichwert <strong><code>e</code></strong> und Teilung <strong><code>d</code></strong>.</li>
+<li>Eine gültige Lizenz für das <strong>Waagenmodul</strong> an der Kasse.</li>
+<li>Ein Kundendisplay, das die Anforderungen unten erfüllt.</li>
+<li>Die COM-Schnittstelle der Kasse ist bekannt.</li>
+</ul>
+<h2 id="bkmrk-die-acht-pflichten-d">Die acht Pflichten des Partners</h2>
+<p id="bkmrk-1.-die-waage-hat-ein"><strong>1. Die Waage hat eine eigene Hauptanzeige.</strong> Die Wiegeinformationen müssen auf einer eigenen Anzeige der Waage erscheinen — nicht ersatzweise auf dem Kassenbildschirm.</p>
+<p id="bkmrk-2.-die-hauptanzeige-"><strong>2. Die Hauptanzeige ist richtig angebracht.</strong> Gut lesbar und an der Stelle, die das Baueinheiten-Zertifikat vorgibt.</p>
+<p id="bkmrk-3.-das-kundendisplay"><strong>3. Das Kundendisplay ist ausreichend groß und lesbar.</strong> Auch wenn die Waage eine eigene Hauptanzeige hat: Hängt an der Kasse ein Kundendisplay, muss die Belegtabelle dort groß genug dargestellt sein. Kontrast, Farben und Schriftgröße so wählen, dass der Kunde die von der Waage gelieferten Angaben klar erkennen kann, ohne von anderen Bildschirmelementen abgelenkt zu werden.</p>
+<p id="bkmrk-4.-mindestens-8-zoll"><strong>4. Mindestens 8 Zoll, quer angebracht.</strong> Kundendisplays müssen mindestens 8 Zoll messen — auch wenn sie nicht die Hauptanzeige sind. Bei 8 Zoll muss die Belegtabelle über die <strong>volle Displaybreite</strong> gehen, mit möglichst großer Schrift, und die Spalten <strong>Menge, Artikelname, Einzelpreis und Summe</strong> müssen eingeblendet sein. Das Display wird <strong>quer</strong> angebracht, die längere Seite waagerecht.</p>
+<p id="bkmrk-5.-ersteichung-je-sy"><strong>5. Ersteichung je System.</strong> Siehe Warnung oben.</p>
+<p id="bkmrk-6.-kennzeichnungssch"><strong>6. Kennzeichnungsschild auf jeder Kasse.</strong> Siehe unten.</p>
+<p id="bkmrk-7.-zugang-f%C3%BCr-den-ei"><strong>7. Zugang für den Eichbeamten.</strong> Er meldet sich an der Kasse mit dem Benutzer <code>eichamt</code> an; damit startet das Waagenmodul.</p>
+<p id="bkmrk-8.-test-vor-der-eich"><strong>8. Test vor der Eichung.</strong> Melden Sie sich testweise selbst mit diesem Zugang an, stellen Sie die COM-Parameter ein und speichern Sie — bevor der Eichbeamte kommt.</p>
+<h2 id="bkmrk-einrichtung">Einrichtung</h2>
+<ol id="bkmrk-waage-anschlie%C3%9Fen-un">
+<li><strong>Waage anschließen</strong> und einschalten.</li>
+<li><strong>An der Kasse mit dem Benutzer <code>eichamt</code> anmelden</strong> — damit startet das Waagenmodul.</li>
+<li><strong>COM-Parameter der Waage einstellen</strong> und speichern.</li>
+<li><strong>Wiegeartikel im CentralPoint pflegen</strong> — Reiter <strong>Wiegeartikel</strong> am Artikel:
+<ul>
+<li><strong>Nur Grundpreis übermitteln</strong> schickt statt des Gesamtpreises den Grundpreis an die Waage.</li>
+<li><strong>Tara</strong> als Kommazahl in Kilogramm (<code>0.345</code> oder <code>0,345</code>) oder als ganze Zahl in Gramm (<code>345</code>).</li>
+<li>Mehrere Taragewichte mit Namen, getrennt durch Semikolon: <code>Kleines Gefäß=0,100;Mittleres Gefäß=0.200;Großes Gefäß=300</code></li>
+</ul>
+</li>
+<li><strong>Kennzeichnungsschild anbringen</strong> — siehe unten.</li>
+<li><strong>Eichbeamten bestellen.</strong> Das braucht Vorlauf und wird in der Projektplanung leicht vergessen.</li>
+<li><strong>Wiegeartikel buchen</strong> und prüfen, ob Gewicht und Preis übernommen werden.</li>
+</ol>
+<p id="bkmrk-%5Bscreenshot%3A-konfigu"><code>[SCREENSHOT: Konfigurationsmaske des Waagenmoduls mit den COM-Parametern]</code></p>
+<p id="bkmrk-%5Boffen%3A-die-einzelne"><code>[OFFEN: die einzelnen COM-Parameter mit Standardwerten je Waagentyp. Die vorliegende Quelle nennt nur, dass sie einzustellen sind.]</code></p>
+<h2 id="bkmrk-kennzeichnungsschild">Kennzeichnungsschild</h2>
+<p id="bkmrk-jede-kasse-mit-angeb">Jede Kasse mit angebundener Waage braucht eines. Ohne ist die Eichung nicht vollständig. Inhalt so oder ähnlich:</p>
+<div class="codefeld"><div class="codefeld-kopf"><span class="codefeld-sprache">Text</span><button type="button" class="codefeld-kopieren">Kopieren</button></div><pre><code>it relations GmbH
+Typ: itrCR - Module_ScaleReader
+Prüfscheinnummer DE-16-PC-PTB009
+
+Software-Identifikation:
+Version &lt;Version&gt;
+Prüfsumme / File-Checksum: &lt;Prüfsumme&gt;
+CN=www.itrelations.de, O=it relations GmbH
+</code></pre></div>
+<p class="callout warning" id="bkmrk-version-und-pr%C3%BCfsumm">Version und Prüfsumme müssen zu der Fassung des Waagenmoduls passen, die auf der Kasse tatsächlich läuft. Die Werte aus einer älteren Installation zu übernehmen, macht das Schild falsch.</p>
+<p id="bkmrk-der-firmenname-auf-d">Der Firmenname auf dem Schild stammt aus dem Baueinheiten-Zertifikat und bleibt unverändert, solange das Zertifikat darauf ausgestellt ist — auch wenn die Firma inzwischen anders heißt.</p>
+<p id="bkmrk-die-gestaltung-ist-d">Die Gestaltung ist dem Partner überlassen, solange sie den Anforderungen aus <strong>Punkt 8 des Baueinheiten-Zertifikats</strong> genügt. Dort steht auch, <strong>wo</strong> das Schild anzubringen ist — der Ort ist nicht frei wählbar.</p>
+<p id="bkmrk-%5Boffen%3A-aktuell-g%C3%BClt"><code>[OFFEN: aktuell gültige Version und Prüfsumme des Waagenmoduls sowie die aktuelle Prüfscheinnummer. Die vorliegenden Angaben stammen aus dem Zertifikat von 2016; es liegen jüngere Zertifikate von 2019 und 2023 vor, die als Scan ohne Textebene vorliegen und geprüft werden müssen.]</code></p>
+<h2 id="bkmrk-ergebnis-pr%C3%BCfen">Ergebnis prüfen</h2>
+<ul id="bkmrk-das-gewicht-erschein">
+<li>Das Gewicht erscheint auf der Hauptanzeige der Waage.</li>
+<li>Menge, Artikelname, Einzelpreis und Summe erscheinen auf dem Kundendisplay.</li>
+<li>Der gebuchte Betrag entspricht Gewicht mal Grundpreis, abzüglich der gewählten Tara.</li>
+<li>Das Kennzeichnungsschild ist angebracht und trägt die Werte der laufenden Fassung.</li>
+</ul>
+<h2 id="bkmrk-fehlerbehebung">Fehlerbehebung</h2>
+<ul id="bkmrk-keine-werte-von-der-">
+<li><strong>Keine Werte von der Waage:</strong> COM-Port und Parameter prüfen; der Port lässt sich im Windows-Geräte-Manager nachsehen.</li>
+<li><strong>Waagenmodul startet nicht:</strong> Lizenz für das Waagenmodul prüfen.</li>
+<li><strong>Falscher Preis:</strong> Tara und Preisebene des Artikels prüfen.</li>
+</ul>
+<h2 id="bkmrk-zu-beachten">Zu beachten</h2>
+<p id="bkmrk-die-eichung-gilt-je-">Die Eichung gilt je System, nicht je Modell. Eine zweite baugleiche Kasse in derselben Filiale braucht ihre eigene Eichung und ihr eigenes Schild. Bei einem Austausch der Kassenhardware oder einem Wechsel der Waage ist zu prüfen, ob die Eichung erneuert werden muss.</p>
+<p id="bkmrk-ob-eine-konstellatio">Ob eine Konstellation eichrechtlich zulässig ist, entscheidet das Eichamt — nicht der Hersteller und nicht der Partner. Diese Seite beschreibt die technischen Anforderungen; sie ersetzt keine Auskunft der Eichbehörde.</p>
+<p id="bkmrk-%5Boffen%3A-die-baueinhe"><code>[OFFEN: die Baueinheiten-Zertifikate als Anhang an diese Seite hängen. Die vorliegenden Dokumente von 2016, 2019 und 2023 sind Scans ohne Textebene und müssen von einem Menschen auf Gültigkeit geprüft werden.]</code></p>
+<h2 id="bkmrk-weitere-informatione">Weitere Informationen</h2>
+<ul id="bkmrk-itr-partner-service-">
+<li><span class="verweis-inaktiv">ITR Partner Service → Betrieb &amp; Administration → Kundendisplay einrichten</span></li>
+<li><a href="../betrieb-administration/systemvoraussetzungen.html">ITR Partner Service → Betrieb &amp; Administration → Systemvoraussetzungen</a></li>
+</ul>
+</div></main>
+  <aside class="spalte-rechts"><div class="seiteninhalt"><h2>Seiteninhalt</h2><ul><li class="e2"><a href="#bkmrk-%C3%9Cberblick">Überblick</a></li><li class="e2"><a href="#bkmrk-voraussetzungen">Voraussetzungen</a></li><li class="e2"><a href="#bkmrk-die-acht-pflichten-d">Die acht Pflichten des Partners</a></li><li class="e2"><a href="#bkmrk-einrichtung">Einrichtung</a></li><li class="e2"><a href="#bkmrk-kennzeichnungsschild">Kennzeichnungsschild</a></li><li class="e2"><a href="#bkmrk-ergebnis-pr%C3%BCfen">Ergebnis prüfen</a></li><li class="e2"><a href="#bkmrk-fehlerbehebung">Fehlerbehebung</a></li><li class="e2"><a href="#bkmrk-zu-beachten">Zu beachten</a></li><li class="e2"><a href="#bkmrk-weitere-informatione">Weitere Informationen</a></li></ul></div></aside>
+</div>
+<footer class="fuss">
+  <span>ITR Partner Service</span>
+  <span class="fuss-rechts">
+    <a href="https://itrelations.de/de/impressum" target="_blank" rel="noopener">Impressum</a>
+    <span>Stand 04.09.2026</span>
+  </span>
+</footer>
+<script src="../assets/suche.js?v=d759af4f"></script>
+</body>
+</html>
