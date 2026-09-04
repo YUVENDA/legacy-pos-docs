@@ -191,6 +191,58 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
    werden; dadurch sitzt der Seitenanfang bei beiden Arten an derselben
    Stelle. */
 .rahmen.ohne-rechts { grid-template-columns: 288px minmax(0,960px); }
+
+/*
+ * LANGE WOERTER MUESSEN BRECHEN DUERFEN.
+ *
+ * "Systemvoraussetzungen" braucht als h1 bei 32 px 397 px, die Spalte auf dem
+ * Handy ist 335 px breit - das Wort trat aus seinem Kasten und wurde am Rand
+ * abgeschnitten (04.09.2026 gemessen). Deutsche Komposita sind lang; ohne
+ * Trennung ist das auf jedem schmalen Bildschirm eine Frage der Zeit.
+ *
+ * Silbentrennung zuerst, weil sie lesbar trennt ("System-voraus-setzungen");
+ * das <html lang="de"> ist dafuer die Voraussetzung und steht. break-word ist
+ * nur das Netz darunter, falls der Browser keine Trennmuster fuer ein Wort
+ * hat - es trennt ohne Bindestrich, aber immer noch besser als Abschneiden.
+ * Gesetzt wird es auf die SPALTEN, nicht auf eine Liste von Selektoren. Mein
+ * erster Versuch zaehlte ".inhalt h1, .inhalt p, ..." auf und liess die
+ * Ueberschrift genau deshalb ueberlaufen: sie steht in ".seitenkopf", nicht in
+ * ".inhalt". Beide Eigenschaften vererben - also einmal oben setzen und unten
+ * fuer Code zurueckstellen, statt Selektoren zu sammeln.
+ */
+.spalte-links, .spalte-mitte, .spalte-rechts {
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+/*
+ * BLOCK-CODE NICHT TRENNEN. Ein Umbruch mitten in einem Befehl waere
+ * schlimmer als Scrollen - und das Codefeld hat seinen eigenen waagerechten
+ * Rahmen. Beide Eigenschaften werden vererbt, deshalb hier zurueckstellen.
+ */
+pre, .codefeld, .codefeld * {
+  hyphens: manual;
+  overflow-wrap: normal;
+}
+
+/*
+ * INLINE-CODE MUSS BRECHEN DUERFEN - anders als Block-Code, denn er steht
+ * mitten im Satz und hat KEINEN eigenen Scrollrahmen.
+ *
+ * Gemessen am 04.09.2026 bei 375 px: ein Registry-Pfad
+ * ("HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\...") als <code> in einem
+ * Absatz war 620 px breit und hat die GANZE SEITE 290 px quer geschoben - auf
+ * 11 von 107 Seiten. Ein solcher Pfad enthaelt kein Leerzeichen, also gibt es
+ * ohne diese Regel keine einzige Umbruchstelle.
+ *
+ * Silbentrennung waere hier falsch (ein Bindestrich in einem Pfad liesse sich
+ * fuer einen Teil des Pfades halten), deshalb nur break-word: es bricht ohne
+ * Bindestrich und nur dann, wenn es sonst nicht passt.
+ */
+:not(pre) > code {
+  overflow-wrap: break-word;
+  hyphens: manual;
+}
 .spalte-links, .spalte-rechts { align-self: start; position: sticky; top: 76px; }
 /* Beide Randspalten scrollen fuer sich, wenn sie laenger werden als das
    Fenster. Bei der rechten fehlte das: hatte eine Seite mehr Ueberschriften
@@ -327,7 +379,22 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
 .brotkrumen a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 2px; }
 /* Aktuelle Seite: dabei, aber zurueckgenommen - sie ist kein Ziel mehr. */
 .brotkrumen [aria-current="page"] { color: var(--ink-soft); }
-h1 { font-size: 32px; font-weight: 600; line-height: 1.15; margin: 0 0 10px;
+/*
+ * GROESSE MIT DER FENSTERBREITE, nicht als harte Stufe.
+ *
+ * Deutsche Komposita in Seitentiteln sind lang: von 38 Woertern mit mehr als
+ * zwoelf Buchstaben passten bei 32 px nur 34 in die 335 px breite Spalte
+ * eines 375-px-Bildschirms ("Verfahrensdokumentation" braucht 438 px). Der
+ * Rest brach mitten im Wort um - ohne Trennstrich, weil Chrome unter Windows
+ * "hyphens: auto" ignoriert (04.09.2026 gegengeprueft: identische Umbrueche
+ * mit auto und manual; auf iOS trennt Safari dagegen sauber, deshalb bleibt
+ * die Regel stehen).
+ *
+ * 6.4vw ergibt 24 px bei 375 px Fensterbreite - damit passen alle 38 Woerter
+ * - und erreicht die 32 px ab 500 px Breite wieder. Untergrenze 22 px, damit
+ * es auf sehr schmalen Geraeten nicht zur Randnotiz schrumpft.
+ */
+h1 { font-size: clamp(22px, 6.4vw, 32px); font-weight: 600; line-height: 1.15; margin: 0 0 10px;
      letter-spacing: -.01em; }
 /* EINE Trennlinie unter dem Seitenkopf, nicht zwei. Vorher lagen ein 2-px-Strich
    unter der Ueberschrift und ein 1-px-Strich unter der Herkunftszeile knapp
@@ -745,6 +812,18 @@ h1 { font-size: 32px; font-weight: 600; line-height: 1.15; margin: 0 0 10px;
      Die Null als Untergrenze erlaubt der Spalte, schmaler zu werden als ihr
      breitester Inhalt; der scrollt dann in seinem eigenen Rahmen. */
   .rahmen { grid-template-columns: minmax(0,1fr); gap: 18px; }
+  .rahmen.ohne-rechts { grid-template-columns: minmax(0,1fr); }
+  /* HIER GENAUSO MITNENNEN wie in der 1100er-Query darueber - und das hatte
+     ich beim ersten Mal vergessen. Folge auf jeder Seite ohne rechte Spalte
+     (Startseite, Buch- und Kapitelseiten): ".rahmen.ohne-rechts" aus der
+     1100er-Regel gilt bei 375 px weiter, weil zwei Klassen spezifischer sind
+     als eine. Das Gitter stand damit auf "240px minmax(0,960px)", die zweite
+     Spur bekam den Rest von 77 px, und JEDER Navigationseintrag lief aus
+     seinen 77 px heraus ueber den Text daneben - auf dem Handy sah das aus
+     wie ineinandergeschobene Spalten (04.09.2026 gemeldet und gemessen).
+     Merksatz: wer ".rahmen" in einer Media Query anfasst, muss
+     ".rahmen.ohne-rechts" im selben Block anfassen. Pruefung P13 deckt das
+     jetzt fuer jede Query ab, nicht nur fuer die erste. */
   /* INHALT ZUERST. Bei einer Spalte stand die Navigation ueber dem Artikel -
      im Buch "Produkte" waren das 942 px, also 1,3 Bildschirmhoehen Scrollen,
      bevor der Text anfing (am 03.09.2026 bei 375 px gemessen). Wer aus der
