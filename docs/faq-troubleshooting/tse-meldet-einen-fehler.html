@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>TSE meldet einen Fehler | FAQ &amp; Troubleshooting</title>
+<meta name="description" content="Die technische Sicherheitseinrichtung (TSE) wird nicht erkannt, oder die Kasse meldet beim Signieren einen Fehler. Diese Seite grenzt den Fall ein; die Arbeitsschritte selbst stehen auf den Fiskalisie">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/stil.css?v=4ec495f7">
+</head>
+<body>
+<header class="kopf">
+  <div class="kopf-innen">
+    <a class="kopf-logo" href="../index.html"><img src="../assets/logo.png" alt="IT Relations"></a>
+    <div class="kopf-suche">
+      <input type="search" id="suchfeld" placeholder="Alle Inhalte durchsuchen" autocomplete="off"
+             aria-label="Suchen" data-auf="../">
+      <div id="suchergebnis" hidden></div>
+    </div>
+    <a class="sprung" href="#navigation">Zur Navigation</a>
+    <span class="kopf-firma">IT Relations GmbH</span>
+  </div>
+</header>
+<div class="rahmen">
+  <aside class="spalte-links" id="navigation"><nav class="nav" aria-label="Inhalt"><a class="nav-wurzel" href="../index.html">ITR Partner Service</a><details class="nav-buch"><summary><a href="../schnellstart/index.html">Schnellstart</a></summary><a class="nav-seite" href="../schnellstart/glossar-und-abkurzungen.html">Glossar und Abkürzungen</a></details><details class="nav-buch"><summary><a href="../produkte/index.html">Produkte</a></summary><details class="nav-kapitel"><summary><a href="../produkte/pos-gastro-app/index.html">POS Gastro App</a></summary><a class="nav-seite" href="../produkte/pos-gastro-app/funktionsweise.html">Funktionsweise</a><a class="nav-seite" href="../produkte/pos-gastro-app/in-betrieb-nehmen.html">In Betrieb nehmen</a><a class="nav-seite" href="../produkte/pos-gastro-app/im-alltag-arbeiten.html">Im Alltag arbeiten</a><a class="nav-seite" href="../produkte/pos-gastro-app/storungen-beheben.html">Störungen beheben</a></details></details><details class="nav-buch"><summary><a href="../losungen/index.html">Lösungen</a></summary><a class="nav-seite" href="../losungen/waagen.html">Waagen</a></details><details class="nav-buch"><summary><a href="../betrieb-administration/index.html">Betrieb &amp; Administration</a></summary><a class="nav-seite" href="../betrieb-administration/systemvoraussetzungen.html">Systemvoraussetzungen</a></details><details class="nav-buch" open><summary><a href="../faq-troubleshooting/index.html">FAQ &amp; Troubleshooting</a></summary><a class="nav-seite aktuell" href="../faq-troubleshooting/tse-meldet-einen-fehler.html">TSE meldet einen Fehler</a></details></nav></aside>
+  <main class="spalte-mitte" id="inhalt"><div class="seitenkopf"><nav class="brotkrumen-nav" aria-label="Sie sind hier"><ol class="brotkrumen"><li><a href="../faq-troubleshooting/index.html">FAQ &amp; Troubleshooting</a></li><li><span aria-current="page">TSE meldet einen Fehler</span></li></ol></nav><h1>TSE meldet einen Fehler</h1><p class="seitenmeta">Letzte &Auml;nderung 29.08.2026 &middot; Version 1 &middot; Seiten-ID 798</p></div><div class="inhalt"><p id="bkmrk-die-technische-siche">Die technische Sicherheitseinrichtung (TSE) wird nicht erkannt, oder die Kasse meldet beim Signieren einen Fehler. Diese Seite grenzt den Fall ein; die Arbeitsschritte selbst stehen auf den Fiskalisierungsseiten.</p>
+<h2 id="bkmrk-symptome">Symptome</h2>
+<ul id="bkmrk-der-anmeldebildschir">
+<li>Der Anmeldebildschirm meldet beim Kassenstart keine verbundene TSE.</li>
+<li>Ein Beleg trägt keine Signatur oder keinen vollständigen QR-Code.</li>
+<li>Bei einer Swissbit-TSE erscheint der Fehler <code>WORM_ERROR_IO</code>.</li>
+<li>Bei einer Swissbit-TSE erscheint die Meldung <code>Cannot invoke WormStore.transaction_start</code>.</li>
+</ul>
+<h2 id="bkmrk-m%C3%B6gliche-ursachen">Mögliche Ursachen</h2>
+<ul id="bkmrk-die-tse-wurde-erst-n">
+<li>Die TSE wurde erst nach dem Programmstart eingesteckt. Steckt sie nicht schon beim Start, erkennt die Kasse sie nicht.</li>
+<li>Das Betriebssystem erkennt die TSE nicht als Laufwerk — falscher oder defekter USB-Port.</li>
+<li>Das Microsoft Visual C++ Redistributable fehlt. Unter Windows 10 wird es unter Umständen benötigt; das Setup liegt im Kassenverzeichnis unter <code>\fix</code>.</li>
+<li>Das Zertifikat der TSE ist abgelaufen. Das Ablaufdatum steht im Admin-Panel unter <strong>KassenSichV</strong>, bei Systemen mit CentralPoint zusätzlich dort unter <strong>Kassen</strong>.</li>
+<li>Bei einer Cloud-TSE: Die Adresse des Dienstes ist nicht ungefiltert erreichbar. Firewalls, Proxys und Sicherheitslösungen dürfen die Verbindung nicht aufbrechen.</li>
+<li>[OFFEN: belegte Ursachen für <code>WORM_ERROR_IO</code> und <code>Cannot invoke WormStore.transaction_start</code> aus Supportfällen und von Swissbit zusammentragen — im Bestand sind bisher nur die Fehlerbilder dokumentiert, nicht ihre Ursachen.]</li>
+</ul>
+<h2 id="bkmrk-l%C3%B6sung">Lösung</h2>
+<p id="bkmrk-in-dieser-reihenfolg">In dieser Reihenfolge vorgehen:</p>
+<ol id="bkmrk-sichtpr%C3%BCfung-und-neu">
+<li><strong>Sichtprüfung und Neustart.</strong> Kasse beenden, TSE gesteckt lassen, Kasse neu starten. Prüfen, ob das Betriebssystem die TSE als Laufwerk erkennt; sonst einen anderen USB-3-Port verwenden.</li>
+<li><strong>Voraussetzungen prüfen.</strong> Ist das Microsoft Visual C++ Redistributable installiert? Ist das Betriebssystem in der Herstellerwartung und gepatcht? Siehe <span class="verweis-inaktiv">ITR Partner Service → Fiskalisierung → TSE Hardware (Swissbit) in Betrieb nehmen</span>.</li>
+<li><strong>Status auslesen.</strong> Im Admin-Panel unter <strong>KassenSichV</strong> Seriennummer, Zertifikatsdaten und Ablaufdatum prüfen.</li>
+<li><strong>Bei abgelaufenem Zertifikat austauschen.</strong> Siehe <span class="verweis-inaktiv">ITR Partner Service → Fiskalisierung → Abgelaufene TSE austauschen</span>.</li>
+<li><strong>Bei Cloud-TSE die Verbindung prüfen.</strong> Siehe <span class="verweis-inaktiv">ITR Partner Service → Betrieb &amp; Administration → Netzwerk und Ports</span> und <span class="verweis-inaktiv">ITR Partner Service → Fiskalisierung → Cloud-TSE (fiskaly) in Betrieb nehmen</span>.</li>
+<li><strong>Firmwarestand prüfen.</strong> Siehe <span class="verweis-inaktiv">ITR Partner Service → Fiskalisierung → TSE-Firmware aktualisieren</span>.</li>
+<li><strong>Bei anhaltendem <code>WORM_ERROR_IO</code> oder <code>Cannot invoke WormStore.transaction_start</code> eskalieren.</strong> [OFFEN: freigegebenes Vorgehen für diese beiden Fehlerbilder festlegen — insbesondere, ob und unter welchen Bedingungen ein Austausch der TSE erforderlich ist.]</li>
+</ol>
+<p id="bkmrk-die-tse-wird-nicht-e">Die TSE wird nicht entfernt, vernichtet oder unbrauchbar gemacht. TSE-PIN und PUK werden nicht ohne Rücksprache zurückgesetzt — siehe <span class="verweis-inaktiv">ITR Partner Service → Fiskalisierung → TSE-PIN und PUK verwalten</span>.</p>
+<h2 id="bkmrk-protokolldateien">Protokolldateien</h2>
+<p id="bkmrk-die-meldungen-der-ts">Die Meldungen der TSE-Dienste stehen in der <code>spring.log</code> der Kasse, Standardpfad <code>C:\GoodCompany\Kasse\log\</code>. Siehe <span class="verweis-inaktiv">ITR Partner Service → Produkte → Protokolldateien und Diagnose</span>.</p>
+<h2 id="bkmrk-informationen-f%C3%BCr-de">Informationen für den Support</h2>
+<ul id="bkmrk-filiale-und-kassennu">
+<li>Filiale und Kassennummer, Version der Kasse.</li>
+<li>Art der TSE: Hardware (Swissbit, Bundesdruckerei) oder Cloud.</li>
+<li>Seriennummer und Ablaufdatum aus dem Admin-Panel unter <strong>KassenSichV</strong>.</li>
+<li>Wortlaut der Fehlermeldung, Zeitpunkt auf die Minute, Belegnummer des betroffenen Vorgangs.</li>
+<li>Die <code>spring.log</code> des betroffenen Tages.</li>
+</ul>
+<h2 id="bkmrk-weitere-informatione">Weitere Informationen</h2>
+<ul id="bkmrk-itr-partner-service-">
+<li><span class="verweis-inaktiv">ITR Partner Service → Fiskalisierung → Fiskalisierung: Überblick für Partner</span></li>
+<li><span class="verweis-inaktiv">ITR Partner Service → FAQ &amp; Troubleshooting → Vorgehen bei Störungen</span></li>
+</ul>
+</div></main>
+  <aside class="spalte-rechts"><div class="seiteninhalt"><h2>Seiteninhalt</h2><ul><li class="e2"><a href="#bkmrk-symptome">Symptome</a></li><li class="e2"><a href="#bkmrk-m%C3%B6gliche-ursachen">Mögliche Ursachen</a></li><li class="e2"><a href="#bkmrk-l%C3%B6sung">Lösung</a></li><li class="e2"><a href="#bkmrk-protokolldateien">Protokolldateien</a></li><li class="e2"><a href="#bkmrk-informationen-f%C3%BCr-de">Informationen für den Support</a></li><li class="e2"><a href="#bkmrk-weitere-informatione">Weitere Informationen</a></li></ul></div></aside>
+</div>
+<footer class="fuss">
+  <span>ITR Partner Service</span>
+  <span class="fuss-rechts">
+    <a href="https://itrelations.de/de/impressum" target="_blank" rel="noopener">Impressum</a>
+    <span>Stand 04.09.2026</span>
+  </span>
+</footer>
+<script src="../assets/suche.js?v=d759af4f"></script>
+</body>
+</html>
