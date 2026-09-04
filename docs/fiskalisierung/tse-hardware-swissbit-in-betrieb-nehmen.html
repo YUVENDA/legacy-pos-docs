@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>TSE Hardware (Swissbit) in Betrieb nehmen | Fiskalisierung</title>
+<meta name="description" content="Die Hardware-TSE ist ein USB-Modul von Swissbit oder Cryptovision/Bundesdruckerei. Sie wird einmalig an einer Kasse registriert und bleibt dort für ihre gesamte Nutzungsdauer. Voraussetzungen Die Kass">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/stil.css?v=4ec495f7">
+</head>
+<body>
+<header class="kopf">
+  <div class="kopf-innen">
+    <a class="kopf-logo" href="../index.html"><img src="../assets/logo.png" alt="IT Relations"></a>
+    <div class="kopf-suche">
+      <input type="search" id="suchfeld" placeholder="Alle Inhalte durchsuchen" autocomplete="off"
+             aria-label="Suchen" data-auf="../">
+      <div id="suchergebnis" hidden></div>
+    </div>
+    <a class="sprung" href="#navigation">Zur Navigation</a>
+    <span class="kopf-firma">IT Relations GmbH</span>
+  </div>
+</header>
+<div class="rahmen">
+  <aside class="spalte-links" id="navigation"><nav class="nav" aria-label="Inhalt"><a class="nav-wurzel" href="../index.html">ITR Partner Service</a><details class="nav-buch"><summary><a href="../schnellstart/index.html">Schnellstart</a></summary><a class="nav-seite" href="../schnellstart/glossar-und-abkurzungen.html">Glossar und Abkürzungen</a></details><details class="nav-buch"><summary><a href="../produkte/index.html">Produkte</a></summary><details class="nav-kapitel"><summary><a href="../produkte/pos-gastro-app/index.html">POS Gastro App</a></summary><a class="nav-seite" href="../produkte/pos-gastro-app/funktionsweise.html">Funktionsweise</a><a class="nav-seite" href="../produkte/pos-gastro-app/in-betrieb-nehmen.html">In Betrieb nehmen</a><a class="nav-seite" href="../produkte/pos-gastro-app/im-alltag-arbeiten.html">Im Alltag arbeiten</a><a class="nav-seite" href="../produkte/pos-gastro-app/storungen-beheben.html">Störungen beheben</a></details></details><details class="nav-buch"><summary><a href="../losungen/index.html">Lösungen</a></summary><a class="nav-seite" href="../losungen/waagen.html">Waagen</a></details><details class="nav-buch"><summary><a href="../betrieb-administration/index.html">Betrieb &amp; Administration</a></summary><a class="nav-seite" href="../betrieb-administration/systemvoraussetzungen.html">Systemvoraussetzungen</a></details><details class="nav-buch" open><summary><a href="../fiskalisierung/index.html">Fiskalisierung</a></summary><a class="nav-seite aktuell" href="../fiskalisierung/tse-hardware-swissbit-in-betrieb-nehmen.html">TSE Hardware (Swissbit) in Betrieb nehmen</a></details><details class="nav-buch"><summary><a href="../faq-troubleshooting/index.html">FAQ &amp; Troubleshooting</a></summary><a class="nav-seite" href="../faq-troubleshooting/tse-meldet-einen-fehler.html">TSE meldet einen Fehler</a></details></nav></aside>
+  <main class="spalte-mitte" id="inhalt"><div class="seitenkopf"><nav class="brotkrumen-nav" aria-label="Sie sind hier"><ol class="brotkrumen"><li><a href="../fiskalisierung/index.html">Fiskalisierung</a></li><li><span aria-current="page">TSE Hardware (Swissbit) in Betrieb nehmen</span></li></ol></nav><h1>TSE Hardware (Swissbit) in Betrieb nehmen</h1><p class="seitenmeta">Letzte &Auml;nderung 29.08.2026 &middot; Version 1 &middot; Seiten-ID 705</p></div><div class="inhalt"><p id="bkmrk-die-hardware-tse-ist">Die Hardware-TSE ist ein USB-Modul von Swissbit oder Cryptovision/Bundesdruckerei. Sie wird einmalig an einer Kasse registriert und bleibt dort für ihre gesamte Nutzungsdauer.</p>
+<h2 id="bkmrk-voraussetzungen">Voraussetzungen</h2>
+<ul id="bkmrk-die-kasse-ist-%C3%BCber-d">
+<li>Die Kasse ist über den Setup-Wizard vollständig eingerichtet, Filiale und Kassennummer sind korrekt zugewiesen.</li>
+<li>Ein freier USB-3-Port an der Kasse.</li>
+<li>Das Betriebssystem ist in der Herstellerwartung und mit allen Sicherheitspatches versorgt.</li>
+<li>Bei Windows 10 muss unter Umständen das Microsoft Visual C++ Redistributable installiert sein. Das Setup liegt im Kassenverzeichnis unter <code>\fix</code>.</li>
+</ul>
+<h2 id="bkmrk-so-gehen-sie-vor">So gehen Sie vor</h2>
+<ol id="bkmrk-tse-einstecken%2C-bevo">
+<li><strong>TSE einstecken, bevor die Kasse startet.</strong> Das Modul gehört an einen freien USB-3-Port. Steckt es erst nach dem Programmstart, erkennt die Kasse es nicht.</li>
+<li><strong>Prüfen, ob das Betriebssystem die TSE als Laufwerk erkennt</strong> (zum Beispiel als <code>D:</code>).</li>
+<li><strong>Kasse starten.</strong> Die Registrierung läuft automatisch. Die Kasse erzeugt dabei eigene PIN und PUK, die niemandem bekannt sind. Der Betreiber kann beide später über die Konfiguration ändern — siehe <span class="verweis-inaktiv">ITR Partner Service → Fiskalisierung → TSE-PIN und PUK verwalten</span>.</li>
+<li><strong>Status am Anmeldebildschirm prüfen.</strong> Bei jedem Kassenstart zeigt die Kasse dort an, ob die TSE verbunden ist. <code>[SCREENSHOT: Anmeldebildschirm der Kasse mit erfolgreicher TSE-Verbindung und im Vergleich ohne TSE-Verbindung]</code></li>
+<li><strong>TSE-Daten für die Meldung übernehmen.</strong> Im Admin-Panel unter <strong>KassenSichV</strong> stehen alle relevanten TSE-Daten. Über die Schaltfläche <strong>kopieren</strong> lassen sie sich in ein Dokument übernehmen und für die Meldung an das Finanzamt verwenden.</li>
+<li><strong>Stammdaten für die Exporte hinterlegen</strong>, damit der DSFinV-K-Export später vollständig ist.</li>
+<li><strong>Testexport erstellen.</strong> Direkt nach der Inbetriebnahme einen DSFinV-K-Export erzeugen und mit dem Steuerberater des Betreibers abstimmen.</li>
+</ol>
+<p class="callout danger" id="bkmrk-die-tse-darf-nicht-e">Die TSE darf nicht entfernt, vernichtet oder unbrauchbar gemacht werden. Sie speichert alle Transaktionen der Kasse verschlüsselt und weist bei einer Prüfung die vollständige Erfassung aller steuerpflichtigen Vorgänge nach.</p>
+<h2 id="bkmrk-meldepflicht">Meldepflicht</h2>
+<p id="bkmrk-die-inbetriebnahme-j">Die Inbetriebnahme jeder Kasse muss der Finanzverwaltung gemeldet werden. Wie das geht, steht unter <span class="verweis-inaktiv">ITR Partner Service → Fiskalisierung → Kassenmeldung nach § 146a AO</span>.</p>
+<h2 id="bkmrk-bindung-an-die-kasse">Bindung an die Kasse</h2>
+<p id="bkmrk-die-tse-bleibt-w%C3%A4hre">Die TSE bleibt während ihrer gesamten Nutzungsdauer an derselben Kasse. Ein Hardwaretausch ist möglich, wenn die Kassennummer und die bestehenden Daten der alten Kasse vollständig übernommen werden.</p>
+<p id="bkmrk-sind-die-historische">Sind die historischen Daten nicht mehr verfügbar — etwa bei einer Kasse ohne zentrale Datenbank und ohne Sicherung — muss unter Umständen auch die TSE erneuert und die bisherige nach den gesetzlichen Vorschriften archiviert werden.</p>
+<p id="bkmrk-die-client-id-ist-ei">Die <strong>Client-ID</strong> ist ein technisch erzeugter Schlüssel aus Hardware und Hauptlizenz. Bei umfangreicheren Änderungen kann eine erneute Registrierung auf der TSE nötig werden. Die bestehende TSE lässt sich weiterverwenden, weil mehrere Clients auf einer TSE registriert sein können.</p>
+<h2 id="bkmrk-zertifikatslaufzeit">Zertifikatslaufzeit</h2>
+<p id="bkmrk-das-zertifikat-einer">Das Zertifikat einer Hardware-TSE ist in der Regel auf fünf Jahre befristet. Danach wird das Modul ausgetauscht — siehe <span class="verweis-inaktiv">ITR Partner Service → Fiskalisierung → Abgelaufene TSE austauschen</span>.</p>
+<p id="bkmrk-das-genaue-ablaufdat">Das genaue Ablaufdatum steht im Admin-Panel unter <strong>KassenSichV</strong>. Bei Systemen mit zentraler Datenbank lässt sich der Status zusätzlich im CentralPoint unter <strong>Kassen</strong> einsehen.</p>
+<p id="bkmrk-%5Boffen%3A-ob-sich-das-"><code>[OFFEN: ob sich das Zertifikat einer TSE verlängern lässt, statt das Modul zu tauschen]</code></p>
+<h2 id="bkmrk-ergebnis-pr%C3%BCfen">Ergebnis prüfen</h2>
+<ul id="bkmrk-der-anmeldebildschir">
+<li>Der Anmeldebildschirm meldet beim Kassenstart eine verbundene TSE.</li>
+<li>Im Admin-Panel unter <strong>KassenSichV</strong> stehen Seriennummer, Zertifikatsdaten und Ablaufdatum.</li>
+<li>Ein Testbeleg trägt eine TSE-Signatur und einen vollständigen QR-Code.</li>
+</ul>
+<h2 id="bkmrk-wenn-es-nicht-funkti">Wenn es nicht funktioniert</h2>
+<ul id="bkmrk-tse-wird-nicht-erkan">
+<li><strong>TSE wird nicht erkannt:</strong> Prüfen, ob das Microsoft Visual C++ Redistributable installiert ist (Setup unter <code>\fix</code> im Kassenverzeichnis) und ob das Betriebssystem noch in der Herstellerwartung ist.</li>
+<li><strong>TSE steckt erst seit dem Programmstart:</strong> Kasse beenden, TSE stecken lassen, Kasse neu starten.</li>
+<li><strong>TSE erscheint nicht als Laufwerk:</strong> anderen USB-3-Port verwenden.</li>
+</ul>
+<h2 id="bkmrk-checkliste">Checkliste</h2>
+<ul id="bkmrk-kasse-%C3%BCber-den-setup">
+<li class="task-list-item"><input disabled type="checkbox"> Kasse über den Setup-Wizard korrekt eingerichtet</li>
+<li class="task-list-item"><input disabled type="checkbox"> Filiale und Kassennummer zugewiesen</li>
+<li class="task-list-item"><input disabled type="checkbox"> Betriebssystem in der Herstellerwartung und gepatcht</li>
+<li class="task-list-item"><input disabled type="checkbox"> TSE steckt am USB-3-Port und wird als Laufwerk erkannt</li>
+<li class="task-list-item"><input disabled type="checkbox"> Visual C++ Redistributable installiert (bei Bedarf)</li>
+<li class="task-list-item"><input disabled type="checkbox"> TSE beim Kassenstart erkannt</li>
+<li class="task-list-item"><input disabled type="checkbox"> Stammdaten für die Exporte hinterlegt</li>
+<li class="task-list-item"><input disabled type="checkbox"> Meldung an die Finanzverwaltung veranlasst</li>
+<li class="task-list-item"><input disabled type="checkbox"> DSFinV-K-Testexport erstellt und abgestimmt</li>
+</ul>
+</div></main>
+  <aside class="spalte-rechts"><div class="seiteninhalt"><h2>Seiteninhalt</h2><ul><li class="e2"><a href="#bkmrk-voraussetzungen">Voraussetzungen</a></li><li class="e2"><a href="#bkmrk-so-gehen-sie-vor">So gehen Sie vor</a></li><li class="e2"><a href="#bkmrk-meldepflicht">Meldepflicht</a></li><li class="e2"><a href="#bkmrk-bindung-an-die-kasse">Bindung an die Kasse</a></li><li class="e2"><a href="#bkmrk-zertifikatslaufzeit">Zertifikatslaufzeit</a></li><li class="e2"><a href="#bkmrk-ergebnis-pr%C3%BCfen">Ergebnis prüfen</a></li><li class="e2"><a href="#bkmrk-wenn-es-nicht-funkti">Wenn es nicht funktioniert</a></li><li class="e2"><a href="#bkmrk-checkliste">Checkliste</a></li></ul></div></aside>
+</div>
+<footer class="fuss">
+  <span>ITR Partner Service</span>
+  <span class="fuss-rechts">
+    <a href="https://itrelations.de/de/impressum" target="_blank" rel="noopener">Impressum</a>
+    <span>Stand 04.09.2026</span>
+  </span>
+</footer>
+<script src="../assets/suche.js?v=d759af4f"></script>
+</body>
+</html>
