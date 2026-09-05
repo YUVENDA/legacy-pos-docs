@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Fiskalisierung: Überblick für Partner | Fiskalisierung</title>
+<meta name="description" content="Jede Kasse in Deutschland muss ihre Geschäftsvorfälle mit einer technischen Sicherheitseinrichtung (TSE) signieren. Diese Seite ordnet ein, welche Aufgaben dabei beim Partner liegen und wo die einzeln">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/stil.css?v=221680a4">
+</head>
+<body>
+<header class="kopf">
+  <div class="kopf-innen">
+    <a class="kopf-logo" href="../index.html"><img src="../assets/logo.png" alt="IT Relations"></a>
+    <div class="kopf-suche">
+      <input type="search" id="suchfeld" placeholder="Alle Inhalte durchsuchen" autocomplete="off"
+             aria-label="Suchen" data-auf="../">
+      <div id="suchergebnis" hidden></div>
+    </div>
+    <a class="sprung" href="#navigation">Zur Navigation</a>
+    <span class="kopf-firma">IT Relations GmbH</span>
+  </div>
+</header>
+<div class="rahmen">
+  <aside class="spalte-links" id="navigation"><nav class="nav" aria-label="Inhalt"><a class="nav-wurzel" href="../index.html">ITR POS Partner Docs</a><details class="nav-buch"><summary><a href="../schnellstart/index.html">Schnellstart</a></summary><a class="nav-seite" href="../schnellstart/glossar-und-abkurzungen.html">Glossar und Abkürzungen</a></details><details class="nav-buch"><summary><a href="../produkte/index.html">Produkte</a></summary><details class="nav-kapitel"><summary><a href="../produkte/pos-gastro-app/index.html">POS Gastro App</a></summary><a class="nav-seite" href="../produkte/pos-gastro-app/funktionsweise.html">Funktionsweise</a><a class="nav-seite" href="../produkte/pos-gastro-app/in-betrieb-nehmen.html">In Betrieb nehmen</a><a class="nav-seite" href="../produkte/pos-gastro-app/im-alltag-arbeiten.html">Im Alltag arbeiten</a><a class="nav-seite" href="../produkte/pos-gastro-app/storungen-beheben.html">Störungen beheben</a></details></details><details class="nav-buch"><summary><a href="../losungen/index.html">Lösungen</a></summary><a class="nav-seite" href="../losungen/waagen.html">Waagen</a></details><details class="nav-buch"><summary><a href="../betrieb-administration/index.html">Betrieb &amp; Administration</a></summary><a class="nav-seite" href="../betrieb-administration/systemvoraussetzungen.html">Systemvoraussetzungen</a></details><details class="nav-buch" open><summary><a href="../fiskalisierung/index.html">Fiskalisierung</a></summary><a class="nav-seite aktuell" href="../fiskalisierung/fiskalisierung-uberblick-fur-partner.html">Fiskalisierung: Überblick für Partner</a><a class="nav-seite" href="../fiskalisierung/tse-hardware-swissbit-in-betrieb-nehmen.html">TSE Hardware (Swissbit) in Betrieb nehmen</a></details><details class="nav-buch"><summary><a href="../faq-troubleshooting/index.html">FAQ &amp; Troubleshooting</a></summary><a class="nav-seite" href="../faq-troubleshooting/tse-meldet-einen-fehler.html">TSE meldet einen Fehler</a></details></nav></aside>
+  <main class="spalte-mitte" id="inhalt"><div class="seitenkopf"><nav class="brotkrumen-nav" aria-label="Sie sind hier"><ol class="brotkrumen"><li><a href="../fiskalisierung/index.html">Fiskalisierung</a></li><li><span aria-current="page">Fiskalisierung: Überblick für Partner</span></li></ol></nav><h1>Fiskalisierung: Überblick für Partner</h1><p class="seitenmeta">Letzte &Auml;nderung 05.09.2026 &middot; Version 3 &middot; Seiten-ID 704</p></div><div class="inhalt"><p id="bkmrk-jede-kasse-in-deutsc">Jede Kasse in Deutschland muss ihre Geschäftsvorfälle mit einer technischen Sicherheitseinrichtung (TSE) signieren. Diese Seite ordnet ein, welche Aufgaben dabei beim Partner liegen und wo die einzelnen Anleitungen stehen.</p>
+<h2 id="bkmrk-was-die-tse-tut">Was die TSE tut</h2>
+<p id="bkmrk-die-tse-zeichnet-jed">Die TSE zeichnet jede Transaktion der Kasse verschlüsselt auf und signiert sie. Bei einer Prüfung weist sie nach, dass alle steuerpflichtigen Vorgänge vollständig und unverändert erfasst wurden. Die Signatur erscheint auf dem Beleg und ist damit für jeden prüfbar.</p>
+<p id="bkmrk-ohne-funktionierende">Ohne funktionierende TSE darf eine Kasse nicht im Echtbetrieb laufen.</p>
+<h2 id="bkmrk-zwei-bauformen">Zwei Bauformen</h2>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-hardware-tsecloud-ts"><colgroup><col><col><col></colgroup><tbody><tr><th><p><br></p></th><th><p>Hardware-TSE</p></th><th><p>Cloud-TSE</p></th></tr><tr><td><p>Form</p></td><td><p>USB-Modul (Swissbit oder Cryptovision/Bundesdruckerei)</p></td><td><p>Onlinedienst über den Anbieter fiskaly</p></td></tr><tr><td><p>Laufzeit</p></td><td><p>Zertifikat in der Regel auf fünf Jahre befristet, danach Austausch</p></td><td><p>kein Ablaufdatum</p></td></tr><tr><td><p>Voraussetzung</p></td><td><p>freier USB-3-Port an der Kasse</p></td><td><p>dauerhafte HTTPS-Verbindung über Port 443</p></td></tr><tr><td><p>Verfügbar ab</p></td><td><p>5.13</p></td><td><p>Version 5.51, Modul „Cloud-TSE"</p></td></tr><tr><td><p>Verwaltung</p></td><td><p>je Kasse im Admin-Panel</p></td><td><p>zentral über Partner-Portal und CentralPoint</p></td></tr><tr><td><p>TSE-TAR-Export</p></td><td><p>über das Admin-Panel der Kasse</p></td><td><p>derzeit nur über den ITR-Service</p></td></tr></tbody></table></div>
+<p id="bkmrk-stecken-an-einer-kas">Stecken an einer Kasse beide, hat die Cloud-TSE Vorrang — die Hardware-TSE signiert dann nicht mehr, lässt sich aber noch exportieren und archivieren.</p>
+<h2 id="bkmrk-was-der-partner-%C3%BCber">Was der Partner übernimmt</h2>
+<ol id="bkmrk-in-betrieb-nehmen-%E2%80%94-"><li value="1"><strong>In Betrieb nehmen</strong> — TSE anschließen oder Modul lizenzieren, Kasse starten, Status prüfen. Siehe <a href="../fiskalisierung/tse-hardware-swissbit-in-betrieb-nehmen.html">ITR Partner Service → Fiskalisierung → TSE Hardware (Swissbit) in Betrieb nehmen</a> und <span class="verweis-inaktiv">Cloud-TSE (fiskaly) in Betrieb nehmen</span>.</li><li value="2"><strong>Beim Melden unterstützen</strong> — jede Inbetriebnahme, Änderung und Stilllegung ist der Finanzverwaltung mitzuteilen. Siehe <span class="verweis-inaktiv">Kassenmeldung nach § 146a AO</span>.</li><li value="3"><strong>Laufend halten</strong> — Firmware aktuell halten, PIN und PUK dokumentieren, ablaufende TSE rechtzeitig tauschen.</li><li value="4"><strong>Exporte zeigen</strong> — dem Betreiber und seinem Steuerberater vorführen, wie DSFinV-K- und TSE-TAR-Export laufen.</li></ol>
+<p id="bkmrk-nicht-aufgabe-des-pa"><strong>Nicht Aufgabe des Partners</strong> ist die steuerliche Bewertung. Die Verantwortung für Meldungen, Aufbewahrung und Vollständigkeit der fiskalischen Daten liegt beim Betreiber der Kasse.</p>
+<h2 id="bkmrk-nach-der-inbetriebna">Nach der Inbetriebnahme immer einen Testexport</h2>
+<p id="bkmrk-erstellen-sie-nach-d">Erstellen Sie nach der ersten Inbetriebnahme einer Filiale einen DSFinV-K-Export und stimmen Sie ihn mit dem Steuerberater des Betreibers ab. Fehlerhaft konfigurierte oder von der DSFinV-K nicht unterstützte Prozesse fallen sonst erst bei der Prüfung auf — dann rückwirkend für den gesamten Zeitraum.</p>
+<h2 id="bkmrk-rechtlicher-rahmen">Rechtlicher Rahmen</h2>
+<p id="bkmrk-ma%C3%9Fgeblich-sind-%C2%A7-14">Maßgeblich sind § 146a AO, die Kassensicherungsverordnung (KassenSichV), die GoBD und die Technische Richtlinie des BSI zur TSE. Die Kasse setzt die DSFinV-K in <strong>Version 2.3</strong> um.</p>
+<p id="bkmrk-diese-dokumentation-">Diese Dokumentation beschreibt die technische Umsetzung. Sie ist keine Rechtsauskunft — Fristen, Pflichten und Auslegungsfragen gehören zum Steuerberater des Betreibers.</p>
+<h2 id="bkmrk-weitere-informatione">Weitere Informationen</h2>
+<ul id="bkmrk-itr-partner-service-"><li value="1"><span class="verweis-inaktiv">ITR Partner Service → Fiskalisierung → DSFinV-K exportieren</span></li><li value="2"><span class="verweis-inaktiv">ITR Partner Service → Fiskalisierung → TSE-TAR exportieren</span></li><li value="3"><span class="verweis-inaktiv">ITR Partner Service → Fiskalisierung → Belege und Kassenabschlüsse prüfen</span></li></ul></div></main>
+  <aside class="spalte-rechts"><div class="seiteninhalt"><h2>Seiteninhalt</h2><ul><li class="e2"><a href="#bkmrk-was-die-tse-tut">Was die TSE tut</a></li><li class="e2"><a href="#bkmrk-zwei-bauformen">Zwei Bauformen</a></li><li class="e2"><a href="#bkmrk-was-der-partner-%C3%BCber">Was der Partner übernimmt</a></li><li class="e2"><a href="#bkmrk-nach-der-inbetriebna">Nach der Inbetriebnahme immer einen Testexport</a></li><li class="e2"><a href="#bkmrk-rechtlicher-rahmen">Rechtlicher Rahmen</a></li><li class="e2"><a href="#bkmrk-weitere-informatione">Weitere Informationen</a></li></ul></div></aside>
+</div>
+<footer class="fuss">
+  <span>ITR POS Partner Docs</span>
+  <span class="fuss-rechts">
+    <a href="https://itrelations.de/de/impressum" target="_blank" rel="noopener">Impressum</a>
+    <span>Stand 05.09.2026</span>
+  </span>
+</footer>
+<script src="../assets/suche.js?v=d759af4f"></script>
+</body>
+</html>
