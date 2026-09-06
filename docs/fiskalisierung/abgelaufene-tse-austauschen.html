@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Abgelaufene TSE austauschen | Fiskalisierung</title>
+<meta name="description" content="Das Zertifikat einer Hardware-TSE ist in der Regel auf fünf Jahre befristet. Läuft es ab, wird das Modul getauscht — mit Export der alten Daten, Abmeldung der alten und Anmeldung der neuen TSE. Der Ta">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/stil.css?v=221680a4">
+</head>
+<body>
+<header class="kopf">
+  <div class="kopf-innen">
+    <a class="kopf-logo" href="../index.html"><img src="../assets/logo.png" alt="IT Relations"></a>
+    <div class="kopf-suche">
+      <input type="search" id="suchfeld" placeholder="Alle Inhalte durchsuchen" autocomplete="off"
+             aria-label="Suchen" data-auf="../">
+      <div id="suchergebnis" hidden></div>
+    </div>
+    <a class="sprung" href="#navigation">Zur Navigation</a>
+    <span class="kopf-firma">IT Relations GmbH</span>
+  </div>
+</header>
+<div class="rahmen">
+  <aside class="spalte-links" id="navigation"><nav class="nav" aria-label="Inhalt"><a class="nav-wurzel" href="../index.html">ITR POS Partner Docs</a><details class="nav-buch"><summary><a href="../schnellstart/index.html">Schnellstart</a></summary><a class="nav-seite" href="../schnellstart/glossar-und-abkurzungen.html">Glossar und Abkürzungen</a></details><details class="nav-buch"><summary><a href="../produkte/index.html">Produkte</a></summary><details class="nav-kapitel"><summary><a href="../produkte/pos-gastro-app/index.html">POS Gastro App</a></summary><a class="nav-seite" href="../produkte/pos-gastro-app/funktionsweise.html">Funktionsweise</a><a class="nav-seite" href="../produkte/pos-gastro-app/in-betrieb-nehmen.html">In Betrieb nehmen</a><a class="nav-seite" href="../produkte/pos-gastro-app/im-alltag-arbeiten.html">Im Alltag arbeiten</a><a class="nav-seite" href="../produkte/pos-gastro-app/storungen-beheben.html">Störungen beheben</a></details></details><details class="nav-buch"><summary><a href="../losungen/index.html">Lösungen</a></summary><a class="nav-seite" href="../losungen/waagen.html">Waagen</a></details><details class="nav-buch"><summary><a href="../betrieb-administration/index.html">Betrieb &amp; Administration</a></summary><a class="nav-seite" href="../betrieb-administration/systemvoraussetzungen.html">Systemvoraussetzungen</a></details><details class="nav-buch" open><summary><a href="../fiskalisierung/index.html">Fiskalisierung</a></summary><a class="nav-seite" href="../fiskalisierung/fiskalisierung-uberblick-fur-partner.html">Fiskalisierung: Überblick für Partner</a><a class="nav-seite" href="../fiskalisierung/tse-hardware-swissbit-in-betrieb-nehmen.html">TSE Hardware (Swissbit) in Betrieb nehmen</a><a class="nav-seite" href="../fiskalisierung/cloud-tse-fiskaly-in-betrieb-nehmen.html">Cloud-TSE (fiskaly) in Betrieb nehmen</a><a class="nav-seite" href="../fiskalisierung/tse-pin-und-puk-verwalten.html">TSE-PIN und PUK verwalten</a><a class="nav-seite aktuell" href="../fiskalisierung/abgelaufene-tse-austauschen.html">Abgelaufene TSE austauschen</a></details><details class="nav-buch"><summary><a href="../faq-troubleshooting/index.html">FAQ &amp; Troubleshooting</a></summary><a class="nav-seite" href="../faq-troubleshooting/tse-meldet-einen-fehler.html">TSE meldet einen Fehler</a></details></nav></aside>
+  <main class="spalte-mitte" id="inhalt"><div class="seitenkopf"><nav class="brotkrumen-nav" aria-label="Sie sind hier"><ol class="brotkrumen"><li><a href="../fiskalisierung/index.html">Fiskalisierung</a></li><li><span aria-current="page">Abgelaufene TSE austauschen</span></li></ol></nav><h1>Abgelaufene TSE austauschen</h1><p class="seitenmeta">Letzte &Auml;nderung 30.08.2026 &middot; Version 2 &middot; Seiten-ID 709</p></div><div class="inhalt"><p id="bkmrk-das-zertifikat-einer">Das Zertifikat einer Hardware-TSE ist in der Regel auf fünf Jahre befristet. Läuft es ab, wird das Modul getauscht — mit Export der alten Daten, Abmeldung der alten und Anmeldung der neuen TSE.</p>
+<p id="bkmrk-der-tausch-ber%C3%BChrt-d">Der Tausch berührt die Aufzeichnungs- und Mitteilungspflichten nach § 146a AO und ist Bestandteil der Verfahrensdokumentation nach GoBD. Maßgeblich sind der Wortlaut der Norm und die Vorgaben der Finanzverwaltung; die folgenden Schritte beschreiben den technischen Ablauf.</p>
+<h2 id="bkmrk-voraussetzungen">Voraussetzungen</h2>
+<ul id="bkmrk-zugang-zur-kasse-mit">
+<li>Zugang zur Kasse mit Administratorrechten.</li>
+<li>Eine neue TSE, zum Beispiel Swissbit als USB-Stick oder SD-Karte.</li>
+<li>Zugang zum ELSTER-Portal.</li>
+<li>Die Verfahrensdokumentation des Betreibers zum Nachtragen.</li>
+</ul>
+<p id="bkmrk-das-ablaufdatum-der-">Das Ablaufdatum der laufenden TSE steht im Admin-Panel unter <strong>KassenSichV</strong>, bei Systemen mit CentralPoint zusätzlich dort unter <strong>Kassen</strong>. Planen Sie den Tausch, bevor das Datum erreicht ist.</p>
+<h2 id="bkmrk-so-gehen-sie-vor">So gehen Sie vor</h2>
+<ol id="bkmrk-kassenabschluss-durc">
+<li><strong>Kassenabschluss durchführen.</strong> Tagesabschluss an der Kasse erstellen, danach am selben Tag nicht weiter buchen.</li>
+<li><strong>Alte TSE-Daten sichern und archivieren.</strong> Alle TSE-Daten exportieren — Signaturen, Protokolle, Zertifikate. PIN, PUK, Wartungsprotokolle und Rechnungen dazu archivieren. Siehe <span class="verweis-inaktiv">ITR Partner Service → Fiskalisierung → TSE-TAR exportieren</span>.</li>
+<li><strong>Neue TSE anschließen und initialisieren.</strong> Modul einstecken, Kasse starten. Die Initialisierung läuft automatisch über das TSE-Setup der Kassensoftware. Funktion an der Kassenanzeige und auf einem Beleg prüfen.</li>
+<li><strong>Alte TSE über ELSTER abmelden</strong> — mit Seriennummer und Datum.</li>
+<li><strong>Neue TSE an das Finanzamt melden</strong> — mit Seriennummer und Datum der Inbetriebnahme. Die Meldung dokumentieren und aufbewahren. Siehe <span class="verweis-inaktiv">ITR Partner Service → Fiskalisierung → Kassenmeldung nach § 146a AO</span>.</li>
+<li><strong>Verfahrensdokumentation aktualisieren.</strong> Den Tausch beschreiben, Archivierungsnachweise und ELSTER-Protokolle beilegen.</li>
+</ol>
+<p id="bkmrk-ab--und-anmeldung-be">Ab- und Anmeldung bei ELSTER erfolgen zeitnah zum Tausch. Beide Meldungen gehören zusammen: die alte TSE wird abgemeldet, die neue angemeldet.</p>
+<p class="callout warning" id="bkmrk-die-exportierten-dat">Die exportierten Daten der alten TSE sind mindestens zehn Jahre revisionssicher aufzubewahren. Ohne sie fehlt für den Zeitraum vor dem Tausch der Nachweis. Dasselbe gilt für PIN, PUK, Wartungsprotokolle und Rechnungen der alten TSE.</p>
+<h2 id="bkmrk-ergebnis-pr%C3%BCfen">Ergebnis prüfen</h2>
+<ul id="bkmrk-ein-beleg-tr%C3%A4gt-eine">
+<li>Ein Beleg trägt eine Signatur der neuen TSE.</li>
+<li>Im Admin-Panel unter <strong>KassenSichV</strong> steht die neue Seriennummer mit neuem Ablaufdatum.</li>
+<li>Der Export der alten TSE liegt archiviert vor.</li>
+<li>Ab- und Anmeldung bei ELSTER sind dokumentiert.</li>
+</ul>
+<h2 id="bkmrk-checkliste">Checkliste</h2>
+<ul id="bkmrk-tagesabschluss-durch">
+<li class="task-list-item"><input disabled type="checkbox"> Tagesabschluss durchgeführt</li>
+<li class="task-list-item"><input disabled type="checkbox"> Alte TSE-Daten exportiert und archiviert</li>
+<li class="task-list-item"><input disabled type="checkbox"> Neue TSE angeschlossen und initialisiert</li>
+<li class="task-list-item"><input disabled type="checkbox"> Alte TSE bei ELSTER abgemeldet</li>
+<li class="task-list-item"><input disabled type="checkbox"> Neue TSE bei ELSTER gemeldet</li>
+<li class="task-list-item"><input disabled type="checkbox"> Verfahrensdokumentation aktualisiert</li>
+</ul>
+<h2 id="bkmrk-zu-beachten">Zu beachten</h2>
+<p id="bkmrk-die-verantwortung-f%C3%BC">Die Verantwortung für die fristgerechte Meldung und die Aufbewahrung liegt beim Betreiber beziehungsweise seinem Steuerberater — nicht beim Partner. Der Partner unterstützt technisch beim Tausch und beim Export.</p>
+<h2 id="bkmrk-weitere-informatione">Weitere Informationen</h2>
+<ul id="bkmrk-itr-partner-service-">
+<li><a href="../fiskalisierung/tse-hardware-swissbit-in-betrieb-nehmen.html">ITR Partner Service → Fiskalisierung → TSE Hardware (Swissbit) in Betrieb nehmen</a></li>
+<li><span class="verweis-inaktiv">ITR Partner Service → Fiskalisierung → TSE außer Betrieb nehmen</span></li>
+</ul>
+</div></main>
+  <aside class="spalte-rechts"><div class="seiteninhalt"><h2>Seiteninhalt</h2><ul><li class="e2"><a href="#bkmrk-voraussetzungen">Voraussetzungen</a></li><li class="e2"><a href="#bkmrk-so-gehen-sie-vor">So gehen Sie vor</a></li><li class="e2"><a href="#bkmrk-ergebnis-pr%C3%BCfen">Ergebnis prüfen</a></li><li class="e2"><a href="#bkmrk-checkliste">Checkliste</a></li><li class="e2"><a href="#bkmrk-zu-beachten">Zu beachten</a></li><li class="e2"><a href="#bkmrk-weitere-informatione">Weitere Informationen</a></li></ul></div></aside>
+</div>
+<footer class="fuss">
+  <span>ITR POS Partner Docs</span>
+  <span class="fuss-rechts">
+    <a href="https://itrelations.de/de/impressum" target="_blank" rel="noopener">Impressum</a>
+    <span>Stand 06.09.2026</span>
+  </span>
+</footer>
+<script src="../assets/suche.js?v=d759af4f"></script>
+</body>
+</html>
