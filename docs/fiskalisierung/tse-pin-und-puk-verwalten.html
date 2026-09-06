@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>TSE-PIN und PUK verwalten | Fiskalisierung</title>
+<meta name="description" content="Jede Hardware-TSE wird bei der Registrierung mit einer PIN und einer PUK versehen, die die Kasse selbst erzeugt. Beide lassen sich ändern — und beide sperren die TSE, wenn sie verloren gehen. Wie die ">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/stil.css?v=221680a4">
+</head>
+<body>
+<header class="kopf">
+  <div class="kopf-innen">
+    <a class="kopf-logo" href="../index.html"><img src="../assets/logo.png" alt="IT Relations"></a>
+    <div class="kopf-suche">
+      <input type="search" id="suchfeld" placeholder="Alle Inhalte durchsuchen" autocomplete="off"
+             aria-label="Suchen" data-auf="../">
+      <div id="suchergebnis" hidden></div>
+    </div>
+    <a class="sprung" href="#navigation">Zur Navigation</a>
+    <span class="kopf-firma">IT Relations GmbH</span>
+  </div>
+</header>
+<div class="rahmen">
+  <aside class="spalte-links" id="navigation"><nav class="nav" aria-label="Inhalt"><a class="nav-wurzel" href="../index.html">ITR POS Partner Docs</a><details class="nav-buch"><summary><a href="../schnellstart/index.html">Schnellstart</a></summary><a class="nav-seite" href="../schnellstart/glossar-und-abkurzungen.html">Glossar und Abkürzungen</a></details><details class="nav-buch"><summary><a href="../produkte/index.html">Produkte</a></summary><details class="nav-kapitel"><summary><a href="../produkte/pos-gastro-app/index.html">POS Gastro App</a></summary><a class="nav-seite" href="../produkte/pos-gastro-app/funktionsweise.html">Funktionsweise</a><a class="nav-seite" href="../produkte/pos-gastro-app/in-betrieb-nehmen.html">In Betrieb nehmen</a><a class="nav-seite" href="../produkte/pos-gastro-app/im-alltag-arbeiten.html">Im Alltag arbeiten</a><a class="nav-seite" href="../produkte/pos-gastro-app/storungen-beheben.html">Störungen beheben</a></details></details><details class="nav-buch"><summary><a href="../losungen/index.html">Lösungen</a></summary><a class="nav-seite" href="../losungen/waagen.html">Waagen</a></details><details class="nav-buch"><summary><a href="../betrieb-administration/index.html">Betrieb &amp; Administration</a></summary><a class="nav-seite" href="../betrieb-administration/systemvoraussetzungen.html">Systemvoraussetzungen</a></details><details class="nav-buch" open><summary><a href="../fiskalisierung/index.html">Fiskalisierung</a></summary><a class="nav-seite" href="../fiskalisierung/fiskalisierung-uberblick-fur-partner.html">Fiskalisierung: Überblick für Partner</a><a class="nav-seite" href="../fiskalisierung/tse-hardware-swissbit-in-betrieb-nehmen.html">TSE Hardware (Swissbit) in Betrieb nehmen</a><a class="nav-seite" href="../fiskalisierung/cloud-tse-fiskaly-in-betrieb-nehmen.html">Cloud-TSE (fiskaly) in Betrieb nehmen</a><a class="nav-seite aktuell" href="../fiskalisierung/tse-pin-und-puk-verwalten.html">TSE-PIN und PUK verwalten</a></details><details class="nav-buch"><summary><a href="../faq-troubleshooting/index.html">FAQ &amp; Troubleshooting</a></summary><a class="nav-seite" href="../faq-troubleshooting/tse-meldet-einen-fehler.html">TSE meldet einen Fehler</a></details></nav></aside>
+  <main class="spalte-mitte" id="inhalt"><div class="seitenkopf"><nav class="brotkrumen-nav" aria-label="Sie sind hier"><ol class="brotkrumen"><li><a href="../fiskalisierung/index.html">Fiskalisierung</a></li><li><span aria-current="page">TSE-PIN und PUK verwalten</span></li></ol></nav><h1>TSE-PIN und PUK verwalten</h1><p class="seitenmeta">Letzte &Auml;nderung 29.08.2026 &middot; Version 1 &middot; Seiten-ID 707</p></div><div class="inhalt"><p id="bkmrk-jede-hardware-tse-wi">Jede Hardware-TSE wird bei der Registrierung mit einer PIN und einer PUK versehen, die die Kasse selbst erzeugt. Beide lassen sich ändern — und beide sperren die TSE, wenn sie verloren gehen.</p>
+<h2 id="bkmrk-wie-die-kasse-pin-un">Wie die Kasse PIN und PUK verwendet</h2>
+<ul id="bkmrk-die-pin-wird-verschl">
+<li>Die PIN wird verschlüsselt in der Kassendatenbank gespeichert.</li>
+<li>Bei jedem Kassenstart meldet sich die Kasse mit dieser PIN an der TSE an.</li>
+<li>Nach <strong>drei Fehlversuchen ist die PIN gesperrt</strong>. Die Kasse versucht dann, über die PUK die Standard-PIN wiederherzustellen.</li>
+<li>Nach <strong>drei Fehlversuchen mit der PUK ist die TSE dauerhaft gesperrt</strong> und kann nicht mehr verwendet werden.</li>
+</ul>
+<p class="callout danger" id="bkmrk-eine-ge%C3%A4nderte-pin-u">Eine geänderte PIN und eine geänderte PUK müssen dokumentiert werden. Gehen beide verloren, ist die TSE nach drei Fehlversuchen unwiederbringlich gesperrt — mit allen darauf gespeicherten Transaktionen.</p>
+<h2 id="bkmrk-die-vier-eintr%C3%A4ge">Die vier Einträge</h2>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-eintrag-wof%C3%BCr-pin-an">
+<thead>
+<tr>
+<th>Eintrag</th>
+<th>Wofür</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pin</code></td>
+<td>Anmeldung des Admin-Benutzers. Im Normalbetrieb nicht nötig, aber für einige API-Funktionen — etwa Registrierung der Kasse und Export der TSE-Daten.</td>
+</tr>
+<tr>
+<td><code>puk</code></td>
+<td>PIN ändern oder den gesperrten Admin-Benutzer reaktivieren.</td>
+</tr>
+<tr>
+<td><code>timepin</code></td>
+<td>Eigener Benutzer, mit dem die Kasse regelmäßig die Uhrzeit der TSE aktualisiert.</td>
+</tr>
+<tr>
+<td><code>timepuk</code></td>
+<td>PIN des Zeit-Benutzers ändern oder ihn reaktivieren.</td>
+</tr>
+</tbody>
+</table></div>
+<p id="bkmrk-manche-hersteller%2C-d">Manche Hersteller, darunter Swissbit, haben nur <strong>eine Admin-PUK für beide Benutzer</strong>.</p>
+<h2 id="bkmrk-wenn-datenbank-und-t">Wenn Datenbank und TSE nicht mehr zusammenpassen</h2>
+<p id="bkmrk-das-passiert%2C-wenn-e">Das passiert, wenn eine TSE an eine andere Kasse gesteckt oder zwei TSEs zwischen Kassen getauscht werden: Die Werte in der Kassendatenbank stimmen dann nicht mehr mit denen auf der TSE überein, und der erste Anmeldeversuch scheitert.</p>
+<p id="bkmrk-%C3%9Cber-eine-.propertie">Über eine <code>.properties</code>-Datei lassen sich die Werte <strong>in der Datenbank</strong> überschreiben. Der Dateiname hängt vom Hersteller ab. <code>[OFFEN: Dateiname und Ablageort der .properties-Datei je Hersteller]</code></p>
+<p id="bkmrk-aufbau%3A">Aufbau:</p>
+<div class="codefeld"><div class="codefeld-kopf"><span class="codefeld-sprache">Text</span><button type="button" class="codefeld-kopieren">Kopieren</button></div><pre><code>pin=1234
+puk=123456
+timepin=1234
+timepuk=123456
+</code></pre></div>
+<p id="bkmrk-jede-zeile-ist-optio">Jede Zeile ist optional und kann einzeln verwendet werden:</p>
+<ul id="bkmrk-neue-pin-in-der-date">
+<li><strong>Neue PIN in der Datenbank setzen:</strong> <code>pin=1234</code></li>
+<li><strong>Standard-PIN in der Datenbank wiederherstellen:</strong> <code>pin=</code> — den Wert leer lassen</li>
+</ul>
+<p id="bkmrk-nach-dem-einlesen-en">Nach dem Einlesen entfernt die Kasse die Einträge aus der Datei, damit die PIN nicht im Klartext liegen bleibt.</p>
+<p class="callout warning" id="bkmrk-die-.properties-date">Die <code>.properties</code>-Datei ändert nichts an der PIN oder PUK auf der TSE selbst — sie korrigiert nur den Eintrag in der Kassendatenbank. Die PIN auf der TSE lässt sich ausschließlich über die API und mit korrekter PUK zurücksetzen.</p>
+<h2 id="bkmrk-ergebnis-pr%C3%BCfen">Ergebnis prüfen</h2>
+<p id="bkmrk-nach-einem-kassensta">Nach einem Kassenstart meldet der Anmeldebildschirm eine verbundene TSE, und im Admin-Panel unter <strong>KassenSichV</strong> sind die TSE-Daten lesbar.</p>
+<h2 id="bkmrk-weitere-informatione">Weitere Informationen</h2>
+<ul id="bkmrk-itr-partner-service-">
+<li><a href="../fiskalisierung/tse-hardware-swissbit-in-betrieb-nehmen.html">ITR Partner Service → Fiskalisierung → TSE Hardware (Swissbit) in Betrieb nehmen</a></li>
+<li><span class="verweis-inaktiv">ITR Partner Service → Fiskalisierung → Abgelaufene TSE austauschen</span></li>
+</ul>
+</div></main>
+  <aside class="spalte-rechts"><div class="seiteninhalt"><h2>Seiteninhalt</h2><ul><li class="e2"><a href="#bkmrk-wie-die-kasse-pin-un">Wie die Kasse PIN und PUK verwendet</a></li><li class="e2"><a href="#bkmrk-die-vier-eintr%C3%A4ge">Die vier Einträge</a></li><li class="e2"><a href="#bkmrk-wenn-datenbank-und-t">Wenn Datenbank und TSE nicht mehr zusammenpassen</a></li><li class="e2"><a href="#bkmrk-ergebnis-pr%C3%BCfen">Ergebnis prüfen</a></li><li class="e2"><a href="#bkmrk-weitere-informatione">Weitere Informationen</a></li></ul></div></aside>
+</div>
+<footer class="fuss">
+  <span>ITR POS Partner Docs</span>
+  <span class="fuss-rechts">
+    <a href="https://itrelations.de/de/impressum" target="_blank" rel="noopener">Impressum</a>
+    <span>Stand 06.09.2026</span>
+  </span>
+</footer>
+<script src="../assets/suche.js?v=d759af4f"></script>
+</body>
+</html>
