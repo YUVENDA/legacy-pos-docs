@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Abholnummer auf dem Kundenbeleg | Produkte</title>
+<meta name="description" content="Bei Außer-Haus-Verkauf bekommt der Gast eine Nummer auf den Beleg gedruckt, unter der seine Bestellung am Abholmonitor erscheint. Wie die Nummer entsteht Erste Stelle: die iterierte Quersumme der Kass">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/stil.css?v=221680a4">
+</head>
+<body>
+<header class="kopf">
+  <div class="kopf-innen">
+    <a class="kopf-logo" href="../../index.html"><img src="../../assets/logo.png" alt="IT Relations"></a>
+    <div class="kopf-suche">
+      <input type="search" id="suchfeld" placeholder="Alle Inhalte durchsuchen" autocomplete="off"
+             aria-label="Suchen" data-auf="../../">
+      <div id="suchergebnis" hidden></div>
+    </div>
+    <a class="sprung" href="#navigation">Zur Navigation</a>
+    <span class="kopf-firma">IT Relations GmbH</span>
+  </div>
+</header>
+<div class="rahmen">
+  <aside class="spalte-links" id="navigation"><nav class="nav" aria-label="Inhalt"><a class="nav-wurzel" href="../../index.html">ITR POS Partner Docs</a><details class="nav-buch"><summary><a href="../../schnellstart/index.html">Schnellstart</a></summary><a class="nav-seite" href="../../schnellstart/glossar-und-abkurzungen.html">Glossar und Abkürzungen</a></details><details class="nav-buch" open><summary><a href="../../produkte/index.html">Produkte</a></summary><details class="nav-kapitel"><summary><a href="../../produkte/centralpoint/index.html">CentralPoint</a></summary><a class="nav-seite" href="../../produkte/centralpoint/datenbank-fur-den-centralpoint-einrichten.html">Datenbank für den CentralPoint einrichten</a></details><details class="nav-kapitel"><summary><a href="../../produkte/pos-gastro-app/index.html">POS Gastro App</a></summary><a class="nav-seite" href="../../produkte/pos-gastro-app/funktionsweise.html">Funktionsweise</a><a class="nav-seite" href="../../produkte/pos-gastro-app/in-betrieb-nehmen.html">In Betrieb nehmen</a><a class="nav-seite" href="../../produkte/pos-gastro-app/im-alltag-arbeiten.html">Im Alltag arbeiten</a><a class="nav-seite" href="../../produkte/pos-gastro-app/storungen-beheben.html">Störungen beheben</a></details><details class="nav-kapitel" open><summary><a href="../../produkte/pos-kuchenmonitor/index.html">POS Küchenmonitor</a></summary><a class="nav-seite" href="../../produkte/pos-kuchenmonitor/funktionsweise-kuchenmonitor.html">Funktionsweise Küchenmonitor</a><a class="nav-seite" href="../../produkte/pos-kuchenmonitor/kuchenmonitor-in-betrieb-nehmen.html">Küchenmonitor in Betrieb nehmen</a><a class="nav-seite aktuell" href="../../produkte/pos-kuchenmonitor/abholnummer-auf-dem-kundenbeleg.html">Abholnummer auf dem Kundenbeleg</a><a class="nav-seite" href="../../produkte/pos-kuchenmonitor/kuchenmonitor-storungen-beheben.html">Küchenmonitor: Störungen beheben</a></details></details><details class="nav-buch"><summary><a href="../../losungen/index.html">Lösungen</a></summary><a class="nav-seite" href="../../losungen/waagen.html">Waagen</a></details><details class="nav-buch"><summary><a href="../../betrieb-administration/index.html">Betrieb &amp; Administration</a></summary><a class="nav-seite" href="../../betrieb-administration/systemvoraussetzungen.html">Systemvoraussetzungen</a></details><details class="nav-buch"><summary><a href="../../fiskalisierung/index.html">Fiskalisierung</a></summary><a class="nav-seite" href="../../fiskalisierung/fiskalisierung-uberblick-fur-partner.html">Fiskalisierung: Überblick für Partner</a><a class="nav-seite" href="../../fiskalisierung/tse-hardware-swissbit-in-betrieb-nehmen.html">TSE Hardware (Swissbit) in Betrieb nehmen</a><a class="nav-seite" href="../../fiskalisierung/cloud-tse-fiskaly-in-betrieb-nehmen.html">Cloud-TSE (fiskaly) in Betrieb nehmen</a><a class="nav-seite" href="../../fiskalisierung/tse-pin-und-puk-verwalten.html">TSE-PIN und PUK verwalten</a><a class="nav-seite" href="../../fiskalisierung/abgelaufene-tse-austauschen.html">Abgelaufene TSE austauschen</a></details><details class="nav-buch"><summary><a href="../../faq-troubleshooting/index.html">FAQ &amp; Troubleshooting</a></summary><a class="nav-seite" href="../../faq-troubleshooting/tse-meldet-einen-fehler.html">TSE meldet einen Fehler</a></details></nav></aside>
+  <main class="spalte-mitte" id="inhalt"><div class="seitenkopf"><nav class="brotkrumen-nav" aria-label="Sie sind hier"><ol class="brotkrumen"><li><a href="../../produkte/index.html">Produkte</a></li><li><a href="../../produkte/pos-kuchenmonitor/index.html">POS Küchenmonitor</a></li><li><span aria-current="page">Abholnummer auf dem Kundenbeleg</span></li></ol></nav><h1>Abholnummer auf dem Kundenbeleg</h1><p class="seitenmeta">Letzte &Auml;nderung 29.08.2026 &middot; Version 1 &middot; Seiten-ID 755</p></div><div class="inhalt"><p id="bkmrk-bei-au%C3%9Fer-haus-verka">Bei Außer-Haus-Verkauf bekommt der Gast eine Nummer auf den Beleg gedruckt, unter der seine Bestellung am Abholmonitor erscheint.</p>
+<h2 id="bkmrk-wie-die-nummer-entst">Wie die Nummer entsteht</h2>
+<p id="bkmrk-erste-stelle%3A-die-it">Erste Stelle: die iterierte Quersumme der Kassennummer, immer einstellig. Stellen zwei bis vier: die Belegnummer modulo 1000, auf drei Stellen aufgefüllt.</p>
+<p id="bkmrk-beispiel%3A-kasse-12%2C-">Beispiel: Kasse 12, Beleg 4711 ergibt <strong>3711</strong>.</p>
+<h2 id="bkmrk-wann-gedruckt-wird">Wann gedruckt wird</h2>
+<p id="bkmrk-im-standardbetrieb-m">Im Standardbetrieb müssen <strong>alle drei</strong> Bedingungen erfüllt sein:</p>
+<ol id="bkmrk-der-beleg-hat-keinen">
+<li>Der Beleg hat <strong>keinen Tisch</strong> — also Außer-Haus, Theke oder Kiosk.</li>
+<li>Mindestens eine Position erreicht einen eingetragenen Küchenmonitor.</li>
+<li>Mindestens einer dieser Monitore ist <strong>im Moment erreichbar</strong>.</li>
+</ol>
+<p class="callout info" id="bkmrk-die-dritte-bedingung">Die dritte Bedingung ist neu und der Grund für die Umstellung: Ein Küchenmonitor meldet sich einmalig an und bleibt dauerhaft eingetragen — eine Abmeldung gibt es nicht. Ohne Erreichbarkeitsprüfung würde also weiter eine Nummer gedruckt, obwohl das Gerät längst aus ist.</p>
+<h2 id="bkmrk-betriebsarten">Betriebsarten</h2>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-wert-verhalten-auto-">
+<thead>
+<tr>
+<th>Wert</th>
+<th>Verhalten</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AUTO</code></td>
+<td>Standard: alle drei Bedingungen</td>
+</tr>
+<tr>
+<td><code>ALWAYS</code></td>
+<td>nur Bedingung 1 — das frühere Verhalten</td>
+</tr>
+<tr>
+<td><code>NEVER</code></td>
+<td>keine Abholnummer</td>
+</tr>
+</tbody>
+</table></div>
+<p id="bkmrk-ist-der-wert-nicht-g">Ist der Wert nicht gesetzt oder unbekannt, gilt <code>AUTO</code>. Bedingung 1 gilt in allen Betriebsarten.</p>
+<h2 id="bkmrk-ziele-am-artikel">Ziele am Artikel</h2>
+<p id="bkmrk-kitchen%2C-bar%2C-kitche"><code>KITCHEN</code>, <code>BAR</code>, <code>KITCHEN_AND_BAR</code> oder <code>NONE</code>.</p>
+<p id="bkmrk-r%C3%BCckfallebene%3A-hat-e"><strong>Rückfallebene:</strong> Hat ein Artikel kein Ziel, ist aber ein Drucker mit dem Namen <code>KitchenMonitor</code> hinterlegt, wird er wie <code>KITCHEN_AND_BAR</code> behandelt. Unterpositionen mit eigenem Ziel ziehen ihre Hauptposition mit.</p>
+<h2 id="bkmrk-erreichbarkeitspr%C3%BCfu">Erreichbarkeitsprüfung</h2>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-pr%C3%BCfintervall-30-sek">
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prüfintervall</td>
+<td>30 Sekunden</td>
+</tr>
+<tr>
+<td>erste Prüfung</td>
+<td>5 Sekunden nach Start des Synchronisationsdienstes</td>
+</tr>
+<tr>
+<td>Prüfung</td>
+<td>Abruf von <code>/customerView</code> auf Port 2680</td>
+</tr>
+<tr>
+<td>Zeitlimit</td>
+<td>2 Sekunden Verbindungsaufbau, 3 Sekunden Antwort</td>
+</tr>
+<tr>
+<td>gilt als offline</td>
+<td>nach 3 aufeinanderfolgenden Fehlversuchen</td>
+</tr>
+<tr>
+<td>gilt als online</td>
+<td>ab dem ersten Erfolg</td>
+</tr>
+</tbody>
+</table></div>
+<p id="bkmrk-praktische-folge%3A-na">Praktische Folge: Nach dem Ausschalten eines Monitors dauert es <strong>60 bis 90 Sekunden</strong>, bis keine Nummern mehr gedruckt werden; nach dem Einschalten sind es <strong>höchstens 30 Sekunden</strong>.</p>
+<p id="bkmrk-nach-einem-neustart-">Nach einem Neustart des Synchronisationsdienstes gilt ein noch nie geprüftes Gerät zunächst als erreichbar. Jeder Dienst prüft für sich selbst.</p>
+<h2 id="bkmrk-versionsst%C3%A4nde-beach">Versionsstände beachten</h2>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-kasse-synchronisatio">
+<thead>
+<tr>
+<th>Kasse</th>
+<th>Synchronisationsdienst</th>
+<th>Ergebnis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>neu</td>
+<td>neu</td>
+<td>volle Logik</td>
+</tr>
+<tr>
+<td>alt</td>
+<td>neu</td>
+<td>frühere Logik, kein Funktionsverlust</td>
+</tr>
+<tr>
+<td><strong>neu</strong></td>
+<td><strong>alt</strong></td>
+<td><strong>keine Abholnummer mehr</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p class="callout danger" id="bkmrk-kasse-und-synchronis">Kasse und Synchronisationsdienst immer gemeinsam aktualisieren. Wird die Kasse aktualisiert und der Dienst nicht, verschwindet die Abholnummer ersatzlos — ohne Fehlermeldung.</p>
+<h2 id="bkmrk-fehlersuche">Fehlersuche</h2>
+<p id="bkmrk-im-protokoll-des-syn">Im Protokoll des Synchronisationsdienstes, Stufe <code>debug</code>, steht der Grund im Klartext:</p>
+<div class="codefeld"><div class="codefeld-kopf"><span class="codefeld-sprache">Text</span><button type="button" class="codefeld-kopieren">Kopieren</button></div><pre><code>receipt has table …
+no position reaches a registered KiMo
+all N KiMo(s) that would receive it are offline
+mode is NEVER
+</code></pre></div>
+<p id="bkmrk-zustandswechsel-ersc">Zustandswechsel erscheinen als Hinweis oder Warnung:</p>
+<div class="codefeld"><div class="codefeld-kopf"><span class="codefeld-sprache">Text</span><button type="button" class="codefeld-kopieren">Kopieren</button></div><pre><code>KiMo at http://&lt;Adresse&gt;:2680 appears offline (…)
+… is back online, resuming delivery
+</code></pre></div>
+<p id="bkmrk-schnelltest%3A-monitor"><strong>Schnelltest:</strong> Monitor ausschalten, zwei Minuten warten, einen Außer-Haus-Beleg erzeugen — es darf keine Nummer erscheinen. Monitor einschalten, eine Minute warten, erneut buchen — die Nummer muss wieder da sein.</p>
+</div></main>
+  <aside class="spalte-rechts"><div class="seiteninhalt"><h2>Seiteninhalt</h2><ul><li class="e2"><a href="#bkmrk-wie-die-nummer-entst">Wie die Nummer entsteht</a></li><li class="e2"><a href="#bkmrk-wann-gedruckt-wird">Wann gedruckt wird</a></li><li class="e2"><a href="#bkmrk-betriebsarten">Betriebsarten</a></li><li class="e2"><a href="#bkmrk-ziele-am-artikel">Ziele am Artikel</a></li><li class="e2"><a href="#bkmrk-erreichbarkeitspr%C3%BCfu">Erreichbarkeitsprüfung</a></li><li class="e2"><a href="#bkmrk-versionsst%C3%A4nde-beach">Versionsstände beachten</a></li><li class="e2"><a href="#bkmrk-fehlersuche">Fehlersuche</a></li></ul></div></aside>
+</div>
+<footer class="fuss">
+  <span>ITR POS Partner Docs</span>
+  <span class="fuss-rechts">
+    <a href="https://itrelations.de/de/impressum" target="_blank" rel="noopener">Impressum</a>
+    <span>Stand 24.09.2026</span>
+  </span>
+</footer>
+<script src="../../assets/suche.js?v=d759af4f"></script>
+</body>
+</html>
