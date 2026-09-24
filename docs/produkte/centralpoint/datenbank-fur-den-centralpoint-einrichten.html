@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Datenbank für den CentralPoint einrichten | Produkte</title>
+<meta name="description" content="Der CentralPoint bringt keinen Datenbankserver mit. MariaDB muss vorher installiert, ein Schema und ein Benutzer angelegt sein — erst danach lässt sich der CentralPoint verbinden. In dieser Datenbank ">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/stil.css?v=221680a4">
+</head>
+<body>
+<header class="kopf">
+  <div class="kopf-innen">
+    <a class="kopf-logo" href="../../index.html"><img src="../../assets/logo.png" alt="IT Relations"></a>
+    <div class="kopf-suche">
+      <input type="search" id="suchfeld" placeholder="Alle Inhalte durchsuchen" autocomplete="off"
+             aria-label="Suchen" data-auf="../../">
+      <div id="suchergebnis" hidden></div>
+    </div>
+    <a class="sprung" href="#navigation">Zur Navigation</a>
+    <span class="kopf-firma">IT Relations GmbH</span>
+  </div>
+</header>
+<div class="rahmen">
+  <aside class="spalte-links" id="navigation"><nav class="nav" aria-label="Inhalt"><a class="nav-wurzel" href="../../index.html">ITR POS Partner Docs</a><details class="nav-buch"><summary><a href="../../schnellstart/index.html">Schnellstart</a></summary><a class="nav-seite" href="../../schnellstart/glossar-und-abkurzungen.html">Glossar und Abkürzungen</a></details><details class="nav-buch" open><summary><a href="../../produkte/index.html">Produkte</a></summary><details class="nav-kapitel" open><summary><a href="../../produkte/centralpoint/index.html">CentralPoint</a></summary><a class="nav-seite aktuell" href="../../produkte/centralpoint/datenbank-fur-den-centralpoint-einrichten.html">Datenbank für den CentralPoint einrichten</a></details><details class="nav-kapitel"><summary><a href="../../produkte/pos-gastro-app/index.html">POS Gastro App</a></summary><a class="nav-seite" href="../../produkte/pos-gastro-app/funktionsweise.html">Funktionsweise</a><a class="nav-seite" href="../../produkte/pos-gastro-app/in-betrieb-nehmen.html">In Betrieb nehmen</a><a class="nav-seite" href="../../produkte/pos-gastro-app/im-alltag-arbeiten.html">Im Alltag arbeiten</a><a class="nav-seite" href="../../produkte/pos-gastro-app/storungen-beheben.html">Störungen beheben</a></details></details><details class="nav-buch"><summary><a href="../../losungen/index.html">Lösungen</a></summary><a class="nav-seite" href="../../losungen/waagen.html">Waagen</a></details><details class="nav-buch"><summary><a href="../../betrieb-administration/index.html">Betrieb &amp; Administration</a></summary><a class="nav-seite" href="../../betrieb-administration/systemvoraussetzungen.html">Systemvoraussetzungen</a></details><details class="nav-buch"><summary><a href="../../fiskalisierung/index.html">Fiskalisierung</a></summary><a class="nav-seite" href="../../fiskalisierung/fiskalisierung-uberblick-fur-partner.html">Fiskalisierung: Überblick für Partner</a><a class="nav-seite" href="../../fiskalisierung/tse-hardware-swissbit-in-betrieb-nehmen.html">TSE Hardware (Swissbit) in Betrieb nehmen</a><a class="nav-seite" href="../../fiskalisierung/cloud-tse-fiskaly-in-betrieb-nehmen.html">Cloud-TSE (fiskaly) in Betrieb nehmen</a><a class="nav-seite" href="../../fiskalisierung/tse-pin-und-puk-verwalten.html">TSE-PIN und PUK verwalten</a><a class="nav-seite" href="../../fiskalisierung/abgelaufene-tse-austauschen.html">Abgelaufene TSE austauschen</a></details><details class="nav-buch"><summary><a href="../../faq-troubleshooting/index.html">FAQ &amp; Troubleshooting</a></summary><a class="nav-seite" href="../../faq-troubleshooting/tse-meldet-einen-fehler.html">TSE meldet einen Fehler</a></details></nav></aside>
+  <main class="spalte-mitte" id="inhalt"><div class="seitenkopf"><nav class="brotkrumen-nav" aria-label="Sie sind hier"><ol class="brotkrumen"><li><a href="../../produkte/index.html">Produkte</a></li><li><a href="../../produkte/centralpoint/index.html">CentralPoint</a></li><li><span aria-current="page">Datenbank für den CentralPoint einrichten</span></li></ol></nav><h1>Datenbank für den CentralPoint einrichten</h1><p class="seitenmeta">Letzte &Auml;nderung 29.08.2026 &middot; Version 1 &middot; Seiten-ID 719</p></div><div class="inhalt"><p id="bkmrk-der-centralpoint-bri">Der CentralPoint bringt keinen Datenbankserver mit. MariaDB muss vorher installiert, ein Schema und ein Benutzer angelegt sein — erst danach lässt sich der CentralPoint verbinden.</p>
+<p id="bkmrk-in-dieser-datenbank-">In dieser Datenbank laufen die Stammdaten und die Bewegungsdaten aller angeschlossenen Kassen zusammen.</p>
+<h2 id="bkmrk-voraussetzungen">Voraussetzungen</h2>
+<ul id="bkmrk-ein-server-nach-itr-">
+<li>Ein Server nach <a href="../../betrieb-administration/systemvoraussetzungen.html">ITR Partner Service → Betrieb &amp; Administration → Systemvoraussetzungen</a>.</li>
+<li><strong>Mindestens MariaDB 10.11.4</strong> oder die jeweils aktuellste Build-Version. Version 11.8 LTE ist noch nicht freigegeben.</li>
+</ul>
+<h2 id="bkmrk-mariadb-installieren">MariaDB installieren</h2>
+<ol id="bkmrk-mariadb-von-https%3A%2F%2F">
+<li>MariaDB von <code>https://mariadb.org</code> laden — die <strong>64-Bit-Fassung</strong>, und keine Alpha- oder Betaversion.</li>
+<li>Setup ausführen und dem Installationsdialog folgen.</li>
+<li><strong>Das vergebene Kennwort des Benutzers <code>root</code> notieren.</strong> Ohne dieses Kennwort ist die Datenbank später nicht administrierbar.</li>
+</ol>
+<p id="bkmrk-heidisql-wird-zusamm">HeidiSQL wird zusammen mit MariaDB installiert und dient im Folgenden als Oberfläche.</p>
+<h2 id="bkmrk-schema-anlegen">Schema anlegen</h2>
+<ol id="bkmrk-heidisql-%C3%B6ffnen-und-">
+<li>HeidiSQL öffnen und über <strong>new</strong> unten links eine Sitzung anlegen: Sitzungsname, unter <strong>Hostname/IP</strong> entweder <code>localhost</code> oder die IP des Datenbankrechners, als Benutzer <code>root</code> mit dem bei der Installation vergebenen Kennwort.</li>
+<li><strong>Open</strong> öffnet die Sitzung.</li>
+<li>Rechtsklick auf die Sitzung → <strong>Create new → Database</strong>.</li>
+<li>Namen des Schemas eingeben, üblich ist <code>goodcompany</code>.</li>
+<li><strong>Collation</strong> auf <code>latin1_german_ci</code> stellen.</li>
+<li>Mit <strong>OK</strong> bestätigen.</li>
+</ol>
+<h2 id="bkmrk-datenbankbenutzer-an">Datenbankbenutzer anlegen</h2>
+<ol id="bkmrk-in-heidisql-das-benu">
+<li>In HeidiSQL das Benutzer-Symbol anklicken.</li>
+<li><strong>Add</strong> wählen.</li>
+<li>Unter <strong>User Name</strong> den Namen eintragen, üblich ist <code>goodcompany</code>.</li>
+<li>Unter <strong>From Host</strong> den Wert <code>%</code> eintragen, damit der Zugriff nicht auf einen Rechner beschränkt ist.</li>
+<li>Ein Kennwort vergeben. <strong>Es wird bei der Verbindung des CentralPoint gebraucht</strong> — notieren.</li>
+<li>Häkchen bei <strong>Global Privileges</strong> setzen und über <strong>Add Object</strong> die freigegebenen Bereiche bestimmen; für vollen Zugriff wieder <code>%</code>.</li>
+<li>Mit <strong>OK</strong> abschließen.</li>
+</ol>
+<h2 id="bkmrk-ergebnis-pr%C3%BCfen">Ergebnis prüfen</h2>
+<p id="bkmrk-das-schema-erscheint">Das Schema erscheint in HeidiSQL, und eine neue Sitzung mit dem angelegten Benutzer öffnet sich ohne Fehler.</p>
+<h2 id="bkmrk-konfigurationsdatei-">Konfigurationsdatei my.ini</h2>
+<p class="callout danger" id="bkmrk-%C3%84nderungen-an-my.ini">Änderungen an <code>my.ini</code> gehören in die Hand von Datenbankfachleuten. Falsche Werte können die Datenbank unbrauchbar machen oder zu Datenverlust führen. Im Zweifel den ITR-Support hinzuziehen.</p>
+<p id="bkmrk-eine-grundkonfigurat">Eine Grundkonfiguration für den Betrieb mit dem CentralPoint:</p>
+<div class="codefeld"><div class="codefeld-kopf"><span class="codefeld-sprache">INI</span><button type="button" class="codefeld-kopieren">Kopieren</button></div><pre><code class="language-ini"><span class="tk-abschnitt">[mysqld]</span>
+<span class="tk-eigenschaft">sql_mode</span>=<span class="tk-text">"STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION"</span>
+<span class="tk-eigenschaft">max_allowed_packet</span>=<span class="tk-text">64M</span>
+<span class="tk-eigenschaft">open_files_limit</span>=<span class="tk-text">100000</span>
+<span class="tk-eigenschaft">transaction-isolation</span>=<span class="tk-text">READ-COMMITTED</span>
+<span class="tk-eigenschaft">binlog_format</span>=<span class="tk-text">ROW</span>
+<span class="tk-abschnitt">[client]</span>
+<span class="tk-eigenschaft">port</span>=<span class="tk-text">3306</span>
+</code></pre></div>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-parameter-wirkung-ma">
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Wirkung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>max_allowed_packet</code></td>
+<td>maximale Paketgröße, 32 oder 64 Megabyte</td>
+</tr>
+<tr>
+<td><code>open_files_limit</code></td>
+<td>Anzahl gleichzeitig geöffneter Dateien</td>
+</tr>
+<tr>
+<td><code>transaction-isolation=READ-COMMITTED</code></td>
+<td>sperrt bei Transaktionen einzelne Zeilen statt ganzer Tabellen</td>
+</tr>
+</tbody>
+</table></div>
+<p id="bkmrk-auf-servern-mit-reic">Auf Servern mit reichlich Arbeitsspeicher lassen sich zusätzlich Puffergrößen erhöhen — etwa <code>query_cache_size</code>, <code>table_cache</code>, <code>key_buffer_size</code>, <code>sort_buffer_size</code> und <code>tmp_table_size</code>.</p>
+<p id="bkmrk-%5Boffen%3A-konkrete-puf"><code>[OFFEN: konkrete Puffergrößen je Installationsgröße. Die vorliegende Quelle stammt aus der Zeit von MariaDB 5.5, ihre Werte und Erläuterungen widersprechen sich teilweise und sind für MariaDB 10.11 nicht ohne Prüfung übertragbar.]</code></p>
+<h2 id="bkmrk-weitere-informatione">Weitere Informationen</h2>
+<ul id="bkmrk-itr-partner-service-">
+<li><span class="verweis-inaktiv">ITR Partner Service → Produkte → CentralPoint installieren</span></li>
+</ul>
+</div></main>
+  <aside class="spalte-rechts"><div class="seiteninhalt"><h2>Seiteninhalt</h2><ul><li class="e2"><a href="#bkmrk-voraussetzungen">Voraussetzungen</a></li><li class="e2"><a href="#bkmrk-mariadb-installieren">MariaDB installieren</a></li><li class="e2"><a href="#bkmrk-schema-anlegen">Schema anlegen</a></li><li class="e2"><a href="#bkmrk-datenbankbenutzer-an">Datenbankbenutzer anlegen</a></li><li class="e2"><a href="#bkmrk-ergebnis-pr%C3%BCfen">Ergebnis prüfen</a></li><li class="e2"><a href="#bkmrk-konfigurationsdatei-">Konfigurationsdatei my.ini</a></li><li class="e2"><a href="#bkmrk-weitere-informatione">Weitere Informationen</a></li></ul></div></aside>
+</div>
+<footer class="fuss">
+  <span>ITR POS Partner Docs</span>
+  <span class="fuss-rechts">
+    <a href="https://itrelations.de/de/impressum" target="_blank" rel="noopener">Impressum</a>
+    <span>Stand 24.09.2026</span>
+  </span>
+</footer>
+<script src="../../assets/suche.js?v=d759af4f"></script>
+</body>
+</html>
