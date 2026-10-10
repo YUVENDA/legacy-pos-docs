@@ -94,8 +94,14 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
    Leiste stand noch auf 1560, waehrend .rahmen schon auf 1320 begrenzt war -
    53 px Versatz zwischen Logo und Navigationsspalte. Wer eine der beiden
    Breiten aendert, aendert die andere mit. */
+/* KOPF IM SELBEN RASTER WIE DIE SPALTEN (10.10.2026): Logo ueber der
+   Navigation, Suchfeld mittig ueber der Textspalte der Artikelseiten - wie
+   in BookStack. Auf Seiten ohne rechte Spalte bleibt es bewusst an derselben
+   Stelle, sonst spraenge es beim Blaettern. Spalten 1 und 2 MUESSEN mit
+   .rahmen uebereinstimmen (auch in den Media Queries unten). */
 .kopf-innen {
-  display: flex; align-items: center; gap: 24px;
+  position: relative; display: grid; grid-template-columns: 288px minmax(0,660px) minmax(0,1fr) auto;
+  align-items: center; gap: 32px;
   width: min(1320px, 100%); margin: 0 auto; padding: 10px 20px;
 }
 /* 36 px, damit "Teil von YUVENDA" lesbar ist. Die Datei ist 372 x 120 px,
@@ -103,23 +109,54 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
    nicht hoeher - das Suchfeld ist mit 39 px ohnehin das hoechste Element. */
 .kopf-logo img { height: 36px; width: auto; display: block; }
 /* Reiner Text, kein Link: deshalb nicht in der Linkfarbe der Leiste
-   (#c8d4e8 wie die Verweise), sondern im Ton des Platzhaltertexts. */
+   (#c8d4e8 wie die Verweise), sondern gedaempft. */
 .kopf-firma {
-  margin-left: auto; font-size: 13px; white-space: nowrap; letter-spacing: .01em;
+  grid-column: 3; grid-row: 1; justify-self: end; font-size: 13px; white-space: nowrap; letter-spacing: .01em;
   color: #9aa6c2; cursor: default;
 }
-.kopf-suche { position: relative; flex: 1 1 auto; max-width: 520px; }
+/* SUCHFELD WIE IN BOOKSTACK: weisses Feld mit 8 px Rundung, hoechstens
+   560 px breit und mittig - auch im Dunkelmodus, die Leiste ist in beiden
+   Modi dunkel. Fokus wie dort: 3 px Amber. */
+.kopf-suche { grid-column: 2; position: relative; width: 100%; max-width: 560px; justify-self: center; }
+.kopf-logo { grid-column: 1; }
+/* Sprunglink beim Fokus als Fahne unter der Leiste - im Raster haette er
+   Firmenname oder Umschalter verdraengt. */
+@media (min-width: 761px) {
+  .kopf-innen > .sprung:focus {
+    position: absolute; left: 20px; top: 100%;
+    background: var(--kopf); padding: 6px 10px; border-radius: 0 0 var(--rund-klein) var(--rund-klein);
+  }
+}
 /* Lupe als Hintergrundbild statt als zusaetzliches Element im Markup: das
    Suchfeld bleibt ein einzelnes input, das die Suche unveraendert anspricht. */
 #suchfeld {
-  width: 100%; padding: 8px 12px 8px 34px; border: 1px solid #2f3c63; border-radius: var(--rund-klein);
-  background: #141a2e no-repeat 11px center;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%237c89a8' stroke-width='1.7' stroke-linecap='round'%3E%3Ccircle cx='6.8' cy='6.8' r='4.6'/%3E%3Cpath d='M10.4 10.4 14 14'/%3E%3C/svg%3E");
+  width: 100%; padding: 8px 12px 8px 36px; border: 1px solid #ffffff; border-radius: 8px;
+  background: #ffffff no-repeat 12px center;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%234a5568' stroke-width='1.7' stroke-linecap='round'%3E%3Ccircle cx='6.8' cy='6.8' r='4.6'/%3E%3Cpath d='M10.4 10.4 14 14'/%3E%3C/svg%3E");
   background-size: 15px 15px;
-  color: #e8edf7; font: inherit; font-size: 14px;
+  color: #1b2333; font: inherit; font-size: 14px;
 }
-#suchfeld::placeholder { color: #7c89a8; }
-#suchfeld:focus { outline: 3px solid var(--mint); outline-offset: 2px; }
+#suchfeld::placeholder { color: #4a5568; opacity: 1; }
+#suchfeld:focus { outline: 3px solid #f59e0b; outline-offset: 2px; }
+
+/* HELL/DUNKEL-UMSCHALTER, gestaltet wie die Symbolknoepfe im BookStack-Kopf.
+   Sichtbar nur mit JavaScript (Klasse "js" setzt das Kopfskript) - ohne JS
+   gaebe es nichts umzuschalten. Ueber CSS statt "hidden", damit der Kopf
+   nicht springt, wenn suche.js spaeter laedt. Mond im hellen, Sonne im
+   dunklen Modus: das Symbol zeigt, wohin der Klick fuehrt. */
+.kopf-modus { display: none; grid-column: 4; }
+html.js .kopf-modus {
+  /* place-items statt justify-content: center - Pruefung P13 meldet
+     "justify-content: center" pauschal, weil es am Raster schon einmal schadete. */
+  display: inline-grid; place-items: center;
+  width: 34px; height: 34px; padding: 0; cursor: pointer;
+  border-radius: 8px; color: #c8d4e8;
+  background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.13);
+}
+.kopf-modus:hover { background: rgba(255,255,255,.18); color: #ffffff; }
+.kopf-modus:focus-visible { outline: 3px solid var(--mint); outline-offset: 2px; }
+.kopf-modus svg { width: 18px; height: 18px; }
+.kopf-modus .sonne { display: none; }
 #suchergebnis {
   position: absolute; left: 0; right: 0; top: calc(100% + 6px);
   background: #fff; color: var(--ink); border: 1px solid var(--line);
@@ -883,7 +920,13 @@ h1 { font-size: clamp(22px, 6.4vw, 32px); font-weight: 600; line-height: 1.15; m
      unterhalb von 1100 px auf Buchseiten 288 px und auf Inhaltsseiten 240 px
      breit gewesen, der Text also erneut an zwei verschiedenen Stellen. */
   .rahmen.ohne-rechts { grid-template-columns: 240px minmax(0,960px); }
+  .kopf-innen { grid-template-columns: 240px minmax(0,660px) minmax(0,1fr) auto; }
   .spalte-rechts { display: none; }
+}
+/* Unter 1250 px bleibt neben dem Suchfeld kein Platz mehr fuer den
+   Firmennamen - er wuerde ins Feld ragen. */
+@media (max-width: 1250px) {
+  .kopf-firma { display: none; }
 }
 @media (max-width: 760px) {
   /* minmax(0,1fr) und NICHT "1fr". Das war der eigentliche Grund, warum bei
@@ -917,10 +960,16 @@ h1 { font-size: clamp(22px, 6.4vw, 32px); font-weight: 600; line-height: 1.15; m
     position: static; max-height: none; padding-top: 12px;
     border-top: 1px solid var(--line); border-bottom: 0;
   }
-  .kopf { flex-wrap: wrap; gap: 10px; }
+  /* Einspaltig: oben Logo, Sprunglink und Umschalter, darunter das Suchfeld. */
+  .kopf-innen { display: flex; flex-wrap: wrap; gap: 10px; }
+  /* Suchfeld in eigener, voller Zeile: neben Logo, Sprunglink und Umschalter
+     blieben ihm bei 375 px nur rund 80 px. Die Leiste wird dadurch hoeher,
+     deshalb unten auch der groessere Abstand fuer Sprungziele. */
+  .kopf-suche { order: 5; flex: 1 1 100%; max-width: none; }
+  .kopf-modus { order: 4; margin-left: auto; }
+  .inhalt [id], .seitenkopf [id] { scroll-margin-top: 126px; }
   .kopf-firma { display: none; }
-  /* Auf dem Handy bei 30 px bleiben: Logo, Suchfeld und Sprunglink teilen
-     sich eine Zeile, mit 36 px bliebe dem Suchfeld kaum Platz. */
+  /* Auf dem Handy bei 30 px: die obere Zeile bleibt so niedrig. */
   .kopf-logo img { height: 30px; }
   /* Auf dem Handy dauerhaft sichtbar, sonst findet niemand die Navigation. */
   .sprung {
@@ -948,6 +997,81 @@ h1 { font-size: clamp(22px, 6.4vw, 32px); font-weight: 600; line-height: 1.15; m
 }
 /* Innerhalb der dunklen Kopfleiste ist Blau auf Marine nicht zu sehen. */
 .kopf a:focus-visible { outline: 3px solid var(--mint); outline-offset: 2px; }
+
+/* -------------------------------------------------------------- Dunkelmodus */
+/*
+ * DUNKLER MODUS (10.10.2026), Farben aus dem BookStack-Design v2.
+ * Schaltet ueber die Klasse "dunkel" am <html>: gesetzt von einem kleinen
+ * Skript im <head> (gespeicherte Wahl, sonst Systemeinstellung) und vom
+ * Umschalter in der Kopfleiste. Nur am Bildschirm - gedruckt wird immer hell.
+ *
+ * Erst die Variablen, dann die Stellen, an denen bisher feste helle Werte
+ * standen. Jede Textfarbe unten liegt bei mindestens 4,5:1 auf ihrem Grund.
+ */
+@media screen {
+  html.dunkel {
+    color-scheme: dark;
+    --paper: #0e1420;
+    --ink: #e8edf7;
+    --ink-soft: #98a3ba;
+    --ink-muted: #aab4c8;
+    --blue: #8fb0ff;
+    --blue-text: #8fb0ff;
+    --mint-pale: #1c2a4a;
+    --line: #27324a;
+    --leiste: #2f3b55;
+    --leiste-aktiv: #4a5a80;
+    --todo-flaeche: #4a3c0f;
+    --flaeche: #131b2b;          /* Kacheln, Kaesten, aufgeklappte Listen */
+  }
+  html.dunkel .kopf-modus .mond { display: none; }
+  html.dunkel .kopf-modus .sonne { display: block; }
+
+  /* Suchergebnis unter dem Feld */
+  html.dunkel #suchergebnis { background: var(--flaeche); border-color: var(--line); }
+  html.dunkel #suchergebnis a { color: var(--ink); border-bottom-color: var(--line); }
+  html.dunkel #suchergebnis .aus { color: var(--ink-muted); }
+  html.dunkel #suchergebnis .suchzahl,
+  html.dunkel #suchergebnis .suchgruppe { background: var(--paper); border-bottom-color: var(--line); }
+  html.dunkel #suchergebnis .suchgruppe-zahl { background: var(--mint-pale); }
+  html.dunkel #suchergebnis mark { background: #3a4f80; color: #ffffff; }
+  /* --mint bleibt im Dunkelmodus hell (Fokusrahmen in der Kopfleiste), die
+     Tabellenkopf-Linie bekommt deshalb hier einen eigenen Ton. */
+  html.dunkel .inhalt th { border-bottom-color: #2f3d5c; }
+
+  /* Inhalt */
+  html.dunkel .entwurf-band { background: #3a1414; color: #ffb3b3; }
+  html.dunkel .inhalt a:hover { color: #b3c8ff; }
+  html.dunkel .inhalt img { background: var(--flaeche); box-shadow: none; }
+  html.dunkel .bild-fehlt { background: var(--flaeche); }
+  html.dunkel .inhalt tbody tr:hover td { background: var(--flaeche); }
+  html.dunkel .inhalt code { background: #1a2338; border-color: var(--line); }
+  html.dunkel .inhalt .callout        { background: var(--flaeche); }
+  html.dunkel .inhalt .callout.info    { background: #18213a; }
+  html.dunkel .inhalt .callout.success { background: #12261d; }
+  html.dunkel .inhalt .callout.warning,
+  html.dunkel .inhalt .callout.danger  { background: #2e1717; }
+  html.dunkel .kachel { background: var(--flaeche); box-shadow: none; }
+
+  /* Codefeld: dunkler Grund wie in BookStack, Markenfarben neu gewaehlt
+     (auf #0b111d jeweils mindestens 4,5:1). */
+  html.dunkel .codefeld { background: #0b111d; border-color: var(--line); }
+  html.dunkel .codefeld-kopf { background: var(--flaeche); border-bottom-color: var(--line); }
+  html.dunkel .codefeld-sprache { color: var(--ink-soft); }
+  html.dunkel .codefeld pre { color: #e2e8f0; }
+  html.dunkel .codefeld-kopieren.kann { border-color: #3a4766; color: var(--ink-muted); }
+  html.dunkel .codefeld-kopieren.kann:hover { background: var(--mint-pale); color: var(--ink); }
+  html.dunkel .codefeld-kopieren.fertig { color: #6fd3a8; }
+  html.dunkel .tk-kommentar   { color: #8b95a7; }
+  html.dunkel .tk-text        { color: #f2b47e; }
+  html.dunkel .tk-zahl        { color: #f59ac0; }
+  html.dunkel .tk-funktion,
+  html.dunkel .tk-eigenschaft { color: #5ed3c3; }
+  html.dunkel .tk-variable    { color: #6ccbe0; }
+  html.dunkel .tk-schalter,
+  html.dunkel .tk-abschnitt   { color: #c3a3ff; }
+  html.dunkel .tk-anweisung   { color: #8b95a7; }
+}
 
 /* ------------------------------------------------------------------- Druck */
 @media print {

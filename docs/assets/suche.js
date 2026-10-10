@@ -375,3 +375,29 @@
     });
   });
 })();
+
+/*
+  HELL/DUNKEL-UMSCHALTER (10.10.2026).
+
+  Die Klasse "dunkel" am <html> setzt schon ein Skript im <head>, damit beim
+  Laden nichts aufblitzt; es zeigt ueber die Klasse "js" auch den Knopf.
+  Hier nur: Zustand anzeigen und die Wahl merken. Merken klappt nicht ueberall (private Fenster) - dann gilt
+  die Wahl eben nur fuer diese Seite.
+*/
+(function () {
+  var knopf = document.getElementById('modusknopf');
+  if (!knopf) { return; }
+  var wurzel = document.documentElement;
+  // aria-label bleibt fest "Dunkler Modus"; den Zustand traegt aria-pressed.
+  function zeigen() {
+    var dunkel = wurzel.classList.contains('dunkel');
+    knopf.setAttribute('aria-pressed', dunkel ? 'true' : 'false');
+    knopf.title = dunkel ? 'Heller Modus' : 'Dunkler Modus';
+  }
+  zeigen();
+  knopf.addEventListener('click', function () {
+    var dunkel = wurzel.classList.toggle('dunkel');
+    try { localStorage.setItem('itr-doku-modus', dunkel ? 'dunkel' : 'hell'); } catch (e) {}
+    zeigen();
+  });
+})();
