@@ -19,6 +19,12 @@
 :root {
   --ink: #282828;
   --ink-soft: #6b6b6b;
+  /* Gedaempfter TEXT, der noch gut lesbar ist: derselbe Ton wie bisher in
+     .seitenmeta und im Suchergebnis (#4a4a4a), jetzt benannt. 8,6:1 auf
+     --paper. --ink-soft (5,2:1) bleibt fuer Beschriftungen und Kleinkram. */
+  --ink-muted: #4a4a4a;
+  /* Redaktionsvorschau (--show-todos): gelbe Flaeche fuer Platzhalter. */
+  --todo-flaeche: #fff3bf;
   --blue: #363FBF;
   /* Tech Blue ist als FLAECHE und Rahmen richtig, als Textfarbe aber kraeftig:
      stark gesaettigtes Blau auf Weiss wirkt fuer viele Augen unscharf, und
@@ -92,9 +98,16 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
   display: flex; align-items: center; gap: 24px;
   width: min(1320px, 100%); margin: 0 auto; padding: 10px 20px;
 }
-.kopf-logo img { height: 30px; width: auto; display: block; }
-.kopf-logo:focus-visible { outline: 2px solid var(--mint); outline-offset: 3px; }
-.kopf-firma { margin-left: auto; font-size: 13px; white-space: nowrap; letter-spacing: .01em; }
+/* 36 px, damit "Teil von YUVENDA" lesbar ist. Die Datei ist 372 x 120 px,
+   reicht also auch fuer doppelte Pixeldichte (72 px). Die Leiste wird dadurch
+   nicht hoeher - das Suchfeld ist mit 39 px ohnehin das hoechste Element. */
+.kopf-logo img { height: 36px; width: auto; display: block; }
+/* Reiner Text, kein Link: deshalb nicht in der Linkfarbe der Leiste
+   (#c8d4e8 wie die Verweise), sondern im Ton des Platzhaltertexts. */
+.kopf-firma {
+  margin-left: auto; font-size: 13px; white-space: nowrap; letter-spacing: .01em;
+  color: #9aa6c2; cursor: default;
+}
 .kopf-suche { position: relative; flex: 1 1 auto; max-width: 520px; }
 /* Lupe als Hintergrundbild statt als zusaetzliches Element im Markup: das
    Suchfeld bleibt ein einzelnes input, das die Suche unveraendert anspricht. */
@@ -106,7 +119,7 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
   color: #e8edf7; font: inherit; font-size: 14px;
 }
 #suchfeld::placeholder { color: #7c89a8; }
-#suchfeld:focus { outline: 2px solid var(--mint); outline-offset: -1px; }
+#suchfeld:focus { outline: 3px solid var(--mint); outline-offset: 2px; }
 #suchergebnis {
   position: absolute; left: 0; right: 0; top: calc(100% + 6px);
   background: #fff; color: var(--ink); border: 1px solid var(--line);
@@ -121,7 +134,7 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
 #suchergebnis a:hover, #suchergebnis a:focus { background: var(--mint-pale); }
 #suchergebnis .titel { font-weight: 600; }
 #suchergebnis .kap { font-size: 12px; color: var(--ink-soft); }
-#suchergebnis .aus { font-size: 13px; color: #4a4a4a; }
+#suchergebnis .aus { font-size: 13px; color: var(--ink-muted); }
 #suchergebnis mark { background: var(--mint); color: var(--ink); }
 /* Trefferzahl und Buchgruppen im Suchergebnis. Bei einem haeufigen Wort wie
    "gastro" ist die flache Liste unbrauchbar - die Zahl gibt Orientierung, die
@@ -210,8 +223,13 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
  * ".inhalt". Beide Eigenschaften vererben - also einmal oben setzen und unten
  * fuer Code zurueckstellen, statt Selektoren zu sammeln.
  */
+/* 10.10.2026: Silbentrennung AUS. "hyphens: auto" trennte auf Safari und
+   neueren Chromium-Fassungen unschoen ("POS Ti-cketing", "Reihen-folge").
+   Das Netz gegen ueberlange Woerter bleibt break-word - es bricht nur, wenn
+   ein Wort sonst nicht passt; die h1 skaliert zusaetzlich mit (clamp). */
 .spalte-links, .spalte-mitte, .spalte-rechts {
-  hyphens: auto;
+  -webkit-hyphens: manual;
+  hyphens: manual;
   overflow-wrap: break-word;
 }
 
@@ -290,7 +308,24 @@ pre, .codefeld, .codefeld * {
 .spalte-rechts:hover::-webkit-scrollbar-thumb { background: var(--leiste-aktiv); }
 
 /* --------------------------------------------------------------- Navigation */
-.nav { font-size: 14px; }
+/*
+ * EINHEITLICHE EBENEN (10.10.2026).
+ *
+ * Alle Eintraege: gleiche Schrift (14 px / 1.4), je Ebene 20 px Einzug.
+ * Innerhalb einer Ebene unterscheiden sich Eintraege NUR durch den Pfeil und
+ * den Fettdruck des aktiven Pfads. Den Pfad kennzeichnet der Generator mit
+ * .pfad (Buch/Kapitel) bzw. .aktuell (Seite) - [open] allein taugt nicht,
+ * das setzt auch ein Klick des Lesers.
+ *
+ * Inaktive Eintraege in --ink-muted, AUSDRUECKLICH auch fuer :link und
+ * :visited. Vorher erbten die Kapitelnamen "inherit" und die Seiten --ink;
+ * ein Browser- oder Nutzerstil fuer besuchte Links konnte dort durchschlagen.
+ *
+ * Text-Fluchtlinien: Buch 24 px, Kapitel und Seiten im Buch 44 px, Seiten im
+ * Kapitel 56 px (mit Fuehrungslinie). Ohne Buchebene (Einzelbuch-Export)
+ * 24 und 36 px.
+ */
+.nav { font-size: 14px; line-height: 1.4; padding: 0 4px; }
 /* Wurzel der Navigation (Regal- bzw. Buchname) */
 .nav-wurzel {
   display: block; font-weight: 600; color: var(--ink); text-decoration: none;
@@ -298,58 +333,57 @@ pre, .codefeld, .codefeld * {
 }
 .nav-wurzel:hover { background: var(--mint-pale); }
 
-/* Buchebene - nur das aktuelle Buch ist aufgeklappt, sonst waere die Leiste
-   bei ueber hundert Seiten unbenutzbar. */
-/* TRENNLINIEN NUR AUF BUCHEBENE. Vorher trug jedes Buch UND jedes Kapitel
-   eine, wodurch die Leiste bei acht Buechern mit Kapiteln wie ein Liniengitter
-   aussah. Die Ebenen unterscheidet jetzt die Schrift, nicht ein Strich. */
+/* TRENNLINIEN NUR AUF BUCHEBENE, in der Linienfarbe der Seite. */
 .nav-buch + .nav-buch { border-top: 1px solid var(--line); }
-.nav-buch > summary {
-  cursor: pointer; padding: 8px 8px; font-weight: 600; list-style: none;
-}
-.nav-buch > summary::-webkit-details-marker { display: none; }
-.nav-buch > summary::before {
-  content: '\25B8'; display: inline-block; width: 13px;
-  color: var(--ink-soft); font-size: 11px;
-}
-.nav-buch[open] > summary::before { content: '\25BE'; }
-.nav-buch > summary:hover { background: var(--mint-pale); }
-.nav-buch > summary a { color: var(--ink); text-decoration: none; }
 
-/* Kapitel: eine Stufe eingerueckt, leichtere Schrift, keine eigene Linie. */
-.nav-kapitel > summary {
-  cursor: pointer; padding: 6px 8px; font-weight: 400; list-style: none;
-  color: var(--ink-soft);
+.nav summary {
+  display: flex; align-items: flex-start; cursor: pointer; list-style: none;
+  border-radius: var(--rund-klein);
 }
-.nav-buch .nav-kapitel > summary { padding-left: 21px; }
-/* Farbe MUSS gesetzt werden. Seit der Kapitelname ein Link auf die
-   Kapitelseite ist, faerbte ihn der Browser sonst mit seiner Vorgabe
-   #0000EE ein - und nach dem Besuchen lila. Mit "inherit" nimmt er die
-   Farbe der Zeile, also grau und aufgeklappt anthrazit. */
-.nav-kapitel > summary a { color: inherit; text-decoration: none; }
-.nav-kapitel > summary::-webkit-details-marker { display: none; }
-.nav-kapitel > summary::before {
-  content: '\25B8'; display: inline-block; width: 13px; font-size: 11px;
+.nav summary::-webkit-details-marker { display: none; }
+/*
+ * PFEIL: EIN Zeichen fuer beide Zustaende, nur gedreht - zu zeigt er nach
+ * rechts, offen nach unten. 12 px gross in einer 24x24-Flaeche, die zum
+ * Aufklappen angeklickt wird (der Name daneben ist ein Link zur Seite).
+ * Farbe = Textfarbe des Eintrags (currentColor ueber die Maske).
+ */
+.nav summary::before {
+  content: ''; flex: none; width: 24px; height: 24px; margin: -2px 0 -2px;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.5 2.5 8 6l-3.5 3.5'/%3E%3C/svg%3E") center / 12px 12px no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.5 2.5 8 6l-3.5 3.5'/%3E%3C/svg%3E") center / 12px 12px no-repeat;
 }
-.nav-kapitel[open] > summary::before { content: '\25BE'; }
-.nav-kapitel[open] > summary { color: var(--ink); }
-.nav-kapitel > summary:hover { background: var(--mint-pale); }
+.nav details[open] > summary::before { transform: rotate(90deg); }
+@media (prefers-reduced-motion: no-preference) {
+  .nav summary::before { transition: transform .15s ease; }
+}
+.nav-buch > summary    { padding: 6px 8px 6px 0; }
+.nav-kapitel > summary { padding: 5px 8px 5px 0; }
+.nav-buch .nav-kapitel > summary { padding-left: 20px; }
+.nav summary a { flex: 1 1 auto; min-width: 0; text-decoration: none; }
 
-/* Seiten: FLACHER eingerueckt als vorher (38 px), und die Zugehoerigkeit
-   zeigt eine feine Fuehrungslinie statt Leerraum. Bei 288 px Spaltenbreite
-   brachen lange Seitennamen sonst mitten im Wort um. */
 .nav-seite {
-  display: block; padding: 5px 8px 5px 21px; color: var(--ink);
-  text-decoration: none; border-left: 2px solid transparent;
-  line-height: 1.4;
+  display: block; padding: 5px 8px 5px 24px; text-decoration: none;
+  border-left: 2px solid transparent;
 }
-.nav-buch .nav-seite { padding-left: 27px; }
-.nav-kapitel .nav-seite { margin-left: 21px; border-left-color: var(--line); }
-.nav-buch .nav-kapitel .nav-seite { padding-left: 12px; }
-.nav-seite:hover { background: var(--mint-pale); }
-.nav-seite.aktuell {
-  background: var(--mint-pale); border-left-color: var(--blue); font-weight: 600;
+.nav-buch > .nav-seite { padding-left: 44px; }
+.nav-kapitel .nav-seite { margin-left: 11px; padding-left: 23px; border-left-color: var(--line); }
+.nav-buch .nav-kapitel .nav-seite { margin-left: 31px; padding-left: 23px; }
+
+/* Farbe und Gewicht: inaktiv gedaempft, Pfad und aktuelle Seite dunkel+fett. */
+.nav summary,
+.nav summary a, .nav summary a:link, .nav summary a:visited,
+.nav-seite, .nav-seite:link, .nav-seite:visited {
+  color: var(--ink-muted); font-weight: 400;
 }
+.nav .pfad > summary,
+.nav .pfad > summary a, .nav .pfad > summary a:link, .nav .pfad > summary a:visited,
+.nav-seite.aktuell, .nav-seite.aktuell:link, .nav-seite.aktuell:visited {
+  color: var(--ink); font-weight: 600;
+}
+.nav summary:hover, .nav-seite:hover { background: var(--mint-pale); }
+.nav summary:hover a, .nav-seite:hover { color: var(--ink); }
+.nav-seite.aktuell { background: var(--mint-pale); border-left-color: var(--blue); }
 
 /* ------------------------------------------------------------------- Inhalt */
 /*
@@ -371,12 +405,11 @@ pre, .codefeld, .codefeld * {
 .brotkrumen li { display: flex; align-items: center; }
 .brotkrumen li + li::before {
   content: '\203A';           /* einfaches Chevron */
-  margin: 0 9px; color: var(--leiste-aktiv);
-  font-size: 15px; line-height: 1;
+  margin: 0 12px; color: var(--ink-soft);
+  font-size: 17px; line-height: 1;
 }
 .brotkrumen a { color: var(--ink); text-decoration: none; }
 .brotkrumen a:hover { color: var(--blue-text); }
-.brotkrumen a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 2px; }
 /* Aktuelle Seite: dabei, aber zurueckgenommen - sie ist kein Ziel mehr. */
 .brotkrumen [aria-current="page"] { color: var(--ink-soft); }
 /*
@@ -404,7 +437,7 @@ h1 { font-size: clamp(22px, 6.4vw, 32px); font-weight: 600; line-height: 1.15; m
   padding-bottom: 12px; margin-bottom: 26px; border-bottom: 2px solid var(--blue);
 }
 .seitenmeta {
-  font-size: 12.5px; color: #4a4a4a; margin: 0;
+  font-size: 12.5px; color: var(--ink-muted); margin: 0;
   font-variant-numeric: tabular-nums;
 }
 .entwurf-band {
@@ -439,11 +472,34 @@ h1 { font-size: clamp(22px, 6.4vw, 32px); font-weight: 600; line-height: 1.15; m
 .inhalt > h4, .inhalt > blockquote, .inhalt > .callout { max-width: 570px; }
 .inhalt ul, .inhalt ol { padding-left: 22px; }
 .inhalt li { margin: 3px 0; }
-/* Keine Unterstreichung, dafuer halbfett: sonst waere die FARBE das
-   einzige Merkmal eines Links, und wer Farben schlecht unterscheidet,
-   erkennt ihn im Text nicht mehr. Das Gewicht traegt diese Aufgabe jetzt. */
-.inhalt a { color: var(--blue-text); text-decoration: none; font-weight: 600; }
-.inhalt a:hover { color: #2830a0; }
+/* LINKS IM TEXT (10.10.2026): duenne Unterstreichung statt Halbfett.
+   Halbfette Ketten wie "ITR Partner Service -> Betrieb -> Seite" wirkten
+   schwer und standen in Konkurrenz zu echten Hervorhebungen. Die Linie
+   uebernimmt die Aufgabe, einen Link auch ohne Farbe erkennbar zu machen.
+   500 ist angefragt; Montserrat liegt nur in 400 und 600 bei, der Browser
+   nimmt dafuer 400 - gewollt ist "nicht fett". */
+.inhalt a {
+  color: var(--blue-text); font-weight: 500;
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px;
+}
+.inhalt a:hover { color: #2830a0; text-decoration-thickness: 2px; }
+/* Adresse als Linktext: darf an jeder Stelle umbrechen, sonst reisst eine
+   lange URL die Zeile auf. */
+.inhalt a.url { overflow-wrap: anywhere; }
+/* Verweisketten ("A -> B -> Seite"): der Generator setzt Glieder und Pfeile
+   in eigene Elemente. Unterstrichen werden nur die Glieder; Leerraum und
+   Pfeil bleiben frei. Der Pfeil gedaempft und nicht fett. */
+.inhalt a.kette { text-decoration: none; }
+.inhalt a .glied {
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px;
+}
+.inhalt a:hover .glied { text-decoration-thickness: 2px; }
+.inhalt .pfeil { color: var(--ink-muted); font-weight: 400; }
+/* Redaktionsvorschau (--show-todos): Platzhalter gelb hinterlegt. */
+.inhalt mark.todo {
+  background: var(--todo-flaeche); color: var(--ink); padding: 0 3px; border-radius: 2px;
+  box-decoration-break: clone; -webkit-box-decoration-break: clone;
+}
 .verweis-inaktiv { color: var(--ink-soft); }
 .verweis-inaktiv::before { content: '\00BB\00A0'; }
 
@@ -604,7 +660,6 @@ h1 { font-size: clamp(22px, 6.4vw, 32px); font-weight: 600; line-height: 1.15; m
   background: transparent; border: 1px solid #cfcfd6; color: #55555f;
 }
 .codefeld-kopieren.kann:hover { background: #e2e2e7; color: var(--ink); }
-.codefeld-kopieren.kann:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
 .codefeld-kopieren.fertig { border-color: var(--ok); color: #0f7a55; }
 
 .codefeld pre {
@@ -673,7 +728,17 @@ h1 { font-size: clamp(22px, 6.4vw, 32px); font-weight: 600; line-height: 1.15; m
 }
 
 /* ------------------------------------------------------------- Startseite */
-.kacheln { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
+/* RASTER (10.10.2026): auto-fit, 24 px Abstand, Karten einer Reihe gleich
+   hoch. Genau VIER Karten (.kacheln-4, setzt der Generator) stehen 2 x 2
+   statt 3 + 1 - in der 960-px-Spalte passen sonst drei, und die zweite Reihe
+   bliebe fast leer. */
+.kacheln {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px; align-items: stretch;
+}
+.kacheln.kacheln-4 {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+}
 .kachel {
   border: 1px solid var(--line); border-radius: var(--rund); padding: 16px 18px; background: #fff;
   /* Ausgangszustand mit einem Hauch Schatten, damit beim Zeigen nicht aus
@@ -733,22 +798,37 @@ h1 { font-size: clamp(22px, 6.4vw, 32px); font-weight: 600; line-height: 1.15; m
    bewusst: der Fokus MUSS deutlich sein, und er ist damit klar vom Zeigen
    unterscheidbar - Zeigen macht Schatten, Fokus macht Rahmen. */
 .kachel-buch:focus-within, .kachel-seite:focus-within {
-  outline: 2px solid var(--blue); outline-offset: 2px;
+  outline: 3px solid var(--blue); outline-offset: 2px;
 }
 .kachel-buch h2 a:focus-visible, .kachel-seite h2 a:focus-visible { outline: none; }
 /* Bei Kapitelkacheln NICHT die ganze Kachel umranden: dort koennen auch die
    Seitenlinks in der Liste den Fokus haben, und dann waere unklar, was
-   gerade angesprungen ist. Jeder Link zeigt seinen Fokus selbst. */
-.kachel-kapitel a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+   gerade angesprungen ist. Jeder Link zeigt seinen Fokus selbst
+   (Sammelregel ".kachel a:focus-visible" unten). */
 .kachel h2 { font-size: 17px; font-weight: 600; margin: 0 0 8px; }
-.kachel ul { list-style: none; margin: 0; padding: 0; font-size: 14.5px; }
-.kachel li { margin: 4px 0; }
+/* LINKLISTE: 1.4 Zeilenhoehe IM Eintrag, 10 px ZWISCHEN den Eintraegen und
+   ein haengender Einzug mit Punkt - so ist klar, dass "Ersteinrichtung mit
+   dem Setup-Wizard" ein Eintrag ist und nicht zwei. */
+.kachel ul {
+  list-style: none; margin: 0; padding: 0; font-size: 14.5px; line-height: 1.4;
+  display: grid; gap: 10px;
+}
+.kachel li { margin: 0; padding-left: 14px; position: relative; }
+.kachel li::before {
+  content: ''; position: absolute; left: 2px; top: calc(.7em - 2px);
+  width: 5px; height: 5px; border-radius: 50%; background: var(--leiste-aktiv);
+}
 /* Kachelueberschriften in Anthrazit, NICHT blau: die ganze Kachel ist der
    Link, dafuer sorgen Zeigefinger, Schatten und Vergroesserung. Blaue
    Ueberschriften waren die groessten blauen Textflaechen der Seite und der
    Hauptgrund, warum das Blau schwer zu lesen war. Nur die Seitenliste in
    einer Kapitelkachel bleibt blau - das sind einzelne Links im Text. */
 .kachel h2 a { color: var(--ink); text-decoration: none; }
+/* Der Titel ist der Link der Kachel: beim Zeigen zeigt er das auch. */
+.kachel:hover h2 a, .kachel h2 a:focus-visible {
+  color: var(--blue-text); text-decoration: underline;
+  text-decoration-thickness: 1px; text-underline-offset: 3px;
+}
 .kachel ul a { color: var(--blue-text); text-decoration: none; }
 .kachel-buch h2 { font-size: 19px; }
 .kachel-text { font-size: 14px; color: var(--ink-soft); margin: 0 0 8px; }
@@ -756,11 +836,14 @@ h1 { font-size: clamp(22px, 6.4vw, 32px); font-weight: 600; line-height: 1.15; m
 .einstieg { font-size: 15px; color: var(--ink-soft); margin: 0 0 22px; }
 
 /* ---------------------------------------------------------------- Fusszeile */
+/* Linie GENAU so breit wie der Inhalt darueber: .rahmen ist 1320 px breit
+   mit je 20 px Innenabstand, sein Inhalt also 1280 px. Vorher lag die Linie
+   auf der vollen 1320er-Box und stand links und rechts 20 px ueber. */
 .fuss {
   display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
-  border-top: 1px solid var(--line); margin-top: 20px; padding: 14px 20px;
+  border-top: 1px solid var(--line); margin-top: 20px; padding: 14px 0;
   font-size: 12.5px; color: var(--ink-soft);
-  width: min(1320px, 100%); margin-inline: auto;
+  width: min(1280px, 100% - 40px); margin-inline: auto;
 }
 /* Impressum und Stand gehoeren zusammen an das rechte Ende - mit
    space-between wuerden drei einzelne Elemente sonst gleichmaessig ueber die
@@ -768,7 +851,6 @@ h1 { font-size: clamp(22px, 6.4vw, 32px); font-weight: 600; line-height: 1.15; m
 .fuss-rechts { display: flex; gap: 18px; align-items: baseline; }
 .fuss a { color: var(--blue-text); text-decoration: none; }
 .fuss a:hover { color: var(--ink); }
-.fuss a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
 
 /* ------------------------------------------------------------- Sprunglink */
 /* Am Bildschirm unsichtbar, bis er den Fokus bekommt - fuer die Bedienung
@@ -785,7 +867,7 @@ h1 { font-size: clamp(22px, 6.4vw, 32px); font-weight: 600; line-height: 1.15; m
 }
 .sprung:focus {
   position: static; width: auto; height: auto; overflow: visible;
-  clip: auto; outline: 2px solid var(--mint); outline-offset: 3px;
+  clip: auto; outline: 3px solid var(--mint); outline-offset: 2px;
 }
 
 /* ------------------------------------------------------------ Schmale Fenster */
@@ -837,6 +919,9 @@ h1 { font-size: clamp(22px, 6.4vw, 32px); font-weight: 600; line-height: 1.15; m
   }
   .kopf { flex-wrap: wrap; gap: 10px; }
   .kopf-firma { display: none; }
+  /* Auf dem Handy bei 30 px bleiben: Logo, Suchfeld und Sprunglink teilen
+     sich eine Zeile, mit 36 px bliebe dem Suchfeld kaum Platz. */
+  .kopf-logo img { height: 30px; }
   /* Auf dem Handy dauerhaft sichtbar, sonst findet niemand die Navigation. */
   .sprung {
     position: static; width: auto; height: auto; overflow: visible;
@@ -848,16 +933,21 @@ h1 { font-size: clamp(22px, 6.4vw, 32px); font-weight: 600; line-height: 1.15; m
 /* Sichtbarer Fokus auf allem, was man anspringen kann. Ohne ihn ist die Seite
    ohne Maus nicht bedienbar: man sieht nicht, wo man gerade steht.
    :focus-visible statt :focus, damit ein Mausklick keinen Rahmen hinterlaesst. */
+/* Gesammelt an EINER Stelle, 3 px - auch fuer die Navigationspfeile
+   (summary), den Kopierknopf und die Tabellenrahmen. */
 .inhalt a:focus-visible,
 .nav a:focus-visible,
+.nav summary:focus-visible,
 .kachel a:focus-visible,
-.nav-buch > summary:focus-visible,
-.nav-kapitel > summary:focus-visible,
+.brotkrumen a:focus-visible,
+.fuss a:focus-visible,
+.codefeld-kopieren.kann:focus-visible,
+.tabellenrahmen:focus-visible,
 #suchergebnis a:focus-visible {
-  outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 2px;
+  outline: 3px solid var(--blue); outline-offset: 2px; border-radius: 2px;
 }
 /* Innerhalb der dunklen Kopfleiste ist Blau auf Marine nicht zu sehen. */
-.kopf a:focus-visible { outline: 2px solid var(--mint); outline-offset: 3px; }
+.kopf a:focus-visible { outline: 3px solid var(--mint); outline-offset: 2px; }
 
 /* ------------------------------------------------------------------- Druck */
 @media print {
