@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Kasse mit dem CentralPoint verbinden | Produkte</title>
+<meta name="description" content="Ist die Kasse mit dem CentralPoint verbunden, bezieht sie ihre Stammdaten von dort und liefert ihre Belege dorthin zurück. Mit dem Verbinden werden das Anlegen und Bearbeiten von Stammdaten an der Kas">
+<link rel="icon" type="image/png" sizes="256x256" href="../../assets/favicon-256.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon-180.png">
+<link rel="stylesheet" href="../../assets/stil.css?v=1a04f76d">
+<script>(function(){var w=document.documentElement,m=null;w.classList.add("js");try{m=localStorage.getItem("itr-doku-modus")}catch(e){}if(m==="dunkel"||(!m&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)){w.classList.add("dunkel")}})();</script>
+</head>
+<body>
+<header class="kopf">
+  <div class="kopf-innen">
+    <a class="kopf-logo" href="../../index.html"><img src="../../assets/logo.png" alt="IT Relations"></a>
+    <div class="kopf-suche">
+      <input type="search" id="suchfeld" placeholder="Alle Inhalte durchsuchen" autocomplete="off"
+             aria-label="Suchen" data-auf="../../">
+      <div id="suchergebnis" hidden></div>
+    </div>
+    <a class="sprung" href="#navigation">Zur Navigation</a>
+    <span class="kopf-firma">IT Relations GmbH</span>
+    <button type="button" class="kopf-modus" id="modusknopf" aria-pressed="false"
+            title="Dunkler Modus" aria-label="Dunkler Modus">
+      <svg class="mond" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.3 22c-5.5 0-10-4.5-10-10 0-4.4 2.9-8.3 7.1-9.6a.8.8 0 0 1 1 1 7.6 7.6 0 0 0 9.5 9.5.8.8 0 0 1 1 1C19.6 18.9 16.2 22 12.3 22z"/></svg>
+      <svg class="sonne" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg>
+    </button>
+  </div>
+</header>
+<div class="rahmen">
+  <aside class="spalte-links" id="navigation"><nav class="nav" aria-label="Inhalt"><a class="nav-wurzel" href="../../index.html">ITR POS Partner Docs</a><details class="nav-buch"><summary><a href="../../news-releases-pcT/index.html">News &amp; Releases</a></summary><a class="nav-seite" href="../../news-releases-pcT/versionshinweise.html">Versionshinweise</a></details><details class="nav-buch"><summary><a href="../../schnellstart/index.html">Schnellstart</a></summary><a class="nav-seite" href="../../schnellstart/standalone-kasse-und-betrieb-mit-centralpoint.html">Standalone-Kasse und Betrieb mit CentralPoint</a><a class="nav-seite" href="../../schnellstart/wie-diese-dokumentation-aufgebaut-ist.html">Wie diese Dokumentation aufgebaut ist</a><a class="nav-seite" href="../../schnellstart/produktlandschaft-im-uberblick.html">Produktlandschaft im Überblick</a><a class="nav-seite" href="../../schnellstart/rollen-hersteller-partner-endkunde.html">Rollen: Hersteller, Partner, Endkunde</a><a class="nav-seite" href="../../schnellstart/glossar-und-abkurzungen.html">Glossar und Abkürzungen</a><a class="nav-seite" href="../../schnellstart/cloud-dienste-erp-cloud-und-cloud-centralpoint.html">Cloud-Dienste: ERP Cloud und Cloud-CentralPoint</a></details><details class="nav-buch pfad" open><summary><a href="../../produkte/index.html">Produkte</a></summary><details class="nav-kapitel pfad" open><summary><a href="../../produkte/itr-kasse/index.html">ITR Kasse</a></summary><a class="nav-seite" href="../../produkte/itr-kasse/funktionsweise-der-itr-kasse.html">Funktionsweise der ITR Kasse</a><a class="nav-seite" href="../../produkte/itr-kasse/itr-kasse-installieren.html">ITR Kasse installieren</a><a class="nav-seite" href="../../produkte/itr-kasse/ersteinrichtung-mit-dem-setup-wizard.html">Ersteinrichtung mit dem Setup-Wizard</a><a class="nav-seite aktuell" href="../../produkte/itr-kasse/kasse-mit-dem-centralpoint-verbinden.html">Kasse mit dem CentralPoint verbinden</a></details><details class="nav-kapitel"><summary><a href="../../produkte/centralpoint/index.html">CentralPoint</a></summary><a class="nav-seite" href="../../produkte/centralpoint/datenbank-fur-den-centralpoint-einrichten.html">Datenbank für den CentralPoint einrichten</a></details><details class="nav-kapitel"><summary><a href="../../produkte/pos-gastro-app/index.html">POS Gastro App</a></summary><a class="nav-seite" href="../../produkte/pos-gastro-app/funktionsweise.html">Funktionsweise</a><a class="nav-seite" href="../../produkte/pos-gastro-app/in-betrieb-nehmen.html">In Betrieb nehmen</a><a class="nav-seite" href="../../produkte/pos-gastro-app/im-alltag-arbeiten.html">Im Alltag arbeiten</a><a class="nav-seite" href="../../produkte/pos-gastro-app/storungen-beheben.html">Störungen beheben</a></details><details class="nav-kapitel"><summary><a href="../../produkte/pos-kuchenmonitor/index.html">POS Küchenmonitor</a></summary><a class="nav-seite" href="../../produkte/pos-kuchenmonitor/funktionsweise-kuchenmonitor.html">Funktionsweise Küchenmonitor</a><a class="nav-seite" href="../../produkte/pos-kuchenmonitor/kuchenmonitor-in-betrieb-nehmen.html">Küchenmonitor in Betrieb nehmen</a><a class="nav-seite" href="../../produkte/pos-kuchenmonitor/abholnummer-auf-dem-kundenbeleg.html">Abholnummer auf dem Kundenbeleg</a><a class="nav-seite" href="../../produkte/pos-kuchenmonitor/kuchenmonitor-storungen-beheben.html">Küchenmonitor: Störungen beheben</a></details><details class="nav-kapitel"><summary><a href="../../produkte/cloud-centralpoint/index.html">Cloud-CentralPoint</a></summary><a class="nav-seite" href="../../produkte/cloud-centralpoint/funktionsweise-des-cloud-centralpoint.html">Funktionsweise des Cloud-CentralPoint</a><a class="nav-seite" href="../../produkte/cloud-centralpoint/benutzer-im-cloud-centralpoint-verwalten.html">Benutzer im Cloud-CentralPoint verwalten</a></details><details class="nav-kapitel"><summary><a href="../../produkte/ebon/index.html">eBon</a></summary><a class="nav-seite" href="../../produkte/ebon/funktionsweise-von-ebon-und-ebon-plus.html">Funktionsweise von eBon und eBon Plus</a><a class="nav-seite" href="../../produkte/ebon/ebon-einrichten.html">eBon einrichten</a><a class="nav-seite" href="../../produkte/ebon/umsatz-app-einrichten.html">Umsatz-App einrichten</a></details></details><details class="nav-buch"><summary><a href="../../losungen/index.html">Lösungen</a></summary><a class="nav-seite" href="../../losungen/waagen.html">Waagen</a></details><details class="nav-buch"><summary><a href="../../betrieb-administration/index.html">Betrieb &amp; Administration</a></summary><details class="nav-kapitel"><summary><a href="../../betrieb-administration/infrastruktur/index.html">Infrastruktur</a></summary><a class="nav-seite" href="../../betrieb-administration/infrastruktur/systemvoraussetzungen.html">Systemvoraussetzungen</a></details></details><details class="nav-buch"><summary><a href="../../fiskalisierung/index.html">Fiskalisierung</a></summary><a class="nav-seite" href="../../fiskalisierung/fiskalisierung-uberblick-fur-partner.html">Fiskalisierung: Überblick für Partner</a><a class="nav-seite" href="../../fiskalisierung/tse-hardware-swissbit-in-betrieb-nehmen.html">TSE Hardware (Swissbit) in Betrieb nehmen</a><a class="nav-seite" href="../../fiskalisierung/cloud-tse-fiskaly-in-betrieb-nehmen.html">Cloud-TSE (fiskaly) in Betrieb nehmen</a><a class="nav-seite" href="../../fiskalisierung/tse-pin-und-puk-verwalten.html">TSE-PIN und PUK verwalten</a><a class="nav-seite" href="../../fiskalisierung/abgelaufene-tse-austauschen.html">Abgelaufene TSE austauschen</a></details><details class="nav-buch"><summary><a href="../../faq-troubleshooting/index.html">FAQ &amp; Troubleshooting</a></summary><a class="nav-seite" href="../../faq-troubleshooting/tse-meldet-einen-fehler.html">TSE meldet einen Fehler</a></details></nav></aside>
+  <main class="spalte-mitte" id="inhalt"><div class="seitenkopf"><nav class="brotkrumen-nav" aria-label="Sie sind hier"><ol class="brotkrumen"><li><a href="../../produkte/index.html">Produkte</a></li><li><a href="../../produkte/itr-kasse/index.html">ITR Kasse</a></li><li><span aria-current="page">Kasse mit dem CentralPoint verbinden</span></li></ol></nav><h1>Kasse mit dem CentralPoint verbinden</h1><p class="seitenmeta">Letzte &Auml;nderung 13.10.2026 &middot; Version 6 &middot; Seiten-ID 723</p></div><div class="inhalt"><p id="bkmrk-ist-die-kasse-mit-de">Ist die Kasse mit dem CentralPoint verbunden, bezieht sie ihre Stammdaten von dort und liefert ihre Belege dorthin zurück.</p>
+<p class="callout warning" id="bkmrk-mit-dem-verbinden-we">Mit dem Verbinden werden das Anlegen und Bearbeiten von Stammdaten <strong>an der Kasse gesperrt</strong>. Ab diesem Zeitpunkt werden Artikel, Warengruppen und Bediener ausschließlich im CentralPoint gepflegt.</p>
+<h2 id="bkmrk-voraussetzungen">Voraussetzungen</h2>
+<ul id="bkmrk-ein-installierter-ce">
+<li>Ein installierter CentralPoint mit initialisierter Datenbank.</li>
+<li>Adresse, Port, Schema, Benutzer und Kennwort der zentralen Datenbank.</li>
+<li>Die zentrale Datenbank ist von der Kasse aus über ihren Port erreichbar (Standard <code>3306</code>, in der MariaDB-Konfiguration frei wählbar).</li>
+</ul>
+<h2 id="bkmrk-so-gehen-sie-vor">So gehen Sie vor</h2>
+<ol id="bkmrk-den-setup-wizard-der">
+<li>Den Setup-Wizard der Kasse starten, siehe <a href="../../produkte/itr-kasse/ersteinrichtung-mit-dem-setup-wizard.html" class="kette"><span class="glied">ITR Partner Service</span> <span class="pfeil">→</span> <span class="glied">Produkte</span> <span class="pfeil">→</span> <span class="glied">Ersteinrichtung mit dem Setup-Wizard</span></a>.</li>
+<li>Im Schritt <strong>Lokale Datenbank</strong> die lokale Datenbank löschen und neu erstellen. Sonst überträgt die Kasse ihre vorhandenen Daten in den CentralPoint.</li>
+<li>Weiter bis zum Schritt <strong>CentralPoint Datenbank</strong>.</li>
+<li><strong>Kasse mit Zentraler Datenbank verbinden</strong> aktivieren.</li>
+<li>Die Verbindungsparameter eintragen:</li>
+</ol>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-feld-inhalt-datenban">
+<thead>
+<tr>
+<th>Feld</th>
+<th>Inhalt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Datenbankentyp</td>
+<td><code>MySQL</code></td>
+</tr>
+<tr>
+<td>Host</td>
+<td>IP oder Name des Rechners mit der zentralen Datenbank</td>
+</tr>
+<tr>
+<td>Port</td>
+<td>Port laut MariaDB-Konfiguration, Standard <code>3306</code></td>
+</tr>
+<tr>
+<td>Datenbankname</td>
+<td>Name des Schemas, üblich <code>goodcompany</code></td>
+</tr>
+<tr>
+<td>Benutzer</td>
+<td>Datenbankbenutzer</td>
+</tr>
+<tr>
+<td>Passwort</td>
+<td>dessen Kennwort</td>
+</tr>
+<tr>
+<td>SSL</td>
+<td>Standard <code>PREFERRED</code></td>
+</tr>
+</tbody>
+</table></div>
+<p id="bkmrk-die-werte-m%C3%BCssen-exa">Die Werte müssen exakt denen aus der Datenbankeinrichtung entsprechen.</p>
+<ol start="6" id="bkmrk-teste-verbindung%E2%80%A6-au">
+<li><strong>Teste Verbindung…</strong> ausführen.</li>
+<li><strong>Fertig</strong> drücken.</li>
+</ol>
+<p id="bkmrk-im-admin-panel-%E2%86%92-ein">Im <strong>Admin-Panel → Einstellungen → Zentrale DB</strong> sind die Verbindungsparameter schreibgeschützt. Dort lassen sich die Verbindung kontrollieren und die Synchronisationsintervalle einstellen.</p>
+<h2 id="bkmrk-synchronisationsinte">Synchronisationsintervalle</h2>
+<p id="bkmrk-getrennt-einstellbar">Getrennt einstellbar für beide Richtungen:</p>
+<ul id="bkmrk-synchronisation-stam">
+<li><strong>Synchronisation Stammdaten</strong> — Empfang der im CentralPoint gepflegten Daten.</li>
+<li><strong>Synchronisation Bondaten</strong> — Übergabe der Kassendaten an den CentralPoint.</li>
+</ul>
+<p id="bkmrk-%C3%9Cblicherweise-erreic">Üblicherweise erreichen die Daten die zentrale Datenbank innerhalb von etwa 600 Sekunden, je nach eingestelltem Intervall.</p>
+<h2 id="bkmrk-ergebnis-pr%C3%BCfen">Ergebnis prüfen</h2>
+<ul id="bkmrk-der-verbindungstest-">
+<li>Der Verbindungstest bestätigt die Verbindung.</li>
+<li>Eine im CentralPoint geänderte Stammdatenangabe erscheint nach einem Synchronisationslauf an der Kasse.</li>
+<li>Ein an der Kasse erzeugter Beleg taucht im CentralPoint auf.</li>
+</ul>
+<h2 id="bkmrk-wenn-es-nicht-funkti">Wenn es nicht funktioniert</h2>
+<p id="bkmrk-schl%C3%A4gt-die-synchron">Schlägt die Synchronisation fehl, zeigt die Kasse eine Meldung. Häufige Ursachen:</p>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-meldung-ursache-host">
+<thead>
+<tr>
+<th>Meldung</th>
+<th>Ursache</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hostname kann nicht aufgelöst werden</td>
+<td>Namensauflösung im Netz, IP statt Name eintragen</td>
+</tr>
+<tr>
+<td>Verbindung kann nicht innerhalb des Zeitfensters hergestellt werden</td>
+<td>Datenbank nicht erreichbar, Firewall oder Datenbank-Port blockiert</td>
+</tr>
+<tr>
+<td>Verbindungsaufbau wurde abgelehnt</td>
+<td>Datenbankdienst läuft nicht, oder der Benutzer darf nicht von diesem Rechner aus zugreifen</td>
+</tr>
+<tr>
+<td>Ungültige Anmeldedaten</td>
+<td>Benutzer oder Kennwort falsch</td>
+</tr>
+<tr>
+<td>Unbekannte Spalte in Tabelle</td>
+<td>Schemastand passt nicht zur Version — Versionsstände von Kasse und CentralPoint abgleichen</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="bkmrk-weitere-informatione">Weitere Informationen</h2>
+<ul id="bkmrk-itr-partner-service-">
+<li><span class="verweis-inaktiv kette"><span class="glied">ITR Partner Service</span> <span class="pfeil">→</span> <span class="glied">Produkte</span> <span class="pfeil">→</span> <span class="glied">CentralPoint installieren</span></span></li>
+<li><span class="verweis-inaktiv kette"><span class="glied">ITR Partner Service</span> <span class="pfeil">→</span> <span class="glied">Betrieb &amp; Administration</span> <span class="pfeil">→</span> <span class="glied">Netzwerk und Ports</span></span></li>
+</ul>
+</div></main>
+  <aside class="spalte-rechts"><div class="seiteninhalt"><h2>Seiteninhalt</h2><ul><li class="e2"><a href="#bkmrk-voraussetzungen">Voraussetzungen</a></li><li class="e2"><a href="#bkmrk-so-gehen-sie-vor">So gehen Sie vor</a></li><li class="e2"><a href="#bkmrk-synchronisationsinte">Synchronisationsintervalle</a></li><li class="e2"><a href="#bkmrk-ergebnis-pr%C3%BCfen">Ergebnis prüfen</a></li><li class="e2"><a href="#bkmrk-wenn-es-nicht-funkti">Wenn es nicht funktioniert</a></li><li class="e2"><a href="#bkmrk-weitere-informatione">Weitere Informationen</a></li></ul></div></aside>
+</div>
+<footer class="fuss">
+  <span>ITR POS Partner Docs</span>
+  <span class="fuss-rechts">
+    <a href="https://itrelations.de/de/impressum" target="_blank" rel="noopener">Impressum</a>
+    <span>Stand 13.10.2026</span>
+  </span>
+</footer>
+<script src="../../assets/suche.js?v=e38d7a36"></script>
+</body>
+</html>
