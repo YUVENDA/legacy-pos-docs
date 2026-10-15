@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Kassenschublade einrichten | Betrieb &amp; Administration</title>
+<meta name="description" content="Die Schublade hängt entweder am Bondrucker oder direkt an einer seriellen Schnittstelle. Am Drucker angeschlossen Der übliche Fall. Der Drucker bekommt in der Kassenkonfiguration die Option Kassenschu">
+<link rel="icon" type="image/png" sizes="256x256" href="../../assets/favicon-256.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon-180.png">
+<link rel="stylesheet" href="../../assets/stil.css?v=1a04f76d">
+<script>(function(){var w=document.documentElement,m=null;w.classList.add("js");try{m=localStorage.getItem("itr-doku-modus")}catch(e){}if(m==="dunkel"||(!m&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)){w.classList.add("dunkel")}})();</script>
+</head>
+<body>
+<header class="kopf">
+  <div class="kopf-innen">
+    <a class="kopf-logo" href="../../index.html"><img src="../../assets/logo.png" alt="IT Relations"></a>
+    <div class="kopf-suche">
+      <input type="search" id="suchfeld" placeholder="Alle Inhalte durchsuchen" autocomplete="off"
+             aria-label="Suchen" data-auf="../../">
+      <div id="suchergebnis" hidden></div>
+    </div>
+    <a class="sprung" href="#navigation">Zur Navigation</a>
+    <span class="kopf-firma">IT Relations GmbH</span>
+    <button type="button" class="kopf-modus" id="modusknopf" aria-pressed="false"
+            title="Dunkler Modus" aria-label="Dunkler Modus">
+      <svg class="mond" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.3 22c-5.5 0-10-4.5-10-10 0-4.4 2.9-8.3 7.1-9.6a.8.8 0 0 1 1 1 7.6 7.6 0 0 0 9.5 9.5.8.8 0 0 1 1 1C19.6 18.9 16.2 22 12.3 22z"/></svg>
+      <svg class="sonne" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg>
+    </button>
+  </div>
+</header>
+<div class="rahmen">
+  <aside class="spalte-links" id="navigation"><nav class="nav" aria-label="Inhalt"><a class="nav-wurzel" href="../../index.html">ITR POS Partner Docs</a><details class="nav-buch"><summary><a href="../../news-releases-pcT/index.html">News &amp; Releases</a></summary><a class="nav-seite" href="../../news-releases-pcT/versionshinweise.html">Versionshinweise</a></details><details class="nav-buch"><summary><a href="../../schnellstart/index.html">Schnellstart</a></summary><a class="nav-seite" href="../../schnellstart/standalone-kasse-und-betrieb-mit-centralpoint.html">Standalone-Kasse und Betrieb mit CentralPoint</a><a class="nav-seite" href="../../schnellstart/wie-diese-dokumentation-aufgebaut-ist.html">Wie diese Dokumentation aufgebaut ist</a><a class="nav-seite" href="../../schnellstart/produktlandschaft-im-uberblick.html">Produktlandschaft im Überblick</a><a class="nav-seite" href="../../schnellstart/rollen-hersteller-partner-endkunde.html">Rollen: Hersteller, Partner, Endkunde</a><a class="nav-seite" href="../../schnellstart/glossar-und-abkurzungen.html">Glossar und Abkürzungen</a><a class="nav-seite" href="../../schnellstart/cloud-dienste-erp-cloud-und-cloud-centralpoint.html">Cloud-Dienste: ERP Cloud und Cloud-CentralPoint</a></details><details class="nav-buch"><summary><a href="../../produkte/index.html">Produkte</a></summary><details class="nav-kapitel"><summary><a href="../../produkte/itr-kasse/index.html">ITR Kasse</a></summary><a class="nav-seite" href="../../produkte/itr-kasse/funktionsweise-der-itr-kasse.html">Funktionsweise der ITR Kasse</a><a class="nav-seite" href="../../produkte/itr-kasse/itr-kasse-installieren.html">ITR Kasse installieren</a><a class="nav-seite" href="../../produkte/itr-kasse/ersteinrichtung-mit-dem-setup-wizard.html">Ersteinrichtung mit dem Setup-Wizard</a><a class="nav-seite" href="../../produkte/itr-kasse/kasse-mit-dem-centralpoint-verbinden.html">Kasse mit dem CentralPoint verbinden</a><a class="nav-seite" href="../../produkte/itr-kasse/daten-von-hand-synchronisieren.html">Daten von Hand synchronisieren</a></details><details class="nav-kapitel"><summary><a href="../../produkte/centralpoint/index.html">CentralPoint</a></summary><a class="nav-seite" href="../../produkte/centralpoint/datenbank-fur-den-centralpoint-einrichten.html">Datenbank für den CentralPoint einrichten</a></details><details class="nav-kapitel"><summary><a href="../../produkte/pos-gastro-app/index.html">POS Gastro App</a></summary><a class="nav-seite" href="../../produkte/pos-gastro-app/funktionsweise.html">Funktionsweise</a><a class="nav-seite" href="../../produkte/pos-gastro-app/in-betrieb-nehmen.html">In Betrieb nehmen</a><a class="nav-seite" href="../../produkte/pos-gastro-app/im-alltag-arbeiten.html">Im Alltag arbeiten</a><a class="nav-seite" href="../../produkte/pos-gastro-app/storungen-beheben.html">Störungen beheben</a></details><details class="nav-kapitel"><summary><a href="../../produkte/pos-kuchenmonitor/index.html">POS Küchenmonitor</a></summary><a class="nav-seite" href="../../produkte/pos-kuchenmonitor/funktionsweise-kuchenmonitor.html">Funktionsweise Küchenmonitor</a><a class="nav-seite" href="../../produkte/pos-kuchenmonitor/kuchenmonitor-in-betrieb-nehmen.html">Küchenmonitor in Betrieb nehmen</a><a class="nav-seite" href="../../produkte/pos-kuchenmonitor/abholnummer-auf-dem-kundenbeleg.html">Abholnummer auf dem Kundenbeleg</a><a class="nav-seite" href="../../produkte/pos-kuchenmonitor/kuchenmonitor-storungen-beheben.html">Küchenmonitor: Störungen beheben</a></details><details class="nav-kapitel"><summary><a href="../../produkte/cloud-centralpoint/index.html">Cloud-CentralPoint</a></summary><a class="nav-seite" href="../../produkte/cloud-centralpoint/funktionsweise-des-cloud-centralpoint.html">Funktionsweise des Cloud-CentralPoint</a><a class="nav-seite" href="../../produkte/cloud-centralpoint/benutzer-im-cloud-centralpoint-verwalten.html">Benutzer im Cloud-CentralPoint verwalten</a></details><details class="nav-kapitel"><summary><a href="../../produkte/ebon/index.html">eBon</a></summary><a class="nav-seite" href="../../produkte/ebon/funktionsweise-von-ebon-und-ebon-plus.html">Funktionsweise von eBon und eBon Plus</a><a class="nav-seite" href="../../produkte/ebon/ebon-einrichten.html">eBon einrichten</a><a class="nav-seite" href="../../produkte/ebon/umsatz-app-einrichten.html">Umsatz-App einrichten</a></details></details><details class="nav-buch"><summary><a href="../../losungen/index.html">Lösungen</a></summary><a class="nav-seite" href="../../losungen/waagen.html">Waagen</a></details><details class="nav-buch pfad" open><summary><a href="../../betrieb-administration/index.html">Betrieb &amp; Administration</a></summary><details class="nav-kapitel"><summary><a href="../../betrieb-administration/infrastruktur/index.html">Infrastruktur</a></summary><a class="nav-seite" href="../../betrieb-administration/infrastruktur/systemvoraussetzungen.html">Systemvoraussetzungen</a></details><details class="nav-kapitel pfad" open><summary><a href="../../betrieb-administration/peripherie/index.html">Peripherie</a></summary><a class="nav-seite" href="../../betrieb-administration/peripherie/bondrucker-einrichten.html">Bondrucker einrichten</a><a class="nav-seite aktuell" href="../../betrieb-administration/peripherie/kassenschublade-einrichten.html">Kassenschublade einrichten</a></details></details><details class="nav-buch"><summary><a href="../../fiskalisierung/index.html">Fiskalisierung</a></summary><a class="nav-seite" href="../../fiskalisierung/fiskalisierung-uberblick-fur-partner.html">Fiskalisierung: Überblick für Partner</a><a class="nav-seite" href="../../fiskalisierung/tse-hardware-swissbit-in-betrieb-nehmen.html">TSE Hardware (Swissbit) in Betrieb nehmen</a><a class="nav-seite" href="../../fiskalisierung/cloud-tse-fiskaly-in-betrieb-nehmen.html">Cloud-TSE (fiskaly) in Betrieb nehmen</a><a class="nav-seite" href="../../fiskalisierung/tse-pin-und-puk-verwalten.html">TSE-PIN und PUK verwalten</a><a class="nav-seite" href="../../fiskalisierung/abgelaufene-tse-austauschen.html">Abgelaufene TSE austauschen</a></details><details class="nav-buch"><summary><a href="../../faq-troubleshooting/index.html">FAQ &amp; Troubleshooting</a></summary><a class="nav-seite" href="../../faq-troubleshooting/tse-meldet-einen-fehler.html">TSE meldet einen Fehler</a><a class="nav-seite" href="../../faq-troubleshooting/datenbank-sperrt-host-many-connection-errors-beheben.html">Datenbank sperrt Host (many connection errors) beheben</a></details></nav></aside>
+  <main class="spalte-mitte" id="inhalt"><div class="seitenkopf"><nav class="brotkrumen-nav" aria-label="Sie sind hier"><ol class="brotkrumen"><li><a href="../../betrieb-administration/index.html">Betrieb &amp; Administration</a></li><li><a href="../../betrieb-administration/peripherie/index.html">Peripherie</a></li><li><span aria-current="page">Kassenschublade einrichten</span></li></ol></nav><h1>Kassenschublade einrichten</h1><p class="seitenmeta">Letzte &Auml;nderung 15.10.2026 &middot; Version 3 &middot; Seiten-ID 739</p></div><div class="inhalt"><p id="bkmrk-die-schublade-h%C3%A4ngt-">Die Schublade hängt entweder am Bondrucker oder direkt an einer seriellen Schnittstelle.</p>
+<h2 id="bkmrk-am-drucker-angeschlo">Am Drucker angeschlossen</h2>
+<p id="bkmrk-der-%C3%BCbliche-fall.-de">Der übliche Fall. Der Drucker bekommt in der Kassenkonfiguration die Option <strong>Kassenschublade</strong> und öffnet sie zusammen mit dem Beleg. Siehe <a href="../../betrieb-administration/peripherie/bondrucker-einrichten.html" class="kette"><span class="glied">ITR Partner Service</span> <span class="pfeil">→</span> <span class="glied">Betrieb &amp; Administration</span> <span class="pfeil">→</span> <span class="glied">Bondrucker einrichten</span></a>.</p>
+<p id="bkmrk-passt-die-%C3%96ffnungsse">Passt die Öffnungssequenz nicht, wird sie in der <code>app.properties</code> gesetzt (nur bei ESC/POS Codetyp Epson):</p>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-parameter-bedeutung-">
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Bedeutung</th>
+<th>Standard</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>drawerSequence</code></td>
+<td>welche Schublade geöffnet wird: <code>0</code> erste, <code>1</code> zweite, <code>2</code> beide (<code>1B 70 00 32 FA</code> und <code>1B 70 01 32 FA</code>), <code>3</code> sendet <code>1B 70 48 32 FA</code> und <code>1B 70 49 32 FA</code></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>drawerSequenceString</code></td>
+<td>eigene Escape-Sequenz laut Anleitung der Schublade, genau 5 Werte mit Leerzeichen getrennt; der letzte Wert bestimmt die Länge des Öffnungssignals. Anderes Format wird ignoriert, dann gilt <code>drawerSequence</code>.</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="bkmrk-seriell-angeschlosse">Seriell angeschlossen</h2>
+<p id="bkmrk-unter-admin-panel-%E2%86%92-">Unter <strong>Admin-Panel → Einstellungen → Hardware → Ein-/Ausgabe Geräte → Serielle Schubladen</strong>. Mehrere Schubladen sind möglich.</p>
+<p id="bkmrk-je-schublade%3A-nummer">Je Schublade: <strong>Nummer</strong>, <strong>Name</strong>, <strong>COM-Parameter</strong> und die <strong>Öffnungssequenz</strong>.</p>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-sequenznummer-dezima">
+<thead>
+<tr>
+<th>Sequenznummer</th>
+<th>Dezimal</th>
+<th>Hexadezimal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><code>27 112 0 50 250</code></td>
+<td><code>1B 70 00 32 FA</code></td>
+</tr>
+<tr>
+<td>1</td>
+<td><code>27 112 1 50 250</code></td>
+<td><code>1B 70 01 32 FA</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>27 112 72 50 250</code></td>
+<td><code>1B 70 48 32 FA</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>27 112 73 50 250</code></td>
+<td><code>1B 70 49 32 FA</code></td>
+</tr>
+<tr>
+<td>4 (Posiflex)</td>
+<td><code>27 112 23 50 250</code></td>
+<td><code>1B 70 17 32 FA</code></td>
+</tr>
+</tbody>
+</table></div>
+<p id="bkmrk-passt-keine%2C-l%C3%A4sst-s">Passt keine, lässt sich eine eigene Sequenz in Dezimalzahlen eintragen.</p>
+<p id="bkmrk-zus%C3%A4tzlich-einstellb">Zusätzlich einstellbar: ein Signalton beim Öffnen, beim Schließen oder solange die Schublade offen ist, sowie <strong>Anzeige blockieren wenn Lade offen ist</strong> — das sperrt alle Bildschirmeingaben, bis die Schublade zu ist.</p>
+<p id="bkmrk-zum-pr%C3%BCfen-gibt-es-e">Zum Prüfen gibt es einen <strong>Schubladentester</strong>, der die eingestellte Sequenz direkt sendet.</p>
+<h2 id="bkmrk-mehrere-schubladen-u">Mehrere Schubladen und Geldbeutel</h2>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-parameter-bedeutung--1">
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Bedeutung</th>
+<th>Standard</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Hardware.Drawer.AmountOfDrawers</code></td>
+<td>Anzahl auswählbarer Schubladen — auch ohne physisches Gegenstück, etwa für Geldbeutel</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>Hardware.Drawer.Name&lt;Nr&gt;</code></td>
+<td>Bezeichnung in der Auswahl, zum Beispiel <code>Hardware.Drawer.Name1=Schublade links</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>Hardware.Drawer.OneDrawerPerOperator</code></td>
+<td>ordnet die Schublade beim Anmelden je Bediener zu; der Bediener wird beim Login gefragt</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>Hardware.Drawer.OneDrawerPerOperator.OpenDrawer</code></td>
+<td>öffnet die Lade direkt nach der Auswahl durch den Bediener</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>Hardware.Drawer.OneDrawerPerOperator.OnlyOneDrawerPerCashRegister</code></td>
+<td>bei der Auswahl werden Laden, die schon anderen Bedienern zugeordnet sind, nicht angezeigt</td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table></div>
+<p class="callout warning" id="bkmrk-bei-mehreren-schubla">Bei mehreren Schubladen oder Geldbeuteln muss bei der Tagesabrechnung jede einzelne abgerechnet werden. Wird eine vergessen, stimmt der Kassenbestand nicht.</p>
+<h2 id="bkmrk-ergebnis-pr%C3%BCfen">Ergebnis prüfen</h2>
+<p id="bkmrk-ein-barverkauf-%C3%B6ffne">Ein Barverkauf öffnet die Schublade. Bei mehreren Schubladen öffnet sich die richtige, und die Abrechnung weist jede getrennt aus.</p>
+</div></main>
+  <aside class="spalte-rechts"><div class="seiteninhalt"><h2>Seiteninhalt</h2><ul><li class="e2"><a href="#bkmrk-am-drucker-angeschlo">Am Drucker angeschlossen</a></li><li class="e2"><a href="#bkmrk-seriell-angeschlosse">Seriell angeschlossen</a></li><li class="e2"><a href="#bkmrk-mehrere-schubladen-u">Mehrere Schubladen und Geldbeutel</a></li><li class="e2"><a href="#bkmrk-ergebnis-pr%C3%BCfen">Ergebnis prüfen</a></li></ul></div></aside>
+</div>
+<footer class="fuss">
+  <span>ITR POS Partner Docs</span>
+  <span class="fuss-rechts">
+    <a href="https://itrelations.de/de/impressum" target="_blank" rel="noopener">Impressum</a>
+    <span>Stand 15.10.2026</span>
+  </span>
+</footer>
+<script src="../../assets/suche.js?v=e38d7a36"></script>
+</body>
+</html>
