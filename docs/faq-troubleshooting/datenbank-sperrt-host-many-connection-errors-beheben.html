@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Datenbank sperrt Host (many connection errors) beheben | FAQ &amp; Troubleshooting</title>
+<meta name="description" content="Die Kassen synchronisieren nicht mehr, weil der Datenbankserver der Zentrale alle Verbindungen von der öffentlichen IP-Adresse der Filiale ablehnt. Symptome Im Synchronisationsfenster der Kasse unter ">
+<link rel="icon" type="image/png" sizes="256x256" href="../assets/favicon-256.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon-180.png">
+<link rel="stylesheet" href="../assets/stil.css?v=1a04f76d">
+<script>(function(){var w=document.documentElement,m=null;w.classList.add("js");try{m=localStorage.getItem("itr-doku-modus")}catch(e){}if(m==="dunkel"||(!m&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)){w.classList.add("dunkel")}})();</script>
+</head>
+<body>
+<header class="kopf">
+  <div class="kopf-innen">
+    <a class="kopf-logo" href="../index.html"><img src="../assets/logo.png" alt="IT Relations"></a>
+    <div class="kopf-suche">
+      <input type="search" id="suchfeld" placeholder="Alle Inhalte durchsuchen" autocomplete="off"
+             aria-label="Suchen" data-auf="../">
+      <div id="suchergebnis" hidden></div>
+    </div>
+    <a class="sprung" href="#navigation">Zur Navigation</a>
+    <span class="kopf-firma">IT Relations GmbH</span>
+    <button type="button" class="kopf-modus" id="modusknopf" aria-pressed="false"
+            title="Dunkler Modus" aria-label="Dunkler Modus">
+      <svg class="mond" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.3 22c-5.5 0-10-4.5-10-10 0-4.4 2.9-8.3 7.1-9.6a.8.8 0 0 1 1 1 7.6 7.6 0 0 0 9.5 9.5.8.8 0 0 1 1 1C19.6 18.9 16.2 22 12.3 22z"/></svg>
+      <svg class="sonne" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg>
+    </button>
+  </div>
+</header>
+<div class="rahmen">
+  <aside class="spalte-links" id="navigation"><nav class="nav" aria-label="Inhalt"><a class="nav-wurzel" href="../index.html">ITR POS Partner Docs</a><details class="nav-buch"><summary><a href="../news-releases-pcT/index.html">News &amp; Releases</a></summary><a class="nav-seite" href="../news-releases-pcT/versionshinweise.html">Versionshinweise</a></details><details class="nav-buch"><summary><a href="../schnellstart/index.html">Schnellstart</a></summary><a class="nav-seite" href="../schnellstart/standalone-kasse-und-betrieb-mit-centralpoint.html">Standalone-Kasse und Betrieb mit CentralPoint</a><a class="nav-seite" href="../schnellstart/wie-diese-dokumentation-aufgebaut-ist.html">Wie diese Dokumentation aufgebaut ist</a><a class="nav-seite" href="../schnellstart/produktlandschaft-im-uberblick.html">Produktlandschaft im Überblick</a><a class="nav-seite" href="../schnellstart/rollen-hersteller-partner-endkunde.html">Rollen: Hersteller, Partner, Endkunde</a><a class="nav-seite" href="../schnellstart/glossar-und-abkurzungen.html">Glossar und Abkürzungen</a><a class="nav-seite" href="../schnellstart/cloud-dienste-erp-cloud-und-cloud-centralpoint.html">Cloud-Dienste: ERP Cloud und Cloud-CentralPoint</a></details><details class="nav-buch"><summary><a href="../produkte/index.html">Produkte</a></summary><details class="nav-kapitel"><summary><a href="../produkte/itr-kasse/index.html">ITR Kasse</a></summary><a class="nav-seite" href="../produkte/itr-kasse/funktionsweise-der-itr-kasse.html">Funktionsweise der ITR Kasse</a><a class="nav-seite" href="../produkte/itr-kasse/itr-kasse-installieren.html">ITR Kasse installieren</a><a class="nav-seite" href="../produkte/itr-kasse/ersteinrichtung-mit-dem-setup-wizard.html">Ersteinrichtung mit dem Setup-Wizard</a><a class="nav-seite" href="../produkte/itr-kasse/kasse-mit-dem-centralpoint-verbinden.html">Kasse mit dem CentralPoint verbinden</a><a class="nav-seite" href="../produkte/itr-kasse/daten-von-hand-synchronisieren.html">Daten von Hand synchronisieren</a></details><details class="nav-kapitel"><summary><a href="../produkte/centralpoint/index.html">CentralPoint</a></summary><a class="nav-seite" href="../produkte/centralpoint/datenbank-fur-den-centralpoint-einrichten.html">Datenbank für den CentralPoint einrichten</a></details><details class="nav-kapitel"><summary><a href="../produkte/pos-gastro-app/index.html">POS Gastro App</a></summary><a class="nav-seite" href="../produkte/pos-gastro-app/funktionsweise.html">Funktionsweise</a><a class="nav-seite" href="../produkte/pos-gastro-app/in-betrieb-nehmen.html">In Betrieb nehmen</a><a class="nav-seite" href="../produkte/pos-gastro-app/im-alltag-arbeiten.html">Im Alltag arbeiten</a><a class="nav-seite" href="../produkte/pos-gastro-app/storungen-beheben.html">Störungen beheben</a></details><details class="nav-kapitel"><summary><a href="../produkte/pos-kuchenmonitor/index.html">POS Küchenmonitor</a></summary><a class="nav-seite" href="../produkte/pos-kuchenmonitor/funktionsweise-kuchenmonitor.html">Funktionsweise Küchenmonitor</a><a class="nav-seite" href="../produkte/pos-kuchenmonitor/kuchenmonitor-in-betrieb-nehmen.html">Küchenmonitor in Betrieb nehmen</a><a class="nav-seite" href="../produkte/pos-kuchenmonitor/abholnummer-auf-dem-kundenbeleg.html">Abholnummer auf dem Kundenbeleg</a><a class="nav-seite" href="../produkte/pos-kuchenmonitor/kuchenmonitor-storungen-beheben.html">Küchenmonitor: Störungen beheben</a></details><details class="nav-kapitel"><summary><a href="../produkte/cloud-centralpoint/index.html">Cloud-CentralPoint</a></summary><a class="nav-seite" href="../produkte/cloud-centralpoint/funktionsweise-des-cloud-centralpoint.html">Funktionsweise des Cloud-CentralPoint</a><a class="nav-seite" href="../produkte/cloud-centralpoint/benutzer-im-cloud-centralpoint-verwalten.html">Benutzer im Cloud-CentralPoint verwalten</a></details><details class="nav-kapitel"><summary><a href="../produkte/ebon/index.html">eBon</a></summary><a class="nav-seite" href="../produkte/ebon/funktionsweise-von-ebon-und-ebon-plus.html">Funktionsweise von eBon und eBon Plus</a><a class="nav-seite" href="../produkte/ebon/ebon-einrichten.html">eBon einrichten</a><a class="nav-seite" href="../produkte/ebon/umsatz-app-einrichten.html">Umsatz-App einrichten</a></details></details><details class="nav-buch"><summary><a href="../losungen/index.html">Lösungen</a></summary><a class="nav-seite" href="../losungen/waagen.html">Waagen</a></details><details class="nav-buch"><summary><a href="../betrieb-administration/index.html">Betrieb &amp; Administration</a></summary><details class="nav-kapitel"><summary><a href="../betrieb-administration/infrastruktur/index.html">Infrastruktur</a></summary><a class="nav-seite" href="../betrieb-administration/infrastruktur/systemvoraussetzungen.html">Systemvoraussetzungen</a></details><details class="nav-kapitel"><summary><a href="../betrieb-administration/peripherie/index.html">Peripherie</a></summary><a class="nav-seite" href="../betrieb-administration/peripherie/bondrucker-einrichten.html">Bondrucker einrichten</a><a class="nav-seite" href="../betrieb-administration/peripherie/kassenschublade-einrichten.html">Kassenschublade einrichten</a></details></details><details class="nav-buch"><summary><a href="../fiskalisierung/index.html">Fiskalisierung</a></summary><a class="nav-seite" href="../fiskalisierung/fiskalisierung-uberblick-fur-partner.html">Fiskalisierung: Überblick für Partner</a><a class="nav-seite" href="../fiskalisierung/tse-hardware-swissbit-in-betrieb-nehmen.html">TSE Hardware (Swissbit) in Betrieb nehmen</a><a class="nav-seite" href="../fiskalisierung/cloud-tse-fiskaly-in-betrieb-nehmen.html">Cloud-TSE (fiskaly) in Betrieb nehmen</a><a class="nav-seite" href="../fiskalisierung/tse-pin-und-puk-verwalten.html">TSE-PIN und PUK verwalten</a><a class="nav-seite" href="../fiskalisierung/abgelaufene-tse-austauschen.html">Abgelaufene TSE austauschen</a></details><details class="nav-buch pfad" open><summary><a href="../faq-troubleshooting/index.html">FAQ &amp; Troubleshooting</a></summary><a class="nav-seite" href="../faq-troubleshooting/tse-meldet-einen-fehler.html">TSE meldet einen Fehler</a><a class="nav-seite aktuell" href="../faq-troubleshooting/datenbank-sperrt-host-many-connection-errors-beheben.html">Datenbank sperrt Host (many connection errors) beheben</a></details></nav></aside>
+  <main class="spalte-mitte" id="inhalt"><div class="seitenkopf"><nav class="brotkrumen-nav" aria-label="Sie sind hier"><ol class="brotkrumen"><li><a href="../faq-troubleshooting/index.html">FAQ &amp; Troubleshooting</a></li><li><span aria-current="page">Datenbank sperrt Host (many connection errors) beheben</span></li></ol></nav><h1>Datenbank sperrt Host (many connection errors) beheben</h1><p class="seitenmeta">Letzte &Auml;nderung 15.10.2026 &middot; Version 3 &middot; Seiten-ID 866</p></div><div class="inhalt"><p id="bkmrk-die-kassen-synchroni">Die Kassen synchronisieren nicht mehr, weil der Datenbankserver der Zentrale alle Verbindungen von der öffentlichen IP-Adresse der Filiale ablehnt.</p>
+<h2 id="bkmrk-symptome">Symptome</h2>
+<ul id="bkmrk-im-synchronisationsf">
+<li>Im Synchronisationsfenster der Kasse unter <strong>Letzte Synchronisation</strong>: <code>java.sql.SQLException: null, message from server: "Host '&lt;IP&gt;' is blocked because of many connection errors; unblock with 'mariadb-admin flush-hosts'"</code>.</li>
+<li>Der Verbindungstest an der Kasse bricht mit derselben Meldung ab.</li>
+<li>Alle Kassen eines Standorts sind gleichzeitig betroffen.</li>
+</ul>
+<h2 id="bkmrk-m%C3%B6gliche-ursachen">Mögliche Ursachen</h2>
+<p id="bkmrk-mariadb-z%C3%A4hlt-je-abs">MariaDB zählt je Absender-IP die Verbindungsversuche, die vor Abschluss der Anmeldung abbrechen. Übersteigt der Zähler <code>max_connect_errors</code> (Standard <code>100</code>), sperrt der Server diese IP, bis der Host-Cache geleert wird. Eine erfolgreiche Anmeldung setzt den Zähler zurück; ein falsches Passwort zählt nicht.</p>
+<p id="bkmrk-alle-kassen-hinter-d">Alle Kassen hinter demselben Internetanschluss teilen sich eine öffentliche IP-Adresse – deshalb werden sie gemeinsam gesperrt.</p>
+<p id="bkmrk-typische-ausl%C3%B6ser-ab">Typische Auslöser abgebrochener Verbindungsversuche:</p>
+<ul id="bkmrk-instabile-verbindung">
+<li>instabile Verbindung oder Paketverluste zwischen Filiale und Zentrale</li>
+<li>Abbruch beim SSL-Handshake, siehe <span class="verweis-inaktiv kette"><span class="glied">ITR Partner Service</span> <span class="pfeil">→</span> <span class="glied">Betrieb &amp; Administration</span> <span class="pfeil">→</span> <span class="glied">Datenbankbenutzer und SSL</span></span></li>
+<li>Zeitüberschreitung beim Verbindungsaufbau</li>
+<li>Monitoring, Portprüfungen oder andere Geräte am Standort, die den Datenbankport öffnen, ohne sich anzumelden</li>
+</ul>
+<h2 id="bkmrk-l%C3%B6sung">Lösung</h2>
+<ol id="bkmrk-ursache-eingrenzen%2C-">
+<li>
+<p><strong>Ursache eingrenzen</strong>, solange die Sperre besteht – das Aufheben der Sperre löscht diese Daten:</p>
+<div class="codefeld"><div class="codefeld-kopf"><span class="codefeld-sprache">SQL</span><button type="button" class="codefeld-kopieren">Kopieren</button></div><pre><code class="language-sql"><span class="tk-schluessel">SELECT</span> IP, SUM_CONNECT_ERRORS, COUNT_HANDSHAKE_ERRORS, COUNT_SSL_ERRORS,
+       FIRST_ERROR_SEEN, LAST_ERROR_SEEN
+<span class="tk-schluessel">FROM</span> performance_schema.host_cache
+<span class="tk-schluessel">WHERE</span> IP = <span class="tk-text">'&lt;öffentliche IP der Filiale&gt;'</span>;
+<span class="tk-schluessel">SHOW</span> GLOBAL STATUS <span class="tk-schluessel">LIKE</span> <span class="tk-text">'Aborted_connects'</span>;
+</code></pre></div>
+<p>Viele <code>COUNT_SSL_ERRORS</code> → SSL-Konfiguration prüfen. Viele <code>COUNT_HANDSHAKE_ERRORS</code> → Netzwerkstrecke und Geräte am Standort prüfen, die den Port ansprechen.</p>
+<p class="callout info">Liefert die Abfrage nichts, prüfen, ob <code>performance_schema</code> aktiv ist: <code>SHOW GLOBAL VARIABLES LIKE 'performance_schema';</code>. Ist der Wert <code>ON</code>, die eingetragene IP prüfen. Ist er <code>OFF</code> (Standard bei MariaDB): in der Serverkonfiguration (<code>my.cnf</code> / <code>my.ini</code>) im Abschnitt <code>[mysqld]</code> die Zeile <code>performance_schema=ON</code> eintragen und den Datenbankdienst neu starten. Die Einstellung lässt sich nicht zur Laufzeit ändern. Der Neustart unterbricht die Verbindung aller Kassen und des CentralPoint – außerhalb der Geschäftszeiten durchführen. Die Auswertung ist erst bei der nächsten Sperre möglich.</p>
+</li>
+<li>
+<p><strong>Sperre aufheben</strong> auf dem Datenbankserver der Zentrale:</p>
+<div class="codefeld"><div class="codefeld-kopf"><span class="codefeld-sprache">BASH</span><button type="button" class="codefeld-kopieren">Kopieren</button></div><pre><code class="language-bash">mariadb-admin -u root -p flush-hosts
+</code></pre></div>
+<p>alternativ per SQL:</p>
+<div class="codefeld"><div class="codefeld-kopf"><span class="codefeld-sprache">SQL</span><button type="button" class="codefeld-kopieren">Kopieren</button></div><pre><code class="language-sql">FLUSH HOSTS;
+</code></pre></div>
+</li>
+<li>
+<p><strong>Ergebnis prüfen:</strong> an einer Kasse den Verbindungstest ausführen oder die Synchronisation von Hand auslösen, siehe <a href="../produkte/itr-kasse/daten-von-hand-synchronisieren.html" class="kette"><span class="glied">ITR Partner Service</span> <span class="pfeil">→</span> <span class="glied">Produkte</span> <span class="pfeil">→</span> <span class="glied">Daten von Hand synchronisieren</span></a>.</p>
+</li>
+<li>
+<p><strong>Optional Grenzwert erhöhen</strong>, damit einzelne Störungen nicht sofort zur Sperre führen. Behebt nicht die Ursache.</p>
+<div class="codefeld"><div class="codefeld-kopf"><span class="codefeld-sprache">SQL</span><button type="button" class="codefeld-kopieren">Kopieren</button></div><pre><code class="language-sql"><span class="tk-schluessel">SET</span> GLOBAL max_connect_errors = <span class="tk-zahl">10000</span>;
+</code></pre></div>
+<p>Dauerhaft in der Serverkonfiguration im Abschnitt <code>[mysqld]</code> eintragen: <code>max_connect_errors=10000</code>.</p>
+</li>
+</ol>
+<h2 id="bkmrk-protokolldateien">Protokolldateien</h2>
+<ul id="bkmrk-kasse%3A-itrcr_syncer_">
+<li>Kasse: <code>itrcr_Syncer_*.log</code> und <code>spring.log</code> unter <code>C:\GoodCompany\Kasse\log\</code></li>
+<li>Datenbankserver: Fehlerprotokoll von MariaDB, Einträge <code>Aborted connection</code> bzw. <code>Aborted connect</code> von der gesperrten IP</li>
+</ul>
+<h2 id="bkmrk-informationen-f%C3%BCr-de">Informationen für den Support</h2>
+<ul id="bkmrk-%C3%B6ffentliche-ip-adres">
+<li>öffentliche IP-Adresse der Filiale und betroffene Kassen</li>
+<li>Zeitpunkt der letzten erfolgreichen Synchronisation</li>
+<li>Ausgabe der Abfrage auf <code>performance_schema.host_cache</code></li>
+</ul>
+<h2 id="bkmrk-weitere-informatione">Weitere Informationen</h2>
+<ul id="bkmrk-itr-partner-service-">
+<li><span class="verweis-inaktiv kette"><span class="glied">ITR Partner Service</span> <span class="pfeil">→</span> <span class="glied">FAQ &amp; Troubleshooting</span> <span class="pfeil">→</span> <span class="glied">Kasse startet nicht oder synchronisiert nicht</span></span></li>
+</ul>
+</div></main>
+  <aside class="spalte-rechts"><div class="seiteninhalt"><h2>Seiteninhalt</h2><ul><li class="e2"><a href="#bkmrk-symptome">Symptome</a></li><li class="e2"><a href="#bkmrk-m%C3%B6gliche-ursachen">Mögliche Ursachen</a></li><li class="e2"><a href="#bkmrk-l%C3%B6sung">Lösung</a></li><li class="e2"><a href="#bkmrk-protokolldateien">Protokolldateien</a></li><li class="e2"><a href="#bkmrk-informationen-f%C3%BCr-de">Informationen für den Support</a></li><li class="e2"><a href="#bkmrk-weitere-informatione">Weitere Informationen</a></li></ul></div></aside>
+</div>
+<footer class="fuss">
+  <span>ITR POS Partner Docs</span>
+  <span class="fuss-rechts">
+    <a href="https://itrelations.de/de/impressum" target="_blank" rel="noopener">Impressum</a>
+    <span>Stand 15.10.2026</span>
+  </span>
+</footer>
+<script src="../assets/suche.js?v=e38d7a36"></script>
+</body>
+</html>
