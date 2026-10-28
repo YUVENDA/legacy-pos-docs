@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, noai, noimageai">
+<title>Funktionsweise POS Ticketing | Produkte</title>
+<meta name="description" content="POS Ticketing erzeugt beim Verkauf über die Kasse Eintrittstickets mit fortlaufender Ticketnummer und druckt sie aus — wahlweise im einfachen Standardformat oder nach einer eigenen Design-Vorlage. Fun">
+<link rel="icon" type="image/png" sizes="256x256" href="../../assets/favicon-256.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon-180.png">
+<link rel="stylesheet" href="../../assets/stil.css?v=1a04f76d">
+<script>(function(){var w=document.documentElement,m=null;w.classList.add("js");try{m=localStorage.getItem("itr-doku-modus")}catch(e){}if(m==="dunkel"||(!m&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)){w.classList.add("dunkel")}})();</script>
+</head>
+<body>
+<header class="kopf">
+  <div class="kopf-innen">
+    <a class="kopf-logo" href="../../index.html"><img src="../../assets/logo.png" alt="IT Relations"></a>
+    <div class="kopf-suche">
+      <input type="search" id="suchfeld" placeholder="Alle Inhalte durchsuchen" autocomplete="off"
+             aria-label="Suchen" data-auf="../../">
+      <div id="suchergebnis" hidden></div>
+    </div>
+    <a class="sprung" href="#navigation">Zur Navigation</a>
+    <span class="kopf-firma">IT Relations GmbH</span>
+    <button type="button" class="kopf-modus" id="modusknopf" aria-pressed="false"
+            title="Dunkler Modus" aria-label="Dunkler Modus">
+      <svg class="mond" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.3 22c-5.5 0-10-4.5-10-10 0-4.4 2.9-8.3 7.1-9.6a.8.8 0 0 1 1 1 7.6 7.6 0 0 0 9.5 9.5.8.8 0 0 1 1 1C19.6 18.9 16.2 22 12.3 22z"/></svg>
+      <svg class="sonne" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg>
+    </button>
+  </div>
+</header>
+<div class="rahmen">
+  <aside class="spalte-links" id="navigation"><nav class="nav" aria-label="Inhalt"><a class="nav-wurzel" href="../../index.html">ITR POS Partner</a><details class="nav-buch"><summary><a href="../../news-releases-pcT/index.html">News &amp; Releases</a></summary><a class="nav-seite" href="../../news-releases-pcT/versionshinweise.html">Versionshinweise</a><a class="nav-seite" href="../../news-releases-pcT/versionshinweise-partnerportal.html">Versionshinweise Partnerportal</a><a class="nav-seite" href="../../news-releases-pcT/versionshinweise-cloud-centralpoint.html">Versionshinweise Cloud-CentralPoint</a></details><details class="nav-buch"><summary><a href="../../schnellstart/index.html">Schnellstart</a></summary><a class="nav-seite" href="../../schnellstart/standalone-kasse-und-betrieb-mit-centralpoint.html">Standalone-Kasse und Betrieb mit CentralPoint</a><a class="nav-seite" href="../../schnellstart/wie-diese-dokumentation-aufgebaut-ist.html">Wie diese Dokumentation aufgebaut ist</a><a class="nav-seite" href="../../schnellstart/produktlandschaft-im-uberblick.html">Produktlandschaft im Überblick</a><a class="nav-seite" href="../../schnellstart/rollen-hersteller-partner-endkunde.html">Rollen: Hersteller, Partner, Endkunde</a><a class="nav-seite" href="../../schnellstart/glossar-und-abkurzungen.html">Glossar und Abkürzungen</a><a class="nav-seite" href="../../schnellstart/cloud-dienste-erp-cloud-und-cloud-centralpoint.html">Cloud-Dienste: ERP Cloud und Cloud-CentralPoint</a></details><details class="nav-buch pfad" open><summary><a href="../../produkte/index.html">Produkte</a></summary><details class="nav-kapitel"><summary><a href="../../produkte/itr-kasse/index.html">ITR Kasse</a></summary><a class="nav-seite" href="../../produkte/itr-kasse/funktionsweise-der-itr-kasse.html">Funktionsweise der ITR Kasse</a><a class="nav-seite" href="../../produkte/itr-kasse/ersteinrichtung-mit-dem-setup-wizard.html">Ersteinrichtung mit dem Setup-Wizard</a><a class="nav-seite" href="../../produkte/itr-kasse/kasse-mit-dem-centralpoint-verbinden.html">Kasse mit dem CentralPoint verbinden</a><a class="nav-seite" href="../../produkte/itr-kasse/daten-von-hand-synchronisieren.html">Daten von Hand synchronisieren</a><a class="nav-seite" href="../../produkte/itr-kasse/zeitauftrage-und-jobs-einrichten.html">Zeitaufträge und Jobs einrichten</a></details><details class="nav-kapitel"><summary><a href="../../produkte/centralpoint/index.html">CentralPoint</a></summary><a class="nav-seite" href="../../produkte/centralpoint/datenbank-fur-den-centralpoint-einrichten.html">Datenbank für den CentralPoint einrichten</a><a class="nav-seite" href="../../produkte/centralpoint/centralpoint-installieren.html">CentralPoint installieren</a><a class="nav-seite" href="../../produkte/centralpoint/preise-steuern.html">Preise steuern</a><a class="nav-seite" href="../../produkte/centralpoint/lagerverwaltung-einrichten.html">Lagerverwaltung einrichten</a><a class="nav-seite" href="../../produkte/centralpoint/bundle-artikel-einrichten.html">Bundle-Artikel einrichten</a><a class="nav-seite" href="../../produkte/centralpoint/druckoptionen-der-bon-typen-referenz.html">Druckoptionen der Bon-Typen: Referenz</a></details><details class="nav-kapitel"><summary><a href="../../produkte/pos-gastro-app/index.html">POS Gastro App</a></summary><a class="nav-seite" href="../../produkte/pos-gastro-app/funktionsweise.html">Funktionsweise</a><a class="nav-seite" href="../../produkte/pos-gastro-app/in-betrieb-nehmen.html">In Betrieb nehmen</a><a class="nav-seite" href="../../produkte/pos-gastro-app/im-alltag-arbeiten.html">Im Alltag arbeiten</a><a class="nav-seite" href="../../produkte/pos-gastro-app/storungen-beheben.html">Störungen beheben</a></details><details class="nav-kapitel pfad" open><summary><a href="../../produkte/pos-ticketing/index.html">POS Ticketing</a></summary><a class="nav-seite aktuell" href="../../produkte/pos-ticketing/funktionsweise-pos-ticketing.html">Funktionsweise POS Ticketing</a></details><details class="nav-kapitel"><summary><a href="../../produkte/pos-kuchenmonitor/index.html">POS Küchenmonitor</a></summary><a class="nav-seite" href="../../produkte/pos-kuchenmonitor/funktionsweise-kuchenmonitor.html">Funktionsweise Küchenmonitor</a><a class="nav-seite" href="../../produkte/pos-kuchenmonitor/kuchenmonitor-in-betrieb-nehmen.html">Küchenmonitor in Betrieb nehmen</a><a class="nav-seite" href="../../produkte/pos-kuchenmonitor/abholnummer-auf-dem-kundenbeleg.html">Abholnummer auf dem Kundenbeleg</a><a class="nav-seite" href="../../produkte/pos-kuchenmonitor/kuchenmonitor-storungen-beheben.html">Küchenmonitor: Störungen beheben</a></details><details class="nav-kapitel"><summary><a href="../../produkte/goodcompanydaemon/index.html">GoodCompanyDaemon</a></summary><a class="nav-seite" href="../../produkte/goodcompanydaemon/goodcompanydaemon-installieren.html">GoodCompanyDaemon installieren</a></details><details class="nav-kapitel"><summary><a href="../../produkte/ebon/index.html">eBon</a></summary><a class="nav-seite" href="../../produkte/ebon/funktionsweise-von-ebon-und-ebon-plus.html">Funktionsweise von eBon und eBon Plus</a><a class="nav-seite" href="../../produkte/ebon/ebon-einrichten.html">eBon einrichten</a><a class="nav-seite" href="../../produkte/ebon/umsatz-app-einrichten.html">Umsatz-App einrichten</a></details></details><details class="nav-buch"><summary><a href="../../losungen/index.html">Lösungen</a></summary><a class="nav-seite" href="../../losungen/waagen.html">Waagen</a></details><details class="nav-buch"><summary><a href="../../betrieb-administration/index.html">Betrieb &amp; Administration</a></summary><a class="nav-seite" href="../../betrieb-administration/branding-und-erscheinungsbild-anpassen.html">Branding und Erscheinungsbild anpassen</a><details class="nav-kapitel"><summary><a href="../../betrieb-administration/infrastruktur/index.html">Infrastruktur</a></summary><a class="nav-seite" href="../../betrieb-administration/infrastruktur/systemvoraussetzungen.html">Systemvoraussetzungen</a><a class="nav-seite" href="../../betrieb-administration/infrastruktur/netzwerk-und-ports.html">Netzwerk und Ports</a><a class="nav-seite" href="../../betrieb-administration/infrastruktur/updates-einspielen.html">Updates einspielen</a><a class="nav-seite" href="../../betrieb-administration/infrastruktur/protokolldateien-und-diagnose.html">Protokolldateien und Diagnose</a><a class="nav-seite" href="../../betrieb-administration/infrastruktur/datenbank-sichern-und-wiederherstellen.html">Datenbank sichern und wiederherstellen</a><a class="nav-seite" href="../../betrieb-administration/infrastruktur/fernwartung-und-zugriff-auf-kassen.html">Fernwartung und Zugriff auf Kassen</a></details><details class="nav-kapitel"><summary><a href="../../betrieb-administration/benutzer-und-sicherheit/index.html">Benutzer und Sicherheit</a></summary><a class="nav-seite" href="../../betrieb-administration/benutzer-und-sicherheit/bediener-und-rechte-einrichten.html">Bediener und Rechte einrichten</a><a class="nav-seite" href="../../betrieb-administration/benutzer-und-sicherheit/datenbankbenutzer-und-ssl.html">Datenbankbenutzer und SSL</a></details><details class="nav-kapitel"><summary><a href="../../betrieb-administration/peripherie/index.html">Peripherie</a></summary><a class="nav-seite" href="../../betrieb-administration/peripherie/bondrucker-einrichten.html">Bondrucker einrichten</a><a class="nav-seite" href="../../betrieb-administration/peripherie/kundendisplay-einrichten.html">Kundendisplay einrichten</a><a class="nav-seite" href="../../betrieb-administration/peripherie/kassenschublade-einrichten.html">Kassenschublade einrichten</a><a class="nav-seite" href="../../betrieb-administration/peripherie/smarttill-kassenschublade-anbinden.html">SMARTtill-Kassenschublade anbinden</a></details></details><details class="nav-buch"><summary><a href="../../fiskalisierung/index.html">Fiskalisierung</a></summary><a class="nav-seite" href="../../fiskalisierung/fiskalisierung-uberblick-fur-partner.html">Fiskalisierung: Überblick für Partner</a><a class="nav-seite" href="../../fiskalisierung/tse-hardware-swissbit-in-betrieb-nehmen.html">TSE Hardware (Swissbit) in Betrieb nehmen</a><a class="nav-seite" href="../../fiskalisierung/cloud-tse-fiskaly-in-betrieb-nehmen.html">Cloud-TSE (fiskaly) in Betrieb nehmen</a><a class="nav-seite" href="../../fiskalisierung/tse-pin-und-puk-verwalten.html">TSE-PIN und PUK verwalten</a><a class="nav-seite" href="../../fiskalisierung/tse-firmware-aktualisieren.html">TSE-Firmware aktualisieren</a><a class="nav-seite" href="../../fiskalisierung/abgelaufene-tse-austauschen.html">Abgelaufene TSE austauschen</a><a class="nav-seite" href="../../fiskalisierung/tse-tar-exportieren.html">TSE-TAR exportieren</a></details><details class="nav-buch"><summary><a href="../../faq-troubleshooting/index.html">FAQ &amp; Troubleshooting</a></summary><a class="nav-seite" href="../../faq-troubleshooting/tse-meldet-einen-fehler.html">TSE meldet einen Fehler</a><a class="nav-seite" href="../../faq-troubleshooting/datenbank-sperrt-host-many-connection-errors-beheben.html">Datenbank sperrt Host (many connection errors) beheben</a><a class="nav-seite" href="../../faq-troubleshooting/ebon-link-nicht-gefunden.html">eBon-Link „nicht gefunden“</a></details></nav></aside>
+  <main class="spalte-mitte" id="inhalt"><div class="seitenkopf"><nav class="brotkrumen-nav" aria-label="Sie sind hier"><ol class="brotkrumen"><li><a href="../../produkte/index.html">Produkte</a></li><li><a href="../../produkte/pos-ticketing/index.html">POS Ticketing</a></li><li><span aria-current="page">Funktionsweise POS Ticketing</span></li></ol></nav><h1>Funktionsweise POS Ticketing</h1><p class="seitenmeta">Letzte &Auml;nderung 29.08.2026 &middot; Version 1 &middot; Seiten-ID 783</p></div><div class="inhalt"><p id="bkmrk-pos-ticketing-erzeug">POS Ticketing erzeugt beim Verkauf über die Kasse Eintrittstickets mit fortlaufender Ticketnummer und druckt sie aus — wahlweise im einfachen Standardformat oder nach einer eigenen Design-Vorlage.</p>
+<h2 id="bkmrk-funktionsweise">Funktionsweise</h2>
+<p id="bkmrk-am-artikel-wird-im-c">Am Artikel wird im CentralPoint ein Ticket hinterlegt. Wird dieser Artikel an der Kasse boniert, erzeugt der Ticketserver für jede Position eine Ticketnummer und der Ausdruck erfolgt. Steht auf einer Bonposition die Menge n, entstehen n Tickets.</p>
+<p id="bkmrk-der-bon-selbst-wird-">Der Bon selbst wird wie gewohnt von der Kasse gedruckt. Das Ticket dagegen druckt der ERP-Syncer.</p>
+<p class="callout warning" id="bkmrk-eine-elektronische-e">Eine elektronische Einlasskontrolle der erzeugten Tickets ist nicht möglich. Der aufgedruckte Code kann derzeit nicht gegen das System geprüft werden.</p>
+<h2 id="bkmrk-beteiligte-komponent">Beteiligte Komponenten</h2>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-komponente-rolle-cen">
+<thead>
+<tr>
+<th>Komponente</th>
+<th>Rolle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CentralPoint</td>
+<td>Tickets anlegen, Design-Vorlage hinterlegen, Ticket am Artikel zuordnen</td>
+</tr>
+<tr>
+<td>Ticketserver</td>
+<td>vergibt die Ticketnummern; im ERP-Syncer des CentralPoint enthalten</td>
+</tr>
+<tr>
+<td>ERP-Syncer</td>
+<td>betreibt den Ticketserver und druckt die Tickets</td>
+</tr>
+<tr>
+<td>ITR Kasse</td>
+<td>verkauft den Artikel und löst damit die Ticketerzeugung aus</td>
+</tr>
+</tbody>
+</table></div>
+<p id="bkmrk-der-ticketserver-ist">Der Ticketserver ist kein eigenes Programm, das getrennt installiert wird — er läuft im ERP-Syncer des CentralPoint mit.</p>
+<h2 id="bkmrk-voraussetzungen-f%C3%BCr-">Voraussetzungen für den Einsatz</h2>
+<ul id="bkmrk-eine-itr-kasse-und-e">
+<li>Eine ITR Kasse <strong>und</strong> ein CentralPoint. Ohne CentralPoint gibt es keinen Ticketserver; ein Standalone-Betrieb ist damit nicht möglich.</li>
+<li>Das Professional-Modul <strong>Ticketing</strong> ist im PartnerPortal für beide freigeschaltet. Die Lizenz wird an der Kasse zwar angezeigt, ist dort aber nicht erforderlich; im CentralPoint ist sie erforderlich.</li>
+</ul>
+<h2 id="bkmrk-aufbau-eines-tickets">Aufbau eines Tickets</h2>
+<p id="bkmrk-ein-ticket-wird-im-c">Ein Ticket wird im CentralPoint über diese Angaben beschrieben:</p>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-angabe-bedeutung-nam">
+<thead>
+<tr>
+<th>Angabe</th>
+<th>Bedeutung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>erscheint später in der Auswahl am Artikel</td>
+</tr>
+<tr>
+<td>Preambel</td>
+<td>wird der automatisch erzeugten Ticketnummer vorangestellt</td>
+</tr>
+<tr>
+<td>Veranstaltung (Prefix)</td>
+<td></td>
+</tr>
+<tr>
+<td>PSP Nummer (Postfix)</td>
+<td></td>
+</tr>
+<tr>
+<td>Designvorlage</td>
+<td>Word-Datei im Format <code>*.docx</code> für das Ticketlayout</td>
+</tr>
+<tr>
+<td>Code-Typ</td>
+<td>Codeart für den Aufdruck, wenn keine Designvorlage hinterlegt ist</td>
+</tr>
+</tbody>
+</table></div>
+<p id="bkmrk-ist-keine-design-vor">Ist keine Design-Vorlage hinterlegt, wird das Ticket im einfachen Standardformat gedruckt.</p>
+
+<h2 id="bkmrk-design-vorlagen-und-">Design-Vorlagen und Platzhalter</h2>
+<p id="bkmrk-eine-design-vorlage-">Eine Design-Vorlage wird mit Microsoft Word erstellt und als <code>*.docx</code> gespeichert. Text und Bilder werden unverändert übernommen, Platzhalter werden zur Laufzeit durch Werte ersetzt — je nach Format als Text oder als erzeugtes Bild, etwa ein QR-Code.</p>
+<p id="bkmrk-ein-platzhalter-ist-">Ein Platzhalter ist so aufgebaut:</p>
+<div class="codefeld"><div class="codefeld-kopf"><span class="codefeld-sprache">Text</span><button type="button" class="codefeld-kopieren">Kopieren</button></div><pre><code class="language-text">{NAME_FORMAT^PARAMETER}
+</code></pre></div>
+<p id="bkmrk-format-und-parameter"><code>FORMAT</code> und <code>PARAMETER</code> sind optional. Wird ein Platzhalter-Format erkannt, ist aber unbekannt, erscheint im Ausdruck der Text <code>UNKNOWN</code>. Geschweifte Klammern im Fließtext sind unkritisch, solange sie keinen gültigen Platzhalter bilden.</p>
+<p id="bkmrk-verf%C3%BCgbare-platzhalt">Verfügbare Platzhalter:</p>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-platzhalter-formatie">
+<thead>
+<tr>
+<th>Platzhalter</th>
+<th>Formatierung</th>
+<th>Inhalt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{DATETIME}</code></td>
+<td>Java SimpleDateFormat</td>
+<td>Zeitstempel beim Start des Drucks</td>
+</tr>
+<tr>
+<td><code>{ID}</code></td>
+<td>Java DecimalFormat</td>
+<td>Datenbankkennung des Kassenbelegs</td>
+</tr>
+<tr>
+<td><code>{NUMBER}</code></td>
+<td>Java DecimalFormat</td>
+<td>Nummer des Kassenbelegs</td>
+</tr>
+<tr>
+<td><code>{CRCONFIRMEDNAME}</code></td>
+<td>Text</td>
+<td>Name der Kasse, die den Beleg abgeschlossen hat</td>
+</tr>
+<tr>
+<td><code>{CRCONFIRMEDNUMBER}</code></td>
+<td>Java DecimalFormat</td>
+<td>Nummer dieser Kasse</td>
+</tr>
+<tr>
+<td><code>{OPENDATETIME}</code></td>
+<td>Java SimpleDateFormat</td>
+<td>Startzeitpunkt des Belegs</td>
+</tr>
+<tr>
+<td><code>{TOTAL}</code></td>
+<td>Java DecimalFormat</td>
+<td>Gesamtwert des Belegs</td>
+</tr>
+<tr>
+<td><code>{ARTICLENAME}</code></td>
+<td>Text</td>
+<td>Name des Artikels der aktuellen Bonposition</td>
+</tr>
+<tr>
+<td><code>{ARTICLENUMBER}</code></td>
+<td>Text</td>
+<td>Nummer dieses Artikels</td>
+</tr>
+<tr>
+<td><code>{TICKETNUMBER}</code></td>
+<td>Text oder Bild-Format</td>
+<td>Ticketnummer zur Bonposition</td>
+</tr>
+<tr>
+<td><code>{UNKNOWN}</code></td>
+<td>Text</td>
+<td>Ersatz für alle nicht erkannten Platzhalter; nicht selbst verwenden</td>
+</tr>
+</tbody>
+</table></div>
+<p id="bkmrk-bild-formate-f%C3%BCr-%7Bti">Bild-Formate für <code>{TICKETNUMBER}</code>: Eine einzelne Zahl hinter <code>^</code> gibt eine gleiche Seitenlänge an, mit <code>x</code> getrennt Breite und Höhe. Ohne Größenangabe gilt die Standardgröße.</p>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-format-standardgr%C3%B6%C3%9Fe">
+<thead>
+<tr>
+<th>Format</th>
+<th>Standardgröße</th>
+<th>Beispiel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>QR</code></td>
+<td>200×200</td>
+<td><code>{TICKETNUMBER_QR^250}</code></td>
+</tr>
+<tr>
+<td><code>CODE39</code></td>
+<td>200×60</td>
+<td><code>{TICKETNUMBER_CODE39^200x60}</code></td>
+</tr>
+<tr>
+<td><code>CODE128</code></td>
+<td>200×60</td>
+<td><code>{TICKETNUMBER_CODE128^200x60}</code></td>
+</tr>
+<tr>
+<td><code>CODE93</code></td>
+<td>200×60</td>
+<td><code>{TICKETNUMBER_CODE93^200x60}</code></td>
+</tr>
+<tr>
+<td><code>CODABAR</code></td>
+<td>200×60</td>
+<td><code>{TICKETNUMBER_CODABAR^200x60}</code></td>
+</tr>
+<tr>
+<td><code>ITF</code></td>
+<td>200×60</td>
+<td><code>{TICKETNUMBER_ITF^200x60}</code></td>
+</tr>
+<tr>
+<td><code>UPCA</code></td>
+<td>200×60</td>
+<td><code>{TICKETNUMBER_UPCA^200x60}</code></td>
+</tr>
+<tr>
+<td><code>UPCE</code></td>
+<td>200×60</td>
+<td><code>{TICKETNUMBER_UPCE^200x60}</code></td>
+</tr>
+<tr>
+<td><code>UPCEANEXT</code></td>
+<td>200×60</td>
+<td><code>{TICKETNUMBER_UPCEANEXT^200x60}</code></td>
+</tr>
+<tr>
+<td><code>RSS14</code></td>
+<td>200×60</td>
+<td><code>{TICKETNUMBER_RSS14^200x60}</code></td>
+</tr>
+<tr>
+<td><code>RSSEXPANDED</code></td>
+<td>200×60</td>
+<td><code>{TICKETNUMBER_RSSEXPANDED^200x60}</code></td>
+</tr>
+<tr>
+<td><code>AZTEC</code></td>
+<td>200×200</td>
+<td><code>{TICKETNUMBER_AZTEC^200}</code></td>
+</tr>
+<tr>
+<td><code>DATAMATRIX</code></td>
+<td>100×100</td>
+<td><code>{TICKETNUMBER_DATAMATRIX^100}</code></td>
+</tr>
+<tr>
+<td><code>PDF417</code></td>
+<td>200×80</td>
+<td><code>{TICKETNUMBER_PDF417^200x80}</code></td>
+</tr>
+</tbody>
+</table></div>
+<p id="bkmrk-die-formatnamen-werd">Die Formatnamen werden ohne Unterstrich geschrieben, auch wenn die deutsche Bezeichnung getrennt ist — der Matrix-Code heißt im Platzhalter <code>DATAMATRIX</code>.</p>
+
+<h2 id="bkmrk-zu-beachten">Zu beachten</h2>
+<ul id="bkmrk-format-und-gr%C3%B6%C3%9Fe-der">
+<li>Format und Größe der Design-Vorlage müssen zum an der Kasse eingestellten Drucker passen. Eine A4-Vorlage auf einem Bondrucker führt zu unbrauchbaren Ausdrucken.</li>
+<li>Tickets entstehen nur für Bontypen, die dafür freigegeben sind.</li>
+<li>Die Ticketnummer wird zentral vergeben. Ist der Ticketserver nicht erreichbar, entsteht kein Ticket.</li>
+</ul>
+<h2 id="bkmrk-weitere-informatione">Weitere Informationen</h2>
+<ul id="bkmrk-itr-partner-service-">
+<li><span class="verweis-inaktiv kette"><span class="glied">ITR Partner Service</span> <span class="pfeil">→</span> <span class="glied">Produkte</span> <span class="pfeil">→</span> <span class="glied">POS Ticketing</span> <span class="pfeil">→</span> <span class="glied">POS Ticketing in Betrieb nehmen</span></span></li>
+<li><span class="verweis-inaktiv kette"><span class="glied">ITR Partner Service</span> <span class="pfeil">→</span> <span class="glied">Produkte</span> <span class="pfeil">→</span> <span class="glied">CentralPoint</span> <span class="pfeil">→</span> <span class="glied">Anwendung registrieren und Module lizenzieren</span></span></li>
+<li><span class="verweis-inaktiv kette"><span class="glied">ITR Partner Service</span> <span class="pfeil">→</span> <span class="glied">Schnittstellen</span> <span class="pfeil">→</span> <span class="glied">ERPSync einrichten</span></span></li>
+</ul>
+</div></main>
+  <aside class="spalte-rechts"><div class="seiteninhalt"><h2>Seiteninhalt</h2><ul><li class="e2"><a href="#bkmrk-funktionsweise">Funktionsweise</a></li><li class="e2"><a href="#bkmrk-beteiligte-komponent">Beteiligte Komponenten</a></li><li class="e2"><a href="#bkmrk-voraussetzungen-f%C3%BCr-">Voraussetzungen für den Einsatz</a></li><li class="e2"><a href="#bkmrk-aufbau-eines-tickets">Aufbau eines Tickets</a></li><li class="e2"><a href="#bkmrk-design-vorlagen-und-">Design-Vorlagen und Platzhalter</a></li><li class="e2"><a href="#bkmrk-zu-beachten">Zu beachten</a></li><li class="e2"><a href="#bkmrk-weitere-informatione">Weitere Informationen</a></li></ul></div></aside>
+</div>
+<footer class="fuss">
+  <span>ITR POS Partner</span>
+  <span class="fuss-rechts">
+    <span>&copy; 2026 IT Relations GmbH &middot; Weitergabe nur mit Zustimmung</span>
+    <a href="https://itrelations.de/de/impressum" target="_blank" rel="noopener">Impressum</a>
+    <span>Stand 28.10.2026</span>
+  </span>
+</footer>
+<script src="../../assets/suche.js?v=e38d7a36"></script>
+</body>
+</html>
