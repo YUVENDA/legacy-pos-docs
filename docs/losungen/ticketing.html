@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, noai, noimageai">
+<title>Ticketing | Lösungen</title>
+<meta name="description" content="Mit Ticketing erzeugt die ITR Kasse beim Verkauf Eintrittstickets mit eigener Ticketnummer und druckt sie zusammen mit dem Bon aus — im einfachen Standardformat oder nach einer eigenen Design-Vorlage.">
+<link rel="icon" type="image/png" sizes="256x256" href="../assets/favicon-256.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon-180.png">
+<link rel="stylesheet" href="../assets/stil.css?v=1a04f76d">
+<script>(function(){var w=document.documentElement,m=null;w.classList.add("js");try{m=localStorage.getItem("itr-doku-modus")}catch(e){}if(m==="dunkel"||(!m&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)){w.classList.add("dunkel")}})();</script>
+</head>
+<body>
+<header class="kopf">
+  <div class="kopf-innen">
+    <a class="kopf-logo" href="../index.html"><img src="../assets/logo.png" alt="IT Relations"></a>
+    <div class="kopf-suche">
+      <input type="search" id="suchfeld" placeholder="Alle Inhalte durchsuchen" autocomplete="off"
+             aria-label="Suchen" data-auf="../">
+      <div id="suchergebnis" hidden></div>
+    </div>
+    <a class="sprung" href="#navigation">Zur Navigation</a>
+    <span class="kopf-firma">IT Relations GmbH</span>
+    <button type="button" class="kopf-modus" id="modusknopf" aria-pressed="false"
+            title="Dunkler Modus" aria-label="Dunkler Modus">
+      <svg class="mond" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.3 22c-5.5 0-10-4.5-10-10 0-4.4 2.9-8.3 7.1-9.6a.8.8 0 0 1 1 1 7.6 7.6 0 0 0 9.5 9.5.8.8 0 0 1 1 1C19.6 18.9 16.2 22 12.3 22z"/></svg>
+      <svg class="sonne" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg>
+    </button>
+  </div>
+</header>
+<div class="rahmen">
+  <aside class="spalte-links" id="navigation"><nav class="nav" aria-label="Inhalt"><a class="nav-wurzel" href="../index.html">ITR POS Partner</a><details class="nav-buch"><summary><a href="../news-releases-pcT/index.html">News &amp; Releases</a></summary><a class="nav-seite" href="../news-releases-pcT/versionshinweise.html">Versionshinweise</a><a class="nav-seite" href="../news-releases-pcT/versionshinweise-partnerportal.html">Versionshinweise Partnerportal</a><a class="nav-seite" href="../news-releases-pcT/versionshinweise-cloud-centralpoint.html">Versionshinweise Cloud-CentralPoint</a></details><details class="nav-buch"><summary><a href="../schnellstart/index.html">Schnellstart</a></summary><a class="nav-seite" href="../schnellstart/standalone-kasse-und-betrieb-mit-centralpoint.html">Standalone-Kasse und Betrieb mit CentralPoint</a><a class="nav-seite" href="../schnellstart/wie-diese-dokumentation-aufgebaut-ist.html">Wie diese Dokumentation aufgebaut ist</a><a class="nav-seite" href="../schnellstart/rollen-hersteller-partner-endkunde.html">Rollen: Hersteller, Partner, Endkunde</a><a class="nav-seite" href="../schnellstart/glossar-und-abkurzungen.html">Glossar und Abkürzungen</a><a class="nav-seite" href="../schnellstart/cloud-dienste-erp-cloud-und-cloud-centralpoint.html">Cloud-Dienste: ERP Cloud und Cloud-CentralPoint</a></details><details class="nav-buch"><summary><a href="../produkte/index.html">Produkte</a></summary><details class="nav-kapitel"><summary><a href="../produkte/itr-kasse/index.html">ITR Kasse</a></summary><a class="nav-seite" href="../produkte/itr-kasse/funktionsweise-der-itr-kasse.html">Funktionsweise der ITR Kasse</a><a class="nav-seite" href="../produkte/itr-kasse/ersteinrichtung-mit-dem-setup-wizard.html">Ersteinrichtung mit dem Setup-Wizard</a><a class="nav-seite" href="../produkte/itr-kasse/kasse-mit-dem-centralpoint-verbinden.html">Kasse mit dem CentralPoint verbinden</a><a class="nav-seite" href="../produkte/itr-kasse/daten-von-hand-synchronisieren.html">Daten von Hand synchronisieren</a><a class="nav-seite" href="../produkte/itr-kasse/zeitauftrage-und-jobs-einrichten.html">Zeitaufträge und Jobs einrichten</a></details><details class="nav-kapitel"><summary><a href="../produkte/centralpoint/index.html">CentralPoint</a></summary><a class="nav-seite" href="../produkte/centralpoint/datenbank-fur-den-centralpoint-einrichten.html">Datenbank für den CentralPoint einrichten</a><a class="nav-seite" href="../produkte/centralpoint/centralpoint-installieren.html">CentralPoint installieren</a><a class="nav-seite" href="../produkte/centralpoint/preise-steuern.html">Preise steuern</a><a class="nav-seite" href="../produkte/centralpoint/lagerverwaltung-einrichten.html">Lagerverwaltung einrichten</a><a class="nav-seite" href="../produkte/centralpoint/bundle-artikel-einrichten.html">Bundle-Artikel einrichten</a><a class="nav-seite" href="../produkte/centralpoint/druckoptionen-der-bon-typen-referenz.html">Druckoptionen der Bon-Typen: Referenz</a></details><details class="nav-kapitel"><summary><a href="../produkte/pos-gastro-app/index.html">POS Gastro App</a></summary><a class="nav-seite" href="../produkte/pos-gastro-app/funktionsweise.html">Funktionsweise</a><a class="nav-seite" href="../produkte/pos-gastro-app/in-betrieb-nehmen.html">In Betrieb nehmen</a><a class="nav-seite" href="../produkte/pos-gastro-app/im-alltag-arbeiten.html">Im Alltag arbeiten</a><a class="nav-seite" href="../produkte/pos-gastro-app/storungen-beheben.html">Störungen beheben</a></details><details class="nav-kapitel"><summary><a href="../produkte/pos-ticketing/index.html">POS Ticketing</a></summary><a class="nav-seite" href="../produkte/pos-ticketing/funktionsweise-pos-ticketing.html">Funktionsweise POS Ticketing</a><a class="nav-seite" href="../produkte/pos-ticketing/pos-ticketing-in-betrieb-nehmen.html">POS Ticketing in Betrieb nehmen</a></details><details class="nav-kapitel"><summary><a href="../produkte/pos-kuchenmonitor/index.html">POS Küchenmonitor</a></summary><a class="nav-seite" href="../produkte/pos-kuchenmonitor/funktionsweise-kuchenmonitor.html">Funktionsweise Küchenmonitor</a><a class="nav-seite" href="../produkte/pos-kuchenmonitor/kuchenmonitor-in-betrieb-nehmen.html">Küchenmonitor in Betrieb nehmen</a><a class="nav-seite" href="../produkte/pos-kuchenmonitor/abholnummer-auf-dem-kundenbeleg.html">Abholnummer auf dem Kundenbeleg</a><a class="nav-seite" href="../produkte/pos-kuchenmonitor/kuchenmonitor-storungen-beheben.html">Küchenmonitor: Störungen beheben</a></details><details class="nav-kapitel"><summary><a href="../produkte/goodcompanydaemon/index.html">GoodCompanyDaemon</a></summary><a class="nav-seite" href="../produkte/goodcompanydaemon/goodcompanydaemon-installieren.html">GoodCompanyDaemon installieren</a></details><details class="nav-kapitel"><summary><a href="../produkte/ebon/index.html">eBon</a></summary><a class="nav-seite" href="../produkte/ebon/funktionsweise-von-ebon-und-ebon-plus.html">Funktionsweise von eBon und eBon Plus</a><a class="nav-seite" href="../produkte/ebon/ebon-einrichten.html">eBon einrichten</a><a class="nav-seite" href="../produkte/ebon/umsatz-app-einrichten.html">Umsatz-App einrichten</a></details></details><details class="nav-buch pfad" open><summary><a href="../losungen/index.html">Lösungen</a></summary><a class="nav-seite" href="../losungen/waagen.html">Waagen</a><a class="nav-seite aktuell" href="../losungen/ticketing.html">Ticketing</a></details><details class="nav-buch"><summary><a href="../betrieb-administration/index.html">Betrieb &amp; Administration</a></summary><a class="nav-seite" href="../betrieb-administration/branding-und-erscheinungsbild-anpassen.html">Branding und Erscheinungsbild anpassen</a><details class="nav-kapitel"><summary><a href="../betrieb-administration/infrastruktur/index.html">Infrastruktur</a></summary><a class="nav-seite" href="../betrieb-administration/infrastruktur/systemvoraussetzungen.html">Systemvoraussetzungen</a><a class="nav-seite" href="../betrieb-administration/infrastruktur/netzwerk-und-ports.html">Netzwerk und Ports</a><a class="nav-seite" href="../betrieb-administration/infrastruktur/updates-einspielen.html">Updates einspielen</a><a class="nav-seite" href="../betrieb-administration/infrastruktur/protokolldateien-und-diagnose.html">Protokolldateien und Diagnose</a><a class="nav-seite" href="../betrieb-administration/infrastruktur/datenbank-sichern-und-wiederherstellen.html">Datenbank sichern und wiederherstellen</a><a class="nav-seite" href="../betrieb-administration/infrastruktur/fernwartung-und-zugriff-auf-kassen.html">Fernwartung und Zugriff auf Kassen</a></details><details class="nav-kapitel"><summary><a href="../betrieb-administration/benutzer-und-sicherheit/index.html">Benutzer und Sicherheit</a></summary><a class="nav-seite" href="../betrieb-administration/benutzer-und-sicherheit/bediener-und-rechte-einrichten.html">Bediener und Rechte einrichten</a><a class="nav-seite" href="../betrieb-administration/benutzer-und-sicherheit/datenbankbenutzer-und-ssl.html">Datenbankbenutzer und SSL</a></details><details class="nav-kapitel"><summary><a href="../betrieb-administration/peripherie/index.html">Peripherie</a></summary><a class="nav-seite" href="../betrieb-administration/peripherie/bondrucker-einrichten.html">Bondrucker einrichten</a><a class="nav-seite" href="../betrieb-administration/peripherie/kundendisplay-einrichten.html">Kundendisplay einrichten</a><a class="nav-seite" href="../betrieb-administration/peripherie/kassenschublade-einrichten.html">Kassenschublade einrichten</a><a class="nav-seite" href="../betrieb-administration/peripherie/smarttill-kassenschublade-anbinden.html">SMARTtill-Kassenschublade anbinden</a></details></details><details class="nav-buch"><summary><a href="../fiskalisierung/index.html">Fiskalisierung</a></summary><a class="nav-seite" href="../fiskalisierung/fiskalisierung-uberblick-fur-partner.html">Fiskalisierung: Überblick für Partner</a><a class="nav-seite" href="../fiskalisierung/tse-hardware-swissbit-in-betrieb-nehmen.html">TSE Hardware (Swissbit) in Betrieb nehmen</a><a class="nav-seite" href="../fiskalisierung/cloud-tse-fiskaly-in-betrieb-nehmen.html">Cloud-TSE (fiskaly) in Betrieb nehmen</a><a class="nav-seite" href="../fiskalisierung/tse-pin-und-puk-verwalten.html">TSE-PIN und PUK verwalten</a><a class="nav-seite" href="../fiskalisierung/tse-firmware-aktualisieren.html">TSE-Firmware aktualisieren</a><a class="nav-seite" href="../fiskalisierung/abgelaufene-tse-austauschen.html">Abgelaufene TSE austauschen</a><a class="nav-seite" href="../fiskalisierung/tse-tar-exportieren.html">TSE-TAR exportieren</a></details><details class="nav-buch"><summary><a href="../faq-troubleshooting/index.html">FAQ &amp; Troubleshooting</a></summary><a class="nav-seite" href="../faq-troubleshooting/tse-meldet-einen-fehler.html">TSE meldet einen Fehler</a><a class="nav-seite" href="../faq-troubleshooting/datenbank-sperrt-host-many-connection-errors-beheben.html">Datenbank sperrt Host (many connection errors) beheben</a><a class="nav-seite" href="../faq-troubleshooting/ebon-link-nicht-gefunden.html">eBon-Link „nicht gefunden“</a></details></nav></aside>
+  <main class="spalte-mitte" id="inhalt"><div class="seitenkopf"><nav class="brotkrumen-nav" aria-label="Sie sind hier"><ol class="brotkrumen"><li><a href="../losungen/index.html">Lösungen</a></li><li><span aria-current="page">Ticketing</span></li></ol></nav><h1>Ticketing</h1><p class="seitenmeta">Letzte &Auml;nderung 29.10.2026 &middot; Version 3 &middot; Seiten-ID 912</p></div><div class="inhalt"><p id="bkmrk-mit-ticketing-erzeug">Mit Ticketing erzeugt die ITR Kasse beim Verkauf Eintrittstickets mit eigener Ticketnummer und druckt sie zusammen mit dem Bon aus — im einfachen Standardformat oder nach einer eigenen Design-Vorlage. Tickets und Nummernvergabe werden im CentralPoint verwaltet.</p>
+<h2 id="bkmrk-%C3%9Cberblick">Überblick</h2>
+<p id="bkmrk-" class="bild-absatz"><img src="../bilder/images/gallery/2026-10/scaled-1680-/pos-ticketing-ablauf-v3.png" alt="Ablauf: Ticket im CentralPoint anlegen, an der Kasse verkaufen, Ticketnummer vom Ticketservice, Bon und Ticket drucken" loading="lazy"></p>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-produkt-rolle-was-wi">
+<thead>
+<tr>
+<th>Produkt</th>
+<th>Rolle</th>
+<th>Was wird dort konfiguriert</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CentralPoint</td>
+<td>verwaltet die Tickets; der enthaltene Ticketserver vergibt die Ticketnummern</td>
+<td>Verbindung zum Ticketserver, Tickets, Zuordnung Ticket → Artikel, Design-Vorlage</td>
+</tr>
+<tr>
+<td>ITR Kasse</td>
+<td>verkauft den Artikel, fordert die Ticketnummern an und druckt die Tickets</td>
+<td>Ticketdruck aktivieren, Drucker für Tickets</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="bkmrk-voraussetzungen">Voraussetzungen</h2>
+<ul id="bkmrk-itr-kasse-und-centra">
+<li>ITR Kasse und CentralPoint ab Version 5.55, miteinander verbunden. Ohne CentralPoint gibt es keinen Ticketserver; an einer Standalone-Kasse ist Ticketing nicht möglich.</li>
+<li>Im PartnerPortal freigeschaltet: Modul <strong>Professional: Ticketing</strong> für die Kasse und Modul <strong>CP Professional: Ticketing</strong> für den CentralPoint.</li>
+<li>Der Drucker für die Tickets ist an der Kasse eingerichtet.</li>
+<li>Die Zugangsdaten für den Ticketserver liegen vor.</li>
+
+</ul>
+<p class="callout warning" id="bkmrk-zugangsdaten-f%C3%BCr-den">Zugangsdaten für den Ticketserver werden je Installation vergeben. Vorbelegte Standardwerte sind vor der Übergabe an den Endkunden zu ändern.</p>
+<p class="callout info" id="bkmrk-bis-version-5.54-wur">Bis Version 5.54 wurde die Adresse des Ticketservers an jeder Kasse in <code>Misc.ExhibitionCode.CodeServer.Url</code> und in <code>ipos_systemvariables</code> eingetragen. Ab Version 5.55 entfällt das: Die Verbindung wird nur noch im CentralPoint gepflegt. Nach dem Update die Verbindung wie in Schritt 3 prüfen.</p>
+<h2 id="bkmrk-einrichtung">Einrichtung</h2>
+<h3 id="bkmrk-1.-an-der-kasse%3A-dat">1. An der Kasse: Datei <code>syncer.properties</code></h3>
+<p id="bkmrk-die-datei-liegt-im-i">Die Datei liegt im Installationsverzeichnis der Kasse, z. B. <code>C:\GoodCompany\Kasse\syncer.properties</code>. Folgende Einträge setzen:</p>
+<div class="codefeld"><div class="codefeld-kopf"><span class="codefeld-sprache">Properties</span><button type="button" class="codefeld-kopieren">Kopieren</button></div><pre><code class="language-properties"><span class="tk-kommentar">#Filialnummer</span>
+<span class="tk-eigenschaft">branch.id</span>=<span class="tk-text">&lt;Filialnummer&gt;</span>
+<span class="tk-kommentar">#Kassennummer</span>
+<span class="tk-eigenschaft">cr.id</span>=<span class="tk-text">&lt;Kassennummer&gt;</span>
+<span class="tk-kommentar">#Installationspfad zur Kasse, um die eingestellten Drucker zu finden</span>
+<span class="tk-eigenschaft">cr.installation.path</span>=<span class="tk-text">&lt;Installationspfad der Kasse&gt;</span>
+</code></pre></div>
+<h3 id="bkmrk-2.-an-der-kasse%3A-tic">2. An der Kasse: Ticketdruck aktivieren</h3>
+<p id="bkmrk-die-kasseneinstellun">Die Kasseneinstellungen liegen in der Datenbanktabelle <code>ipos_systemproperties</code>. Pflichteinstellung:</p>
+<div class="codefeld"><div class="codefeld-kopf"><span class="codefeld-sprache">Properties</span><button type="button" class="codefeld-kopieren">Kopieren</button></div><pre><code class="language-properties"><span class="tk-kommentar">#Ticketdruck aktivieren (ohne diesen Eintrag werden keine Tickets gedruckt)</span>
+<span class="tk-eigenschaft">Misc.ExhibitionCodes.On</span>=<span class="tk-text">true</span>
+</code></pre></div>
+<p id="bkmrk-optionale-einstellun">Optionale Einstellungen:</p>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-einstellung-wirkung-">
+<thead>
+<tr>
+<th>Einstellung</th>
+<th>Wirkung</th>
+<th>Standard</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Misc.ExhibitionCodes.PrintBeforeReceipt</code></td>
+<td>Tickets vor dem Bon drucken, sonst danach</td>
+<td>danach</td>
+</tr>
+<tr>
+<td><code>Misc.ExhibitionCodes.ReceiptTypes</code></td>
+<td>Bontypen, für die Tickets erzeugt werden, kommagetrennt</td>
+<td><code>0</code> (normaler Bon)</td>
+</tr>
+</tbody>
+</table></div>
+<p id="bkmrk-nur-f%C3%BCr-das-standard">Nur für das Standardformat ohne Design-Vorlage:</p>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-einstellung-wirkung--1">
+<thead>
+<tr>
+<th>Einstellung</th>
+<th>Wirkung</th>
+<th>Standard</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Misc.ExhibitionCode.CodeType</code></td>
+<td>gedrucktes Symbol: <code>QR</code>, <code>EAN13</code> oder <code>CODE128</code></td>
+<td><code>QR</code></td>
+</tr>
+<tr>
+<td><code>Misc.ExhibitionCode.QrCodeSize</code></td>
+<td>Kantenlänge des QR-Codes</td>
+<td><code>200</code></td>
+</tr>
+<tr>
+<td><code>Misc.ExhibitionCode.BarCodeWidth</code></td>
+<td>Breite eines Barcodes</td>
+<td><code>200</code></td>
+</tr>
+<tr>
+<td><code>Misc.ExhibitionCode.BarCodeHeight</code></td>
+<td>Höhe eines Barcodes</td>
+<td><code>60</code></td>
+</tr>
+<tr>
+<td><code>Misc.ExhibitionCode.FontSize</code></td>
+<td>Schriftgröße</td>
+<td><code>14</code></td>
+</tr>
+<tr>
+<td><code>Misc.ExhibitionCode.PrintBarcodeText</code></td>
+<td>Nummer zusätzlich als Text drucken</td>
+<td>an</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="bkmrk-3.-im-centralpoint%3A-">3. Im CentralPoint: Verbindung zum Ticketserver eintragen</h3>
+<ol id="bkmrk-kassendaten-%E2%86%92-ticket">
+<li><strong>Kassendaten → Tickets</strong> öffnen.</li>
+<li>In der Werkzeugleiste auf <strong>Ticketserver</strong> klicken.</li>
+<li><strong>URL</strong> des Ticketservers, <strong>Benutzer</strong> und <strong>Passwort</strong> eintragen. Die URL beginnt mit <code>http://</code> oder <code>https://</code>; da der Ticketserver im CentralPoint läuft, ist das im Regelfall <strong>nicht</strong> <code>localhost</code>.</li>
+<li>Auf <strong>Verbindung prüfen</strong> klicken. Erwartet wird die Meldung, dass der Verbindungsversuch erfolgreich war.</li>
+<li><strong>Speichern</strong>. Die Verbindung wird mit dem nächsten Stammdaten-Sync an die Kassen übertragen.</li>
+</ol>
+<h3 id="bkmrk-4.-im-centralpoint%3A-">4. Im CentralPoint: Ticket anlegen</h3>
+<p id="bkmrk-unter-kassendaten-%E2%86%92-">Unter <strong>Kassendaten → Tickets</strong> auf <strong>Hinzufügen</strong> klicken und das Ticket beschreiben:</p>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-feld-inhalt-name-ers">
+<thead>
+<tr>
+<th>Feld</th>
+<th>Inhalt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>erscheint später in der Auswahl am Artikel</td>
+</tr>
+<tr>
+<td>Präambel</td>
+<td>fester Text vor dem erzeugten Teil der Ticketnummer</td>
+</tr>
+<tr>
+<td>Code-Typ</td>
+<td>Inhalt der Ticketnummer: <code>NUMERIC</code>, <code>ALPHANUMERIC</code>, <code>GUID</code>, <code>EAN8</code> oder <code>EAN13</code> — nicht das gedruckte Symbol</td>
+</tr>
+<tr>
+<td>Generator</td>
+<td><code>SEQUENCE</code> (fortlaufend) oder <code>RANDOM</code> (zufällig); angeboten werden nur die zum Code-Typ passenden</td>
+</tr>
+<tr>
+<td>Generatorlänge</td>
+<td>Länge des erzeugten Teils; daneben zeigt der Dialog die Gesamtlänge der Nummer</td>
+</tr>
+<tr>
+<td>Postambel</td>
+<td>fester Text nach dem erzeugten Teil; bei EAN nicht möglich</td>
+</tr>
+<tr>
+<td>Veranstaltung, PSP Nummer</td>
+<td>Angaben für den Export an die Buchhaltung (SAP); nicht Teil der Ticketnummer</td>
+</tr>
+<tr>
+<td>Designvorlage</td>
+<td><code>*.docx</code>-Datei über den Dateibrowser auswählen; ohne Vorlage wird das Standardformat gedruckt</td>
+</tr>
+</tbody>
+</table></div>
+<p id="bkmrk--1" class="bild-absatz"><img src="../bilder/images/gallery/2026-10/scaled-1680-/pos-ticketing-ticket-details-v1.png" alt="CentralPoint, Kassendaten → Tickets: Ticket Details mit Code-Typ, Generator, Generatorlänge und Postambel" loading="lazy"></p>
+<p id="bkmrk-regeln-je-code-typ%2C-">Regeln je Code-Typ, Platzhalter und Bild-Formate für Design-Vorlagen: <span class="verweis-inaktiv kette"><span class="glied">ITR Partner Service</span> <span class="pfeil">→</span> <span class="glied">Produkte</span> <span class="pfeil">→</span> <span class="glied">CentralPoint</span> <span class="pfeil">→</span> <span class="glied">Ticket-Designvorlagen: Referenz</span></span>. <strong>Beispiel-Vorlage:</strong> <span class="verweis-inaktiv">TICKET_VORLAGE.docx</span> — für einen Bondrucker mit 80 mm Papierbreite, mit Logo, Artikelname, Gültigkeitsdatum, QR-Code, Ticketnummer sowie Kasse und Beleg. Logo, Texte und Adresse an den Endkunden anpassen. So sieht der Ausdruck aus:</p>
+<img src="../bilder/images/gallery/2026-10/ticketing-testdruck-v2.png" alt="Testdruck der Beispiel-Vorlage: Eintrittskarte mit Logo, Artikelname, Gültigkeitsdatum, QR-Code und Ticketnummer" width="315" id="bkmrk--2" loading="lazy">
+<h3 id="bkmrk-5.-im-centralpoint%3A-">5. Im CentralPoint: Ticket am Artikel hinterlegen</h3>
+<p id="bkmrk-in-der-artikelkonfig">In der Artikelkonfiguration im unteren Bereich den Reiter <strong>Sonstiges</strong> (englische Oberfläche: <strong>Misc</strong>) öffnen und im Feld <strong>Ticket</strong> das zuvor erstellte Ticket auswählen.</p>
+<p id="bkmrk--3" class="bild-absatz"><img src="../bilder/images/gallery/2026-10/scaled-1680-/pos-ticketing-artikel-ticket-v1.png" alt="CentralPoint, Artikelkonfiguration: Reiter Sonstiges mit Auswahl des Tickets" loading="lazy"></p>
+<h3 id="bkmrk-6.-im-centralpoint%3A-">6. Im CentralPoint: Stammdaten verteilen</h3>
+<p id="bkmrk-die-%C3%84nderungen-an-di">Die Änderungen an die Kassen verteilen und einen Synchronisationslauf abwarten. Damit erreichen auch die Ticketserver-Verbindung und die Tickets die Kassen.</p>
+<h3 id="bkmrk-ergebnis-pr%C3%BCfen">Ergebnis prüfen</h3>
+<ol id="bkmrk-im-centralpoint-meld">
+<li>Im CentralPoint meldet <strong>Ticketserver → Verbindung prüfen</strong> eine erfolgreiche Verbindung.</li>
+<li>An der Kasse einen Artikel mit hinterlegtem Ticket bonieren und den Bon abschließen.</li>
+<li>Bon und Ticket werden gedruckt.</li>
+<li>Die Ticketnummer ist wie im Ticket festgelegt aufgebaut: Präambel, erzeugter Teil, Postambel.</li>
+<li>Bei einer Position mit Menge n entstehen n Tickets.</li>
+</ol>
+<h2 id="bkmrk-ablauf-im-betrieb">Ablauf im Betrieb</h2>
+<p id="bkmrk-wird-an-der-kasse-ei">Wird an der Kasse ein Artikel mit hinterlegtem Ticket boniert, fordert die Kasse beim Bonabschluss für jede Position Ticketnummern beim Ticketserver im CentralPoint an und druckt die Tickets. Steht auf einer Bonposition die Menge n, entstehen n Tickets. Der Bon wird wie gewohnt gedruckt, die Tickets je nach Einstellung davor oder danach. Stornorechnungen erzeugen keine Tickets.</p>
+<p id="bkmrk-jede-vergebene-ticke">Jede vergebene Ticketnummer wird zentral mit Bon, Filiale und Kasse gespeichert und nur einmal vergeben. Ist der Ticketserver nicht erreichbar, entsteht kein gültiges Ticket.</p>
+<p class="callout warning" id="bkmrk-eine-elektronische-e">Eine elektronische Einlasskontrolle der erzeugten Tickets ist nicht möglich. Der aufgedruckte Code kann derzeit nicht gegen das System geprüft werden.</p>
+<h2 id="bkmrk-fehlerbehebung">Fehlerbehebung</h2>
+<ul id="bkmrk-kein-ticket%3A-an-der-">
+<li><strong>Kein Ticket:</strong> an der Kasse <code>Misc.ExhibitionCodes.On=true</code> prüfen und ob der Bontyp in <code>Misc.ExhibitionCodes.ReceiptTypes</code> enthalten ist. Stornorechnungen erzeugen grundsätzlich keine Tickets.</li>
+<li><strong>Ticketserver nicht erreichbar:</strong> im CentralPoint <strong>Ticketserver → Verbindung prüfen</strong> ausführen. Läuft der CentralPoint? Ist der Port aus der URL im Netz freigegeben? Steht in der URL versehentlich <code>localhost</code>, obwohl der CentralPoint auf einem anderen Rechner läuft? Wurde die Verbindung nach dem Speichern schon mit den Stammdaten an die Kasse übertragen?</li>
+<li><strong>Ticket lässt sich im CentralPoint nicht speichern:</strong> Die Angaben passen nicht zum Code-Typ, z. B. Buchstaben in der Präambel bei EAN oder <code>RANDOM</code> ohne Generatorlänge.</li>
+<li><strong>Auf dem Ticket steht <code>UNKNOWN</code>:</strong> Die Design-Vorlage enthält einen Platzhalter, der nicht implementiert ist — Schreibweise gegen die Platzhalterliste prüfen.</li>
+<li><strong>Ticket wird abgeschnitten oder unleserlich:</strong> Format und Größe der Design-Vorlage passen nicht zum an der Kasse eingestellten Drucker.</li>
+</ul>
+<h2 id="bkmrk-weitere-informatione">Weitere Informationen</h2>
+<ul id="bkmrk-itr-partner-service-">
+<li><span class="verweis-inaktiv kette"><span class="glied">ITR Partner Service</span> <span class="pfeil">→</span> <span class="glied">Produkte</span> <span class="pfeil">→</span> <span class="glied">CentralPoint</span> <span class="pfeil">→</span> <span class="glied">Ticket-Designvorlagen: Referenz</span></span></li>
+<li><span class="verweis-inaktiv kette"><span class="glied">ITR Partner Service</span> <span class="pfeil">→</span> <span class="glied">Produkte</span> <span class="pfeil">→</span> <span class="glied">CentralPoint</span> <span class="pfeil">→</span> <span class="glied">Anwendung registrieren und Module lizenzieren</span></span></li>
+<li><a href="../betrieb-administration/infrastruktur/netzwerk-und-ports.html" class="kette"><span class="glied">ITR Partner Service</span> <span class="pfeil">→</span> <span class="glied">Betrieb &amp; Administration</span> <span class="pfeil">→</span> <span class="glied">Netzwerk und Ports</span></a></li>
+<li><a href="../betrieb-administration/peripherie/bondrucker-einrichten.html" class="kette"><span class="glied">ITR Partner Service</span> <span class="pfeil">→</span> <span class="glied">Betrieb &amp; Administration</span> <span class="pfeil">→</span> <span class="glied">Bondrucker einrichten</span></a></li>
+<li><a href="../news-releases-pcT/versionshinweise.html" class="kette"><span class="glied">ITR Partner Service</span> <span class="pfeil">→</span> <span class="glied">News &amp; Releases</span> <span class="pfeil">→</span> <span class="glied">Versionshinweise</span></a></li>
+</ul>
+</div></main>
+  <aside class="spalte-rechts"><div class="seiteninhalt"><h2>Seiteninhalt</h2><ul><li class="e2"><a href="#bkmrk-%C3%9Cberblick">Überblick</a></li><li class="e2"><a href="#bkmrk-voraussetzungen">Voraussetzungen</a></li><li class="e2"><a href="#bkmrk-einrichtung">Einrichtung</a></li><li class="e3"><a href="#bkmrk-1.-an-der-kasse%3A-dat">1. An der Kasse: Datei syncer.properties</a></li><li class="e3"><a href="#bkmrk-2.-an-der-kasse%3A-tic">2. An der Kasse: Ticketdruck aktivieren</a></li><li class="e3"><a href="#bkmrk-3.-im-centralpoint%3A-">3. Im CentralPoint: Verbindung zum Ticketserver eintragen</a></li><li class="e3"><a href="#bkmrk-4.-im-centralpoint%3A-">4. Im CentralPoint: Ticket anlegen</a></li><li class="e3"><a href="#bkmrk-5.-im-centralpoint%3A-">5. Im CentralPoint: Ticket am Artikel hinterlegen</a></li><li class="e3"><a href="#bkmrk-6.-im-centralpoint%3A-">6. Im CentralPoint: Stammdaten verteilen</a></li><li class="e3"><a href="#bkmrk-ergebnis-pr%C3%BCfen">Ergebnis prüfen</a></li><li class="e2"><a href="#bkmrk-ablauf-im-betrieb">Ablauf im Betrieb</a></li><li class="e2"><a href="#bkmrk-fehlerbehebung">Fehlerbehebung</a></li><li class="e2"><a href="#bkmrk-weitere-informatione">Weitere Informationen</a></li></ul></div></aside>
+</div>
+<footer class="fuss">
+  <span>ITR POS Partner</span>
+  <span class="fuss-rechts">
+    <span>&copy; 2026 IT Relations GmbH &middot; Weitergabe nur mit Zustimmung</span>
+    <a href="https://itrelations.de/de/impressum" target="_blank" rel="noopener">Impressum</a>
+    <span>Stand 29.10.2026</span>
+  </span>
+</footer>
+<script src="../assets/suche.js?v=e38d7a36"></script>
+</body>
+</html>
