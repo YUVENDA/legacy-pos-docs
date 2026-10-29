@@ -401,3 +401,94 @@
     zeigen();
   });
 })();
+
+/*
+  BILDLUPE: Klick auf ein Bild im Inhalt zeigt das Original (Ziel des
+  umgebenden Links, sonst das Bild selbst) gross ueber der Seite.
+  Schliessen: Klick daneben, Esc, x. Ist das Original groesser als das
+  Fenster, schaltet ein Klick aufs Bild auf 100 % (scrollbar) und zurueck.
+  Bilder, die auf eine andere Seite verlinken, bleiben normale Links;
+  Strg/Umschalt/Mittelklick ebenso (Original im neuen Tab).
+*/
+(function () {
+  var BILDDATEI = /\.(png|jpe?g|gif|webp|svg)([?#].*)?$/i;
+  var box = null, vollbild = null, zuletzt = null;
+
+  function ziel(img) {
+    var a = img.closest('a');
+    if (!a) { return img.currentSrc || img.src; }
+    return BILDDATEI.test(a.getAttribute('href') || '') ? a.href : null;
+  }
+
+  function schliessen() {
+    if (!box) { return; }
+    box.remove();
+    box = vollbild = null;
+    document.documentElement.style.overflow = '';
+    document.removeEventListener('keydown', taste);
+    if (zuletzt) { zuletzt.focus({ preventScroll: true }); }
+  }
+
+  function taste(e) {
+    if (e.key === 'Escape') { schliessen(); }
+    // Einziges bedienbares Element ist der Schliessen-Knopf.
+    if (e.key === 'Tab') { e.preventDefault(); box.firstChild.focus(); }
+  }
+
+  function oeffnen(quelle, alt) {
+    zuletzt = document.activeElement;
+    box = document.createElement('div');
+    box.className = 'bildlupe';
+    box.setAttribute('role', 'dialog');
+    box.setAttribute('aria-modal', 'true');
+    box.setAttribute('aria-label', alt || 'Bild vergroessert');
+    var zu = document.createElement('button');
+    zu.type = 'button';
+    zu.className = 'bildlupe-zu';
+    zu.setAttribute('aria-label', 'Schliessen');
+    zu.textContent = '×';
+    vollbild = document.createElement('img');
+    vollbild.alt = alt || '';
+    vollbild.decoding = 'async';
+    vollbild.addEventListener('load', function () {
+      // clientWidth enthaelt 2 x 8 px Innenabstand.
+      if (box && (vollbild.naturalWidth > vollbild.clientWidth - 16 ||
+                  vollbild.naturalHeight > vollbild.clientHeight - 16)) {
+        box.classList.add('zoombar');
+      }
+    });
+    vollbild.addEventListener('error', schliessen);
+    vollbild.src = quelle;
+    box.appendChild(zu);
+    box.appendChild(vollbild);
+    box.addEventListener('click', function (e) {
+      if (e.target !== vollbild) { schliessen(); return; }
+      if (box.classList.contains('zoombar')) { box.classList.toggle('voll'); }
+    });
+    document.body.appendChild(box);
+    document.documentElement.style.overflow = 'hidden';
+    document.addEventListener('keydown', taste);
+    zu.focus();
+  }
+
+  // Unverlinkte Bilder nur, wenn sie verkleinert dargestellt werden -
+  // ein Symbol in Originalgroesse braucht keine Lupe.
+  function pruefen(img) {
+    if (img.closest('a') || img.naturalWidth > img.clientWidth) {
+      img.classList.add('lupe-bar');
+    }
+  }
+  var bilder = document.querySelectorAll('.inhalt img');
+  for (var i = 0; i < bilder.length; i++) {
+    if (!ziel(bilder[i])) { continue; }
+    if (bilder[i].complete) { pruefen(bilder[i]); }
+    else { bilder[i].addEventListener('load', pruefen.bind(null, bilder[i])); }
+  }
+
+  document.addEventListener('click', function (e) {
+    var img = e.target.closest('.inhalt img.lupe-bar');
+    if (!img || e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) { return; }
+    e.preventDefault();
+    oeffnen(ziel(img), img.getAttribute('alt'));
+  });
+})();

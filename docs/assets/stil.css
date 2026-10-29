@@ -597,6 +597,32 @@ h1 { font-size: clamp(22px, 6.4vw, 32px); font-weight: 600; line-height: 1.15; m
   margin: 8px 0 22px; font-size: 13.5px; color: var(--ink-soft); max-width: 570px;
 }
 .bild-unterschrift em, .bild-unterschrift i { font-style: normal; }
+
+/* BILDLUPE (Verhalten siehe suche.js). Zentriert per place-items, nicht
+   justify-content - die Exportpruefung meldet justify-content: center. */
+.inhalt img.lupe-bar { cursor: zoom-in; }
+.bildlupe {
+  position: fixed; inset: 0; z-index: 100;
+  display: grid; place-items: center; overflow: auto;
+  padding: 3vh 3vw; background: rgba(15,18,25,.88); cursor: zoom-out;
+}
+.bildlupe img {
+  max-width: 94vw; max-height: 94vh; width: auto; height: auto;
+  padding: 8px; background: #fff; border-radius: var(--rund);
+  box-shadow: 0 8px 40px rgba(0,0,0,.5); cursor: default;
+}
+.bildlupe.zoombar img { cursor: zoom-in; }
+.bildlupe.voll { place-items: start; }
+.bildlupe.voll img { max-width: none; max-height: none; margin: auto; cursor: zoom-out; }
+.bildlupe-zu {
+  position: fixed; top: 12px; right: 12px; width: 40px; height: 40px;
+  display: grid; place-items: center; border: 0; border-radius: 50%;
+  background: rgba(255,255,255,.16); color: #fff; font-size: 26px; line-height: 1;
+  cursor: pointer;
+}
+.bildlupe-zu:hover { background: rgba(255,255,255,.3); }
+.bildlupe-zu:focus-visible { outline: 3px solid var(--mint); outline-offset: 2px; }
+html.dunkel .bildlupe img { background: var(--flaeche); }
 /* Bild im Wiki vorhanden, Datei aber nicht gefunden: statt eines leeren
    Rahmens der Alternativtext - der sagt dem Leser wenigstens, was fehlt. */
 .bild-fehlt {
@@ -1081,4 +1107,5 @@ h1 { font-size: clamp(22px, 6.4vw, 32px); font-weight: 600; line-height: 1.15; m
   .inhalt a { color: var(--ink); }
   h1, .inhalt h2, .inhalt h3 { break-after: avoid; page-break-after: avoid; }
   .inhalt table, .inhalt pre, .inhalt .callout { break-inside: avoid; page-break-inside: avoid; }
+  .bildlupe { display: none !important; }
 }
