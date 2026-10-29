@@ -407,12 +407,15 @@
   umgebenden Links, sonst das Bild selbst) gross ueber der Seite.
   Schliessen: Klick daneben, Esc, x. Ist das Original groesser als das
   Fenster, schaltet ein Klick aufs Bild auf 100 % (scrollbar) und zurueck.
+  Weitere Bilder der Seite: Pfeiltasten, Pfeilknoepfe links/rechts oder
+  Wischen.
   Bilder, die auf eine andere Seite verlinken, bleiben normale Links;
   Strg/Umschalt/Mittelklick ebenso (Original im neuen Tab).
 */
 (function () {
   var BILDDATEI = /\.(png|jpe?g|gif|webp|svg)([?#].*)?$/i;
-  var box = null, vollbild = null, zuletzt = null;
+  var box = null, vollbild = null, zaehler = null, zuletzt = null;
+  var reihe = [], pos = 0, wischX = null;
 
   function ziel(img) {
     var a = img.closest('a');
@@ -420,35 +423,71 @@
     return BILDDATEI.test(a.getAttribute('href') || '') ? a.href : null;
   }
 
+  function knopf(klasse, zeichen, name) {
+    var k = document.createElement('button');
+    k.type = 'button';
+    k.className = klasse;
+    k.setAttribute('aria-label', name);
+    k.textContent = zeichen;
+    box.appendChild(k);
+    return k;
+  }
+
+  function zeigen(n) {
+    pos = (n + reihe.length) % reihe.length;
+    var img = reihe[pos], alt = img.getAttribute('alt') || '';
+    box.classList.remove('zoombar', 'voll');
+    box.setAttribute('aria-label', alt || 'Bild vergroessert');
+    vollbild.alt = alt;
+    vollbild.src = ziel(img);
+    if (zaehler) { zaehler.textContent = (pos + 1) + ' / ' + reihe.length; }
+  }
+
   function schliessen() {
     if (!box) { return; }
     box.remove();
-    box = vollbild = null;
+    box = vollbild = zaehler = null;
     document.documentElement.style.overflow = '';
     document.removeEventListener('keydown', taste);
     if (zuletzt) { zuletzt.focus({ preventScroll: true }); }
   }
 
   function taste(e) {
-    if (e.key === 'Escape') { schliessen(); }
-    // Einziges bedienbares Element ist der Schliessen-Knopf.
-    if (e.key === 'Tab') { e.preventDefault(); box.firstChild.focus(); }
+    if (e.key === 'Escape') { schliessen(); return; }
+    // In der 100-%-Ansicht scrollen die Pfeiltasten das Bild.
+    var blaettern = reihe.length > 1 && !box.classList.contains('voll');
+    if (blaettern && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) {
+      e.preventDefault();
+      zeigen(pos + (e.key === 'ArrowRight' ? 1 : -1));
+      return;
+    }
+    if (e.key === 'Tab') {
+      // Fokus bleibt in der Lupe: nur zwischen ihren Knoepfen wandern.
+      var k = box.querySelectorAll('button');
+      var i = Array.prototype.indexOf.call(k, document.activeElement);
+      if (i < 0) { i = e.shiftKey ? 0 : -1; }
+      e.preventDefault();
+      k[(i + (e.shiftKey ? -1 : 1) + k.length) % k.length].focus();
+    }
   }
 
-  function oeffnen(quelle, alt) {
+  function oeffnen(img) {
     zuletzt = document.activeElement;
+    reihe = Array.prototype.slice.call(document.querySelectorAll('.inhalt img.lupe-bar'));
     box = document.createElement('div');
     box.className = 'bildlupe';
     box.setAttribute('role', 'dialog');
     box.setAttribute('aria-modal', 'true');
-    box.setAttribute('aria-label', alt || 'Bild vergroessert');
-    var zu = document.createElement('button');
-    zu.type = 'button';
-    zu.className = 'bildlupe-zu';
-    zu.setAttribute('aria-label', 'Schliessen');
-    zu.textContent = '×';
+    var zu = knopf('bildlupe-zu', '×', 'Schliessen');
+    if (reihe.length > 1) {
+      box.classList.add('reihe');
+      knopf('bildlupe-zurueck', '‹', 'Vorheriges Bild').addEventListener('click', function () { zeigen(pos - 1); });
+      knopf('bildlupe-vor', '›', 'Nächstes Bild').addEventListener('click', function () { zeigen(pos + 1); });
+      zaehler = document.createElement('div');
+      zaehler.className = 'bildlupe-zaehler';
+      box.appendChild(zaehler);
+    }
     vollbild = document.createElement('img');
-    vollbild.alt = alt || '';
     vollbild.decoding = 'async';
     vollbild.addEventListener('load', function () {
       // clientWidth enthaelt 2 x 8 px Innenabstand.
@@ -458,37 +497,37 @@
       }
     });
     vollbild.addEventListener('error', schliessen);
-    vollbild.src = quelle;
-    box.appendChild(zu);
     box.appendChild(vollbild);
     box.addEventListener('click', function (e) {
+      if (e.target.closest('.bildlupe-zurueck, .bildlupe-vor')) { return; }
       if (e.target !== vollbild) { schliessen(); return; }
       if (box.classList.contains('zoombar')) { box.classList.toggle('voll'); }
     });
+    box.addEventListener('touchstart', function (e) { wischX = e.touches[0].clientX; }, { passive: true });
+    box.addEventListener('touchend', function (e) {
+      if (wischX === null || reihe.length < 2 || box.classList.contains('voll')) { return; }
+      var dx = e.changedTouches[0].clientX - wischX;
+      wischX = null;
+      if (Math.abs(dx) > 50) { zeigen(pos + (dx < 0 ? 1 : -1)); }
+    });
+    zeigen(reihe.indexOf(img));
     document.body.appendChild(box);
     document.documentElement.style.overflow = 'hidden';
     document.addEventListener('keydown', taste);
     zu.focus();
   }
 
-  // Unverlinkte Bilder nur, wenn sie verkleinert dargestellt werden -
-  // ein Symbol in Originalgroesse braucht keine Lupe.
-  function pruefen(img) {
-    if (img.closest('a') || img.naturalWidth > img.clientWidth) {
-      img.classList.add('lupe-bar');
-    }
-  }
+  // Alle Bilder gehoeren zur Reihe - auch die in Originalgroesse, damit
+  // man mit den Pfeilen durch alle Bilder der Seite blaettern kann.
   var bilder = document.querySelectorAll('.inhalt img');
   for (var i = 0; i < bilder.length; i++) {
-    if (!ziel(bilder[i])) { continue; }
-    if (bilder[i].complete) { pruefen(bilder[i]); }
-    else { bilder[i].addEventListener('load', pruefen.bind(null, bilder[i])); }
+    if (ziel(bilder[i])) { bilder[i].classList.add('lupe-bar'); }
   }
 
   document.addEventListener('click', function (e) {
     var img = e.target.closest('.inhalt img.lupe-bar');
     if (!img || e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) { return; }
     e.preventDefault();
-    oeffnen(ziel(img), img.getAttribute('alt'));
+    oeffnen(img);
   });
 })();

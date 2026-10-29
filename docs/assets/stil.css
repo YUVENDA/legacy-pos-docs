@@ -620,8 +620,24 @@ h1 { font-size: clamp(22px, 6.4vw, 32px); font-weight: 600; line-height: 1.15; m
   background: rgba(255,255,255,.16); color: #fff; font-size: 26px; line-height: 1;
   cursor: pointer;
 }
-.bildlupe-zu:hover { background: rgba(255,255,255,.3); }
-.bildlupe-zu:focus-visible { outline: 3px solid var(--mint); outline-offset: 2px; }
+.bildlupe-zurueck, .bildlupe-vor {
+  position: fixed; top: 50%; width: 44px; height: 64px; margin-top: -32px;
+  display: grid; place-items: center; border: 0; border-radius: var(--rund);
+  background: rgba(255,255,255,.16); color: #fff; font-size: 40px; line-height: 1;
+  cursor: pointer;
+}
+/* Mit Pfeilen: Bild laesst links und rechts Platz fuer die Knoepfe,
+   auf schmalen Fenstern liegen sie ueber dem Bild. */
+@media (min-width: 700px) { .bildlupe.reihe:not(.voll) img { max-width: calc(100vw - 136px); } }
+.bildlupe-zurueck { left: 12px; }
+.bildlupe-vor { right: 12px; }
+.bildlupe-zaehler {
+  position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%);
+  padding: 3px 10px; border-radius: 12px; background: rgba(0,0,0,.45);
+  color: #fff; font-size: 13px; font-variant-numeric: tabular-nums; pointer-events: none;
+}
+.bildlupe-zu:hover, .bildlupe-zurueck:hover, .bildlupe-vor:hover { background: rgba(255,255,255,.3); }
+.bildlupe-zu:focus-visible, .bildlupe-zurueck:focus-visible, .bildlupe-vor:focus-visible { outline: 3px solid var(--mint); outline-offset: 2px; }
 html.dunkel .bildlupe img { background: var(--flaeche); }
 /* Bild im Wiki vorhanden, Datei aber nicht gefunden: statt eines leeren
    Rahmens der Alternativtext - der sagt dem Leser wenigstens, was fehlt. */
