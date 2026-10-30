@@ -406,7 +406,7 @@
   BILDLUPE: Klick auf ein Bild im Inhalt zeigt das Original (Ziel des
   umgebenden Links, sonst das Bild selbst) gross ueber der Seite.
   Schliessen: Klick (aufs Bild oder daneben), Esc, x.
-  Weitere Bilder der Seite: Scrollrad, Pfeiltasten, Pfeilknoepfe
+  Weitere Bilder der Seite: Scrollrad, Pfeiltasten bzw. A/D, Pfeilknoepfe
   links/rechts oder Wischen.
   Bilder, die auf eine andere Seite verlinken, bleiben normale Links;
   Strg/Umschalt/Mittelklick ebenso (Original im neuen Tab).
@@ -415,6 +415,8 @@
   var BILDDATEI = /\.(png|jpe?g|gif|webp|svg)([?#].*)?$/i;
   var box = null, vollbild = null, zaehler = null, zuletzt = null;
   var reihe = [], pos = 0, wischX = null, radZeit = 0;
+  // Pfeiltasten oder A/D (wie in Spielen) blaettern.
+  var SCHRITT = { ArrowRight: 1, d: 1, D: 1, ArrowLeft: -1, a: -1, A: -1 };
 
   function ziel(img) {
     var a = img.closest('a');
@@ -452,9 +454,11 @@
 
   function taste(e) {
     if (e.key === 'Escape') { schliessen(); return; }
-    if (reihe.length > 1 && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) {
+    // Mit Strg/Alt/Cmd bleiben Browser-Kuerzel (Strg+D, Alt+Links ...) frei.
+    var schritt = e.ctrlKey || e.altKey || e.metaKey ? 0 : SCHRITT[e.key];
+    if (reihe.length > 1 && schritt) {
       e.preventDefault();
-      zeigen(pos + (e.key === 'ArrowRight' ? 1 : -1));
+      zeigen(pos + schritt);
       return;
     }
     if (e.key === 'Tab') {
