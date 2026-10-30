@@ -1,0 +1,1124 @@
+/* Statischer Partner-Export - Gestaltung nach dem ITR-Theme.
+   Palette und Schrift aus dem YUVENDA Style Guide:
+   Anthrazit #282828, Tech Blue #363FBF, Digital Mint #BFEEE2,
+   Off White #FCFCFC, Warnung #F55050, Erfolg #17AB75.
+   Hier gilt normales Web-CSS - die Beschraenkungen des PDF-Renderers
+   (keine Variablen, keine Pseudoelemente) betreffen diese Datei nicht. */
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal; font-weight: 400; font-display: swap;
+  src: url('Montserrat-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal; font-weight: 600; font-display: swap;
+  src: url('Montserrat-SemiBold.ttf') format('truetype');
+}
+
+:root {
+  --ink: #282828;
+  --ink-soft: #6b6b6b;
+  /* Gedaempfter TEXT, der noch gut lesbar ist: derselbe Ton wie bisher in
+     .seitenmeta und im Suchergebnis (#4a4a4a), jetzt benannt. 8,6:1 auf
+     --paper. --ink-soft (5,2:1) bleibt fuer Beschriftungen und Kleinkram. */
+  --ink-muted: #4a4a4a;
+  /* Redaktionsvorschau (--show-todos): gelbe Flaeche fuer Platzhalter. */
+  --todo-flaeche: #fff3bf;
+  --blue: #363FBF;
+  /* Tech Blue ist als FLAECHE und Rahmen richtig, als Textfarbe aber kraeftig:
+     stark gesaettigtes Blau auf Weiss wirkt fuer viele Augen unscharf, und
+     seit die Links im Text halbfett sind, fiel es noch mehr auf. Diese
+     Abwandlung ist dunkler und weniger gesaettigt - 10,4:1 Kontrast auf Weiss
+     gegenueber 8,0:1, und deutlich ruhiger zu lesen. Nur fuer Schrift; Rahmen,
+     Fokus und Linien bleiben Tech Blue. */
+  --blue-text: #2A319C;
+  --mint: #BFEEE2;
+  --mint-pale: #f1fbf7;
+  --paper: #FCFCFC;
+  --line: #e3e3e3;
+  --warn: #F55050;
+  --ok: #17AB75;
+  --kopf: #1a2340;
+  /* Rundungen an einer Stelle, damit sie ueberall gleich sind. */
+  --rund: 8px;        /* Kacheln, Kaesten, Tabellenrahmen */
+  --rund-klein: 5px;  /* Eingabefelder, Code im Text */
+  /* Bildlaufleisten in den Spalten: sichtbar genug, um sie zu finden,
+     zurueckhaltend genug, um nicht mitzureden. */
+  --leiste: #d7d7dc;
+  --leiste-aktiv: #b0b0ba;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  /* Platz fuer die Bildlaufleiste IMMER freihalten. Ohne das erschien sie
+     erst, wenn eine Seite laenger als das Fenster wurde - und weil das Raster
+     mittig steht, sprang dabei der gesamte Inhalt um 7 px zur Seite. Genau
+     das passierte beim Aufklappen eines Buchs in der Navigation
+     (03.09.2026 gemessen). */
+  scrollbar-gutter: stable;
+}
+
+html, body {
+  margin: 0; padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-size: 16px; line-height: 1.6;
+}
+
+/* FUSSZEILE UNTEN HALTEN. Auf kurzen Seiten (Buchseiten, 404) hing sie
+   mitten im Fenster - gemessen 43 px ueber der Unterkante. Der Koerper ist
+   deshalb eine Spalte ueber die volle Fensterhoehe, der Inhalt dehnt sich,
+   die Fusszeile wird nach unten geschoben. Nicht "fixiert": sie klebt nicht
+   am Fenster, sondern sitzt am Ende der Seite - bei langen Seiten scrollt
+   sie mit, wie es sich gehoert.
+   dvh statt vh, weil vh auf dem Handy die Adressleiste nicht mitrechnet. */
+body { display: flex; flex-direction: column; min-height: 100vh; }
+@supports (height: 100dvh) { body { min-height: 100dvh; } }
+.rahmen { flex: 1 0 auto; }
+
+/* ---------------------------------------------------------------- Kopfleiste */
+/* Die Leiste selbst laeuft ueber die ganze Breite, ihr INHALT sitzt aber im
+   gleichen Raster wie die Spalten darunter (max-width und padding wie
+   .rahmen). Sonst wandert das Logo auf breiten Bildschirmen nach aussen,
+   waehrend die Navigation darunter am 1560-px-Raster klebt. */
+.kopf {
+  background: var(--kopf); color: #c8d4e8;
+  position: sticky; top: 0; z-index: 20;
+  box-shadow: 0 1px 0 rgba(0,0,0,.25);
+}
+/* Breite und Innenabstand MUESSEN mit .rahmen uebereinstimmen, sonst sitzt das
+   Logo nicht ueber der Navigation. Am 03.09.2026 auseinandergelaufen: die
+   Leiste stand noch auf 1560, waehrend .rahmen schon auf 1320 begrenzt war -
+   53 px Versatz zwischen Logo und Navigationsspalte. Wer eine der beiden
+   Breiten aendert, aendert die andere mit. */
+/* KOPF IM SELBEN RASTER WIE DIE SPALTEN (10.10.2026): Logo ueber der
+   Navigation, Suchfeld mittig ueber der Textspalte der Artikelseiten - wie
+   in BookStack. Auf Seiten ohne rechte Spalte bleibt es bewusst an derselben
+   Stelle, sonst spraenge es beim Blaettern. Spalten 1 und 2 MUESSEN mit
+   .rahmen uebereinstimmen (auch in den Media Queries unten). */
+.kopf-innen {
+  position: relative; display: grid; grid-template-columns: 288px minmax(0,660px) minmax(0,1fr) auto;
+  align-items: center; gap: 32px;
+  width: min(1320px, 100%); margin: 0 auto; padding: 10px 20px;
+}
+/* 36 px, damit "Teil von YUVENDA" lesbar ist. Die Datei ist 372 x 120 px,
+   reicht also auch fuer doppelte Pixeldichte (72 px). Die Leiste wird dadurch
+   nicht hoeher - das Suchfeld ist mit 39 px ohnehin das hoechste Element. */
+.kopf-logo img { height: 36px; width: auto; display: block; }
+/* Reiner Text, kein Link: deshalb nicht in der Linkfarbe der Leiste
+   (#c8d4e8 wie die Verweise), sondern gedaempft. */
+.kopf-firma {
+  grid-column: 3; grid-row: 1; justify-self: end; font-size: 13px; white-space: nowrap; letter-spacing: .01em;
+  color: #9aa6c2; cursor: default;
+}
+/* SUCHFELD WIE IN BOOKSTACK: weisses Feld mit 8 px Rundung, hoechstens
+   560 px breit und mittig - auch im Dunkelmodus, die Leiste ist in beiden
+   Modi dunkel. Fokus wie dort: 3 px Amber. */
+.kopf-suche { grid-column: 2; position: relative; width: 100%; max-width: 560px; justify-self: center; }
+.kopf-logo { grid-column: 1; }
+/* Sprunglink beim Fokus als Fahne unter der Leiste - im Raster haette er
+   Firmenname oder Umschalter verdraengt. */
+@media (min-width: 761px) {
+  .kopf-innen > .sprung:focus {
+    position: absolute; left: 20px; top: 100%;
+    background: var(--kopf); padding: 6px 10px; border-radius: 0 0 var(--rund-klein) var(--rund-klein);
+  }
+}
+/* Lupe als Hintergrundbild statt als zusaetzliches Element im Markup: das
+   Suchfeld bleibt ein einzelnes input, das die Suche unveraendert anspricht. */
+#suchfeld {
+  width: 100%; padding: 8px 12px 8px 36px; border: 1px solid #ffffff; border-radius: 8px;
+  background: #ffffff no-repeat 12px center;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%234a5568' stroke-width='1.7' stroke-linecap='round'%3E%3Ccircle cx='6.8' cy='6.8' r='4.6'/%3E%3Cpath d='M10.4 10.4 14 14'/%3E%3C/svg%3E");
+  background-size: 15px 15px;
+  color: #1b2333; font: inherit; font-size: 14px;
+}
+#suchfeld::placeholder { color: #4a5568; opacity: 1; }
+#suchfeld:focus { outline: 3px solid #f59e0b; outline-offset: 2px; }
+
+/* HELL/DUNKEL-UMSCHALTER, gestaltet wie die Symbolknoepfe im BookStack-Kopf.
+   Sichtbar nur mit JavaScript (Klasse "js" setzt das Kopfskript) - ohne JS
+   gaebe es nichts umzuschalten. Ueber CSS statt "hidden", damit der Kopf
+   nicht springt, wenn suche.js spaeter laedt. Mond im hellen, Sonne im
+   dunklen Modus: das Symbol zeigt, wohin der Klick fuehrt. */
+.kopf-modus { display: none; grid-column: 4; }
+html.js .kopf-modus {
+  /* place-items statt justify-content: center - Pruefung P13 meldet
+     "justify-content: center" pauschal, weil es am Raster schon einmal schadete. */
+  display: inline-grid; place-items: center;
+  width: 34px; height: 34px; padding: 0; cursor: pointer;
+  border-radius: 8px; color: #c8d4e8;
+  background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.13);
+}
+.kopf-modus:hover { background: rgba(255,255,255,.18); color: #ffffff; }
+.kopf-modus:focus-visible { outline: 3px solid var(--mint); outline-offset: 2px; }
+.kopf-modus svg { width: 18px; height: 18px; }
+.kopf-modus .sonne { display: none; }
+#suchergebnis {
+  position: absolute; left: 0; right: 0; top: calc(100% + 6px);
+  background: #fff; color: var(--ink); border: 1px solid var(--line);
+  border-radius: var(--rund); box-shadow: 0 6px 20px rgba(0,0,0,.18);
+  max-height: 65vh; overflow-y: auto;
+}
+#suchergebnis a {
+  display: block; padding: 9px 12px; border-bottom: 1px solid #eee;
+  text-decoration: none; color: var(--ink);
+}
+#suchergebnis a:last-child { border-bottom: 0; }
+#suchergebnis a:hover, #suchergebnis a:focus { background: var(--mint-pale); }
+#suchergebnis .titel { font-weight: 600; }
+#suchergebnis .kap { font-size: 12px; color: var(--ink-soft); }
+#suchergebnis .aus { font-size: 13px; color: var(--ink-muted); }
+#suchergebnis mark { background: var(--mint); color: var(--ink); }
+/* Trefferzahl und Buchgruppen im Suchergebnis. Bei einem haeufigen Wort wie
+   "gastro" ist die flache Liste unbrauchbar - die Zahl gibt Orientierung, die
+   Gruppen zeigen, wo der Schwerpunkt liegt. */
+#suchergebnis .suchzahl {
+  padding: 7px 12px; font-size: 12px; color: var(--ink-soft);
+  border-bottom: 1px solid var(--line); background: #fafafb;
+}
+#suchergebnis .suchgruppe {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
+  padding: 7px 12px 5px; font-size: 11.5px; font-weight: 600;
+  letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft);
+  background: #fafafb; border-bottom: 1px solid #f0f0f4;
+}
+/* Anzahl je Buch: damit man auf einen Blick sieht, wo der Schwerpunkt liegt,
+   ohne die Zeilen zu zaehlen. */
+#suchergebnis .suchgruppe-zahl {
+  font-weight: 400; letter-spacing: 0; color: var(--ink-soft);
+  background: #eeeef2; border-radius: 9px; padding: 1px 7px; font-size: 11px;
+}
+/* Auswahl per Pfeiltaste - deutlicher als das Zeigen mit der Maus, damit man
+   ohne Maus sieht, was Enter oeffnen wuerde. */
+#suchergebnis a.gewaehlt {
+  background: var(--mint-pale); box-shadow: inset 3px 0 0 var(--blue);
+}
+#suchergebnis .leer { padding: 10px 12px; color: var(--ink-soft); font-size: 14px; }
+
+/* ------------------------------------------------------------------- Rahmen */
+/* Die Textspalte wird BEGRENZT, nicht nur ihr Inhalt, und das Raster steht
+   mittig. Vorher war die Spalte so breit wie der Platz es zuliess (788 px bei
+   1440), waehrend der Text darin auf 600 px endete - zwischen Textende und
+   rechter Spalte klaffte dadurch ein Loch von rund 200 px. Der ueberzaehlige
+   Platz gehoert an den Seitenrand, nicht in die Mitte des Satzes. */
+/*
+ * SPALTEN LINKS AUSGERICHTET, DER RAHMEN ALS GANZES MITTIG.
+ *
+ * "justify-content: center" war falsch, auch wenn es zunaechst besser aussah:
+ * es gibt zwei Seitenarten mit unterschiedlich breitem Raster - Inhaltsseiten
+ * mit Ueberschriftenspalte und Buch-/Startseiten ohne. Zentriert man beide,
+ * beginnt die Textspalte an verschiedenen Stellen, und beim Blaettern von
+ * einer Art zur anderen sprang der Text um 44 px zur Seite (03.09.2026
+ * gemessen: 353 px gegen 397 px).
+ *
+ * Mit "start" beginnen Navigation und Text IMMER an derselben Stelle,
+ * unabhaengig davon, ob rechts eine Spalte steht. Der Rahmen selbst bleibt
+ * ueber "margin: 0 auto" mittig, und die Hoechstbreite ist so gewaehlt, dass
+ * rechts nur wenig Luft bleibt: 288 + 32 + 660 + 32 + 260 = 1272 plus
+ * Innenabstand passt in 1320.
+ */
+/*
+ * width, NICHT nur max-width. Seit die Fusszeile ueber einen Flex-Koerper
+ * unten gehalten wird, ist .rahmen ein FLEX-ELEMENT - und dort macht
+ * "margin: 0 auto" die Breite abhaengig vom Inhalt statt von der Vorgabe.
+ * Die beiden Seitenarten kamen dadurch auf 1312 und 1320 px, zentriert also
+ * auf zwei verschiedene Anfaenge: 4 px Restsprung beim Blaettern, nachdem der
+ * grosse Sprung von 44 px schon behoben war (03.09.2026).
+ * Eine feste Breite macht den Kasten fuer jede Seitenart gleich.
+ */
+.rahmen {
+  display: grid; grid-template-columns: 288px minmax(0,660px) 260px;
+  gap: 32px; justify-content: start;
+  width: min(1320px, 100%); margin: 0 auto; padding: 24px 20px 40px;
+}
+/* Seiten ohne rechte Spalte (Startseite, Buchseiten, 404) bekommen deren
+   Platz - dort stehen Kacheln, die von Breite profitieren, kein Fliesstext.
+   Die ERSTEN ZWEI Spalten bleiben dabei gleich, nur die zweite darf laenger
+   werden; dadurch sitzt der Seitenanfang bei beiden Arten an derselben
+   Stelle. */
+.rahmen.ohne-rechts { grid-template-columns: 288px minmax(0,960px); }
+
+/*
+ * LANGE WOERTER MUESSEN BRECHEN DUERFEN.
+ *
+ * "Systemvoraussetzungen" braucht als h1 bei 32 px 397 px, die Spalte auf dem
+ * Handy ist 335 px breit - das Wort trat aus seinem Kasten und wurde am Rand
+ * abgeschnitten (04.09.2026 gemessen). Deutsche Komposita sind lang; ohne
+ * Trennung ist das auf jedem schmalen Bildschirm eine Frage der Zeit.
+ *
+ * Silbentrennung zuerst, weil sie lesbar trennt ("System-voraus-setzungen");
+ * das <html lang="de"> ist dafuer die Voraussetzung und steht. break-word ist
+ * nur das Netz darunter, falls der Browser keine Trennmuster fuer ein Wort
+ * hat - es trennt ohne Bindestrich, aber immer noch besser als Abschneiden.
+ * Gesetzt wird es auf die SPALTEN, nicht auf eine Liste von Selektoren. Mein
+ * erster Versuch zaehlte ".inhalt h1, .inhalt p, ..." auf und liess die
+ * Ueberschrift genau deshalb ueberlaufen: sie steht in ".seitenkopf", nicht in
+ * ".inhalt". Beide Eigenschaften vererben - also einmal oben setzen und unten
+ * fuer Code zurueckstellen, statt Selektoren zu sammeln.
+ */
+/* 10.10.2026: Silbentrennung AUS. "hyphens: auto" trennte auf Safari und
+   neueren Chromium-Fassungen unschoen ("POS Ti-cketing", "Reihen-folge").
+   Das Netz gegen ueberlange Woerter bleibt break-word - es bricht nur, wenn
+   ein Wort sonst nicht passt; die h1 skaliert zusaetzlich mit (clamp). */
+.spalte-links, .spalte-mitte, .spalte-rechts {
+  -webkit-hyphens: manual;
+  hyphens: manual;
+  overflow-wrap: break-word;
+}
+
+/*
+ * BLOCK-CODE NICHT TRENNEN. Ein Umbruch mitten in einem Befehl waere
+ * schlimmer als Scrollen - und das Codefeld hat seinen eigenen waagerechten
+ * Rahmen. Beide Eigenschaften werden vererbt, deshalb hier zurueckstellen.
+ */
+pre, .codefeld, .codefeld * {
+  hyphens: manual;
+  overflow-wrap: normal;
+}
+
+/*
+ * INLINE-CODE MUSS BRECHEN DUERFEN - anders als Block-Code, denn er steht
+ * mitten im Satz und hat KEINEN eigenen Scrollrahmen.
+ *
+ * Gemessen am 04.09.2026 bei 375 px: ein Registry-Pfad
+ * ("HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\...") als <code> in einem
+ * Absatz war 620 px breit und hat die GANZE SEITE 290 px quer geschoben - auf
+ * 11 von 107 Seiten. Ein solcher Pfad enthaelt kein Leerzeichen, also gibt es
+ * ohne diese Regel keine einzige Umbruchstelle.
+ *
+ * Silbentrennung waere hier falsch (ein Bindestrich in einem Pfad liesse sich
+ * fuer einen Teil des Pfades halten), deshalb nur break-word: es bricht ohne
+ * Bindestrich und nur dann, wenn es sonst nicht passt.
+ */
+:not(pre) > code {
+  overflow-wrap: break-word;
+  hyphens: manual;
+}
+.spalte-links, .spalte-rechts { align-self: start; position: sticky; top: 76px; }
+/* Beide Randspalten scrollen fuer sich, wenn sie laenger werden als das
+   Fenster. Bei der rechten fehlte das: hatte eine Seite mehr Ueberschriften
+   als hineinpassen, waren die unteren nicht erreichbar - man konnte sie
+   weder sehen noch anklicken.
+   scrollbar-gutter, damit der Text in der Navigation beim Auf- und Zuklappen
+   nicht umbricht, wenn die Leiste erscheint. */
+.spalte-links, .spalte-rechts {
+  max-height: calc(100vh - 100px); overflow-y: auto; scrollbar-gutter: stable;
+}
+
+/*
+ * DEZENTE BILDLAUFLEISTEN in den Randspalten und im Suchergebnis.
+ * Die breite Systemleiste zog in der Navigation mehr Aufmerksamkeit auf sich
+ * als die Inhalte daneben.
+ *
+ * Zwei Schreibweisen, weil sie sich die Browser teilen: "scrollbar-width" und
+ * "scrollbar-color" sind der Standard (Firefox, Chromium ab 121), die
+ * "::-webkit-scrollbar"-Regeln decken die aelteren Chromium- und
+ * Safari-Fassungen ab. Beide zusammen, damit es ueberall gleich aussieht.
+ *
+ * NICHT ausgeblendet: ohne Leiste sieht niemand, dass die Spalte weitergeht.
+ * Der Balken bleibt sichtbar, wird beim Zeigen etwas deutlicher - und der
+ * Platz dafuer ist ueber scrollbar-gutter dauerhaft reserviert, damit der Text
+ * beim Auf- und Zuklappen nicht umbricht.
+ */
+.spalte-links, .spalte-rechts, #suchergebnis {
+  scrollbar-width: thin;
+  scrollbar-color: var(--leiste) transparent;
+}
+.spalte-links::-webkit-scrollbar,
+.spalte-rechts::-webkit-scrollbar,
+#suchergebnis::-webkit-scrollbar { width: 8px; }
+.spalte-links::-webkit-scrollbar-track,
+.spalte-rechts::-webkit-scrollbar-track,
+#suchergebnis::-webkit-scrollbar-track { background: transparent; }
+.spalte-links::-webkit-scrollbar-thumb,
+.spalte-rechts::-webkit-scrollbar-thumb,
+#suchergebnis::-webkit-scrollbar-thumb {
+  background: var(--leiste); border-radius: 4px;
+  border: 2px solid transparent; background-clip: content-box;
+}
+.spalte-links:hover, .spalte-rechts:hover { scrollbar-color: var(--leiste-aktiv) transparent; }
+.spalte-links:hover::-webkit-scrollbar-thumb,
+.spalte-rechts:hover::-webkit-scrollbar-thumb { background: var(--leiste-aktiv); }
+
+/* --------------------------------------------------------------- Navigation */
+/*
+ * EINHEITLICHE EBENEN (10.10.2026).
+ *
+ * Alle Eintraege: gleiche Schrift (14 px / 1.4), je Ebene 20 px Einzug.
+ * Innerhalb einer Ebene unterscheiden sich Eintraege NUR durch den Pfeil und
+ * den Fettdruck des aktiven Pfads. Den Pfad kennzeichnet der Generator mit
+ * .pfad (Buch/Kapitel) bzw. .aktuell (Seite) - [open] allein taugt nicht,
+ * das setzt auch ein Klick des Lesers.
+ *
+ * Inaktive Eintraege in --ink-muted, AUSDRUECKLICH auch fuer :link und
+ * :visited. Vorher erbten die Kapitelnamen "inherit" und die Seiten --ink;
+ * ein Browser- oder Nutzerstil fuer besuchte Links konnte dort durchschlagen.
+ *
+ * Text-Fluchtlinien: Buch 24 px, Kapitel und Seiten im Buch 44 px, Seiten im
+ * Kapitel 56 px (mit Fuehrungslinie). Ohne Buchebene (Einzelbuch-Export)
+ * 24 und 36 px.
+ */
+.nav { font-size: 14px; line-height: 1.4; padding: 0 4px; }
+/* Wurzel der Navigation (Regal- bzw. Buchname) */
+.nav-wurzel {
+  display: block; font-weight: 600; color: var(--ink); text-decoration: none;
+  padding: 6px 8px; border-bottom: 2px solid var(--blue); margin-bottom: 8px;
+}
+.nav-wurzel:hover { background: var(--mint-pale); }
+
+/* TRENNLINIEN NUR AUF BUCHEBENE, in der Linienfarbe der Seite. */
+.nav-buch + .nav-buch { border-top: 1px solid var(--line); }
+
+.nav summary {
+  display: flex; align-items: flex-start; cursor: pointer; list-style: none;
+  border-radius: var(--rund-klein);
+}
+.nav summary::-webkit-details-marker { display: none; }
+/*
+ * PFEIL: EIN Zeichen fuer beide Zustaende, nur gedreht - zu zeigt er nach
+ * rechts, offen nach unten. 12 px gross in einer 24x24-Flaeche, die zum
+ * Aufklappen angeklickt wird (der Name daneben ist ein Link zur Seite).
+ * Farbe = Textfarbe des Eintrags (currentColor ueber die Maske).
+ */
+.nav summary::before {
+  content: ''; flex: none; width: 24px; height: 24px; margin: -2px 0 -2px;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.5 2.5 8 6l-3.5 3.5'/%3E%3C/svg%3E") center / 12px 12px no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.5 2.5 8 6l-3.5 3.5'/%3E%3C/svg%3E") center / 12px 12px no-repeat;
+}
+.nav details[open] > summary::before { transform: rotate(90deg); }
+@media (prefers-reduced-motion: no-preference) {
+  .nav summary::before { transition: transform .15s ease; }
+}
+.nav-buch > summary    { padding: 6px 8px 6px 0; }
+.nav-kapitel > summary { padding: 5px 8px 5px 0; }
+.nav-buch .nav-kapitel > summary { padding-left: 20px; }
+.nav summary a { flex: 1 1 auto; min-width: 0; text-decoration: none; }
+
+.nav-seite {
+  display: block; padding: 5px 8px 5px 24px; text-decoration: none;
+  border-left: 2px solid transparent;
+}
+.nav-buch > .nav-seite { padding-left: 44px; }
+.nav-kapitel .nav-seite { margin-left: 11px; padding-left: 23px; border-left-color: var(--line); }
+.nav-buch .nav-kapitel .nav-seite { margin-left: 31px; padding-left: 23px; }
+
+/* Farbe und Gewicht: inaktiv gedaempft, Pfad und aktuelle Seite dunkel+fett. */
+.nav summary,
+.nav summary a, .nav summary a:link, .nav summary a:visited,
+.nav-seite, .nav-seite:link, .nav-seite:visited {
+  color: var(--ink-muted); font-weight: 400;
+}
+.nav .pfad > summary,
+.nav .pfad > summary a, .nav .pfad > summary a:link, .nav .pfad > summary a:visited,
+.nav-seite.aktuell, .nav-seite.aktuell:link, .nav-seite.aktuell:visited {
+  color: var(--ink); font-weight: 600;
+}
+.nav summary:hover, .nav-seite:hover { background: var(--mint-pale); }
+.nav summary:hover a, .nav-seite:hover { color: var(--ink); }
+.nav-seite.aktuell { background: var(--mint-pale); border-left-color: var(--blue); }
+
+/* ------------------------------------------------------------------- Inhalt */
+/*
+ * BROTKRUME nach dem Muster gaengiger Hilfe-Center: vollstaendige Kette,
+ * aktuelle Seite als letztes Glied, normale Gross- und Kleinschreibung.
+ *
+ * Vorher: Versalien, gesperrt, 12,5 px - und alles nur Text. Versalien nehmen
+ * die Wortumrisse weg, an denen das Auge Woerter erkennt; bei Namen wie
+ * "GOODCOMPANYDAEMON" war das kaum zu erfassen.
+ *
+ * Die Chevrons stehen im CSS, NICHT im Text: ein Vorleseprogramm liest sonst
+ * bei jedem Glied ein Sonderzeichen mit vor.
+ */
+.brotkrumen {
+  display: flex; flex-wrap: wrap; align-items: center;
+  list-style: none; margin: 0 0 10px; padding: 0;
+  font-size: 13.5px; line-height: 1.5; color: var(--ink-soft);
+}
+.brotkrumen li { display: flex; align-items: center; }
+.brotkrumen li + li::before {
+  content: '\203A';           /* einfaches Chevron */
+  margin: 0 12px; color: var(--ink-soft);
+  font-size: 17px; line-height: 1;
+}
+.brotkrumen a { color: var(--ink); text-decoration: none; }
+.brotkrumen a:hover { color: var(--blue-text); }
+/* Aktuelle Seite: dabei, aber zurueckgenommen - sie ist kein Ziel mehr. */
+.brotkrumen [aria-current="page"] { color: var(--ink-soft); }
+/*
+ * GROESSE MIT DER FENSTERBREITE, nicht als harte Stufe.
+ *
+ * Deutsche Komposita in Seitentiteln sind lang: von 38 Woertern mit mehr als
+ * zwoelf Buchstaben passten bei 32 px nur 34 in die 335 px breite Spalte
+ * eines 375-px-Bildschirms ("Verfahrensdokumentation" braucht 438 px). Der
+ * Rest brach mitten im Wort um - ohne Trennstrich, weil Chrome unter Windows
+ * "hyphens: auto" ignoriert (04.09.2026 gegengeprueft: identische Umbrueche
+ * mit auto und manual; auf iOS trennt Safari dagegen sauber, deshalb bleibt
+ * die Regel stehen).
+ *
+ * 6.4vw ergibt 24 px bei 375 px Fensterbreite - damit passen alle 38 Woerter
+ * - und erreicht die 32 px ab 500 px Breite wieder. Untergrenze 22 px, damit
+ * es auf sehr schmalen Geraeten nicht zur Randnotiz schrumpft.
+ */
+h1 { font-size: clamp(22px, 6.4vw, 32px); font-weight: 600; line-height: 1.15; margin: 0 0 10px;
+     letter-spacing: -.01em; }
+/* EINE Trennlinie unter dem Seitenkopf, nicht zwei. Vorher lagen ein 2-px-Strich
+   unter der Ueberschrift und ein 1-px-Strich unter der Herkunftszeile knapp
+   uebereinander - zwei Regeln im Abstand von 30 px, die den Kopf zerteilten.
+   Die Linie sitzt jetzt unter dem gesamten Kopf, die Ueberschrift traegt keine. */
+.seitenkopf {
+  padding-bottom: 12px; margin-bottom: 26px; border-bottom: 2px solid var(--blue);
+}
+.seitenmeta {
+  font-size: 12.5px; color: var(--ink-muted); margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+.entwurf-band {
+  background: #fdeeee; border: 1px solid var(--warn); border-radius: var(--rund);
+  color: #8f1f1f; font-weight: 600; font-size: 14px; padding: 8px 12px; margin: 0 0 14px;
+}
+.inhalt h2 { font-size: 23px; font-weight: 600; line-height: 1.25; margin: 38px 0 10px; }
+.inhalt h3 { font-size: 18px; font-weight: 600; line-height: 1.3; margin: 26px 0 6px; }
+/* Erste Ueberschrift nicht vom Seitenkopf wegdruecken. */
+.inhalt > h2:first-child, .inhalt > h3:first-child { margin-top: 0; }
+.inhalt p, .inhalt li { font-size: 16px; }
+.inhalt p { margin: 0 0 14px; }
+
+/* ZEILENLAENGE. Bei 1440 px war die Textspalte 773 px breit - gemessen
+   93 Zeichen je Zeile. Beim Zeilenwechsel verliert das Auge dann die Zeile;
+   angenehm sind 60 bis 75, bis 80 vertretbar.
+
+   570 px, nicht 600: die Zeichenzahl haengt am Text. Gemessen an zwei Seiten
+   ergaben 600 px einmal 73 und einmal 84 Zeichen - je nachdem, wie viele
+   breite Buchstaben vorkommen. 570 px druecken den schlechtesten Fall auf
+   rund 80 und lassen den guenstigsten bei rund 69.
+
+   NICHT in "ch" angeben: 1ch ist die Breite der NULL, und die ist in
+   Montserrat 10,6 px breit, waehrend ein durchschnittliches Zeichen nur
+   8,2 px braucht. "72ch" loeste zu 763 px auf und aenderte praktisch nichts -
+   die Regel sah richtig aus und tat nichts (03.09.2026 gemessen).
+
+   Begrenzt wird nur der FLIESSTEXT, nicht die Spalte: Tabellen, Codebloecke
+   und Bilder nutzen weiterhin die ganze Breite, sonst muesste man in ihnen
+   quer scrollen. */
+.inhalt > p, .inhalt > ul, .inhalt > ol, .inhalt > h2, .inhalt > h3,
+.inhalt > h4, .inhalt > blockquote, .inhalt > .callout { max-width: 570px; }
+.inhalt ul, .inhalt ol { padding-left: 22px; }
+.inhalt li { margin: 3px 0; }
+/* LINKS IM TEXT (10.10.2026): duenne Unterstreichung statt Halbfett.
+   Halbfette Ketten wie "ITR Partner Service -> Betrieb -> Seite" wirkten
+   schwer und standen in Konkurrenz zu echten Hervorhebungen. Die Linie
+   uebernimmt die Aufgabe, einen Link auch ohne Farbe erkennbar zu machen.
+   500 ist angefragt; Montserrat liegt nur in 400 und 600 bei, der Browser
+   nimmt dafuer 400 - gewollt ist "nicht fett". */
+.inhalt a {
+  color: var(--blue-text); font-weight: 500;
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px;
+}
+.inhalt a:hover { color: #2830a0; text-decoration-thickness: 2px; }
+/* Adresse als Linktext: darf an jeder Stelle umbrechen, sonst reisst eine
+   lange URL die Zeile auf. */
+.inhalt a.url { overflow-wrap: anywhere; }
+/* Verweisketten ("A -> B -> Seite"): der Generator setzt Glieder und Pfeile
+   in eigene Elemente. Unterstrichen werden nur die Glieder; Leerraum und
+   Pfeil bleiben frei. Der Pfeil gedaempft und nicht fett. */
+.inhalt a.kette { text-decoration: none; }
+.inhalt a .glied {
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px;
+}
+.inhalt a:hover .glied { text-decoration-thickness: 2px; }
+.inhalt .pfeil { color: var(--ink-muted); font-weight: 400; }
+/* Redaktionsvorschau (--show-todos): Platzhalter gelb hinterlegt. */
+.inhalt mark.todo {
+  background: var(--todo-flaeche); color: var(--ink); padding: 0 3px; border-radius: 2px;
+  box-decoration-break: clone; -webkit-box-decoration-break: clone;
+}
+.verweis-inaktiv { color: var(--ink-soft); }
+.verweis-inaktiv::before { content: '\00BB\00A0'; }
+
+/* --------------------------------------------------------------- Tabellen */
+/* ------------------------------------------------- Sprungziele im Text */
+/*
+ * ABSTAND UNTER DIE KLEBENDE KOPFLEISTE.
+ *
+ * Ohne das landet ein Sprungziel (#ueberschrift) bei y = 0 und steckt
+ * vollstaendig hinter der 60 px hohen Kopfleiste - am 03.09.2026 gemessen,
+ * 61 px Fehlbetrag. Betroffen war JEDER solche Verweis: die Eintraege der
+ * Ueberschriftenspalte rechts, die Verweise innerhalb einer Seite und jede
+ * weitergegebene Adresse mit Raute.
+ *
+ * 76 px = Leiste (60) plus Luft, damit die Ueberschrift nicht an der Kante
+ * klebt. Gilt fuer ALLES mit einer Kennung im Inhalt, nicht nur fuer
+ * Ueberschriften - BookStack vergibt auch Absaetzen eine.
+ */
+.inhalt [id], .seitenkopf [id] { scroll-margin-top: 76px; }
+
+/* Sanft scrollen, wenn jemand in der Ueberschriftenspalte klickt - aber nur,
+   wenn keine Bewegungsreduzierung eingestellt ist. */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+/* ------------------------------------------------------------------ Bilder */
+/*
+ * HOECHSTBREITE, damit kein Bild die Spalte sprengt - dasselbe Muster, das
+ * vorher schon die Tabellen aufgerissen hatte. BookStack liefert oft eine
+ * feste Breitenangabe im Markup mit; die bleibt als Wunschgroesse erhalten,
+ * wird aber nie ueberschritten. Die Hoehenangabe entfernt der Generator,
+ * sonst verzerrt das Bild auf schmalen Fenstern.
+ */
+/*
+ * BILD AUF EINER PLATTE, nicht an die Textkante geklebt.
+ *
+ * Linksbuendig ist richtig - der Text hat eine feste linke Kante, und ein
+ * zentriertes 300-px-Bild in einer 660-px-Spalte schwimmt in der Mitte und
+ * liest sich als Dekoration statt als Beweisstueck. Nur "display: block"
+ * allein sah aber angeklatscht aus (03.09.2026 bemerkt): ein
+ * Bildschirmfoto mit weisser Oberflaeche geht auf hellem Grund ohne Fassung
+ * ins Nichts ueber.
+ *
+ * Deshalb eine helle Platte mit Innenabstand: das Bild sitzt sichtbar AUF
+ * etwas, behaelt seine linke Kante und bekommt Luft nach oben und unten.
+ */
+.bild-absatz { margin: 22px 0 0; }
+.inhalt img {
+  max-width: 100%; height: auto; display: block;
+  padding: 10px; background: #fff;
+  border: 1px solid var(--line); border-radius: var(--rund);
+  box-shadow: 0 1px 3px rgba(40,40,40,.06);
+}
+/* Bildunterschrift gehoert zum Bild, nicht daneben: klein, grau, dicht
+   darunter - und mit derselben linken Kante. */
+.bild-unterschrift {
+  margin: 8px 0 22px; font-size: 13.5px; color: var(--ink-soft); max-width: 570px;
+}
+.bild-unterschrift em, .bild-unterschrift i { font-style: normal; }
+
+/* BILDLUPE (Verhalten siehe suche.js). Zentriert per place-items, nicht
+   justify-content - die Exportpruefung meldet justify-content: center. */
+.inhalt img.lupe-bar { cursor: zoom-in; }
+.bildlupe {
+  position: fixed; inset: 0; z-index: 100;
+  display: grid; place-items: center; overflow: auto;
+  padding: 3vh 3vw; background: rgba(15,18,25,.88); cursor: zoom-out;
+}
+.bildlupe img {
+  max-width: 94vw; max-height: 94vh; width: auto; height: auto;
+  padding: 8px; background: #fff; border-radius: var(--rund);
+  box-shadow: 0 8px 40px rgba(0,0,0,.5);
+}
+.bildlupe-zu {
+  position: fixed; top: 12px; right: 12px; width: 40px; height: 40px;
+  display: grid; place-items: center; border: 0; border-radius: 50%;
+  background: rgba(255,255,255,.16); color: #fff; font-size: 26px; line-height: 1;
+  cursor: pointer;
+}
+.bildlupe-zurueck, .bildlupe-vor {
+  position: fixed; top: 50%; width: 44px; height: 64px; margin-top: -32px;
+  display: grid; place-items: center; border: 0; border-radius: var(--rund);
+  background: rgba(255,255,255,.16); color: #fff; font-size: 40px; line-height: 1;
+  cursor: pointer;
+}
+/* Mit Pfeilen: Bild laesst links und rechts Platz fuer die Knoepfe,
+   auf schmalen Fenstern liegen sie ueber dem Bild. */
+@media (min-width: 700px) { .bildlupe.reihe img { max-width: calc(100vw - 136px); } }
+.bildlupe-zurueck { left: 12px; }
+.bildlupe-vor { right: 12px; }
+.bildlupe-zaehler {
+  position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%);
+  padding: 3px 10px; border-radius: 12px; background: rgba(0,0,0,.45);
+  color: #fff; font-size: 13px; font-variant-numeric: tabular-nums; pointer-events: none;
+}
+.bildlupe-zu:hover, .bildlupe-zurueck:hover, .bildlupe-vor:hover { background: rgba(255,255,255,.3); }
+.bildlupe-zu:focus-visible, .bildlupe-zurueck:focus-visible, .bildlupe-vor:focus-visible { outline: 3px solid var(--mint); outline-offset: 2px; }
+html.dunkel .bildlupe img { background: var(--flaeche); }
+/* Bild im Wiki vorhanden, Datei aber nicht gefunden: statt eines leeren
+   Rahmens der Alternativtext - der sagt dem Leser wenigstens, was fehlt. */
+.bild-fehlt {
+  display: inline-block; font-size: 13.5px; color: var(--ink-soft);
+  background: #f2f2f5; border: 1px dashed var(--line);
+  border-radius: var(--rund-klein); padding: 3px 8px;
+}
+
+/*
+ * TABELLEN. Das Scrollen macht der umgebende .tabellenrahmen, nicht die
+ * Tabelle selbst.
+ *
+ * Vorher stand hier "display: block; overflow-x: auto" auf der Tabelle - und
+ * das half NICHT: die Tabelle bekam mit "width: 100%" die Breite ihres
+ * Elternteils, und der war schon zu breit. Die Ursache lag im Raster, nicht
+ * hier (siehe die Regel fuer schmale Fenster weiter unten). "display: block"
+ * kostete dabei noch das Spaltenverhalten einer echten Tabelle.
+ *
+ * min-width statt width: die Tabelle darf breiter werden als der Rahmen und
+ * dann darin scrollen, anstatt ihre Spalten auf Handybreite zu quetschen.
+ */
+.tabellenrahmen {
+  overflow-x: auto; margin: 14px 0 20px;
+  border-radius: var(--rund); border: 1px solid var(--line);
+  /* Ohne isolation schneidet die Rundung die Kopffarbe an den oberen Ecken
+     nicht mit - die Mintflaeche stand dann eckig in einem runden Rahmen. */
+  isolation: isolate;
+}
+.inhalt table {
+  border-collapse: collapse; min-width: 100%; width: auto; margin: 0; font-size: 15px;
+}
+/* Der Rahmen traegt jetzt den Rand, die Zellen am Aussenrand nicht mehr. */
+.tabellenrahmen tr:last-child td { border-bottom: 0; }
+/*
+ * TABELLENKOPF: eine blasse Mintflaeche und eine Linie - das genuegt.
+ *
+ * Vorher liefen hier VIER Mittel fuer dieselbe Aufgabe gleichzeitig: volle
+ * Mintflaeche (#BFEEE2), ein 2 px blauer Strich darunter, mintfarbene
+ * Zebrastreifen in jeder zweiten Zeile und ein vollstaendiges Liniengitter.
+ * Zusammen sah das aus wie eine Tabellenkalkulation und stritt mit der
+ * ruhigen Typografie ringsum. Mint bleibt als Marken-Anklang, aber blass.
+ */
+.inhalt th {
+  background: var(--mint-pale); color: var(--ink); font-weight: 600; text-align: left;
+  border-bottom: 2px solid var(--mint); padding: 11px 14px; vertical-align: top;
+  white-space: nowrap;
+}
+.inhalt td {
+  border-bottom: 1px solid var(--line); padding: 11px 14px; vertical-align: top;
+  /* Ziffern in gleicher Breite: in den Referenztabellen stehen Versionen,
+     Groessen und Nummern untereinander und sollen als Spalte lesbar sein. */
+  font-variant-numeric: tabular-nums;
+}
+/* KEINE Zebrastreifen. Die Haarlinien zwischen den Zeilen fuehren das Auge
+   schon; eine zweite Farbe darueber macht die Tabelle unruhig, ohne etwas
+   hinzuzufuegen. Bei sehr breiten Tabellen hilft stattdessen, dass die erste
+   Spalte stehen bleibt - dazu unten. */
+.inhalt tbody tr:hover td { background: #fafafa; }
+
+/* -------------------------------------------------------------------- Code */
+.inhalt code {
+  font-family: Consolas, 'Courier New', monospace; font-size: .9em;
+  background: #f4f4f4; border: 1px solid var(--line); border-radius: 2px; padding: 1px 4px;
+}
+/*
+ * CODEFELD: dunkler Grund, Sprachkennung, Kopierknopf.
+ *
+ * HELLER Grund, in zwei Schritten dorthin gekommen: zuerst marine (zu
+ * blaustichig, das Blau legte sich ueber die blauen Schluesselwoerter), dann
+ * neutral dunkel (stoerte im hellen Satz - ein grosses dunkles Rechteck
+ * mitten im Text zieht den Blick weg vom Gelesenen). Jetzt ein leicht
+ * abgesetztes Hellgrau: der Block bleibt ein Einschub, ohne die Seite zu
+ * zerschneiden.
+ *
+ * DIE MARKENFARBEN SIND NEU GEWAEHLT, nicht umgerechnet. Die Toene fuer
+ * dunklen Grund (helles Mint, helles Blau) waeren hier unlesbar; jede Farbe
+ * unten liegt bei mindestens 4,5:1 auf #f6f6f8.
+ */
+.codefeld {
+  margin: 16px 0 22px; border-radius: var(--rund); overflow: hidden;
+  background: #f6f6f8; border: 1px solid #e2e2e7;
+}
+.codefeld-kopf {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 7px 10px 7px 14px; background: #eeeef1; border-bottom: 1px solid #e2e2e7;
+}
+.codefeld-sprache {
+  font-size: 11.5px; letter-spacing: .07em; text-transform: uppercase;
+  color: #6a6a74; font-weight: 600;
+}
+/* Ohne JavaScript kann der Knopf nichts - dann bleibt er weg, statt als
+   tote Schaltflaeche dazustehen. suche.js macht ihn sichtbar. */
+.codefeld-kopieren { display: none; }
+.codefeld-kopieren.kann {
+  display: inline-block; cursor: pointer;
+  font: inherit; font-size: 12px; line-height: 1;
+  padding: 5px 9px; border-radius: var(--rund-klein);
+  background: transparent; border: 1px solid #cfcfd6; color: #55555f;
+}
+.codefeld-kopieren.kann:hover { background: #e2e2e7; color: var(--ink); }
+.codefeld-kopieren.fertig { border-color: var(--ok); color: #0f7a55; }
+
+.codefeld pre {
+  margin: 0; padding: 13px 14px; overflow-x: auto;
+  font-size: 13.5px; line-height: 1.55; color: #26262c;
+  /* Zeilen NICHT umbrechen: in SQL und XML traegt der Umbruch Bedeutung.
+     Der Block scrollt stattdessen seitlich - so wie die Tabellen. */
+  white-space: pre;
+}
+.codefeld pre code {
+  background: none; border: 0; padding: 0; font-size: inherit; color: inherit;
+  font-family: Consolas, 'Courier New', monospace;
+}
+/* Die Bildlaufleiste im Codefeld passend zum dunklen Grund. */
+.codefeld pre { scrollbar-width: thin; scrollbar-color: var(--leiste) transparent; }
+.codefeld pre::-webkit-scrollbar { height: 9px; }
+.codefeld pre::-webkit-scrollbar-track { background: transparent; }
+.codefeld pre::-webkit-scrollbar-thumb {
+  background: var(--leiste); border-radius: 4px; border: 2px solid transparent; background-clip: content-box;
+}
+
+/* ------------------------------------------------------- Farben der Marken */
+/* Auf #f6f6f8 geprueft, jede Farbe mindestens 4,5:1. Mint kommt bei Funktionen und Variablen vor - das ist
+   die Markenfarbe, hier als dunkles Petrol. */
+.tk-kommentar   { color: #5f6773; font-style: italic; }
+.tk-text        { color: #9a5000; }   /* Zeichenketten und Werte */
+.tk-zahl        { color: #a3195b; }
+.tk-schluessel  { color: var(--blue-text); font-weight: 600; }
+.tk-funktion    { color: #0d6e63; }
+.tk-variable    { color: #0b6a7a; }
+.tk-schalter    { color: #6b28c9; }   /* PowerShell-Parameter, -Recurse */
+.tk-marke       { color: var(--blue-text); }   /* XML-Tags, Batch-Sprungmarken */
+.tk-eigenschaft { color: #0d6e63; }   /* Attribute, Schluessel in JSON/INI */
+.tk-abschnitt   { color: #6b28c9; font-weight: 600; }
+.tk-anweisung   { color: #5f6773; }
+
+/* --------------------------------------------------------- Hinweiskaesten */
+.inhalt .callout {
+  padding: 10px 14px; margin: 14px 0; border: 1px solid var(--line);
+  border-left: 4px solid var(--blue); background: var(--mint-pale); font-size: 15px;
+}
+.inhalt .callout p:last-child { margin-bottom: 0; }
+.inhalt .callout.info    { border-left-color: var(--blue);  background: #f1f2fb; }
+.inhalt .callout.success { border-left-color: var(--ok);    background: #edf9f4; }
+.inhalt .callout.warning { border-left-color: var(--warn);  background: #fef2f2; }
+.inhalt .callout.danger  { border-left-color: var(--warn);  background: #fde9e9; }
+
+/* --------------------------------------------------------- Rechte Spalte */
+.seiteninhalt { font-size: 13.5px; border-left: 1px solid var(--line); padding-left: 14px; }
+.seiteninhalt h2 {
+  font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--ink-soft); margin: 0 0 8px;
+}
+.seiteninhalt ul { list-style: none; margin: 0; padding: 0; }
+.seiteninhalt li { margin: 3px 0; }
+.seiteninhalt li.e3 { padding-left: 14px; }
+.seiteninhalt a {
+  display: block; color: var(--ink); text-decoration: none;
+  padding: 2px 0 2px 8px; margin-left: -9px;
+  border-left: 2px solid transparent;
+}
+.seiteninhalt a:hover { color: var(--blue-text); }
+/* Wo man gerade steht. Wird vom Skript gesetzt, waehrend man scrollt. */
+.seiteninhalt a.aktuell {
+  color: var(--blue-text); font-weight: 600; border-left-color: var(--blue);
+}
+
+/* ------------------------------------------------------------- Startseite */
+/* RASTER (10.10.2026): auto-fit, 24 px Abstand, Karten einer Reihe gleich
+   hoch. Genau VIER Karten (.kacheln-4, setzt der Generator) stehen 2 x 2
+   statt 3 + 1 - in der 960-px-Spalte passen sonst drei, und die zweite Reihe
+   bliebe fast leer. */
+.kacheln {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px; align-items: stretch;
+}
+.kacheln.kacheln-4 {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+}
+.kachel {
+  border: 1px solid var(--line); border-radius: var(--rund); padding: 16px 18px; background: #fff;
+  /* Ausgangszustand mit einem Hauch Schatten, damit beim Zeigen nicht aus
+     dem Nichts einer erscheint, sondern ein vorhandener staerker wird. */
+  box-shadow: 0 1px 2px rgba(40,40,40,.05);
+  transition: box-shadow .16s ease, transform .16s ease;
+  /* Fuer das Vergroessern: die gezeigte Kachel muss ueber den Nachbarn liegen,
+     sonst schneiden deren Rahmen die vergroesserte Kante an. */
+  position: relative;
+}
+/*
+ * Rueckmeldung beim Zeigen: grauer Schatten und ein Hauch groesser.
+ * Kein blauer Rahmen mehr - Blau ist hier fuer LINKS und den Tastaturfokus
+ * reserviert, und ein blau umrandeter Kasten sah aus wie ausgewaehlt statt
+ * wie angezeigt.
+ * 1,5 % Vergroesserung, nicht mehr: darueber wird die Schrift beim Skalieren
+ * sichtbar unscharf, und in einem Raster aus acht Kacheln wirkt jede
+ * groessere Bewegung unruhig.
+ */
+/* Schatten zurueckgenommen: 4/14px bei 13 % war zusammen mit der
+   Vergroesserung zu viel Rueckmeldung fuer eine Kachel. Jetzt traegt die
+   Bewegung den Hinweis, der Schatten begleitet ihn nur. */
+.kachel:hover {
+  box-shadow: 0 2px 8px rgba(40,40,40,.08);
+  transform: scale(1.015);
+  z-index: 2;
+}
+/* Wer Bewegung im System abgeschaltet hat, bekommt nur den Schatten. */
+@media (prefers-reduced-motion: reduce) {
+  .kachel { transition: box-shadow .16s ease; }
+  .kachel:hover { transform: none; }
+}
+
+/*
+ * GANZE KACHEL KLICKBAR - aber nur, wo es genau ein Ziel gibt: Buchkacheln
+ * auf der Startseite und Einzelseiten-Kacheln auf einer Buchseite.
+ * Kapitelkacheln enthalten eine Liste mehrerer Seiten; dort waere unklar,
+ * wohin ein Klick zwischen die Zeilen fuehrt.
+ *
+ * Umgesetzt als aufgezogene Flaeche des vorhandenen Links, nicht als Umbauen
+ * des Markups: so bleibt EIN Link mit sprechendem Text (der Buchname), den
+ * Vorleseprogramme richtig ankuendigen. Ein <a> um die ganze Kachel wuerde
+ * Beschreibung und Seitenzahl in den Linktext ziehen.
+ */
+.kachel-buch, .kachel-seite, .kachel-kapitel { position: relative; }
+.kachel-buch:hover, .kachel-seite:hover, .kachel-kapitel:hover { cursor: pointer; }
+.kachel-buch h2 a::after, .kachel-seite h2 a::after, .kachel-kapitel h2 a::after {
+  content: ''; position: absolute; inset: 0; border-radius: inherit;
+}
+/* Kapitelkacheln enthalten ZUSAETZLICH die Liste ihrer Seiten. Damit die
+   einzelnen Seitenlinks erreichbar bleiben, liegen sie ueber der aufgezogenen
+   Flaeche: Klick auf einen Seitentitel fuehrt zur Seite, Klick daneben ins
+   Kapitel. Ohne diese Stapelung wuerde die Flaeche die Liste zudecken. */
+.kachel-kapitel ul a { position: relative; z-index: 1; }
+/* Bei Tastaturbedienung die ganze Kachel umranden, nicht nur den Text -
+   sonst sieht man den Fokus in einer grossen Kachel kaum. Blau bleibt hier
+   bewusst: der Fokus MUSS deutlich sein, und er ist damit klar vom Zeigen
+   unterscheidbar - Zeigen macht Schatten, Fokus macht Rahmen. */
+.kachel-buch:focus-within, .kachel-seite:focus-within {
+  outline: 3px solid var(--blue); outline-offset: 2px;
+}
+.kachel-buch h2 a:focus-visible, .kachel-seite h2 a:focus-visible { outline: none; }
+/* Bei Kapitelkacheln NICHT die ganze Kachel umranden: dort koennen auch die
+   Seitenlinks in der Liste den Fokus haben, und dann waere unklar, was
+   gerade angesprungen ist. Jeder Link zeigt seinen Fokus selbst
+   (Sammelregel ".kachel a:focus-visible" unten). */
+.kachel h2 { font-size: 17px; font-weight: 600; margin: 0 0 8px; }
+/* LINKLISTE: 1.4 Zeilenhoehe IM Eintrag, 10 px ZWISCHEN den Eintraegen und
+   ein haengender Einzug mit Punkt - so ist klar, dass "Ersteinrichtung mit
+   dem Setup-Wizard" ein Eintrag ist und nicht zwei. */
+.kachel ul {
+  list-style: none; margin: 0; padding: 0; font-size: 14.5px; line-height: 1.4;
+  display: grid; gap: 10px;
+}
+.kachel li { margin: 0; padding-left: 14px; position: relative; }
+.kachel li::before {
+  content: ''; position: absolute; left: 2px; top: calc(.7em - 2px);
+  width: 5px; height: 5px; border-radius: 50%; background: var(--leiste-aktiv);
+}
+/* Kachelueberschriften in Anthrazit, NICHT blau: die ganze Kachel ist der
+   Link, dafuer sorgen Zeigefinger, Schatten und Vergroesserung. Blaue
+   Ueberschriften waren die groessten blauen Textflaechen der Seite und der
+   Hauptgrund, warum das Blau schwer zu lesen war. Nur die Seitenliste in
+   einer Kapitelkachel bleibt blau - das sind einzelne Links im Text. */
+.kachel h2 a { color: var(--ink); text-decoration: none; }
+/* Der Titel ist der Link der Kachel: beim Zeigen zeigt er das auch. */
+.kachel:hover h2 a, .kachel h2 a:focus-visible {
+  color: var(--blue-text); text-decoration: underline;
+  text-decoration-thickness: 1px; text-underline-offset: 3px;
+}
+.kachel ul a { color: var(--blue-text); text-decoration: none; }
+.kachel-buch h2 { font-size: 19px; }
+.kachel-text { font-size: 14px; color: var(--ink-soft); margin: 0 0 8px; }
+.kachel-zahl { font-size: 12.5px; color: var(--ink-soft); margin: 0; }
+.einstieg { font-size: 15px; color: var(--ink-soft); margin: 0 0 22px; }
+
+/* ---------------------------------------------------------------- Fusszeile */
+/* Linie GENAU so breit wie der Inhalt darueber: .rahmen ist 1320 px breit
+   mit je 20 px Innenabstand, sein Inhalt also 1280 px. Vorher lag die Linie
+   auf der vollen 1320er-Box und stand links und rechts 20 px ueber. */
+.fuss {
+  display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  border-top: 1px solid var(--line); margin-top: 20px; padding: 14px 0;
+  font-size: 12.5px; color: var(--ink-soft);
+  width: min(1280px, 100% - 40px); margin-inline: auto;
+}
+/* Impressum und Stand gehoeren zusammen an das rechte Ende - mit
+   space-between wuerden drei einzelne Elemente sonst gleichmaessig ueber die
+   ganze Breite verteilt. */
+.fuss-rechts { display: flex; gap: 18px; align-items: baseline; }
+.fuss a { color: var(--blue-text); text-decoration: none; }
+.fuss a:hover { color: var(--ink); }
+
+/* ------------------------------------------------------------- Sprunglink */
+/* Am Bildschirm unsichtbar, bis er den Fokus bekommt - fuer die Bedienung
+   ausschliesslich mit der Tastatur. Auf schmalen Fenstern dauerhaft sichtbar,
+   siehe die Handy-Regel weiter unten.
+
+   REIHENFOLGE BEACHTEN: diese Grundregel muss VOR den Media Queries stehen.
+   Stand sie dahinter, ueberstimmte sie bei gleicher Spezifitaet die
+   Handy-Regel, und der Link blieb dort versteckt. */
+.sprung {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+  font-size: 13px; color: #c8d4e8;
+}
+.sprung:focus {
+  position: static; width: auto; height: auto; overflow: visible;
+  clip: auto; outline: 3px solid var(--mint); outline-offset: 2px;
+}
+
+/* ------------------------------------------------------------ Schmale Fenster */
+@media (max-width: 1100px) {
+  /* Die Begrenzung der Textspalte MUSS hier mit. Vorher stand hier nur "1fr",
+     und damit verlor die Spalte unterhalb von 1100 px ihre Deckelung: sie
+     wuchs auf 773 px, also zurueck auf rund 93 Zeichen je Zeile - genau das,
+     was oberhalb von 1100 px behoben war. Der Sprung war beim Verkleinern des
+     Fensters deutlich sichtbar. */
+  .rahmen { grid-template-columns: 240px minmax(0,660px); }
+  /* MUSS hier mitgenannt werden. ".rahmen.ohne-rechts" ist spezifischer als
+     ".rahmen" und haette die Regel darueber ueberstimmt - die Navigation waere
+     unterhalb von 1100 px auf Buchseiten 288 px und auf Inhaltsseiten 240 px
+     breit gewesen, der Text also erneut an zwei verschiedenen Stellen. */
+  .rahmen.ohne-rechts { grid-template-columns: 240px minmax(0,960px); }
+  .kopf-innen { grid-template-columns: 240px minmax(0,660px) minmax(0,1fr) auto; }
+  .spalte-rechts { display: none; }
+}
+/* Unter 1250 px bleibt neben dem Suchfeld kein Platz mehr fuer den
+   Firmennamen - er wuerde ins Feld ragen. */
+@media (max-width: 1250px) {
+  .kopf-firma { display: none; }
+}
+@media (max-width: 760px) {
+  /* minmax(0,1fr) und NICHT "1fr". Das war der eigentliche Grund, warum bei
+     375 px die ganze Seite quer scrollte: "1fr" bedeutet
+     "minmax(auto, 1fr)", und dieses auto ist die MINDESTBREITE DES INHALTS.
+     Eine Referenztabelle mit 1127 px Mindestbreite hat damit die Spalte
+     aufgerissen, und mit ihr die Seite - der Text war links abgeschnitten.
+     Die Null als Untergrenze erlaubt der Spalte, schmaler zu werden als ihr
+     breitester Inhalt; der scrollt dann in seinem eigenen Rahmen. */
+  .rahmen { grid-template-columns: minmax(0,1fr); gap: 18px; }
+  .rahmen.ohne-rechts { grid-template-columns: minmax(0,1fr); }
+  /* HIER GENAUSO MITNENNEN wie in der 1100er-Query darueber - und das hatte
+     ich beim ersten Mal vergessen. Folge auf jeder Seite ohne rechte Spalte
+     (Startseite, Buch- und Kapitelseiten): ".rahmen.ohne-rechts" aus der
+     1100er-Regel gilt bei 375 px weiter, weil zwei Klassen spezifischer sind
+     als eine. Das Gitter stand damit auf "240px minmax(0,960px)", die zweite
+     Spur bekam den Rest von 77 px, und JEDER Navigationseintrag lief aus
+     seinen 77 px heraus ueber den Text daneben - auf dem Handy sah das aus
+     wie ineinandergeschobene Spalten (04.09.2026 gemeldet und gemessen).
+     Merksatz: wer ".rahmen" in einer Media Query anfasst, muss
+     ".rahmen.ohne-rechts" im selben Block anfassen. Pruefung P13 deckt das
+     jetzt fuer jede Query ab, nicht nur fuer die erste. */
+  /* INHALT ZUERST. Bei einer Spalte stand die Navigation ueber dem Artikel -
+     im Buch "Produkte" waren das 942 px, also 1,3 Bildschirmhoehen Scrollen,
+     bevor der Text anfing (am 03.09.2026 bei 375 px gemessen). Wer aus der
+     Suche oder von einem Link kommt, will den Text sehen, nicht das
+     Verzeichnis. Die Navigation steht deshalb darunter und ist ueber den
+     Sprunglink in der Kopfleiste erreichbar. */
+  .spalte-mitte { order: -1; }
+  .spalte-links {
+    position: static; max-height: none; padding-top: 12px;
+    border-top: 1px solid var(--line); border-bottom: 0;
+  }
+  /* Einspaltig: oben Logo, Sprunglink und Umschalter, darunter das Suchfeld. */
+  .kopf-innen { display: flex; flex-wrap: wrap; gap: 10px; }
+  /* Suchfeld in eigener, voller Zeile: neben Logo, Sprunglink und Umschalter
+     blieben ihm bei 375 px nur rund 80 px. Die Leiste wird dadurch hoeher,
+     deshalb unten auch der groessere Abstand fuer Sprungziele. */
+  .kopf-suche { order: 5; flex: 1 1 100%; max-width: none; }
+  .kopf-modus { order: 4; margin-left: auto; }
+  .inhalt [id], .seitenkopf [id] { scroll-margin-top: 126px; }
+  .kopf-firma { display: none; }
+  /* Auf dem Handy bei 30 px: die obere Zeile bleibt so niedrig. */
+  .kopf-logo img { height: 30px; }
+  /* Auf dem Handy dauerhaft sichtbar, sonst findet niemand die Navigation. */
+  .sprung {
+    position: static; width: auto; height: auto; overflow: visible;
+    clip: auto; order: 3;
+  }
+}
+
+/* -------------------------------------------------- Bedienung per Tastatur */
+/* Sichtbarer Fokus auf allem, was man anspringen kann. Ohne ihn ist die Seite
+   ohne Maus nicht bedienbar: man sieht nicht, wo man gerade steht.
+   :focus-visible statt :focus, damit ein Mausklick keinen Rahmen hinterlaesst. */
+/* Gesammelt an EINER Stelle, 3 px - auch fuer die Navigationspfeile
+   (summary), den Kopierknopf und die Tabellenrahmen. */
+.inhalt a:focus-visible,
+.nav a:focus-visible,
+.nav summary:focus-visible,
+.kachel a:focus-visible,
+.brotkrumen a:focus-visible,
+.fuss a:focus-visible,
+.codefeld-kopieren.kann:focus-visible,
+.tabellenrahmen:focus-visible,
+#suchergebnis a:focus-visible {
+  outline: 3px solid var(--blue); outline-offset: 2px; border-radius: 2px;
+}
+/* Innerhalb der dunklen Kopfleiste ist Blau auf Marine nicht zu sehen. */
+.kopf a:focus-visible { outline: 3px solid var(--mint); outline-offset: 2px; }
+
+/* -------------------------------------------------------------- Dunkelmodus */
+/*
+ * DUNKLER MODUS (10.10.2026), Farben aus dem BookStack-Design v2.
+ * Schaltet ueber die Klasse "dunkel" am <html>: gesetzt von einem kleinen
+ * Skript im <head> (gespeicherte Wahl, sonst Systemeinstellung) und vom
+ * Umschalter in der Kopfleiste. Nur am Bildschirm - gedruckt wird immer hell.
+ *
+ * Erst die Variablen, dann die Stellen, an denen bisher feste helle Werte
+ * standen. Jede Textfarbe unten liegt bei mindestens 4,5:1 auf ihrem Grund.
+ */
+@media screen {
+  html.dunkel {
+    color-scheme: dark;
+    --paper: #0e1420;
+    --ink: #e8edf7;
+    --ink-soft: #98a3ba;
+    --ink-muted: #aab4c8;
+    --blue: #8fb0ff;
+    --blue-text: #8fb0ff;
+    --mint-pale: #1c2a4a;
+    --line: #27324a;
+    --leiste: #2f3b55;
+    --leiste-aktiv: #4a5a80;
+    --todo-flaeche: #4a3c0f;
+    --flaeche: #131b2b;          /* Kacheln, Kaesten, aufgeklappte Listen */
+  }
+  html.dunkel .kopf-modus .mond { display: none; }
+  html.dunkel .kopf-modus .sonne { display: block; }
+
+  /* Suchergebnis unter dem Feld */
+  html.dunkel #suchergebnis { background: var(--flaeche); border-color: var(--line); }
+  html.dunkel #suchergebnis a { color: var(--ink); border-bottom-color: var(--line); }
+  html.dunkel #suchergebnis .aus { color: var(--ink-muted); }
+  html.dunkel #suchergebnis .suchzahl,
+  html.dunkel #suchergebnis .suchgruppe { background: var(--paper); border-bottom-color: var(--line); }
+  html.dunkel #suchergebnis .suchgruppe-zahl { background: var(--mint-pale); }
+  html.dunkel #suchergebnis mark { background: #3a4f80; color: #ffffff; }
+  /* --mint bleibt im Dunkelmodus hell (Fokusrahmen in der Kopfleiste), die
+     Tabellenkopf-Linie bekommt deshalb hier einen eigenen Ton. */
+  html.dunkel .inhalt th { border-bottom-color: #2f3d5c; }
+
+  /* Inhalt */
+  html.dunkel .entwurf-band { background: #3a1414; color: #ffb3b3; }
+  html.dunkel .inhalt a:hover { color: #b3c8ff; }
+  html.dunkel .inhalt img { background: var(--flaeche); box-shadow: none; }
+  html.dunkel .bild-fehlt { background: var(--flaeche); }
+  html.dunkel .inhalt tbody tr:hover td { background: var(--flaeche); }
+  html.dunkel .inhalt code { background: #1a2338; border-color: var(--line); }
+  html.dunkel .inhalt .callout        { background: var(--flaeche); }
+  html.dunkel .inhalt .callout.info    { background: #18213a; }
+  html.dunkel .inhalt .callout.success { background: #12261d; }
+  html.dunkel .inhalt .callout.warning,
+  html.dunkel .inhalt .callout.danger  { background: #2e1717; }
+  html.dunkel .kachel { background: var(--flaeche); box-shadow: none; }
+
+  /* Codefeld: dunkler Grund wie in BookStack, Markenfarben neu gewaehlt
+     (auf #0b111d jeweils mindestens 4,5:1). */
+  html.dunkel .codefeld { background: #0b111d; border-color: var(--line); }
+  html.dunkel .codefeld-kopf { background: var(--flaeche); border-bottom-color: var(--line); }
+  html.dunkel .codefeld-sprache { color: var(--ink-soft); }
+  html.dunkel .codefeld pre { color: #e2e8f0; }
+  html.dunkel .codefeld-kopieren.kann { border-color: #3a4766; color: var(--ink-muted); }
+  html.dunkel .codefeld-kopieren.kann:hover { background: var(--mint-pale); color: var(--ink); }
+  html.dunkel .codefeld-kopieren.fertig { color: #6fd3a8; }
+  html.dunkel .tk-kommentar   { color: #8b95a7; }
+  html.dunkel .tk-text        { color: #f2b47e; }
+  html.dunkel .tk-zahl        { color: #f59ac0; }
+  html.dunkel .tk-funktion,
+  html.dunkel .tk-eigenschaft { color: #5ed3c3; }
+  html.dunkel .tk-variable    { color: #6ccbe0; }
+  html.dunkel .tk-schalter,
+  html.dunkel .tk-abschnitt   { color: #c3a3ff; }
+  html.dunkel .tk-anweisung   { color: #8b95a7; }
+}
+
+/* ------------------------------------------------------------------- Druck */
+@media print {
+  .kopf, .spalte-links, .spalte-rechts, .fuss { display: none !important; }
+  .rahmen { display: block; max-width: none; padding: 0; }
+  html, body { background: #fff; font-size: 11pt; }
+  .inhalt a { color: var(--ink); }
+  h1, .inhalt h2, .inhalt h3 { break-after: avoid; page-break-after: avoid; }
+  .inhalt table, .inhalt pre, .inhalt .callout { break-inside: avoid; page-break-inside: avoid; }
+  .bildlupe { display: none !important; }
+}

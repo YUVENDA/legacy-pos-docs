@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, noai, noimageai">
+<title>GoodCompanyDaemon installieren | Produkte</title>
+<meta name="description" content="Den GoodCompanyDaemon auf einem Windows-Rechner installieren, mit der Datenbank verbinden und als Windows-Dienst einrichten. Danach folgt die Konfiguration der Importe in ITR Partner Service → Produkt">
+<link rel="icon" type="image/png" sizes="256x256" href="../../assets/favicon-256.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon-180.png">
+<link rel="stylesheet" href="../../assets/stil.css?v=7f947a91">
+<script>(function(){var w=document.documentElement,m=null;w.classList.add("js");try{m=localStorage.getItem("itr-doku-modus")}catch(e){}if(m==="dunkel"||(!m&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)){w.classList.add("dunkel")}})();</script>
+</head>
+<body>
+<header class="kopf">
+  <div class="kopf-innen">
+    <a class="kopf-logo" href="../../index.html"><img src="../../assets/logo.png" alt="IT Relations"></a>
+    <div class="kopf-suche">
+      <input type="search" id="suchfeld" placeholder="Alle Inhalte durchsuchen" autocomplete="off"
+             aria-label="Suchen" data-auf="../../">
+      <div id="suchergebnis" hidden></div>
+    </div>
+    <a class="sprung" href="#navigation">Zur Navigation</a>
+    <span class="kopf-firma">IT Relations GmbH</span>
+    <button type="button" class="kopf-modus" id="modusknopf" aria-pressed="false"
+            title="Dunkler Modus" aria-label="Dunkler Modus">
+      <svg class="mond" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.3 22c-5.5 0-10-4.5-10-10 0-4.4 2.9-8.3 7.1-9.6a.8.8 0 0 1 1 1 7.6 7.6 0 0 0 9.5 9.5.8.8 0 0 1 1 1C19.6 18.9 16.2 22 12.3 22z"/></svg>
+      <svg class="sonne" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg>
+    </button>
+  </div>
+</header>
+<div class="rahmen">
+  <aside class="spalte-links" id="navigation"><nav class="nav" aria-label="Inhalt"><a class="nav-wurzel" href="../../index.html">ITR POS Partner</a><details class="nav-buch"><summary><a href="../../news-releases-pcT/index.html">News &amp; Releases</a></summary><a class="nav-seite" href="../../news-releases-pcT/versionshinweise.html">Versionshinweise</a><a class="nav-seite" href="../../news-releases-pcT/versionshinweise-partnerportal.html">Versionshinweise Partnerportal</a><a class="nav-seite" href="../../news-releases-pcT/versionshinweise-cloud-centralpoint.html">Versionshinweise Cloud-CentralPoint</a></details><details class="nav-buch"><summary><a href="../../schnellstart/index.html">Schnellstart</a></summary><a class="nav-seite" href="../../schnellstart/standalone-kasse-und-betrieb-mit-centralpoint.html">Standalone-Kasse und Betrieb mit CentralPoint</a><a class="nav-seite" href="../../schnellstart/wie-diese-dokumentation-aufgebaut-ist.html">Wie diese Dokumentation aufgebaut ist</a><a class="nav-seite" href="../../schnellstart/produktlandschaft-im-uberblick.html">Produktlandschaft im Überblick</a><a class="nav-seite" href="../../schnellstart/rollen-hersteller-partner-endkunde.html">Rollen: Hersteller, Partner, Endkunde</a><a class="nav-seite" href="../../schnellstart/glossar-und-abkurzungen.html">Glossar und Abkürzungen</a><a class="nav-seite" href="../../schnellstart/cloud-dienste-erp-cloud-und-cloud-centralpoint.html">Cloud-Dienste: ERP Cloud und Cloud-CentralPoint</a></details><details class="nav-buch pfad" open><summary><a href="../../produkte/index.html">Produkte</a></summary><details class="nav-kapitel"><summary><a href="../../produkte/itr-kasse/index.html">ITR Kasse</a></summary><a class="nav-seite" href="../../produkte/itr-kasse/funktionsweise-der-itr-kasse.html">Funktionsweise der ITR Kasse</a><a class="nav-seite" href="../../produkte/itr-kasse/ersteinrichtung-mit-dem-setup-wizard.html">Ersteinrichtung mit dem Setup-Wizard</a><a class="nav-seite" href="../../produkte/itr-kasse/kasse-mit-dem-centralpoint-verbinden.html">Kasse mit dem CentralPoint verbinden</a><a class="nav-seite" href="../../produkte/itr-kasse/daten-von-hand-synchronisieren.html">Daten von Hand synchronisieren</a><a class="nav-seite" href="../../produkte/itr-kasse/zeitauftrage-und-jobs-einrichten.html">Zeitaufträge und Jobs einrichten</a></details><details class="nav-kapitel"><summary><a href="../../produkte/centralpoint/index.html">CentralPoint</a></summary><a class="nav-seite" href="../../produkte/centralpoint/datenbank-fur-den-centralpoint-einrichten.html">Datenbank für den CentralPoint einrichten</a><a class="nav-seite" href="../../produkte/centralpoint/centralpoint-installieren.html">CentralPoint installieren</a><a class="nav-seite" href="../../produkte/centralpoint/preise-steuern.html">Preise steuern</a><a class="nav-seite" href="../../produkte/centralpoint/lagerverwaltung-einrichten.html">Lagerverwaltung einrichten</a><a class="nav-seite" href="../../produkte/centralpoint/bundle-artikel-einrichten.html">Bundle-Artikel einrichten</a><a class="nav-seite" href="../../produkte/centralpoint/druckoptionen-der-bon-typen-referenz.html">Druckoptionen der Bon-Typen: Referenz</a><a class="nav-seite" href="../../produkte/centralpoint/ticket-designvorlagen-referenz.html">Ticket-Designvorlagen: Referenz</a></details><details class="nav-kapitel"><summary><a href="../../produkte/pos-gastro-app/index.html">POS Gastro App</a></summary><a class="nav-seite" href="../../produkte/pos-gastro-app/funktionsweise.html">Funktionsweise</a><a class="nav-seite" href="../../produkte/pos-gastro-app/in-betrieb-nehmen.html">In Betrieb nehmen</a><a class="nav-seite" href="../../produkte/pos-gastro-app/im-alltag-arbeiten.html">Im Alltag arbeiten</a><a class="nav-seite" href="../../produkte/pos-gastro-app/storungen-beheben.html">Störungen beheben</a></details><details class="nav-kapitel"><summary><a href="../../produkte/pos-kuchenmonitor/index.html">POS Küchenmonitor</a></summary><a class="nav-seite" href="../../produkte/pos-kuchenmonitor/funktionsweise-kuchenmonitor.html">Funktionsweise Küchenmonitor</a><a class="nav-seite" href="../../produkte/pos-kuchenmonitor/kuchenmonitor-in-betrieb-nehmen.html">Küchenmonitor in Betrieb nehmen</a><a class="nav-seite" href="../../produkte/pos-kuchenmonitor/abholnummer-auf-dem-kundenbeleg.html">Abholnummer auf dem Kundenbeleg</a><a class="nav-seite" href="../../produkte/pos-kuchenmonitor/kuchenmonitor-storungen-beheben.html">Küchenmonitor: Störungen beheben</a></details><details class="nav-kapitel pfad" open><summary><a href="../../produkte/goodcompanydaemon/index.html">GoodCompanyDaemon</a></summary><a class="nav-seite aktuell" href="../../produkte/goodcompanydaemon/goodcompanydaemon-installieren.html">GoodCompanyDaemon installieren</a></details><details class="nav-kapitel"><summary><a href="../../produkte/ebon/index.html">eBon</a></summary><a class="nav-seite" href="../../produkte/ebon/funktionsweise-von-ebon-und-ebon-plus.html">Funktionsweise von eBon und eBon Plus</a><a class="nav-seite" href="../../produkte/ebon/ebon-einrichten.html">eBon einrichten</a><a class="nav-seite" href="../../produkte/ebon/umsatz-app-einrichten.html">Umsatz-App einrichten</a></details></details><details class="nav-buch"><summary><a href="../../losungen/index.html">Lösungen</a></summary><a class="nav-seite" href="../../losungen/waagen.html">Waagen</a><a class="nav-seite" href="../../losungen/ticketing.html">Ticketing</a></details><details class="nav-buch"><summary><a href="../../betrieb-administration/index.html">Betrieb &amp; Administration</a></summary><a class="nav-seite" href="../../betrieb-administration/branding-und-erscheinungsbild-anpassen.html">Branding und Erscheinungsbild anpassen</a><details class="nav-kapitel"><summary><a href="../../betrieb-administration/infrastruktur/index.html">Infrastruktur</a></summary><a class="nav-seite" href="../../betrieb-administration/infrastruktur/systemvoraussetzungen.html">Systemvoraussetzungen</a><a class="nav-seite" href="../../betrieb-administration/infrastruktur/netzwerk-und-ports.html">Netzwerk und Ports</a><a class="nav-seite" href="../../betrieb-administration/infrastruktur/updates-einspielen.html">Updates einspielen</a><a class="nav-seite" href="../../betrieb-administration/infrastruktur/protokolldateien-und-diagnose.html">Protokolldateien und Diagnose</a><a class="nav-seite" href="../../betrieb-administration/infrastruktur/datenbank-sichern-und-wiederherstellen.html">Datenbank sichern und wiederherstellen</a><a class="nav-seite" href="../../betrieb-administration/infrastruktur/fernwartung-und-zugriff-auf-kassen.html">Fernwartung und Zugriff auf Kassen</a></details><details class="nav-kapitel"><summary><a href="../../betrieb-administration/benutzer-und-sicherheit/index.html">Benutzer und Sicherheit</a></summary><a class="nav-seite" href="../../betrieb-administration/benutzer-und-sicherheit/bediener-und-rechte-einrichten.html">Bediener und Rechte einrichten</a><a class="nav-seite" href="../../betrieb-administration/benutzer-und-sicherheit/datenbankbenutzer-und-ssl.html">Datenbankbenutzer und SSL</a></details><details class="nav-kapitel"><summary><a href="../../betrieb-administration/peripherie/index.html">Peripherie</a></summary><a class="nav-seite" href="../../betrieb-administration/peripherie/bondrucker-einrichten.html">Bondrucker einrichten</a><a class="nav-seite" href="../../betrieb-administration/peripherie/kundendisplay-einrichten.html">Kundendisplay einrichten</a><a class="nav-seite" href="../../betrieb-administration/peripherie/kassenschublade-einrichten.html">Kassenschublade einrichten</a><a class="nav-seite" href="../../betrieb-administration/peripherie/smarttill-kassenschublade-anbinden.html">SMARTtill-Kassenschublade anbinden</a></details></details><details class="nav-buch"><summary><a href="../../fiskalisierung/index.html">Fiskalisierung</a></summary><a class="nav-seite" href="../../fiskalisierung/fiskalisierung-uberblick-fur-partner.html">Fiskalisierung: Überblick für Partner</a><a class="nav-seite" href="../../fiskalisierung/tse-hardware-swissbit-in-betrieb-nehmen.html">TSE Hardware (Swissbit) in Betrieb nehmen</a><a class="nav-seite" href="../../fiskalisierung/cloud-tse-fiskaly-in-betrieb-nehmen.html">Cloud-TSE (fiskaly) in Betrieb nehmen</a><a class="nav-seite" href="../../fiskalisierung/tse-pin-und-puk-verwalten.html">TSE-PIN und PUK verwalten</a><a class="nav-seite" href="../../fiskalisierung/tse-firmware-aktualisieren.html">TSE-Firmware aktualisieren</a><a class="nav-seite" href="../../fiskalisierung/abgelaufene-tse-austauschen.html">Abgelaufene TSE austauschen</a><a class="nav-seite" href="../../fiskalisierung/tse-tar-exportieren.html">TSE-TAR exportieren</a></details><details class="nav-buch"><summary><a href="../../faq-troubleshooting/index.html">FAQ &amp; Troubleshooting</a></summary><a class="nav-seite" href="../../faq-troubleshooting/tse-meldet-einen-fehler.html">TSE meldet einen Fehler</a><a class="nav-seite" href="../../faq-troubleshooting/datenbank-sperrt-host-many-connection-errors-beheben.html">Datenbank sperrt Host (many connection errors) beheben</a><a class="nav-seite" href="../../faq-troubleshooting/ebon-link-nicht-gefunden.html">eBon-Link „nicht gefunden“</a></details></nav></aside>
+  <main class="spalte-mitte" id="inhalt"><div class="seitenkopf"><nav class="brotkrumen-nav" aria-label="Sie sind hier"><ol class="brotkrumen"><li><a href="../../produkte/index.html">Produkte</a></li><li><a href="../../produkte/goodcompanydaemon/index.html">GoodCompanyDaemon</a></li><li><span aria-current="page">GoodCompanyDaemon installieren</span></li></ol></nav><h1>GoodCompanyDaemon installieren</h1><p class="seitenmeta">Letzte &Auml;nderung 27.10.2026 &middot; Version 6 &middot; Seiten-ID 903</p></div><div class="inhalt"><p id="bkmrk-den-goodcompanydaemo">Den GoodCompanyDaemon auf einem Windows-Rechner installieren, mit der Datenbank verbinden und als Windows-Dienst einrichten. Danach folgt die Konfiguration der Importe in <span class="verweis-inaktiv kette"><span class="glied">ITR Partner Service</span> <span class="pfeil">→</span> <span class="glied">Produkte</span> <span class="pfeil">→</span> <span class="glied">GoodCompanyDaemon</span> <span class="pfeil">→</span> <span class="glied">In Betrieb nehmen</span></span>.</p>
+<h2 id="bkmrk-voraussetzungen">Voraussetzungen</h2>
+<ul id="bkmrk-windows-rechner%2C-der">
+<li>Windows-Rechner, der die Datenbank und die Import- und Exportverzeichnisse erreicht</li>
+<li>Administratorrechte auf dem Rechner</li>
+<li>Installationspaket <code>Setup-GoodCompanyDaemon-&lt;Version&gt;_…_64bit.exe</code></li>
+<li>Betrieb mit CentralPoint: Der Daemon arbeitet mit der CentralPoint-Datenbank. An einer Standalone-Kasse lässt er sich nicht betreiben.</li>
+<li>Zugangsdaten zur CentralPoint-Datenbank: Server, Port, Datenbankname, Benutzer, Passwort</li>
+<li>Lizenz für den GoodCompanyDaemon, im Partner-Portal erworben. Der CentralPoint prüft die Lizenz und schreibt sie in die Datenbank; der Daemon prüft sie beim Start in der Datenbank.</li>
+</ul>
+<h2 id="bkmrk-so-gehen-sie-vor">So gehen Sie vor</h2>
+<h3 id="bkmrk-1.-setup-ausf%C3%BChren">1. Setup ausführen</h3>
+<ol id="bkmrk-starten-sie-das-inst">
+<li>Starten Sie das Installationspaket mit Administratorrechten.</li>
+<li>Bestätigen Sie den Willkommensdialog mit <strong>Weiter</strong>.</li>
+<li>Übernehmen Sie das Standardverzeichnis <code>C:\GoodCompany\GoodCompanyDaemon\</code> und klicken Sie auf <strong>Weiter</strong>.</li>
+</ol>
+<p id="bkmrk-" class="bild-absatz"><img src="../../bilder/images/gallery/2026-10/02-schritt.png" alt="Setup: Speicherort wählen" loading="lazy"></p>
+<ol start="4" id="bkmrk-klicken-sie-auf-inst">
+<li>Klicken Sie auf <strong>Installieren</strong>.</li>
+<li>Schließen Sie den Assistenten nach der Meldung <em>GoodCompanyDaemon wurde erfolgreich installiert</em> mit <strong>Schließen</strong>.</li>
+</ol>
+<p id="bkmrk--1" class="bild-absatz"><img src="../../bilder/images/gallery/2026-10/05-schritt.png" alt="Setup: Installation abgeschlossen" loading="lazy"></p>
+<p id="bkmrk-das-setup-legt-im-st">Das Setup legt im Startmenü den Eintrag <strong>GoodCompanyDaemon</strong> an. Ein Windows-Dienst wird noch nicht eingerichtet — das geschieht in Schritt 3.</p>
+<h3 id="bkmrk-2.-datenbankverbindu">2. Datenbankverbindung einrichten</h3>
+<ol id="bkmrk-starten-sie-goodcomp">
+<li>Starten Sie <strong>GoodCompanyDaemon</strong> über das Startmenü.</li>
+<li>Beim ersten Start sind Vorgabewerte hinterlegt, die Verbindung schlägt deshalb fehl. Bestätigen Sie die Meldung <em>Es kann keine Verbindung mit der Datenbank hergestellt werden</em> mit <strong>OK</strong>.</li>
+</ol>
+<p id="bkmrk--2" class="bild-absatz"><img src="../../bilder/images/gallery/2026-10/06-db-fehler.png" alt="Erster Start: Fehler beim Verbindungsaufbau" loading="lazy"></p>
+<ol start="3" id="bkmrk-w%C3%A4hlen-sie-datenbank">
+<li>Wählen Sie <strong>Datenbankparameter anpassen</strong>.</li>
+</ol>
+<p id="bkmrk--3" class="bild-absatz"><img src="../../bilder/images/gallery/2026-10/07-db-auswahl.png" alt="Auswahl nach dem Verbindungsfehler" loading="lazy"></p>
+<ol start="4" id="bkmrk-tragen-sie-die-verbi">
+<li>Tragen Sie die Verbindungsdaten ein:</li>
+</ol>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-feld-inhalt-vorgabe-">
+<thead>
+<tr>
+<th>Feld</th>
+<th>Inhalt</th>
+<th>Vorgabe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>url</code></td>
+<td><code>jdbc:mysql:/<wbr>/<wbr>&lt;Server&gt;:&lt;Port&gt;/<wbr>&lt;Datenbank&gt;</code></td>
+<td><code>jdbc:mysql:/<wbr>/<wbr>www.itrelations.de:3306/<wbr>goodcompany</code></td>
+</tr>
+<tr>
+<td><code>userName</code></td>
+<td>Datenbankbenutzer</td>
+<td><code>gc</code></td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>Passwort des Datenbankbenutzers</td>
+<td>–</td>
+</tr>
+<tr>
+<td><code>driverName</code></td>
+<td>Datenbanktreiber</td>
+<td><code>com.mysql.jdbc.Driver</code></td>
+</tr>
+<tr>
+<td><code>sslMode</code></td>
+<td>Verschlüsselung der Verbindung</td>
+<td><code>PREFERRED</code></td>
+</tr>
+<tr>
+<td><code>names</code></td>
+<td>Zeichensatz der Verbindung</td>
+<td><code>latin1</code></td>
+</tr>
+</tbody>
+</table></div>
+<p id="bkmrk-die-%C3%BCbrigen-felder-%28">Die übrigen Felder (<code>collation</code>, <code>charset</code>, <code>autoCommit</code>, <code>holdability</code>) bleiben auf der Vorgabe. <strong>Spickzettel</strong> zeigt Beispielwerte für MySQL und PostgreSQL.</p>
+<p id="bkmrk--4" class="bild-absatz"><img src="../../bilder/images/gallery/2026-10/08-db-parameter.png" alt="Datenbank-Verbindungsparameter" loading="lazy"></p>
+<ol start="5" id="bkmrk-klicken-sie-auf-verb">
+<li>Klicken Sie auf <strong>Verbindungstest</strong>.</li>
+<li>Ist der Test erfolgreich, klicken Sie auf <strong>OK</strong>. Der Daemon startet und zeigt das Hauptfenster.</li>
+</ol>
+<p class="callout warning" id="bkmrk-mit-cancel-wird-der-">Mit <strong>Cancel</strong> wird der Daemon beendet, ohne die Parameter zu übernehmen. Beim nächsten Start erscheint wieder der Verbindungsfehler.</p>
+<p id="bkmrk-sp%C3%A4ter-lassen-sich-d">Später lassen sich die Verbindungsdaten im Hauptfenster über <strong>Datenbank</strong> ändern.</p>
+<h3 id="bkmrk-3.-als-windows-diens">3. Als Windows-Dienst einrichten</h3>
+<p id="bkmrk-damit-der-daemon-ohn">Damit der Daemon ohne angemeldeten Benutzer und nach einem Neustart automatisch läuft, wird er als Dienst eingerichtet.</p>
+<ol id="bkmrk-klicken-sie-im-haupt">
+<li>Klicken Sie im Hauptfenster auf <strong>Windows-Service</strong>.</li>
+<li>Klicken Sie auf <strong>Service nicht installiert</strong>. Der Dienst <code>GoodCompanyDaemon</code> wird mit Starttyp <em>Automatisch</em> angelegt und läuft unter dem lokalen Systemkonto.</li>
+</ol>
+<p id="bkmrk--5" class="bild-absatz"><img src="../../bilder/images/gallery/2026-10/12-service-nicht-installiert.png" alt="Windows-Service: Dienst noch nicht installiert" loading="lazy"></p>
+<ol start="3" id="bkmrk-liegen-import--oder-">
+<li>Liegen Import- oder Exportverzeichnisse auf einem Netzlaufwerk, braucht der Dienst ein Benutzerkonto mit Zugriff darauf: Klicken Sie auf <strong>Service Einstellungen</strong>, wählen Sie im Reiter <strong>Log on</strong> die Option <strong>This account</strong>, tragen Sie Konto und Passwort ein und bestätigen Sie mit <strong>Edit service</strong>.</li>
+</ol>
+<p id="bkmrk--6" class="bild-absatz"><img src="../../bilder/images/gallery/2026-10/15-nssm-logon.png" alt="Dienstkonto im NSSM service editor" loading="lazy"></p>
+<ol start="4" id="bkmrk-klicken-sie-auf-serv">
+<li>Klicken Sie auf <strong>Service gestoppt</strong>, um den Dienst zu starten.</li>
+<li>Bestätigen Sie die Meldung mit <strong>OK</strong>. Die Anwendung wird geschlossen und zusammen mit dem Dienst neu gestartet.</li>
+</ol>
+<p id="bkmrk--7" class="bild-absatz"><img src="../../bilder/images/gallery/2026-10/16-warnung-neustart.png" alt="Hinweis beim Starten des Dienstes" loading="lazy"></p>
+<p class="callout warning" id="bkmrk-unter-dem-lokalen-sy">Unter dem lokalen Systemkonto stehen verbundene Netzlaufwerke (Laufwerksbuchstaben) nicht zur Verfügung. Liegen Import- oder Exportverzeichnisse dort, werden die Dateien weder gelesen noch geschrieben. Verwenden Sie in diesem Fall ein Benutzerkonto mit Zugriff und UNC-Pfade.</p>
+<h2 id="bkmrk-ergebnis-pr%C3%BCfen">Ergebnis prüfen</h2>
+<ol id="bkmrk-%C3%96ffnen-sie-im-hauptf">
+<li>Öffnen Sie im Hauptfenster <strong>Windows-Service</strong>: angezeigt wird <strong>Service ist installiert</strong>, der Dienst läuft.</li>
+</ol>
+<p id="bkmrk--8" class="bild-absatz"><img src="../../bilder/images/gallery/2026-10/13-service-installiert.png" alt="Windows-Service: Dienst installiert" loading="lazy"></p>
+<ol start="2" id="bkmrk-in-der-windows-diens">
+<li>In der Windows-Diensteverwaltung steht der Dienst <code>GoodCompanyDaemon</code> auf <em>Wird ausgeführt</em>, Starttyp <em>Automatisch</em>.</li>
+<li><strong>Informationen</strong> zeigt die installierte Version.</li>
+<li>Im <strong>Protokoll</strong> steht der Verbindungsaufbau zur Datenbank ohne Fehlermeldung.</li>
+</ol>
+<h2 id="bkmrk-wenn-es-nicht-funkti">Wenn es nicht funktioniert</h2>
+<ul id="bkmrk-verbindungsfehler-be">
+<li><strong>Verbindungsfehler bei jedem Start:</strong> <code>url</code>, Benutzer und Passwort prüfen; mit <strong>Verbindungstest</strong> gegenprüfen, ob Server und Port vom Rechner aus erreichbar sind.</li>
+<li><strong>Dienst startet nicht oder findet keine Dateien:</strong> Dienstkonto prüfen — siehe Schritt 3.</li>
+<li><strong>Ursache unklar:</strong> Protokolldateien auswerten, siehe unten.</li>
+</ul>
+<h2 id="bkmrk-protokolldateien">Protokolldateien</h2>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-pfad-inhalt-c%3A%5Cgoodc">
+<thead>
+<tr>
+<th>Pfad</th>
+<th>Inhalt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>C:\<wbr>GoodCompany\<wbr>GoodCompanyDaemon\<wbr>logs\<wbr>goodcompany_*.log</code></td>
+<td>Protokoll der Anwendung, u. a. Verbindungsaufbau zur Datenbank</td>
+</tr>
+<tr>
+<td><code>C:\<wbr>GoodCompany\<wbr>GoodCompanyDaemon\<wbr>logs\<wbr>service\<wbr>goodcompanydaemon_*.log</code></td>
+<td>Protokoll des Dienstes</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="bkmrk-neuinstallation">Neuinstallation</h2>
+<p id="bkmrk-die-deinstallation-%C3%BC">Die Deinstallation über Windows entfernt die Programmdateien, nicht aber die Ordner <code>config</code>, <code>importconfig</code>, <code>logs</code> und <code>cm</code> sowie den Dienst-Eintrag. Für eine saubere Neuinstallation:</p>
+<ol id="bkmrk-ordner-config-und-im">
+<li>Ordner <code>config</code> und <code>importconfig</code> sichern — darin liegen Verbindungsdaten und Importeinstellungen.</li>
+<li>Dienst <code>GoodCompanyDaemon</code> stoppen und den Daemon deinstallieren.</li>
+<li>Den verbliebenen Dienst-Eintrag in einer Eingabeaufforderung mit Administratorrechten entfernen:</li>
+</ol>
+<div class="codefeld"><div class="codefeld-kopf"><span class="codefeld-sprache">Batch</span><button type="button" class="codefeld-kopieren">Kopieren</button></div><pre><code class="language-bat">sc delete GoodCompanyDaemon
+</code></pre></div>
+<ol start="4" id="bkmrk-den-ordner-c%3A%5Cgoodco">
+<li>Den Ordner <code>C:\GoodCompany\GoodCompanyDaemon\</code> umbenennen oder entfernen.</li>
+<li>Neu installieren wie oben beschrieben. Um die alte Konfiguration weiterzuverwenden, den gesicherten Ordner <code>config</code> vor dem ersten Start nach <code>C:\GoodCompany\GoodCompanyDaemon\config\</code> kopieren — dann entfällt Schritt 2.</li>
+</ol>
+<h2 id="bkmrk-weitere-informatione">Weitere Informationen</h2>
+<ul id="bkmrk-itr-partner-service-">
+<li><span class="verweis-inaktiv kette"><span class="glied">ITR Partner Service</span> <span class="pfeil">→</span> <span class="glied">Produkte</span> <span class="pfeil">→</span> <span class="glied">GoodCompanyDaemon</span> <span class="pfeil">→</span> <span class="glied">Funktionsweise</span></span></li>
+<li><span class="verweis-inaktiv kette"><span class="glied">ITR Partner Service</span> <span class="pfeil">→</span> <span class="glied">Produkte</span> <span class="pfeil">→</span> <span class="glied">GoodCompanyDaemon</span> <span class="pfeil">→</span> <span class="glied">In Betrieb nehmen</span></span></li>
+</ul>
+</div></main>
+  <aside class="spalte-rechts"><div class="seiteninhalt"><h2>Seiteninhalt</h2><ul><li class="e2"><a href="#bkmrk-voraussetzungen">Voraussetzungen</a></li><li class="e2"><a href="#bkmrk-so-gehen-sie-vor">So gehen Sie vor</a></li><li class="e3"><a href="#bkmrk-1.-setup-ausf%C3%BChren">1. Setup ausführen</a></li><li class="e3"><a href="#bkmrk-2.-datenbankverbindu">2. Datenbankverbindung einrichten</a></li><li class="e3"><a href="#bkmrk-3.-als-windows-diens">3. Als Windows-Dienst einrichten</a></li><li class="e2"><a href="#bkmrk-ergebnis-pr%C3%BCfen">Ergebnis prüfen</a></li><li class="e2"><a href="#bkmrk-wenn-es-nicht-funkti">Wenn es nicht funktioniert</a></li><li class="e2"><a href="#bkmrk-protokolldateien">Protokolldateien</a></li><li class="e2"><a href="#bkmrk-neuinstallation">Neuinstallation</a></li><li class="e2"><a href="#bkmrk-weitere-informatione">Weitere Informationen</a></li></ul></div></aside>
+</div>
+<footer class="fuss">
+  <span>ITR POS Partner</span>
+  <span class="fuss-rechts">
+    <span>&copy; 2026 IT Relations GmbH &middot; Weitergabe nur mit Zustimmung</span>
+    <a href="https://itrelations.de/de/impressum" target="_blank" rel="noopener">Impressum</a>
+    <span>Stand 30.10.2026</span>
+  </span>
+</footer>
+<script src="../../assets/suche.js?v=ed78121d"></script>
+</body>
+</html>
