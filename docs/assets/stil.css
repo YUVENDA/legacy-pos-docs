@@ -609,11 +609,8 @@ h1 { font-size: clamp(22px, 6.4vw, 32px); font-weight: 600; line-height: 1.15; m
 .bildlupe img {
   max-width: 94vw; max-height: 94vh; width: auto; height: auto;
   padding: 8px; background: #fff; border-radius: var(--rund);
-  box-shadow: 0 8px 40px rgba(0,0,0,.5); cursor: default;
+  box-shadow: 0 8px 40px rgba(0,0,0,.5);
 }
-.bildlupe.zoombar img { cursor: zoom-in; }
-.bildlupe.voll { place-items: start; }
-.bildlupe.voll img { max-width: none; max-height: none; margin: auto; cursor: zoom-out; }
 .bildlupe-zu {
   position: fixed; top: 12px; right: 12px; width: 40px; height: 40px;
   display: grid; place-items: center; border: 0; border-radius: 50%;
@@ -628,7 +625,7 @@ h1 { font-size: clamp(22px, 6.4vw, 32px); font-weight: 600; line-height: 1.15; m
 }
 /* Mit Pfeilen: Bild laesst links und rechts Platz fuer die Knoepfe,
    auf schmalen Fenstern liegen sie ueber dem Bild. */
-@media (min-width: 700px) { .bildlupe.reihe:not(.voll) img { max-width: calc(100vw - 136px); } }
+@media (min-width: 700px) { .bildlupe.reihe img { max-width: calc(100vw - 136px); } }
 .bildlupe-zurueck { left: 12px; }
 .bildlupe-vor { right: 12px; }
 .bildlupe-zaehler {

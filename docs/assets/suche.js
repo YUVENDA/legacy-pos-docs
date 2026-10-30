@@ -405,17 +405,16 @@
 /*
   BILDLUPE: Klick auf ein Bild im Inhalt zeigt das Original (Ziel des
   umgebenden Links, sonst das Bild selbst) gross ueber der Seite.
-  Schliessen: Klick daneben, Esc, x. Ist das Original groesser als das
-  Fenster, schaltet ein Klick aufs Bild auf 100 % (scrollbar) und zurueck.
-  Weitere Bilder der Seite: Pfeiltasten, Pfeilknoepfe links/rechts oder
-  Wischen.
+  Schliessen: Klick (aufs Bild oder daneben), Esc, x.
+  Weitere Bilder der Seite: Scrollrad, Pfeiltasten, Pfeilknoepfe
+  links/rechts oder Wischen.
   Bilder, die auf eine andere Seite verlinken, bleiben normale Links;
   Strg/Umschalt/Mittelklick ebenso (Original im neuen Tab).
 */
 (function () {
   var BILDDATEI = /\.(png|jpe?g|gif|webp|svg)([?#].*)?$/i;
   var box = null, vollbild = null, zaehler = null, zuletzt = null;
-  var reihe = [], pos = 0, wischX = null;
+  var reihe = [], pos = 0, wischX = null, radZeit = 0;
 
   function ziel(img) {
     var a = img.closest('a');
@@ -436,7 +435,6 @@
   function zeigen(n) {
     pos = (n + reihe.length) % reihe.length;
     var img = reihe[pos], alt = img.getAttribute('alt') || '';
-    box.classList.remove('zoombar', 'voll');
     box.setAttribute('aria-label', alt || 'Bild vergroessert');
     vollbild.alt = alt;
     vollbild.src = ziel(img);
@@ -454,9 +452,7 @@
 
   function taste(e) {
     if (e.key === 'Escape') { schliessen(); return; }
-    // In der 100-%-Ansicht scrollen die Pfeiltasten das Bild.
-    var blaettern = reihe.length > 1 && !box.classList.contains('voll');
-    if (blaettern && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) {
+    if (reihe.length > 1 && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) {
       e.preventDefault();
       zeigen(pos + (e.key === 'ArrowRight' ? 1 : -1));
       return;
@@ -489,23 +485,22 @@
     }
     vollbild = document.createElement('img');
     vollbild.decoding = 'async';
-    vollbild.addEventListener('load', function () {
-      // clientWidth enthaelt 2 x 8 px Innenabstand.
-      if (box && (vollbild.naturalWidth > vollbild.clientWidth - 16 ||
-                  vollbild.naturalHeight > vollbild.clientHeight - 16)) {
-        box.classList.add('zoombar');
-      }
-    });
     vollbild.addEventListener('error', schliessen);
     box.appendChild(vollbild);
     box.addEventListener('click', function (e) {
-      if (e.target.closest('.bildlupe-zurueck, .bildlupe-vor')) { return; }
-      if (e.target !== vollbild) { schliessen(); return; }
-      if (box.classList.contains('zoombar')) { box.classList.toggle('voll'); }
+      if (!e.target.closest('.bildlupe-zurueck, .bildlupe-vor')) { schliessen(); }
     });
+    box.addEventListener('wheel', function (e) {
+      e.preventDefault();
+      // Nur die Richtung zaehlt (deltaMode je Browser verschieden); hoechstens
+      // ein Bild je 250 ms, Touchpads liefern viele kleine Ereignisse.
+      if (reihe.length < 2 || !e.deltaY || e.timeStamp - radZeit < 250) { return; }
+      radZeit = e.timeStamp;
+      zeigen(pos + (e.deltaY > 0 ? 1 : -1));
+    }, { passive: false });
     box.addEventListener('touchstart', function (e) { wischX = e.touches[0].clientX; }, { passive: true });
     box.addEventListener('touchend', function (e) {
-      if (wischX === null || reihe.length < 2 || box.classList.contains('voll')) { return; }
+      if (wischX === null || reihe.length < 2) { return; }
       var dx = e.changedTouches[0].clientX - wischX;
       wischX = null;
       if (Math.abs(dx) > 50) { zeigen(pos + (dx < 0 ? 1 : -1)); }
