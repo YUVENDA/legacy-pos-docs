@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, noai, noimageai">
+<title>EC-Terminal anbinden | Betrieb &amp; Administration</title>
+<meta name="description" content="Die Kasse spricht mit dem Zahlungsterminal über das ZVT-Protokoll, wahlweise seriell oder über das Netzwerk. Die Netzwerkanbindung ist die empfohlene. Die Verbindung funktioniert nur, wenn sich das Te">
+<link rel="icon" type="image/png" sizes="256x256" href="../../assets/favicon-256.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon-180.png">
+<link rel="stylesheet" href="../../assets/stil.css?v=7f947a91">
+<script>(function(){var w=document.documentElement,m=null;w.classList.add("js");try{m=localStorage.getItem("itr-doku-modus")}catch(e){}if(m==="dunkel"||(!m&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)){w.classList.add("dunkel")}})();</script>
+</head>
+<body>
+<header class="kopf">
+  <div class="kopf-innen">
+    <a class="kopf-logo" href="../../index.html"><img src="../../assets/logo.png" alt="IT Relations"></a>
+    <div class="kopf-suche">
+      <input type="search" id="suchfeld" placeholder="Alle Inhalte durchsuchen" autocomplete="off"
+             aria-label="Suchen" data-auf="../../">
+      <div id="suchergebnis" hidden></div>
+    </div>
+    <a class="sprung" href="#navigation">Zur Navigation</a>
+    <span class="kopf-firma">IT Relations GmbH</span>
+    <button type="button" class="kopf-modus" id="modusknopf" aria-pressed="false"
+            title="Dunkler Modus" aria-label="Dunkler Modus">
+      <svg class="mond" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.3 22c-5.5 0-10-4.5-10-10 0-4.4 2.9-8.3 7.1-9.6a.8.8 0 0 1 1 1 7.6 7.6 0 0 0 9.5 9.5.8.8 0 0 1 1 1C19.6 18.9 16.2 22 12.3 22z"/></svg>
+      <svg class="sonne" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg>
+    </button>
+  </div>
+</header>
+<div class="rahmen">
+  <aside class="spalte-links" id="navigation"><nav class="nav" aria-label="Inhalt"><a class="nav-wurzel" href="../../index.html">ITR POS Partner</a><details class="nav-buch"><summary><a href="../../news-releases-pcT/index.html">News &amp; Releases</a></summary><a class="nav-seite" href="../../news-releases-pcT/versionshinweise-cloud-centralpoint.html">Versionshinweise Cloud-CentralPoint</a><a class="nav-seite" href="../../news-releases-pcT/versionshinweise-erp-cloud.html">Versionshinweise ERP Cloud</a></details><details class="nav-buch"><summary><a href="../../schnellstart/index.html">Schnellstart</a></summary><a class="nav-seite" href="../../schnellstart/standalone-kasse-und-betrieb-mit-centralpoint.html">Standalone-Kasse und Betrieb mit CentralPoint</a><a class="nav-seite" href="../../schnellstart/wie-diese-dokumentation-aufgebaut-ist.html">Wie diese Dokumentation aufgebaut ist</a><a class="nav-seite" href="../../schnellstart/produktlandschaft-im-uberblick.html">Produktlandschaft im Überblick</a><a class="nav-seite" href="../../schnellstart/rollen-hersteller-partner-endkunde.html">Rollen: Hersteller, Partner, Endkunde</a><a class="nav-seite" href="../../schnellstart/glossar-und-abkurzungen.html">Glossar und Abkürzungen</a><a class="nav-seite" href="../../schnellstart/cloud-dienste-erp-cloud-und-cloud-centralpoint.html">Cloud-Dienste: ERP Cloud und Cloud-CentralPoint</a></details><details class="nav-buch"><summary><a href="../../produkte/index.html">Produkte</a></summary><details class="nav-kapitel"><summary><a href="../../produkte/itr-kasse/index.html">ITR Kasse</a></summary><a class="nav-seite" href="../../produkte/itr-kasse/funktionsweise-der-itr-kasse.html">Funktionsweise der ITR Kasse</a><a class="nav-seite" href="../../produkte/itr-kasse/ersteinrichtung-mit-dem-setup-wizard.html">Ersteinrichtung mit dem Setup-Wizard</a><a class="nav-seite" href="../../produkte/itr-kasse/kasse-mit-dem-centralpoint-verbinden.html">Kasse mit dem CentralPoint verbinden</a><a class="nav-seite" href="../../produkte/itr-kasse/daten-von-hand-synchronisieren.html">Daten von Hand synchronisieren</a><a class="nav-seite" href="../../produkte/itr-kasse/zeitauftrage-und-jobs-einrichten.html">Zeitaufträge und Jobs einrichten</a></details><details class="nav-kapitel"><summary><a href="../../produkte/centralpoint/index.html">CentralPoint</a></summary><a class="nav-seite" href="../../produkte/centralpoint/datenbank-fur-den-centralpoint-einrichten.html">Datenbank für den CentralPoint einrichten</a><a class="nav-seite" href="../../produkte/centralpoint/centralpoint-installieren.html">CentralPoint installieren</a><a class="nav-seite" href="../../produkte/centralpoint/preise-steuern.html">Preise steuern</a><a class="nav-seite" href="../../produkte/centralpoint/lagerverwaltung-einrichten.html">Lagerverwaltung einrichten</a><a class="nav-seite" href="../../produkte/centralpoint/bundle-artikel-einrichten.html">Bundle-Artikel einrichten</a><a class="nav-seite" href="../../produkte/centralpoint/druckoptionen-der-bon-typen-referenz.html">Druckoptionen der Bon-Typen: Referenz</a><a class="nav-seite" href="../../produkte/centralpoint/ticket-designvorlagen-referenz.html">Ticket-Designvorlagen: Referenz</a></details><details class="nav-kapitel"><summary><a href="../../produkte/pos-gastro-app/index.html">POS Gastro App</a></summary><a class="nav-seite" href="../../produkte/pos-gastro-app/funktionsweise.html">Funktionsweise</a><a class="nav-seite" href="../../produkte/pos-gastro-app/storungen-beheben.html">Störungen beheben</a></details><details class="nav-kapitel"><summary><a href="../../produkte/pos-kuchenmonitor/index.html">POS Küchenmonitor</a></summary><a class="nav-seite" href="../../produkte/pos-kuchenmonitor/funktionsweise-kuchenmonitor.html">Funktionsweise Küchenmonitor</a><a class="nav-seite" href="../../produkte/pos-kuchenmonitor/kuchenmonitor-in-betrieb-nehmen.html">Küchenmonitor in Betrieb nehmen</a><a class="nav-seite" href="../../produkte/pos-kuchenmonitor/abholnummer-auf-dem-kundenbeleg.html">Abholnummer auf dem Kundenbeleg</a></details><details class="nav-kapitel"><summary><a href="../../produkte/goodcompanydaemon/index.html">GoodCompanyDaemon</a></summary><a class="nav-seite" href="../../produkte/goodcompanydaemon/goodcompanydaemon-installieren.html">GoodCompanyDaemon installieren</a></details><details class="nav-kapitel"><summary><a href="../../produkte/ebon/index.html">eBon</a></summary><a class="nav-seite" href="../../produkte/ebon/funktionsweise-von-ebon-und-ebon-plus.html">Funktionsweise von eBon und eBon Plus</a><a class="nav-seite" href="../../produkte/ebon/ebon-einrichten.html">eBon einrichten</a><a class="nav-seite" href="../../produkte/ebon/umsatz-app-einrichten.html">Umsatz-App einrichten</a></details></details><details class="nav-buch"><summary><a href="../../losungen/index.html">Lösungen</a></summary><a class="nav-seite" href="../../losungen/waagen.html">Waagen</a><a class="nav-seite" href="../../losungen/ticketing.html">Ticketing</a></details><details class="nav-buch pfad" open><summary><a href="../../betrieb-administration/index.html">Betrieb &amp; Administration</a></summary><a class="nav-seite" href="../../betrieb-administration/branding-und-erscheinungsbild-anpassen.html">Branding und Erscheinungsbild anpassen</a><details class="nav-kapitel"><summary><a href="../../betrieb-administration/infrastruktur/index.html">Infrastruktur</a></summary><a class="nav-seite" href="../../betrieb-administration/infrastruktur/systemvoraussetzungen.html">Systemvoraussetzungen</a><a class="nav-seite" href="../../betrieb-administration/infrastruktur/netzwerk-und-ports.html">Netzwerk und Ports</a><a class="nav-seite" href="../../betrieb-administration/infrastruktur/updates-einspielen.html">Updates einspielen</a><a class="nav-seite" href="../../betrieb-administration/infrastruktur/protokolldateien-und-diagnose.html">Protokolldateien und Diagnose</a><a class="nav-seite" href="../../betrieb-administration/infrastruktur/datenbank-sichern-und-wiederherstellen.html">Datenbank sichern und wiederherstellen</a><a class="nav-seite" href="../../betrieb-administration/infrastruktur/fernwartung-und-zugriff-auf-kassen.html">Fernwartung und Zugriff auf Kassen</a></details><details class="nav-kapitel"><summary><a href="../../betrieb-administration/benutzer-und-sicherheit/index.html">Benutzer und Sicherheit</a></summary><a class="nav-seite" href="../../betrieb-administration/benutzer-und-sicherheit/bediener-und-rechte-einrichten.html">Bediener und Rechte einrichten</a><a class="nav-seite" href="../../betrieb-administration/benutzer-und-sicherheit/datenbankbenutzer-und-ssl.html">Datenbankbenutzer und SSL</a></details><details class="nav-kapitel pfad" open><summary><a href="../../betrieb-administration/peripherie/index.html">Peripherie</a></summary><a class="nav-seite" href="../../betrieb-administration/peripherie/bondrucker-einrichten.html">Bondrucker einrichten</a><a class="nav-seite" href="../../betrieb-administration/peripherie/kundendisplay-einrichten.html">Kundendisplay einrichten</a><a class="nav-seite" href="../../betrieb-administration/peripherie/kassenschublade-einrichten.html">Kassenschublade einrichten</a><a class="nav-seite" href="../../betrieb-administration/peripherie/scanner-einrichten.html">Scanner einrichten</a><a class="nav-seite aktuell" href="../../betrieb-administration/peripherie/ec-terminal-anbinden.html">EC-Terminal anbinden</a><a class="nav-seite" href="../../betrieb-administration/peripherie/smarttill-kassenschublade-anbinden.html">SMARTtill-Kassenschublade anbinden</a></details></details><details class="nav-buch"><summary><a href="../../fiskalisierung/index.html">Fiskalisierung</a></summary><a class="nav-seite" href="../../fiskalisierung/fiskalisierung-uberblick-fur-partner.html">Fiskalisierung: Überblick für Partner</a><a class="nav-seite" href="../../fiskalisierung/tse-hardware-swissbit-in-betrieb-nehmen.html">TSE Hardware (Swissbit) in Betrieb nehmen</a><a class="nav-seite" href="../../fiskalisierung/cloud-tse-fiskaly-in-betrieb-nehmen.html">Cloud-TSE (fiskaly) in Betrieb nehmen</a><a class="nav-seite" href="../../fiskalisierung/tse-pin-und-puk-verwalten.html">TSE-PIN und PUK verwalten</a><a class="nav-seite" href="../../fiskalisierung/tse-firmware-aktualisieren.html">TSE-Firmware aktualisieren</a><a class="nav-seite" href="../../fiskalisierung/abgelaufene-tse-austauschen.html">Abgelaufene TSE austauschen</a><a class="nav-seite" href="../../fiskalisierung/tse-tar-exportieren.html">TSE-TAR exportieren</a></details><details class="nav-buch"><summary><a href="../../faq-troubleshooting/index.html">FAQ &amp; Troubleshooting</a></summary><a class="nav-seite" href="../../faq-troubleshooting/tse-meldet-einen-fehler.html">TSE meldet einen Fehler</a><a class="nav-seite" href="../../faq-troubleshooting/datenbank-sperrt-host-many-connection-errors-beheben.html">Datenbank sperrt Host (many connection errors) beheben</a><a class="nav-seite" href="../../faq-troubleshooting/ebon-link-nicht-gefunden.html">eBon-Link „nicht gefunden“</a></details></nav></aside>
+  <main class="spalte-mitte" id="inhalt"><div class="seitenkopf"><nav class="brotkrumen-nav" aria-label="Sie sind hier"><ol class="brotkrumen"><li><a href="../../betrieb-administration/index.html">Betrieb &amp; Administration</a></li><li><a href="../../betrieb-administration/peripherie/index.html">Peripherie</a></li><li><span aria-current="page">EC-Terminal anbinden</span></li></ol></nav><h1>EC-Terminal anbinden</h1><p class="seitenmeta">Letzte &Auml;nderung 03.11.2026 &middot; Version 7 &middot; Seiten-ID 741</p></div><div class="inhalt"><p id="bkmrk-die-kasse-spricht-mi">Die Kasse spricht mit dem Zahlungsterminal über das <strong>ZVT-Protokoll</strong>, wahlweise seriell oder über das Netzwerk. Die Netzwerkanbindung ist die empfohlene.</p>
+<p class="callout warning" id="bkmrk-die-verbindung-funkt">Die Verbindung funktioniert nur, wenn sich das Terminal im ZVT-Modus befindet. Steht es auf einem anderen Protokoll, bleibt jede Kommunikation stumm — unabhängig von den Einstellungen in der Kasse.</p>
+<h2 id="bkmrk-getestete-ger%C3%A4te">Getestete Geräte</h2>
+<p id="bkmrk-ict250%2C-verifone-vx8">iCT250, Verifone VX820, Artema Hybrid, Ingenico ICT220 und Ingenico iPP480.</p>
+<p id="bkmrk-grunds%C3%A4tzlich-sollte">Grundsätzlich sollten alle Terminals mit ZVT-Protokoll funktionieren. In der Praxis ist ein Test vor dem Produktivbetrieb dringend zu empfehlen.</p>
+<h2 id="bkmrk-voraussetzungen">Voraussetzungen</h2>
+<ul id="bkmrk-das-terminal-ist-bei">
+<li>Das Terminal ist beim Netzbetreiber angemeldet und betriebsbereit.</li>
+<li>Die Zugangsdaten für Kassierer, Manager und Techniker liegen vor. <strong>Sie kommen vom Betreiber des Terminals, nicht von ITR</strong> — es gibt keine allgemeingültige Anleitung zur Terminalseite.</li>
+<li>Bei Netzwerkanbindung: IP-Adresse und Port des Terminals, und die Ports sind nicht durch eine Firewall blockiert.</li>
+</ul>
+<h2 id="bkmrk-so-gehen-sie-vor">So gehen Sie vor</h2>
+<ol id="bkmrk-admin-panel-%E2%86%92-einste">
+<li><strong>Admin-Panel → Einstellungen → Hardware → Bezahlterminal</strong> öffnen.</li>
+<li><strong>Anbindung wählen:</strong>
+<ul>
+<li><em>Netzwerk (empfohlen):</em> <strong>Verbunden über Netzwerk</strong> wählen, <strong>IP-Adresse</strong> und <strong>IP-Port</strong> des Terminals eintragen.</li>
+<li><em>Seriell:</em> <strong>Verbunden über Serial-COM</strong> wählen, COM-Port und Parameter. Bewährt haben sich <strong>8 Datenbits, keine Parität, 9600 Baud, 2 Stoppbits</strong>.</li>
+</ul>
+</li>
+</ol>
+<p id="bkmrk-bild-verbindung" class="bild-absatz"><img src="../../bilder/images/gallery/2026-11/bezahlterminal-maske-v1.png" alt="Einstellungsmaske Bezahlterminal mit Beispielwerten für INIT Options, Passwort, IP-Adresse und IP-Port" loading="lazy"></p>
+<ol start="3" id="bkmrk-init-schritte">
+<li><strong>INIT Options</strong> setzen. Über <strong>Config INIT String</strong> die gewünschten Haken setzen, die Kasse berechnet den Code daraus. Er legt fest, welche Aufgaben die Kasse übernimmt und welche das Terminal — etwa, wer die Belege druckt.</li>
+<li><strong>Passwort</strong> hinterlegen — das Kassiererkennwort des Terminals, Standardwert <code>00 00 00</code>. Bei fünfstelligen Kennwörtern wird eine <code>0</code> vorangestellt.</li>
+<li>Unter <strong>Send Init-Command</strong> festlegen, wann sich die Kasse am Terminal anmeldet:</li>
+</ol>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-wert-wirkung-never-n">
+<thead>
+<tr>
+<th>Einstellung</th>
+<th>Wirkung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>never</strong></td>
+<td>Die Kasse meldet sich nie an. Das Terminal muss bereits passend eingerichtet sein.</td>
+</tr>
+<tr>
+<td><strong>once</strong></td>
+<td>Einmal nach dem Kassenstart, vor der ersten Transaktion — Standardwert und Regelfall.</td>
+</tr>
+<tr>
+<td><strong>everytime</strong></td>
+<td>Vor jeder Transaktion. Jeder Zahlvorgang dauert dadurch etwas länger.</td>
+</tr>
+<tr>
+<td><strong>Send logoff</strong></td>
+<td>Die Kasse meldet sich beim Beenden am Terminal ab.</td>
+</tr>
+</tbody>
+</table></div>
+<ol start="6" id="bkmrk-kassenabschluss%3A-mit">
+<li><strong>Kassenabschluss:</strong> Mit <strong>Bei Z-Abschluss an Terminal ein Tagesende-Kommando schicken</strong> führt die Kasse beim Kassenabschluss automatisch den Terminalabschluss aus. <strong>Terminal-Text auf Z-Bon drucken</strong> druckt den Text dieses Terminalabschlusses auf den Z-Bon.</li>
+</ol>
+<p id="bkmrk-screenshot-bezahlter" class="bild-absatz"><img src="../../bilder/images/gallery/2026-11/bezahlterminal-init-einstellungen-v1.png" alt="Einstellungen INIT Options, Passwort, Send Init-Command und Z-Abschluss mit Beispielwerten" loading="lazy"></p>
+<ol start="7" id="bkmrk-verbindung-testen">
+<li><strong>Verbindung testen:</strong> <strong>Send INIT Command now</strong> klicken. Die Kasse meldet sich sofort am Terminal an, ohne eine Zahlung auszulösen. Bei Erfolg erscheint die Meldung <strong>Kommunikation mit Bezahlterminal okay!</strong></li>
+</ol>
+<p id="bkmrk-bild-init-test" class="bild-absatz"><img src="../../bilder/images/gallery/2026-11/bezahlterminal-init-test-ok-v1.png" alt="Meldung nach Send INIT Command now: Kommunikation mit Bezahlterminal okay" loading="lazy"></p>
+<ol start="8" id="bkmrk-testzahlung">
+<li>Testzahlung durchführen.</li>
+</ol>
+<h2 id="bkmrk-ergebnis-pr%C3%BCfen">Ergebnis prüfen</h2>
+<ul id="bkmrk-eine-testzahlung-l%C3%A4u">
+<li><strong>Send INIT Command now</strong> meldet <strong>Kommunikation mit Bezahlterminal okay!</strong></li>
+<li>Eine Testzahlung läuft durch, der Beleg trägt den Terminaltext.</li>
+<li>Der Händlerbeleg wird gedruckt — dafür muss der Druck <strong>zusätzlich am Belegtyp</strong> aktiviert sein.</li>
+<li>Der Kassenabschluss schließt auch das Terminal ab, der Terminaltext steht auf dem Z-Bon.</li>
+</ul>
+<h2 id="bkmrk-wenn-es-nicht-funkti">Wenn es nicht funktioniert</h2>
+<ul id="bkmrk-keine-reaktion-des-t">
+<li><strong>Keine Reaktion des Terminals:</strong> Steht es im ZVT-Modus? Stimmen IP und Port beziehungsweise der COM-Port?</li>
+<li><strong>Zeitüberschreitungen bei serieller Anbindung:</strong> Der Parameter <code>Message.Timeout</code> unter <em>Alle Einstellungen</em> lässt sich schrittweise erhöhen — 400, dann 800, bis 1600.</li>
+<li><strong>Händlerbeleg fehlt:</strong> Der Druck ist am Belegtyp nicht aktiviert.</li>
+<li><strong>Zahlung hängt:</strong> Der Abbruch erfolgt am Terminal über dessen Abbruchtaste.</li>
+</ul>
+<h2 id="bkmrk-mehrere-terminals-in">Mehrere Terminals in einer Filiale</h2>
+<p id="bkmrk-f%C3%BCr-einen-filialweit">Für einen filialweiten Kassenabschluss über mehrere Terminals werden diese als Liste hinterlegt:</p>
+<div class="codefeld"><div class="codefeld-kopf"><span class="codefeld-sprache">Properties</span><button type="button" class="codefeld-kopieren">Kopieren</button></div><pre><code class="language-properties"><span class="tk-eigenschaft">Hardware.PaymentTerminal.sendCommitAtRecon</span>=<span class="tk-text">true
+</span>
+<span class="tk-eigenschaft">Hardware.PaymentTerminal.sendCommitAtReconToMultipleTerminals</span>=<span class="tk-text">&lt;IP&gt;:&lt;Port&gt;,&lt;IP&gt;:&lt;Port&gt;
+</span>
+</code></pre></div>
+<p class="callout warning" id="bkmrk-das-funktioniert-nur">Das funktioniert nur bei Anbindung über das Netzwerk. Seriell angebundene Terminals lassen sich nicht filialweit abschließen.</p>
+<h2 id="bkmrk-unterschriftsfeld-au">Unterschriftsfeld auf dem Beleg</h2>
+<p id="bkmrk-der-vom-terminal-gel">Der vom Terminal gelieferte Text lässt sich vor dem Druck ersetzen — etwa, um Platz für eine Unterschrift zu schaffen:</p>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-parameter-bedeutung-">
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Bedeutung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Receipt.Print.PaymentTerminalText.TextToSearchForLineForSigniture</code></td>
+<td>zu suchender Text</td>
+</tr>
+<tr>
+<td><code>Receipt.Print.PaymentTerminalText.TextToReplaceForLineForSigniture</code></td>
+<td>Ersatztext; <code>\<wbr>n</code> erzeugt eine Leerzeile</td>
+</tr>
+<tr>
+<td><code>Receipt.Print.PaymentTerminalText.Lines2addAtTheEnd</code></td>
+<td>zusätzliche Leerzeilen am Ende</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="bkmrk-auszahlung-am-termin">Auszahlung am Terminal</h2>
+<p id="bkmrk-ab-version-3.8-m%C3%B6gli">Ab Version 3.8 möglich. Im CentralPoint wird ein Bezahlweg angelegt.</p>
+<p class="callout warning" id="bkmrk-der-bezahlweg-muss-a">Der Bezahlweg muss auf <strong>Bar</strong> stehen, und <strong>Nutze EC Terminal</strong> darf <strong>nicht</strong> aktiviert sein — sonst wird die Auszahlung als Kartenzahlung verbucht.</p>
+<p id="bkmrk-an-der-kasse-wird-de">An der Kasse wird der Zahlwegcode der Auszahlung im Parameter <code>Hardware.PaymentTerminal.enable.cashout</code> hinterlegt. Der ausgezahlte Betrag lässt sich über die Variable <code>@Receipt.Change@</code> anzeigen.</p></div></main>
+  <aside class="spalte-rechts"><div class="seiteninhalt"><h2>Seiteninhalt</h2><ul><li class="e2"><a href="#bkmrk-getestete-ger%C3%A4te">Getestete Geräte</a></li><li class="e2"><a href="#bkmrk-voraussetzungen">Voraussetzungen</a></li><li class="e2"><a href="#bkmrk-so-gehen-sie-vor">So gehen Sie vor</a></li><li class="e2"><a href="#bkmrk-ergebnis-pr%C3%BCfen">Ergebnis prüfen</a></li><li class="e2"><a href="#bkmrk-wenn-es-nicht-funkti">Wenn es nicht funktioniert</a></li><li class="e2"><a href="#bkmrk-mehrere-terminals-in">Mehrere Terminals in einer Filiale</a></li><li class="e2"><a href="#bkmrk-unterschriftsfeld-au">Unterschriftsfeld auf dem Beleg</a></li><li class="e2"><a href="#bkmrk-auszahlung-am-termin">Auszahlung am Terminal</a></li></ul></div></aside>
+</div>
+<footer class="fuss">
+  <span>ITR POS Partner</span>
+  <span class="fuss-rechts">
+    <span>&copy; 2026 IT Relations GmbH &middot; Weitergabe nur mit Zustimmung</span>
+    <a href="https://itrelations.de/de/impressum" target="_blank" rel="noopener">Impressum</a>
+    <span>Stand 03.11.2026</span>
+  </span>
+</footer>
+<script src="../../assets/suche.js?v=ed78121d"></script>
+</body>
+</html>
