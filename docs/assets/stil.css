@@ -1122,3 +1122,13 @@ html.dunkel .bildlupe img { background: var(--flaeche); }
   .inhalt table, .inhalt pre, .inhalt .callout { break-inside: avoid; page-break-inside: avoid; }
   .bildlupe { display: none !important; }
 }
+
+/* Regalbeschreibung auf der Startseite (Andi 05.11.2026) */
+.regal-hinweis {
+  margin: 0 0 1.5rem; padding: 1rem 1.25rem;
+  border: 1px solid rgba(54, 63, 191, .25); border-left: 4px solid #363FBF; border-radius: 8px;
+  background: rgba(54, 63, 191, .04);
+}
+.regal-hinweis > :first-child { margin-top: 0; }
+.regal-hinweis > :last-child { margin-bottom: 0; }
+html.dunkel .regal-hinweis { background: rgba(255, 255, 255, .04); border-color: rgba(255, 255, 255, .15); border-left-color: #6c74e0; }
