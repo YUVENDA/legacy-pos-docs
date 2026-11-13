@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, noai, noimageai">
+<title>Cashlogy einrichten | Betrieb &amp; Administration</title>
+<meta name="description" content="Der Bezahlautomat Cashlogy von Azkoyen nimmt an der ITR Kasse Bargeld an und gibt Wechselgeld aus. Diese Seite führt von der Lizenz über den Automaten und die Kasse bis zur Schaltfläche in der Kassenm">
+<link rel="icon" type="image/png" sizes="256x256" href="../../assets/favicon-256.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon-180.png">
+<link rel="stylesheet" href="../../assets/stil.css?v=6b54f655">
+<script>(function(){var w=document.documentElement,m=null;w.classList.add("js");try{m=localStorage.getItem("itr-doku-modus")}catch(e){}if(m==="dunkel"||(!m&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)){w.classList.add("dunkel")}})();</script>
+</head>
+<body>
+<header class="kopf">
+  <div class="kopf-innen">
+    <a class="kopf-logo" href="../../index.html"><img src="../../assets/logo.png" alt="IT Relations"></a>
+    <div class="kopf-suche">
+      <input type="search" id="suchfeld" placeholder="Alle Inhalte durchsuchen" autocomplete="off"
+             aria-label="Suchen" data-auf="../../">
+      <div id="suchergebnis" hidden></div>
+    </div>
+    <a class="sprung" href="#navigation">Zur Navigation</a>
+    <span class="kopf-firma">IT Relations GmbH</span>
+    <button type="button" class="kopf-modus" id="modusknopf" aria-pressed="false"
+            title="Dunkler Modus" aria-label="Dunkler Modus">
+      <svg class="mond" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.3 22c-5.5 0-10-4.5-10-10 0-4.4 2.9-8.3 7.1-9.6a.8.8 0 0 1 1 1 7.6 7.6 0 0 0 9.5 9.5.8.8 0 0 1 1 1C19.6 18.9 16.2 22 12.3 22z"/></svg>
+      <svg class="sonne" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg>
+    </button>
+  </div>
+</header>
+<div class="rahmen">
+  <aside class="spalte-links" id="navigation"><nav class="nav" aria-label="Inhalt"><a class="nav-wurzel" href="../../index.html">ITR POS Partner</a><details class="nav-buch"><summary><a href="../../news-releases-pcT/index.html">News &amp; Releases</a></summary><a class="nav-seite" href="../../news-releases-pcT/itr-pos.html">ITR POS</a><a class="nav-seite" href="../../news-releases-pcT/partnerportal.html">Partnerportal</a><a class="nav-seite" href="../../news-releases-pcT/erp-cloud-cloud-cp.html">ERP Cloud (Cloud CP)</a></details><details class="nav-buch"><summary><a href="../../schnellstart/index.html">Schnellstart</a></summary><a class="nav-seite" href="../../schnellstart/standalone-kasse-und-betrieb-mit-centralpoint.html">Standalone-Kasse und Betrieb mit CentralPoint</a><a class="nav-seite" href="../../schnellstart/wie-diese-dokumentation-aufgebaut-ist.html">Wie diese Dokumentation aufgebaut ist</a><a class="nav-seite" href="../../schnellstart/produktlandschaft-im-uberblick.html">Produktlandschaft im Überblick</a><a class="nav-seite" href="../../schnellstart/rollen-hersteller-partner-endkunde.html">Rollen: Hersteller, Partner, Endkunde</a><a class="nav-seite" href="../../schnellstart/glossar-und-abkurzungen.html">Glossar und Abkürzungen</a><a class="nav-seite" href="../../schnellstart/cloud-dienste-erp-cloud-und-cloud-centralpoint.html">Cloud-Dienste: ERP Cloud und Cloud-CentralPoint</a></details><details class="nav-buch"><summary><a href="../../produkte/index.html">Produkte</a></summary><details class="nav-kapitel"><summary><a href="../../produkte/itr-kasse/index.html">ITR Kasse</a></summary><a class="nav-seite" href="../../produkte/itr-kasse/funktionsweise-der-itr-kasse.html">Funktionsweise der ITR Kasse</a><a class="nav-seite" href="../../produkte/itr-kasse/ersteinrichtung-mit-dem-setup-wizard.html">Ersteinrichtung mit dem Setup-Wizard</a><a class="nav-seite" href="../../produkte/itr-kasse/kasse-mit-dem-centralpoint-verbinden.html">Kasse mit dem CentralPoint verbinden</a><a class="nav-seite" href="../../produkte/itr-kasse/daten-von-hand-synchronisieren.html">Daten von Hand synchronisieren</a><a class="nav-seite" href="../../produkte/itr-kasse/zeitauftrage-und-jobs-einrichten.html">Zeitaufträge und Jobs einrichten</a></details><details class="nav-kapitel"><summary><a href="../../produkte/centralpoint/index.html">CentralPoint</a></summary><a class="nav-seite" href="../../produkte/centralpoint/datenbank-fur-den-centralpoint-einrichten.html">Datenbank für den CentralPoint einrichten</a><a class="nav-seite" href="../../produkte/centralpoint/centralpoint-installieren.html">CentralPoint installieren</a><a class="nav-seite" href="../../produkte/centralpoint/preise-steuern.html">Preise steuern</a><a class="nav-seite" href="../../produkte/centralpoint/lagerverwaltung-einrichten.html">Lagerverwaltung einrichten</a><a class="nav-seite" href="../../produkte/centralpoint/bundle-artikel-einrichten.html">Bundle-Artikel einrichten</a><a class="nav-seite" href="../../produkte/centralpoint/druckoptionen-der-bon-typen-referenz.html">Druckoptionen der Bon-Typen: Referenz</a><a class="nav-seite" href="../../produkte/centralpoint/ticket-designvorlagen-referenz.html">Ticket-Designvorlagen: Referenz</a><a class="nav-seite" href="../../produkte/centralpoint/gratisartikel-zum-hauptartikel-einrichten.html">Gratisartikel zum Hauptartikel einrichten</a><a class="nav-seite" href="../../produkte/centralpoint/mengenangebot-mit-automatischer-menuerkennung-einrichten.html">Mengenangebot mit automatischer Menüerkennung einrichten</a></details><details class="nav-kapitel"><summary><a href="../../produkte/pos-gastro-app/index.html">POS Gastro App</a></summary><a class="nav-seite" href="../../produkte/pos-gastro-app/in-betrieb-nehmen.html">In Betrieb nehmen</a></details><details class="nav-kapitel"><summary><a href="../../produkte/pos-kuchenmonitor/index.html">POS Küchenmonitor</a></summary><a class="nav-seite" href="../../produkte/pos-kuchenmonitor/funktionsweise-kuchenmonitor.html">Funktionsweise Küchenmonitor</a><a class="nav-seite" href="../../produkte/pos-kuchenmonitor/kuchenmonitor-in-betrieb-nehmen.html">Küchenmonitor in Betrieb nehmen</a><a class="nav-seite" href="../../produkte/pos-kuchenmonitor/abholnummer-auf-dem-kundenbeleg.html">Abholnummer auf dem Kundenbeleg</a><a class="nav-seite" href="../../produkte/pos-kuchenmonitor/kuchenmonitor-storungen-beheben.html">Küchenmonitor: Störungen beheben</a><a class="nav-seite" href="../../produkte/pos-kuchenmonitor/kuchenmonitor-im-alltag-bedienen.html">Küchenmonitor im Alltag bedienen</a></details><details class="nav-kapitel"><summary><a href="../../produkte/goodcompanydaemon/index.html">GoodCompanyDaemon</a></summary><a class="nav-seite" href="../../produkte/goodcompanydaemon/funktionsweise-O0j.html">Funktionsweise</a><a class="nav-seite" href="../../produkte/goodcompanydaemon/goodcompanydaemon-installieren.html">GoodCompanyDaemon installieren</a></details><details class="nav-kapitel"><summary><a href="../../produkte/ebon/index.html">eBon</a></summary><a class="nav-seite" href="../../produkte/ebon/funktionsweise-von-ebon-und-ebon-plus.html">Funktionsweise von eBon und eBon Plus</a><a class="nav-seite" href="../../produkte/ebon/ebon-einrichten.html">eBon einrichten</a><a class="nav-seite" href="../../produkte/ebon/umsatz-app-einrichten.html">Umsatz-App einrichten</a></details></details><details class="nav-buch"><summary><a href="../../losungen/index.html">Lösungen</a></summary><a class="nav-seite" href="../../losungen/waagen.html">Waagen</a><a class="nav-seite" href="../../losungen/ticketing.html">Ticketing</a></details><details class="nav-buch"><summary><a href="../../schnittstellen/index.html">Schnittstellen</a></summary><details class="nav-kapitel"><summary><a href="../../schnittstellen/erpsync/index.html">ERPSync</a></summary><a class="nav-seite" href="../../schnittstellen/erpsync/erpsync-einrichten.html">ERPSync einrichten</a></details></details><details class="nav-buch pfad" open><summary><a href="../../betrieb-administration/index.html">Betrieb &amp; Administration</a></summary><a class="nav-seite" href="../../betrieb-administration/branding-und-erscheinungsbild-anpassen.html">Branding und Erscheinungsbild anpassen</a><details class="nav-kapitel"><summary><a href="../../betrieb-administration/infrastruktur/index.html">Infrastruktur</a></summary><a class="nav-seite" href="../../betrieb-administration/infrastruktur/systemvoraussetzungen.html">Systemvoraussetzungen</a><a class="nav-seite" href="../../betrieb-administration/infrastruktur/netzwerk-und-ports.html">Netzwerk und Ports</a><a class="nav-seite" href="../../betrieb-administration/infrastruktur/updates-einspielen.html">Updates einspielen</a><a class="nav-seite" href="../../betrieb-administration/infrastruktur/protokolldateien-und-diagnose.html">Protokolldateien und Diagnose</a><a class="nav-seite" href="../../betrieb-administration/infrastruktur/datenbank-sichern-und-wiederherstellen.html">Datenbank sichern und wiederherstellen</a><a class="nav-seite" href="../../betrieb-administration/infrastruktur/fernwartung-und-zugriff-auf-kassen.html">Fernwartung und Zugriff auf Kassen</a></details><details class="nav-kapitel"><summary><a href="../../betrieb-administration/benutzer-und-sicherheit/index.html">Benutzer und Sicherheit</a></summary><a class="nav-seite" href="../../betrieb-administration/benutzer-und-sicherheit/bediener-und-rechte-einrichten.html">Bediener und Rechte einrichten</a><a class="nav-seite" href="../../betrieb-administration/benutzer-und-sicherheit/datenbankbenutzer-und-ssl.html">Datenbankbenutzer und SSL</a></details><details class="nav-kapitel pfad" open><summary><a href="../../betrieb-administration/peripherie/index.html">Peripherie</a></summary><a class="nav-seite" href="../../betrieb-administration/peripherie/bondrucker-einrichten.html">Bondrucker einrichten</a><a class="nav-seite" href="../../betrieb-administration/peripherie/kundendisplay-einrichten.html">Kundendisplay einrichten</a><a class="nav-seite" href="../../betrieb-administration/peripherie/kassenschublade-einrichten.html">Kassenschublade einrichten</a><a class="nav-seite" href="../../betrieb-administration/peripherie/scanner-einrichten.html">Scanner einrichten</a><a class="nav-seite" href="../../betrieb-administration/peripherie/ec-terminal-anbinden.html">EC-Terminal anbinden</a><a class="nav-seite" href="../../betrieb-administration/peripherie/smarttill-kassenschublade-anbinden.html">SMARTtill-Kassenschublade anbinden</a><a class="nav-seite aktuell" href="../../betrieb-administration/peripherie/cashlogy-einrichten.html">Cashlogy einrichten</a></details><details class="nav-kapitel"><summary><a href="../../betrieb-administration/lizenzen-und-partnerportal/index.html">Lizenzen und Partnerportal</a></summary><a class="nav-seite" href="../../betrieb-administration/lizenzen-und-partnerportal/lizenz-ins-neue-partnerportal-migrieren.html">Lizenz ins neue Partnerportal migrieren</a></details></details><details class="nav-buch"><summary><a href="../../fiskalisierung/index.html">Fiskalisierung</a></summary><a class="nav-seite" href="../../fiskalisierung/fiskalisierung-uberblick-fur-partner.html">Fiskalisierung: Überblick für Partner</a><a class="nav-seite" href="../../fiskalisierung/tse-hardware-swissbit-in-betrieb-nehmen.html">TSE Hardware (Swissbit) in Betrieb nehmen</a><a class="nav-seite" href="../../fiskalisierung/cloud-tse-fiskaly-in-betrieb-nehmen.html">Cloud-TSE (fiskaly) in Betrieb nehmen</a><a class="nav-seite" href="../../fiskalisierung/tse-pin-und-puk-verwalten.html">TSE-PIN und PUK verwalten</a><a class="nav-seite" href="../../fiskalisierung/tse-firmware-aktualisieren.html">TSE-Firmware aktualisieren</a><a class="nav-seite" href="../../fiskalisierung/abgelaufene-tse-austauschen.html">Abgelaufene TSE austauschen</a><a class="nav-seite" href="../../fiskalisierung/tse-tar-exportieren.html">TSE-TAR exportieren</a></details><details class="nav-buch"><summary><a href="../../faq-troubleshooting/index.html">FAQ &amp; Troubleshooting</a></summary><a class="nav-seite" href="../../faq-troubleshooting/datenbank-update-schlagt-fehl-collations.html">Datenbank-Update schlägt fehl (Collations)</a><a class="nav-seite" href="../../faq-troubleshooting/fernwartung-schwarzbild-an-der-kasse.html">Fernwartung: Schwarzbild an der Kasse</a><a class="nav-seite" href="../../faq-troubleshooting/tse-meldet-einen-fehler.html">TSE meldet einen Fehler</a><a class="nav-seite" href="../../faq-troubleshooting/kasse-hinter-einem-proxy-keine-lizenz-und-clouddaten.html">Kasse hinter einem Proxy: keine Lizenz- und Clouddaten</a><a class="nav-seite" href="../../faq-troubleshooting/datenbank-sperrt-host-many-connection-errors-beheben.html">Datenbank sperrt Host (many connection errors) beheben</a><a class="nav-seite" href="../../faq-troubleshooting/ebon-link-nicht-gefunden.html">eBon-Link „nicht gefunden“</a></details></nav></aside>
+  <main class="spalte-mitte" id="inhalt"><div class="seitenkopf"><nav class="brotkrumen-nav" aria-label="Sie sind hier"><ol class="brotkrumen"><li><a href="../../betrieb-administration/index.html">Betrieb &amp; Administration</a></li><li><a href="../../betrieb-administration/peripherie/index.html">Peripherie</a></li><li><span aria-current="page">Cashlogy einrichten</span></li></ol></nav><h1>Cashlogy einrichten</h1><p class="seitenmeta">Letzte &Auml;nderung 13.11.2026 &middot; Version 1 &middot; Seiten-ID 966</p></div><div class="inhalt"><p id="bkmrk-der-bezahlautomat-ca">Der Bezahlautomat Cashlogy von Azkoyen nimmt an der ITR Kasse Bargeld an und gibt Wechselgeld aus. Diese Seite führt von der Lizenz über den Automaten und die Kasse bis zur Schaltfläche in der Kassenmaske.</p>
+<h2 id="bkmrk-voraussetzungen">Voraussetzungen</h2>
+<ul id="bkmrk-cashlogy-pos1000-ode">
+<li>Cashlogy POS1000 oder POS1500, freigegeben jeweils mit Version 1.11.6.80</li>
+<li>Cashlogy-Software des Herstellers auf dem Kassenrechner installiert: <strong>CashlogyConfig</strong> und <strong>CashlogyConnector</strong></li>
+<li>Modul <strong>Cashlogy</strong> (Professional-Modul, Kauflizenz) auf der Lizenz der Kasse, siehe <span class="verweis-inaktiv kette"><span class="glied">ITR Partner Service</span> <span class="pfeil">→</span> <span class="glied">Produkte</span> <span class="pfeil">→</span> <span class="glied">ITR Kasse</span> <span class="pfeil">→</span> <span class="glied">Module und Lizenzmodelle: Referenz</span></span></li>
+</ul>
+<h2 id="bkmrk-so-gehen-sie-vor">So gehen Sie vor</h2>
+<h3 id="bkmrk-1.-modul-im-partnerp">1. Modul im Partnerportal buchen</h3>
+<ol id="bkmrk-im-partnerportal-die">
+<li>Im Partnerportal die Lizenz der Kasse öffnen.</li>
+<li>Modul <strong>Cashlogy</strong> zur Lizenz hinzufügen.</li>
+<li>An der Kasse die Lizenz aktualisieren, siehe <span class="verweis-inaktiv kette"><span class="glied">ITR Partner Service</span> <span class="pfeil">→</span> <span class="glied">Produkte</span> <span class="pfeil">→</span> <span class="glied">ITR Kasse</span> <span class="pfeil">→</span> <span class="glied">Lizenz aktivieren</span></span>.</li>
+</ol>
+<p id="bkmrk-ergebnis%3A-unter-admi">Ergebnis: Unter <strong>Admin-Seiten → Einstellungen → Admin → Lizenz</strong> steht das Modul Cashlogy.</p>
+<h3 id="bkmrk-2.-automat-einrichte">2. Automat einrichten (Cashlogy-Software)</h3>
+<ol id="bkmrk-c%3A%5Ccashlogy%5Ccashlogy">
+<li><code>C:\Cashlogy\CashlogyConfig\CashlogyConfig.exe</code> starten.</li>
+<li>Unter <strong>Produkt</strong> das Gerät wählen, z. B. <code>CashlogyPOS1000</code>.</li>
+<li>Reiter <strong>Grundeinstellungen</strong>: <strong>COM port</strong> des Automaten wählen, <strong>Überprüfen</strong> klicken, mit <strong>Akzeptieren</strong> speichern.</li>
+<li><code>C:\Cashlogy\CashlogyConnector\CashlogyConnectorConfig.exe</code> starten und den Port des Connectors prüfen (Standard <code>8092</code>).</li>
+<li>Sicherstellen, dass <code>CashlogyConnector.exe</code> mit der Windows-Anmeldung startet. Die Kasse spricht nur den Connector an, nicht den Automaten direkt.</li>
+</ol>
+<h3 id="bkmrk-3.-kasse-verbinden">3. Kasse verbinden</h3>
+<p id="bkmrk-l%C3%A4uft-der-connector-">Läuft der Connector auf demselben Rechner wie die Kasse, wird die Loopback-Adresse eingetragen.</p>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-parameter-wert-cashl">
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Wert</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Cashlogy.IpAddress</code></td>
+<td><code>127.0.0.1</code></td>
+</tr>
+<tr>
+<td><code>Cashlogy.Port</code></td>
+<td><code>8092</code></td>
+</tr>
+</tbody>
+</table></div>
+<p id="bkmrk-die-werte-stehen-in-">Die Werte stehen in den Admin-Seiten der Kasse. Danach die Kasse neu starten. Der Verbindungsaufbau zum Automaten dauert nach dem Start etwa eine Minute.</p>
+<h3 id="bkmrk-4.-kassenmaske-anpas">4. Kassenmaske anpassen</h3>
+<p id="bkmrk-ohne-schaltfl%C3%A4che-in">Ohne Schaltfläche in der Maske lässt sich der Automat nicht bedienen. Im Kassen-Designer:</p>
+<div class="tabellenrahmen" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table id="bkmrk-zweck-button-kommand">
+<thead>
+<tr>
+<th>Zweck</th>
+<th>Button-Kommando</th>
+<th>Aktivierungsbedingung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bezahlen mit Cashlogy (Bezahlmaske)</td>
+<td><code>StartCashlogyPayment</code></td>
+<td><code>IsCashlogyConnected</code></td>
+</tr>
+<tr>
+<td>Einzahlung (Wechselgeld)</td>
+<td><code>CashInWithCashlogy</code></td>
+<td><code>IsCashlogyConnected</code></td>
+</tr>
+<tr>
+<td>Auszahlung</td>
+<td><code>CashOutWithCashlogy</code></td>
+<td><code>IsCashlogyConnected</code></td>
+</tr>
+<tr>
+<td>Bestand und Verwaltung</td>
+<td>Panel vom Typ Cashlogy</td>
+<td>–</td>
+</tr>
+</tbody>
+</table></div>
+<ol id="bkmrk-schaltfl%C3%A4che-bezahle">
+<li>Schaltfläche <strong>Bezahlen mit Cashlogy</strong> in die Bezahlmaske legen, etwa in die seitliche Leiste, und mit Beschriftung oder Symbol versehen.</li>
+<li>Bedingung <code>IsCashlogyConnected</code> setzen, damit die Schaltfläche nur bei verbundenem Automaten aktiv ist.</li>
+<li>Optional Einzahlung und Auszahlung in die Wechselgeldmaske legen.</li>
+<li>Masken auf die Kasse übertragen, siehe <span class="verweis-inaktiv kette"><span class="glied">ITR Partner Service</span> <span class="pfeil">→</span> <span class="glied">Produkte</span> <span class="pfeil">→</span> <span class="glied">Kassen-Designer</span> <span class="pfeil">→</span> <span class="glied">Geänderte Masken auf die Kassen übertragen</span></span>.</li>
+</ol>
+<h2 id="bkmrk-ergebnis-pr%C3%BCfen">Ergebnis prüfen</h2>
+<ul id="bkmrk-die-schaltfl%C3%A4che-cas">
+<li>Die Schaltfläche <strong>Cashlogy</strong> in der Bezahlmaske ist aktiv.</li>
+<li>Ein Barverkauf über den Automaten schließt den Bon ab, das Wechselgeld wird ausgegeben.</li>
+<li>Ein Storno eines über den Automaten bezahlten Bons zahlt den Betrag über den Automaten aus.</li>
+</ul>
+<h2 id="bkmrk-wenn-es-nicht-funkti">Wenn es nicht funktioniert</h2>
+<ul id="bkmrk-schaltfl%C3%A4che-grau%3A-d">
+<li><strong>Schaltfläche grau:</strong> Der Connector läuft nicht, oder <code>Cashlogy.IpAddress</code> / <code>Cashlogy.Port</code> stimmen nicht. Connector starten, Kasse neu starten.</li>
+<li><strong>Meldung „Geldbestand prüfen … bitte nachfüllen“:</strong> Der Automat meldet leere Stückelungen, die Meldung kommt vom Gerät. Betroffene Stückelung auffüllen. Die Kasse arbeitet weiter, solange das Wechselgeld reicht.</li>
+<li><strong>Kein Wechselgeld:</strong> Bestand in der Cashlogy-Verwaltung prüfen.</li>
+</ul>
+<h2 id="bkmrk-weitere-informatione">Weitere Informationen</h2>
+<ul id="bkmrk-itr-partner-service-">
+<li><span class="verweis-inaktiv kette"><span class="glied">ITR Partner Service</span> <span class="pfeil">→</span> <span class="glied">Betrieb &amp; Administration</span> <span class="pfeil">→</span> <span class="glied">Geldwechsler und Cash-Recycling anbinden</span></span></li>
+<li><span class="verweis-inaktiv kette"><span class="glied">ITR Partner Service</span> <span class="pfeil">→</span> <span class="glied">Produkte</span> <span class="pfeil">→</span> <span class="glied">ITR Kasse</span> <span class="pfeil">→</span> <span class="glied">Module und Lizenzmodelle: Referenz</span></span></li>
+</ul>
+</div></main>
+  <aside class="spalte-rechts"><div class="seiteninhalt"><h2>Seiteninhalt</h2><ul><li class="e2"><a href="#bkmrk-voraussetzungen">Voraussetzungen</a></li><li class="e2"><a href="#bkmrk-so-gehen-sie-vor">So gehen Sie vor</a></li><li class="e3"><a href="#bkmrk-1.-modul-im-partnerp">1. Modul im Partnerportal buchen</a></li><li class="e3"><a href="#bkmrk-2.-automat-einrichte">2. Automat einrichten (Cashlogy-Software)</a></li><li class="e3"><a href="#bkmrk-3.-kasse-verbinden">3. Kasse verbinden</a></li><li class="e3"><a href="#bkmrk-4.-kassenmaske-anpas">4. Kassenmaske anpassen</a></li><li class="e2"><a href="#bkmrk-ergebnis-pr%C3%BCfen">Ergebnis prüfen</a></li><li class="e2"><a href="#bkmrk-wenn-es-nicht-funkti">Wenn es nicht funktioniert</a></li><li class="e2"><a href="#bkmrk-weitere-informatione">Weitere Informationen</a></li></ul></div></aside>
+</div>
+<footer class="fuss">
+  <span>ITR POS Partner</span>
+  <span class="fuss-rechts">
+    <span>&copy; 2026 IT Relations GmbH &middot; Weitergabe nur mit Zustimmung</span>
+    <a href="https://itrelations.de/de/impressum" target="_blank" rel="noopener">Impressum</a>
+    <span>Stand 13.11.2026</span>
+  </span>
+</footer>
+<script src="../../assets/suche.js?v=ed78121d"></script>
+</body>
+</html>
